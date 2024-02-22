@@ -17,5 +17,10 @@ public class Application {
     public String hello() {
         return "Hello World";
     }
+
+    @GetMapping("/login")
+    public String logIn() {
+        return "Welcome to Show Starter";
+    }
     
 }
