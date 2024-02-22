@@ -1,4 +1,5 @@
 package com.example.showstarter.mappings;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -63,6 +64,13 @@ public class Event {
 		
 		return events;
 	}
+
+    // public static void main(String[] arg) {
+    //     Event[] events = get_all_events();
+
+    //     System.out.println(events.length);
+    //     System.out.println(events[10].eventName);
+    // }
 	
 	
 	

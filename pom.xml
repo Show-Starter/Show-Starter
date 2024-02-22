@@ -17,6 +17,20 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.7.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>azure-toolkit-postgre-single-lib</artifactId>
+			<version>0.41.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>

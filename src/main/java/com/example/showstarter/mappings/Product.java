@@ -60,5 +60,11 @@ public class Product {
 		
 		return products;
 	}
+
+    public static void main(String[] args) {
+        Product[] products = get_all_products();
+
+        System.out.println(products[74].name);
+    }
 	
 }
