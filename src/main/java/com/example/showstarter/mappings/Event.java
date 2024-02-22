@@ -65,12 +65,12 @@ public class Event {
 		return events;
 	}
 
-    // public static void main(String[] arg) {
-    //     Event[] events = get_all_events();
+    public static void main(String[] arg) {
+        Event[] events = get_all_events();
 
-    //     System.out.println(events.length);
-    //     System.out.println(events[10].eventName);
-    // }
+        System.out.println(events.length);
+        // System.out.println(events[10].eventName);
+    }
 	
 	
 	
