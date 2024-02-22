@@ -1,0 +1,41 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+
+.inventual-dashboard-main.sidebar-enable {
+    .apexcharts-canvas {
+        width: 100% !important;
+    }
+}
+.inventual-bar-chart h5 {
+	left: 50%;
+	transform: translateX(-50%);
+  [dir="rtl"] {
+    transform: translateX(50%);
+}
+	bottom: 25px;
+}
+.common-blue-badge {
+    @apply h-5;
+    @apply px-2.5;
+    @apply bg-blue;
+    @apply rounded-[3px];
+    @apply inline-block;
+    @apply text-white;
+    @apply text-[11px];
+    @apply font-bold;
+    @apply leading-5;
+}
+
+.inventual-menu-overlay-dashboard.sidebar-enable {
+  @media (max-width: 1900px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 10;
+  }
+}

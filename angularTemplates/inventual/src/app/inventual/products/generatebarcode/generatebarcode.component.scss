@@ -1,0 +1,146 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+// Select field style
+@include inventualSelectFieldStyle;
+// Input field style
+@include inventualInputFieldStyle;
+//checkbox style
+@include inventualCheckboxFieldStyle;
+@include inventualMaterialBtn;
+
+.custom-height-70 {
+    height: 70px;
+    min-height: 70px;
+}
+.inventual-addsale-product-list {
+    @apply flex;
+}
+.inventual-addsale-product-name,
+.inventual-addsale-product-code,
+.inventual-addsale-product-qty,
+.inventual-addsale-product-action {
+    @apply flex;
+    @apply flex-col;
+    @apply justify-center;
+    @apply h-full;
+    @apply ps-5;
+    @apply pe-1;
+	@media (max-width: 1600px) {
+		@apply ps-2.5;
+	}
+}
+.inventual-barcode-print-checkbox {
+	label {
+		@apply inline-flex ms-1 cursor-pointer;
+	}
+	input {
+		transform: translateY(-1px);
+	}
+}
+
+.inventual-addsale-product-name {
+    width: 22%;
+    min-width: 160px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 28%;
+		min-width: 160px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 24%;
+		min-width: 120px;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		width: 26%;
+		min-width: 140px;
+	}
+	@media (min-width: 992px) and (max-width: 1200px) {
+		width: 25%;
+		min-width: 110px;
+	}
+	@media (min-width: 768px) and (max-width: 991px) {
+		width: 24%;
+		min-width: 150px;
+	}
+    @media (max-width: 767px) {
+		width: 25%;
+		min-width: 110px;
+	}
+}
+.inventual-addsale-product-code {
+    width: 27%;
+    min-width: 200px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 26%;
+		min-width: 150px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 28%;
+		min-width: 140px;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		width: 26%;
+		min-width: 140px;
+	}
+	@media (min-width: 992px) and (max-width: 1200px) {
+		width: 26%;
+		min-width: 110px;
+	}
+    @media (min-width: 768px) and (max-width: 991px) {
+		width: 26%;
+		min-width: 170px;
+	}
+    @media (max-width: 767px) {
+		width: 170px;
+		min-width: 170px;
+	}
+}
+
+.inventual-addsale-product-qty {
+    width: 36%;
+    min-width: 260px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 31%;
+		min-width: 180px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 30%;
+		min-width: 140px;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		width: 33%;
+		min-width: 160px;
+	}
+	@media (min-width: 992px) and (max-width: 1200px) {
+		width: 32%;
+		min-width: 130px;
+	}
+    @media (min-width: 768px) and (max-width: 991px) {
+		width: 38%;
+		min-width: 200px;
+	}
+    @media (max-width: 767px) {
+		width: 200px;
+		min-width: 200px;
+	}
+}
+.inventual-addsale-product-action {
+    @include productDeleteBtn;
+}
+.inventual-addsale-product-qty {
+    @include productCounter;
+}
+.inventual-addsale-product-wrapper-inner {
+	@media (max-width: 767px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.inventual-addsale-product-wrapper-inner-wrap {
+	@media (max-width: 767px) {
+		width: 600px;
+        min-width: 100%;
+		scrollbar-height: thin;
+	}
+}

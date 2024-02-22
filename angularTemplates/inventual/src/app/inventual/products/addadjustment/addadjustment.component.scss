@@ -1,0 +1,192 @@
+@import '../../../../custom-palettes.scss';
+
+.inventual-input-field-file-image1 input {
+	@apply hidden;
+}
+.inventual-input-field-file-image1 {
+    @apply w-56;
+}
+.inventual-input-field-file-image1 label {
+	@apply h-40;
+    @apply w-56;
+	@apply border;
+	@apply border-dashed;
+	@apply border-blue;
+	@apply rounded-[10px];
+	@apply outline-none;
+	@apply flex;
+    @apply justify-center;
+    @apply items-center;
+	@apply text-[15px];
+	@apply text-black;
+	@apply font-primary;
+	@apply font-normal;
+	@apply w-full;
+	@apply bg-gray-bg;
+    @apply cursor-pointer;
+	transition: all linear 0.3s;
+	background: #F6F9FF;
+}
+
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+// Select field style
+@include inventualSelectFieldStyle;
+// Input field style
+@include inventualInputFieldStyle;
+//calender field style
+@include inventualCalenderFieldStyle;
+
+.inventual-addsale-product-list {
+    @apply flex;
+}
+.inventual-addsale-product-sl,
+.inventual-addsale-product-name,
+.inventual-addsale-product-code,
+.inventual-addsale-product-qty,
+.inventual-addsale-product-type,
+.inventual-addsale-product-action {
+    @apply flex;
+    @apply flex-col;
+    @apply justify-center;
+    @apply h-full;
+    @apply ps-5;
+    @apply pe-1;
+	@media (max-width: 1600px) {
+		@apply ps-2.5;
+	}
+}
+.inventual-addsale-product-action {
+	@apply border-e-0;
+}
+.custom-height-70 {
+    height: 70px;
+    min-height: 70px;
+}
+.inventual-addsale-product-list .inventual-select-field-style .mat-form-field-flex {
+	@apply h-10;
+}
+.inventual-addsale-product-sl {
+    width: 9%;
+    min-width: 145px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 10%;
+		min-width: 120px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 9%;
+		min-width: 100px;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		width: 9%;
+		min-width: 100px;
+	}
+	@media (max-width: 1200px) {
+		width: 9%;
+		min-width: 100px;
+	}
+}
+.inventual-addsale-product-name {
+    width: 20%;
+    min-width: 300px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 18%;
+		min-width: 220px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 18%;
+		min-width: 180px;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		width: 18%;
+		min-width: 210px;
+	}
+	@media (max-width: 1200px) {
+		width: 18%;
+		min-width: 180px;
+	}
+}
+.inventual-addsale-product-code {
+    width: 19%;
+    min-width: 290px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 18%;
+		min-width: 210px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 18%;
+		min-width: 160px;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		width: 18%;
+		min-width: 190px;
+	}
+	@media (max-width: 1200px) {
+		width: 18%;
+		min-width: 160px;
+	}
+}
+
+.inventual-addsale-product-qty {
+    width: 20%;
+    min-width: 300px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 18%;
+		min-width: 200px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 18%;
+		min-width: 170px;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		width: 18%;
+		min-width: 200px;
+	}
+	@media (max-width: 1200px) {
+		width: 18%;
+		min-width: 170px;
+	}
+}
+
+.inventual-addsale-product-type {
+	width: 18%;
+    min-width: 270px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 16%;
+		min-width: 250px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 16%;
+		min-width: 220px;
+		@apply me-12;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		width: 16%;
+		min-width: 230px;
+	}
+	@media (max-width: 1200px) {
+		width: 16%;
+		min-width: 200px;
+		@apply me-12;
+	}
+}
+.inventual-addsale-product-action {
+    @include productDeleteBtn;
+}
+.inventual-addsale-product-qty {
+    @include productCounter;
+}
+.inventual-addsale-product-wrapper-inner {
+	@media (max-width: 1199px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.inventual-addsale-product-wrapper-inner-wrap {
+	@media (max-width: 1199px) {
+		width: 950px;
+		min-width: 100%;
+		scrollbar-height: thin;
+	}
+}

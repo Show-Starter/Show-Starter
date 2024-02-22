@@ -1,0 +1,306 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-bar-responsive" (click)="myfunction()">
+        <mat-icon>reorder</mat-icon>
+      </div>
+      <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+        <app-menu></app-menu>
+      </div>
+      <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-area">
+        <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-gray-border">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <app-header></app-header>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-black font-bold mb-3">Add Purchase</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Trading</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Purchase</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Add Purchase</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+           <div class="inventual-addsale-area bg-white p-7 custom-shadow rounded-8 mb-5">
+               <h4 class="text-[20px] font-bold text-black mb-11">Add Purchase</h4>
+               <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-4 md:col-span-4 sm:col-span-12">
+                        <div class="inventual-calender-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Date</h5>
+                            <div class="inventual-calender-field-style">
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label class="hidden">Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="col-span-4 md:col-span-4 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Select Warehouse</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Warehouse'">
+                                        <mat-option value="language-1">United States</mat-option>
+                                        <mat-option value="language-2">Canada</mat-option>
+                                        <mat-option value="language-3">Mexico</mat-option>
+                                        <mat-option value="language-4">France</mat-option>
+                                        <mat-option value="language-5">Germany</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                   </div>
+                   <div class="col-span-4 md:col-span-4 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Select Supplier</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Select Supplier'">
+                                        <mat-option value="language-1">Shane Watson</mat-option>
+                                        <mat-option value="language-2">David Warner</mat-option>
+                                        <mat-option value="language-3">David Miller</mat-option>
+                                        <mat-option value="language-4">Hashim Amla</mat-option>
+                                        <mat-option value="language-5">Imran Tahir</mat-option>
+                                        <mat-option value="language-6">JP Duminy</mat-option>
+                                        <mat-option value="language-6">Kagiso Rabada</mat-option>
+                                        <mat-option value="language-6">Stuart Broad</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                   </div>
+                   <div class="col-span-12">
+                    <div class="inventual-select-field mb-5">
+                        <h5 class="text-[15px] text-black font-semibold mb-3">Select Product</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Scan / search products by code / name</mat-label>
+                                <input matInput [placeholder]="'Scan / search products by code / name'">
+                              </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+               </div>
+
+               <div class="inventual-addsale-product-area pt-7">
+                <div class="inventual-addsale-product-wrapper border border-b-0 border-solid border-gray-borderThree">
+                    <div class="inventual-addsale-product-wrapper-inner">
+                        <div class="inventual-addsale-product-wrapper-inner-wrap">
+                            <div class="inventual-addsale-product-list bg-gray-borderThree h-10">
+                                <div class="inventual-addsale-product-date">
+                                    <h5 class="text-[15px] font-semibold text-black">Date</h5>
+                                </div>
+                                <div class="inventual-addsale-product-Products">
+                                    <h5 class="text-[15px] font-semibold text-black">Products</h5>
+                                </div>
+                                <div class="inventual-addsale-product-batch">
+                                    <h5 class="text-[15px] font-semibold text-black">Batch No</h5>
+                                </div>
+                                <div class="inventual-addsale-product-unit">
+                                    <h5 class="text-[15px] font-semibold text-black">Unit</h5>
+                                </div>
+                                <div class="inventual-addsale-product-price">
+                                    <h5 class="text-[15px] font-semibold text-black">Price</h5>
+                                </div>
+                                <div class="inventual-addsale-product-qty">
+                                    <h5 class="text-[15px] font-semibold text-black">Quantity</h5>
+                                </div>
+                                <div class="inventual-addsale-product-discount">
+                                    <h5 class="text-[15px] font-semibold text-black">Discount</h5>
+                                </div>
+                                <div class="inventual-addsale-product-tax">
+                                    <h5 class="text-[15px] font-semibold text-black">Tax</h5>
+                                </div>
+                                <div class="inventual-addsale-product-total">
+                                    <h5 class="text-[15px] font-semibold text-black">Sub Total</h5>
+                                </div>
+                                <div class="inventual-addsale-product-action">
+                                    <h5 class="text-[15px] font-semibold text-black">Action</h5>
+                                </div>
+                            </div>
+                            <div class="inventual-addsale-product-list h-10 border-b border-solid border-gray-borderThree custom-height-70">
+                                <div class="inventual-addsale-product-date">
+                                    <span class="text-[14px] font-normal text-gray">12/12/2022</span>
+                                </div>
+                                <div class="inventual-addsale-product-Products">
+                                    <span class="text-[14px] font-normal text-gray">Dell Inspiration 3rd gen laptop (q)</span>
+                                </div>
+                                <div class="inventual-addsale-product-batch">
+                                    <span class="text-[14px] font-normal text-gray">30566205</span>
+                                </div>
+                                <div class="inventual-addsale-product-unit">
+                                    <span class="text-[14px] font-normal text-gray">Quantity (q)</span>
+                                </div>
+                                <div class="inventual-addsale-product-price">
+                                    <span class="text-[14px] font-normal text-gray">$4,587</span>
+                                </div>
+                                <div class="inventual-addsale-product-qty">
+                                    <span class="text-gray flex items-center">
+                                        <button type="button" (click)="counter('count', 'subtract')"><mat-icon>remove</mat-icon></button>
+                                        <p>{{ counters['count'] }}</p>
+                                        <button type="button" class="active" (click)="counter('count', 'add')"><mat-icon>add</mat-icon></button>
+                                    </span>
+                                </div>
+                                <div class="inventual-addsale-product-discount">
+                                    <span class="text-[14px] font-normal text-gray">0</span>
+                                </div>
+                                <div class="inventual-addsale-product-tax">
+                                    <span class="text-[14px] font-normal text-gray">0</span>
+                                </div>
+                                <div class="inventual-addsale-product-total">
+                                    <span class="text-[14px] font-normal text-gray">$4,587</span>
+                                </div>
+                                <div class="inventual-addsale-product-action">
+                                    <a href="javascript:void(0)" class="product-delete-btn"><mat-icon>clear</mat-icon></a>
+                                </div>
+                            </div>
+                            <div class="inventual-addsale-product-list h-10 border-b border-solid border-gray-borderThree custom-height-70">
+                                <div class="inventual-addsale-product-date">
+                                    <span class="text-[14px] font-normal text-gray">12/12/2022</span>
+                                </div>
+                                <div class="inventual-addsale-product-Products">
+                                    <span class="text-[14px] font-normal text-gray">Dell Inspiration 3rd gen laptop (q)</span>
+                                </div>
+                                <div class="inventual-addsale-product-batch">
+                                    <span class="text-[14px] font-normal text-gray">30566205</span>
+                                </div>
+                                <div class="inventual-addsale-product-unit">
+                                    <span class="text-[14px] font-normal text-gray">Quantity (q)</span>
+                                </div>
+                                <div class="inventual-addsale-product-price">
+                                    <span class="text-[14px] font-normal text-gray">$4,587</span>
+                                </div>
+                                <div class="inventual-addsale-product-qty">
+                                    <span class="text-gray flex items-center">
+                                        <button type="button" (click)="counter('count1', 'subtract')"><mat-icon>remove</mat-icon></button>
+                                        <p>{{ counters['count1'] }}</p>
+                                        <button type="button" class="active" (click)="counter('count1', 'add')"><mat-icon>add</mat-icon></button>
+                                    </span>
+                                </div>
+                                <div class="inventual-addsale-product-discount">
+                                    <span class="text-[14px] font-normal text-gray">0</span>
+                                </div>
+                                <div class="inventual-addsale-product-tax">
+                                    <span class="text-[14px] font-normal text-gray">0</span>
+                                </div>
+                                <div class="inventual-addsale-product-total">
+                                    <span class="text-[14px] font-normal text-gray">$4,587</span>
+                                </div>
+                                <div class="inventual-addsale-product-action">
+                                    <a href="javascript:void(0)" class="product-delete-btn"><mat-icon>clear</mat-icon></a>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+
+                    <div class="inventual-addsale-product-cost text-end pt-9 pb-9 border-b border-solid border-gray-borderThree mb-7">
+                        <ul>
+                            <li class="px-4 py-2.5 border-b border-solid border-gray-borderSix">
+                                <span class="text-[15px] font-normal text-black w-40 inline-block">Total Amount <span class="float-end">:</span></span>
+                                <span class="text-[15px] font-normal text-black inline-block">$4612.00</span>
+                            </li>
+                            <li class="px-4 py-2.5 border-b border-solid border-gray-borderSix bg-gray-bg">
+                                <span class="text-[15px] font-normal text-black w-40 inline-block">Order Tax <span class="float-end">:</span></span>
+                                <span class="text-[15px] font-normal text-black inline-block">+$8.00 (4%)</span>
+                            </li>
+                            <li class="px-4 py-2.5 border-b border-solid border-gray-borderSix">
+                                <span class="text-[15px] font-normal text-black w-40 inline-block">Discount <span class="float-end">:</span></span>
+                                <span class="text-[15px] font-normal text-black inline-block">-$25.00 (5%)</span>
+                            </li>
+                            <li class="px-4 py-2.5 border-b border-solid border-gray-borderSix bg-gray-bg">
+                                <span class="text-[15px] font-normal text-black w-40 inline-block">Shipping <span class="float-end">:</span></span>
+                                <span class="text-[15px] font-normal text-black inline-block">$0.00</span>
+                            </li>
+                            <li class="px-4 py-2.5">
+                                <span class="text-[15px] font-bold text-black w-40 inline-block">Grand Total <span class="float-end font-normal">:</span></span>
+                                <span class="text-[15px] font-bold text-black inline-block">$4,595.00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+               </div>
+               <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-3 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">OrderTax</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Select Tax'">
+                                        <mat-option value="language-1">Vat (10%)= $8.00</mat-option>
+                                        <mat-option value="language-2">Vat (10%)= $9.00</mat-option>
+                                        <mat-option value="language-3">Vat (10%)= $10.00</mat-option>
+                                        <mat-option value="language-4">Vat (10%)= $11.00</mat-option>
+                                        <mat-option value="language-5">Vat (10%)= $12.00</mat-option>
+                                        <mat-option value="language-6">Vat (10%)= $13.00</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-3 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Order Discount</h5>
+                            <div class="inventual-input-field-style relative">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">$25.00</mat-label>
+                                    <input matInput [placeholder]="'$25.00'">
+                                </mat-form-field>
+                                <figure class="h-12 w-12 text-[15px] text-gray bg-gray-bg text-center leading-[46px] border border-solid border-gray-borderThree absolute top-0 end-0 inline-block">%</figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-3 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Shipping</h5>
+                            <div class="inventual-input-field-styles relative">
+                                <input type="number" placeholder="0">
+                                <figure class="h-12 w-12 text-[15px] text-gray bg-gray-bg text-center leading-[46px] border border-solid border-gray-borderThree absolute top-0 end-0 inline-block">$</figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-3 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Sale Status</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Sale Status'">
+                                        <mat-option value="language-1">Complete</mat-option>
+                                        <mat-option value="language-2">Incomplete</mat-option>
+                                        <mat-option value="language-3">Drafts</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Purchase Note:</h5>
+                            <div class="inventual-input-field-style relative">
+                                <textarea placeholder="Type text...."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventual-material-btn pt-2">
+                    <button mat-raised-button color="primary">Submit</button>
+                </div>
+           </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+</div>

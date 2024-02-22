@@ -1,0 +1,103 @@
+<div class="inventual-role-list border-b border-solid border-gray-borderThree flex items-center">
+    <div class="inventual-role-left">
+        <div class="inventual-role-topic">
+            <h5 class="text-[18px] font-semibold text-black mb-4">Settings</h5>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox class="example-margin" [checked]="allComplete"
+                  [color]="task.color" [indeterminate]="someComplete()"
+                  (change)="setAllABC($event.checked)">
+                  {{task.name}}
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="inventual-role-right w-full border-s border-solid border-gray-borderThree">
+        <div class="inventual-role-category-list custom-height-50 flex items-center">
+            <div class="inventual-role-checkbox-wrapper inventual-role-checkbox-wrapper2">
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckA3($event.checked)">
+                        <label for="mat-checkbox-127-input">Create SMS</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckB3($event.checked)">
+                        <label for="mat-checkbox-128-input">System Setting</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckC3($event.checked)">
+                        <label for="mat-checkbox-129-input">Mail Settings</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckD3($event.checked)">
+                        <label for="mat-checkbox-130-input">Currency Setting</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckE3($event.checked)">
+                        <label for="mat-checkbox-131-input">Language</label>
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-role-category-list custom-height-50 flex items-center">
+            <div class="inventual-role-checkbox-wrapper inventual-role-checkbox-wrapper2">
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckF3($event.checked)">
+                        <label for="mat-checkbox-132-input">Send Notification</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckG3($event.checked)">
+                        <label for="mat-checkbox-133-input">Backup Database</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckH3($event.checked)">
+                        <label for="mat-checkbox-134-input">Send Mail</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckI3($event.checked)">
+                        <label for="mat-checkbox-135-input">POS Setting</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckJ3($event.checked)">
+                        <label for="mat-checkbox-136-input">Time & Date</label>
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-role-category-list custom-height-50 flex items-center">
+            <div class="inventual-role-checkbox-wrapper inventual-role-checkbox-wrapper2">
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckK3($event.checked)">
+                        <label for="mat-checkbox-137-input">Send SMS</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckL3($event.checked)">
+                        <label for="mat-checkbox-138-input">Mail Create</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckM3($event.checked)">
+                        <label for="mat-checkbox-139-input">SMS Setting</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckN3($event.checked)">
+                        <label for="mat-checkbox-140-input">Newsletter Setting</label>
+                    </mat-checkbox>
+                </div>
+                <div class="inventual-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckO3($event.checked)">
+                        <label for="mat-checkbox-141-input">Create Role</label>
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
