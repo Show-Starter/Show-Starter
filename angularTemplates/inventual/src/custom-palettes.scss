@@ -1,0 +1,537 @@
+//select field
+@mixin inventualSelectFieldStyle {
+  .inventual-select-field-style {
+    .mat-mdc-form-field-appearance-legacy.mat-mdc-form-field-can-float.mat-mdc-form-field-should-float .mat-mdc-form-field-label {
+      @apply hidden;
+    }
+    .mat-mdc-form-field-hide-placeholder .mat-mdc-select-placeholder {
+      @apply text-gray opacity-70;
+      -webkit-text-fill-color: #616161;
+    }
+    .mat-mdc-form-field-appearance-legacy .mat-mdc-form-field-underline {
+      @apply hidden;
+    }
+    .mat-mdc-form-field-flex {
+      @apply h-12 leading-[46px] border border-solid border-gray-borderThree px-5 rounded-[3px] outline-none text-[14px] text-gray font-primary font-normal w-full bg-gray-bg flex items-center;
+    }
+    .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+      @apply p-0 w-full;
+    }
+    .mat-mdc-form-field-infix {
+      @apply w-full border-t-0 flex items-center min-h-0;
+    }
+    .mat-form-field-hide-placeholder .mat-mdc-select-placeholder,
+    .mat-mdc-select {
+      @apply opacity-100 text-[14px] text-gray font-primary;
+      -webkit-text-fill-color: #616161;
+    }
+    .mat-form-field-appearance-fill .mat-mdc-select-arrow-wrapper {
+      transform: translateY(0px);
+    }
+    .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix .mat-mdc-floating-label {
+      @apply hidden;
+    }
+    .mat-mdc-form-field-subscript-wrapper,
+    .mdc-line-ripple {
+      @apply hidden;
+    }
+    .mat-mdc-select-value-text {
+      @apply text-gray font-primary;
+    }
+    .mdc-text-field {
+      @apply p-0 rounded-none;
+    }
+    .mat-mdc-form-field {
+      @apply font-primary w-full;
+    }
+    .mat-mdc-text-field-wrapper {
+      @apply min-w-[100px] rounded-none;
+    }
+    .mat-mdc-select-arrow {
+      color: #616161 !important;
+    }
+  }
+  .mat-mdc-option span.mdc-list-item__primary-text {
+    @apply text-[14px] font-primary text-black;
+  }
+}
+
+//input field
+@mixin inventualInputFieldStyle {
+.inventual-input-field-style {
+    .mdc-text-field {
+      @apply rounded-none p-0 bg-transparent;
+    }
+    .mat-mdc-form-field, .mat-mdc-floating-label {
+      @apply font-primary text-[14px] text-gray no-underline leading-none normal-case;
+    }
+    .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+      @apply p-0;
+    }
+    & .mat-mdc-form-field-infix {
+        @apply p-0 min-h-0;
+    }
+    & input.mat-mdc-input-element {
+        @apply m-0 h-12 leading-[46px] border border-solid border-gray-borderThree px-5 rounded-[3px] outline-none block text-[14px] text-gray font-primary font-normal w-full bg-gray-bg focus:bg-white box-border; 
+    }
+    .mat-mdc-form-field-subscript-wrapper, .mdc-line-ripple {
+      @apply hidden;
+    }
+  }
+}
+
+//input field eye
+@mixin inventualInputFieldEyeStyle {
+  .inventual-input-field-style-eye {
+    .mat-mdc-form-field {
+      @apply w-full;
+    }
+    .mat-mdc-form-field-flex {
+      @apply p-0 rounded-[3px] bg-transparent w-full;
+    }
+    .mat-mdc-form-field-wrapper {
+      @apply w-full p-0;
+    }
+    .mat-mdc-form-field-underline {
+      @apply hidden;
+    }
+    .mat-mdc-form-field-infix {
+      @apply p-0;
+    }
+    .mat-mdc-form-field-suffix {
+      @apply absolute top-1.5 end-2;
+    }
+    .mat-mdc-icon {
+      @apply text-gray-bgFive;
+    }
+    .mat-icon {
+      line-height: 1 !important;
+      transform: translateY(11px);
+    }
+    .mat-mdc-form-field-icon-suffix,
+    [dir="rtl"] .mat-mdc-form-field-icon-prefix {
+      @apply bg-gray-bg p-0 text-gray-bgFive border-0 border-r border-solid border-gray-borderThree h-[46px];
+    }
+    .mat-mdc-icon-button.mat-mdc-button-base {
+      padding: 0px !important;
+    }
+    .mat-mdc-icon-button .mat-mdc-button-ripple,
+    .mat-mdc-icon-button .mat-mdc-button-touch-target,
+    .mat-mdc-icon-button .mat-mdc-focus-indicator,
+    .mat-mdc-icon-button .mat-mdc-button-persistent-ripple::before {
+      @apply hidden;
+    }
+    input.mat-mdc-input-element {
+      @apply border-e-0;
+    }
+  }
+}
+
+//product counter style
+@mixin productCounter {
+  & p {
+      @apply text-[14px];
+      @apply font-normal;
+      @apply text-gray;
+      @apply px-3;
+  }
+  & button {
+      height: 30px;
+      width: 30px;
+      border: 2px solid #C1D5FE;
+      @apply leading-[26px];
+      @apply inline-block;
+      @apply text-center;
+      @apply text-blue;
+      @apply rounded-[3px];
+      & .material-icons {
+          @apply text-[16px];
+          @apply leading-[26px];
+          transform: translateX(-2px);
+      }
+      &.active {
+          @apply bg-blue;
+          @apply text-white;
+          @apply border-blue;
+      }
+  }
+}
+
+//product delete btn
+@mixin productDeleteBtn {
+  .product-delete-btn {
+    @apply h-6;
+    @apply w-6;
+    @apply leading-[23px];
+    @apply text-center;
+    @apply inline-block;
+    @apply border;
+    @apply border-solid;
+    @apply rounded-[3px];
+    @apply border-red-dark;
+    & .material-icons {
+        @apply text-[16px];
+        @apply leading-[22px];
+        @apply text-red-dark;
+        transform: translateX(-1px);
+        [dir="rtl"] {
+          transform: translateX(1px);
+        }
+    }
+  }
+}
+
+@mixin inventualCalenderFieldStyle {
+  .inventual-calender-field-style {
+    .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+      @apply p-0;
+    }
+    .mat-mdc-form-field-flex {
+      @apply h-12 leading-[46px] border border-solid border-gray-borderThree ps-5 rounded-[3px] outline-none inline-flex text-[14px] text-gray font-primary font-normal w-full bg-gray-bg focus:bg-white box-border;
+    }
+    .mat-mdc-form-field-subscript-wrapper {
+      @apply hidden;
+    }
+    .mat-mdc-form-field {
+        @apply block w-full;
+    }
+    .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+      @apply p-0;
+    }
+    .mat-mdc-form-field-infix {
+      @apply min-h-0 w-full;
+    }
+    .mdc-line-ripple {
+      @apply hidden;
+    }
+  }
+  abbr[title] {
+    text-decoration:  none !important;
+  }
+}
+
+//checkbox design
+@mixin inventualCheckboxFieldStyle {
+    .inventual-manageproduct-table-checkbox1,
+    .inventual-managesale-table-checkbox,
+    .inventual-addbrand-table-checkbox,
+    .inventual-checkbox-field-style,
+    .inventual-managesale-table-checkbox2,
+    .inventual-salereturns-table-checkbox,
+    .inventual-managesale-table-checkbox4,
+    .inventual-supplierlist-table-checkbox,
+    .inventual-role-checkbox {
+      .mdc-checkbox {
+        flex: 0 0 16px;
+        @apply w-4 h-4 p-0 m-0;
+      }
+      .mdc-checkbox__background {
+        @apply w-4 h-4 border-2 border-gray-borderTwo;
+      }
+      .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(:indeterminate)~.mdc-checkbox__background {
+        @apply border-gray-borderTwo;
+      }
+      .mdc-checkbox .mdc-checkbox__native-control:focus:checked~.mdc-checkbox__ripple {
+        @apply bg-primary;
+      }
+      .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate="true"])~.mdc-checkbox__background {
+        @apply border-gray-borderTwo;
+      }
+      .mat-mdc-checkbox-ripple, .mdc-checkbox__ripple,
+      .mat-mdc-checkbox .mdc-checkbox__ripple,
+      .mat-mdc-checkbox-touch-target {
+        @apply hidden;
+      }
+      .mdc-checkbox .mdc-checkbox__background {
+        @apply top-0 start-4;
+      }
+      .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+        @apply bg-primary border-primary;
+      }
+    }
+}
+
+//inventual material btn style
+@mixin inventualMaterialBtn {
+  .inventual-material-btn {
+    @apply flex gap-5 flex-wrap;
+    .mdc-button {
+      @apply text-[16px] font-semibold rounded-[5px] h-12 leading-[48px] py-0 px-7 sm:px-4  min-w-0 transition-colors font-primary;
+    }
+    .mat-mdc-raised-button.mat-primary {
+      @apply bg-primary text-white hover:bg-green;
+    }
+    .mat-mdc-raised-button.mat-accent {
+      @apply bg-green text-white hover:bg-primary hover:text-white;
+    }
+    .mat-mdc-raised-button.mat-warn {
+      @apply bg-warn-light text-white hover:bg-green hover:text-white;
+    }
+    .mat-mdc-raised-button.mat-mdc-button-base {
+      @apply h-auto;
+    }
+    .mat-icon {
+      @apply text-white;
+      font-size: 22px !important
+    }
+  }
+}
+
+//popup close icon
+@mixin inventualPopupClose {
+  .inventual-popup-header-close a {
+    @apply h-9;
+    @apply w-9;
+    @apply leading-[35px];
+    @apply text-center;
+    @apply inline-block;
+    @apply border;
+    @apply border-solid;
+    @apply rounded-[3px];
+    @apply border-red-dark;
+    & .material-icons {
+        @apply text-[20px];
+        @apply leading-[34px];
+        @apply text-red-dark;
+        transform: translateX(-1px);
+    }
+  }
+}
+
+//popup material-btn
+@mixin materialPopupBtn {
+  .mat-raised-button {
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+      border-radius: 5px !important;
+      height: 48px !important;
+      line-height: 48px !important;
+      padding: 0px 16px !important;
+      width: 100% !important;
+      @apply text-center;
+	}
+}
+
+//popup common style
+@mixin popupCommonStyle {
+  .mat-dialog-container {
+    padding: 0px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+  }
+  .cdk-overlay-dark-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .mat-dialog-content {
+    max-height: 90vh;
+    max-width: 90vw;
+  }
+  
+}
+
+//common action menu style
+@mixin commonActionMenuStyle {
+  .mat-mdc-menu-item img {
+    @apply w-4;
+    @apply me-2;
+  }
+  .mat-mdc-menu-item span {
+    @apply text-black text-sm font-primary;
+  }
+  .mat-mdc-menu-item {
+    height: 40px !important;
+    line-height: 40px !important;
+  }
+  .common-action-menu-style.mat-mdc-icon-button {
+    @apply border border-solid border-[#C1D5FE] h-9 rounded text-primary w-auto min-w-[85px] text-sm leading-3 inline-flex font-primary;
+  }
+  button.mat-mdc-icon-button .mat-mdc-button-touch-target {
+    @apply h-auto w-auto;
+  }
+  button.mat-mdc-icon-button .mat-mdc-button-persistent-ripple::before {
+    @apply hidden;
+  }
+  .common-action-menu-style {
+    .mat-icon {
+      width: 18px !important;
+    }
+    i {
+      @apply ms-2;
+    }
+  }
+  [dir="rtl"] {
+    .common-action-menu-style {
+      .mat-icon {
+        transform: translateX(-5px);
+      }
+    }
+  }
+}
+
+//inventual header searchbar
+@mixin inventualHeaderSearch {
+  .inventual-table-header-search {
+    & input {
+      @apply h-10;
+      @apply w-full;
+      @apply block;
+      @apply rounded-[3px];
+      @apply border;
+      @apply border-solid;
+      @apply border-gray-borderThree;
+      @apply pe-11;
+      @apply ps-4;
+      @apply text-[14px];
+      @apply font-normal;
+      @apply font-primary;
+      @apply text-gray;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+    & span {
+      @apply absolute;
+      @apply top-[3px] end-3.5;
+      color: #B7B7B7;
+      @apply text-[20px];
+      @apply inline-block;
+    }
+  }
+  .inventual-input-field-file label {
+    @apply h-12;
+    line-height: 48px !important;
+    @apply border-0;
+    @apply rounded-none;
+    @apply outline-none;
+    @apply block;
+    @apply w-full;
+    @apply bg-transparent;
+    transition: all linear 0.3s;
+    @apply cursor-pointer;
+    &:focus {
+      @apply bg-white;
+    }
+  }
+  .inventual-input-field-file input {
+    @apply hidden;
+  }
+}
+
+//inventual header searchbar action
+@mixin inventualHeaderSearchAction {
+  .inventual-table-header-search-action-btn {
+    @apply flex flex-wrap gap-2.5 justify-end sm:justify-start;
+    & button {
+      @apply h-10;
+      @apply w-10;
+      @apply block;
+      @apply rounded-[3px];
+      @apply border;
+      @apply border-solid;
+      @apply p-0;
+      @apply text-[14px];
+      @apply leading-[38px];
+      @apply font-normal;
+      @apply font-primary;
+      @apply inline-block;
+      @apply text-center;
+      & svg {
+        @apply inline-block;
+      }
+      &.filter {
+        width: inherit;
+        @apply border-teal;
+        @apply px-5;
+        @apply text-teal;
+        @apply sm:px-4;
+        & svg {
+          @apply me-1.5;
+        }
+      }
+      &.pdf {
+        @apply border-yellow-light;
+      }
+      &.csv {
+        @apply border-green-lightTwo;
+      }
+      &.printer {
+        @apply border-blue;
+      }
+    }
+  }
+}
+
+//sidebar menu style
+@mixin inventualSidebarMuneStyle {
+  .inventual-dashboard-area {
+    @apply flex;
+  }
+  .inventual-dashboard-sidebar {
+    transition: all linear 0.3s;
+    min-width: 315px;
+    width: 315px;
+    @apply relative;
+    @apply ms-0;
+    @apply bg-white;
+    @apply z-10;
+
+    @media (min-width: 320px) and (max-width: 1900px) {
+      @apply ms-[-315px];
+    }
+    .inventual-header-bar-responsive {
+      @apply absolute;
+      top: 23px;
+      z-index: 11;
+      @apply end-[-60px] inline-block;
+      @apply cursor-pointer;
+      @apply text-blue;
+      @apply text-center;
+      @apply h-8;
+      @apply w-8;
+      @apply leading-[47px];
+      @apply bg-gray-borderThree;
+      @media (max-width: 767px) {
+        @apply end-[-44px];
+      }
+      @media (max-width: 359px) {
+        @apply end-[-45px];
+        @apply top-5;
+      }
+      .mat-icon {
+        line-height: 1;
+        transform: translateY(4px);
+      }
+    }
+  }
+  .inventual-dashboard-main {
+    width: calc(100% - 315px);
+    transition: all linear 0.3s;
+    @media (min-width: 1201px) and (max-width: 1900px) {
+      width: 100%;
+    }
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+  }
+  .inventual-dashboard-sidebar.sidebar-enable {
+    @apply ms-[-315px];
+    @media (min-width: 320px) and (max-width: 1900px) {
+      @apply ms-0 fixed top-0 start-0 bottom-0;
+    }
+  }
+  .inventual-dashboard-main.sidebar-enable {
+      @apply ms-0 w-full;
+  }
+  .inventual-menu-overlay.sidebar-enable {
+    @media (max-width: 1900px) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 10;
+    }
+  }
+}

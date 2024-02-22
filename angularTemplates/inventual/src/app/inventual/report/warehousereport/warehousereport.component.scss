@@ -1,0 +1,164 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+// Select field style
+@include inventualSelectFieldStyle;
+//calender field style
+@include inventualCalenderFieldStyle;
+//inventual header searchbar
+@include inventualHeaderSearch;
+//inventual header searchbar action
+@include inventualHeaderSearchAction;
+@include inventualMaterialBtn;
+
+.inventual-managesale-table-checkbox,
+.inventual-managesale-table-datew,
+.inventual-managesale-table-customerw,
+.inventual-managesale-table-totalw,
+.inventual-managesale-table-paidw,
+.inventual-managesale-table-paymentw,
+.inventual-managesale-table-addressw,
+.inventual-managesale-table-actionw {
+	@apply flex;
+	@apply flex-col;
+	@apply justify-center;
+	& h5 {
+		@apply text-[15px];
+		@apply font-semibold;
+		@apply text-black;
+	}
+	& span {
+		@apply text-[14px];
+		@apply font-normal;
+		@apply text-gray;
+	}
+}
+.inventual-managesale-table-checkboxw {
+	min-width: 60px;
+	width: 4%;
+    @media (max-width: 1600px) {
+		min-width: 50px;
+		width: 4%;
+	}
+}
+.inventual-managesale-table-datew {
+	min-width: 100px;
+	width: 7%;
+	@apply ps-4;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 100px;
+        width: 8.6%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 60px;
+        width: 6.5%;
+	}
+    @media (min-width: 992px) and (max-width: 1400px) {
+		min-width: 60px;
+		width: 7%;
+	}
+    @media (max-width: 991px) {
+		min-width: 60px;
+		width: 7%;
+	}
+}
+.inventual-managesale-table-customerw {
+	min-width: 220px;
+	width: 15%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 200px;
+		width: 17.1%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 155px;
+		width: 16%;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+		min-width: 150px;
+		width: 14%;
+	}
+    @media (max-width: 1200px) {
+		min-width: 150px;
+		width: 14%;
+	}
+}
+.inventual-managesale-table-totalw {
+	min-width: 210px;
+	width: 14.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 14%;
+		min-width: 150px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 150px;
+		min-width: 15.5%;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+		width: 14.5%;
+		min-width: 160px;
+	}
+    @media (max-width: 1200px) {
+		width: 14.5%;
+		min-width: 160px;
+	}
+}
+.inventual-managesale-table-paymentw {
+	min-width: 280px;
+	width: 20%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 15%;
+		min-width: 180px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 21%;
+		min-width: 200px;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+		width: 22%;
+		min-width: 230px;
+	}
+    @media (max-width: 1200px) {
+		width: 20%;
+		min-width: 190px;
+	}
+}
+.inventual-managesale-table-addressw {
+	min-width: 480px;
+	width: 32.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 31.5%;
+		min-width: 370px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 25.5%;
+		min-width: 250px;
+        @apply pe-4;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+		width: 27.5%;
+		min-width: 310px;
+        @apply pe-4;
+	}
+    @media (max-width: 1200px) {
+		width: 27.5%;
+		min-width: 290px;
+        @apply pe-4;
+	}
+}
+
+@include commonActionMenuStyle;
+
+.inventual-managesale-table-inner {
+	@media (max-width: 1199px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.inventual-managesale-table-inner-wrapper {
+	@media (max-width: 1199px) {
+		min-width: 100%;
+        width: 1025px;
+		scrollbar-height: thin;
+	}
+}

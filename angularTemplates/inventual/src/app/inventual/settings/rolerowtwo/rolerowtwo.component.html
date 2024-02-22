@@ -1,0 +1,287 @@
+<div class="inventual-role-list border-b border-solid border-gray-borderThree flex items-center">
+<div class="inventual-role-left">
+    <div class="inventual-role-topic">
+        <h5 class="text-[18px] font-semibold text-black mb-4">Trading</h5>
+        <div class="inventual-role-checkbox default-light-theme">
+            <mat-checkbox class="example-margin" [checked]="allComplete"
+              [color]="task.color" [indeterminate]="someComplete()"
+              (change)="setAllA($event.checked)">
+              {{task.name}}
+            </mat-checkbox>
+        </div>
+    </div>
+</div>
+<div class="inventual-role-right w-full border-s border-solid border-gray-borderThree">
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>Sales</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckA($event.checked)">
+                    <label for="mat-checkbox-27-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckB($event.checked)">
+                    <label for="mat-checkbox-28-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckC($event.checked)">
+                    <label for="mat-checkbox-29-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckD($event.checked)">
+                    <label for="mat-checkbox-30-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>POS Sale</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckE($event.checked)">
+                    <label for="mat-checkbox-31-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckF($event.checked)">
+                    <label for="mat-checkbox-32-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckG($event.checked)">
+                    <label for="mat-checkbox-33-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckH($event.checked)">
+                    <label for="mat-checkbox-34-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>Sale Return</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckI($event.checked)">
+                    <label for="mat-checkbox-35-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckJ($event.checked)">
+                    <label for="mat-checkbox-36-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckK($event.checked)">
+                    <label for="mat-checkbox-37-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckL($event.checked)">
+                    <label for="mat-checkbox-38-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>Sales Payment</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckM($event.checked)">
+                    <label for="mat-checkbox-39-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckN($event.checked)">
+                    <label for="mat-checkbox-40-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckO($event.checked)">
+                    <label for="mat-checkbox-41-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckP($event.checked)">
+                    <label for="mat-checkbox-42-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>Sales Invoice</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckQ($event.checked)">
+                    <label for="mat-checkbox-43-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckR($event.checked)">
+                    <label for="mat-checkbox-44-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckS($event.checked)">
+                    <label for="mat-checkbox-45-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckT($event.checked)">
+                    <label for="mat-checkbox-46-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>Purchase</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckU($event.checked)">
+                    <label for="mat-checkbox-47-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckV($event.checked)">
+                    <label for="mat-checkbox-48-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckW($event.checked)">
+                    <label for="mat-checkbox-49-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckX($event.checked)">
+                    <label for="mat-checkbox-50-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>Purchase Return</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckY($event.checked)">
+                    <label for="mat-checkbox-51-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckZ($event.checked)">
+                    <label for="mat-checkbox-52-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAA($event.checked)">
+                    <label for="mat-checkbox-53-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAB($event.checked)">
+                    <label for="mat-checkbox-54-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>Purchase Invoice</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAC($event.checked)">
+                    <label for="mat-checkbox-55-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAD($event.checked)">
+                    <label for="mat-checkbox-56-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAE($event.checked)">
+                    <label for="mat-checkbox-57-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAF($event.checked)">
+                    <label for="mat-checkbox-58-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>Purchase Payment</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAG($event.checked)">
+                    <label for="mat-checkbox-59-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAH($event.checked)">
+                    <label for="mat-checkbox-60-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAI($event.checked)">
+                    <label for="mat-checkbox-61-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAJ($event.checked)">
+                    <label for="mat-checkbox-62-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="inventual-role-category-list custom-height-70 flex items-center border-b-0 border-solid border-gray-borderThree">
+        <div class="inventual-role-category">
+            <h5>Quotation</h5>
+        </div>
+        <div class="inventual-role-checkbox-wrapper">
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAK($event.checked)">
+                    <label for="mat-checkbox-63-input">Add</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAL($event.checked)">
+                    <label for="mat-checkbox-64-input">View</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAM($event.checked)">
+                    <label for="mat-checkbox-65-input">Edit</label>
+                </mat-checkbox>
+            </div>
+            <div class="inventual-role-checkbox default-light-theme">
+                <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheckAN($event.checked)">
+                    <label for="mat-checkbox-66-input">Delete</label>
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
