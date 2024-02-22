@@ -64,12 +64,12 @@ public class Event {
         return eventsArr;
     }
 
-    public static void main(String[] args) {
-        // Create an instance of Event to access non-static methods
-        // JdbcTemplate jdbcTemplate = new JdbcTemplate(); // You may need to create this instance
-        Event[] events = get_all_events();
+    // public static void main(String[] args) {
+    //     // Create an instance of Event to access non-static methods
+    //     // JdbcTemplate jdbcTemplate = new JdbcTemplate(); // You may need to create this instance
+    //     Event[] events = get_all_events();
 
-        System.out.println(events.length);
-    }
+    //     System.out.println(events.length);
+    // }
 
 }
