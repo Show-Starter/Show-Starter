@@ -1,5 +1,8 @@
 package com.example.showstarter.mappings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,8 +15,15 @@ public class TestMapping {
 	}
 
 	@GetMapping("/events")
-	public String events_map() {
-		return "Hello World!";
+	public List<Event> events_map() {
+		Event[] events = Event.get_all_events();
+		List<Event> eventsList = new ArrayList<>();
+
+		for (int i = 0; i < events.length; i++) {
+			eventsList.add(events[i]);
+		}
+
+		return eventsList;
 	}
 
 }
