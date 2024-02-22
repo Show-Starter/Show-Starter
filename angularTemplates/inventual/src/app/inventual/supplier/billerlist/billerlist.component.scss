@@ -1,0 +1,159 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+
+//inventual header searchbar
+@include inventualHeaderSearch;
+
+//inventual header searchbar action
+@include inventualHeaderSearchAction;
+@include inventualCheckboxFieldStyle;
+@include inventualMaterialBtn;
+
+.inventual-supplierlist-table-checkbox,
+.inventual-supplierlist-table-name,
+.inventual-supplierlist-table-phone,
+.inventual-supplierlist-table-email,
+.inventual-supplierlist-table-group,
+.inventual-supplierlist-table-point,
+.inventual-supplierlist-table-address,
+.inventual-supplierlist-table-action {
+	@apply flex;
+	@apply flex-col;
+	@apply justify-center;
+	& h5 {
+		@apply text-[15px];
+		@apply font-semibold;
+		@apply text-black;
+	}
+	& span {
+		@apply text-[14px];
+		@apply font-normal;
+		@apply text-gray;
+	}
+}
+.inventual-supplierlist-table-checkbox {
+	min-width: 100px;
+	width: 7%;
+    @media (max-width: 1600px) {
+		min-width: 60px;
+		width: 6%;
+	}
+}
+.inventual-supplierlist-table-name {
+	min-width: 250px;
+	width: 17%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 200px;
+		width: 17.5%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 165px;
+		width: 17%;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+		min-width: 170px;
+		width: 16%;
+	}
+    @media (max-width: 1200px) {
+		min-width: 170px;
+		width: 16%;
+	}
+}
+.inventual-supplierlist-table-phone {
+	min-width: 240px;
+	width: 17%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 17%;
+		min-width: 190px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 15.5%;
+		min-width: 150px;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+		width: 15.5%;
+		min-width: 160px;
+	}
+    @media (max-width: 1200px) {
+		width: 15.5%;
+		min-width: 160px;
+	}
+}
+.inventual-supplierlist-table-email {
+	min-width: 250px;
+	width: 17%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 17.5%;
+		min-width: 200px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 20%;
+		min-width: 190px;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+		width: 17.5%;
+		min-width: 190px;
+	}
+    @media (max-width: 1200px) {
+		width: 17.5%;
+		min-width: 190px;
+	}
+}
+.inventual-supplierlist-table-group {
+	min-width: 210px;
+	width: 15%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 140px;
+        width: 12%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 105px;
+        width: 11%;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+		min-width: 140px;
+		width: 13%;
+	}
+    @media (max-width: 1200px) {
+		min-width: 115px;
+		width: 13%;
+	}
+}
+.inventual-supplierlist-table-address {
+	min-width: 300px;
+	width: 17%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 19%;
+		min-width: 220px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 20%;
+		min-width: 200px;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+		width: 23%;
+		min-width: 250px;
+	}
+    @media (max-width: 1200px) {
+		width: 23%;
+		min-width: 200px;
+	}
+}
+
+@include commonActionMenuStyle;
+
+.inventual-supplierlist-table-inner {
+	@media (max-width: 1199px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.inventual-supplierlist-table-inner-wrapper {
+	@media (max-width: 1199px) {
+		min-width: 100%;
+        width: 1080px;
+		scrollbar-height: thin;
+	}
+}

@@ -1,0 +1,160 @@
+<div class="inventual-dashboard-area">
+  <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
+    </div>
+    <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+      <app-menu></app-menu>
+    </div>
+    <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  </div>
+  <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-area">
+      <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-gray-border">
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <app-header></app-header>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+          <div class="inventual-breadcrumb-area-inner px-0.5">
+              <h5 class="text-[20px] text-black font-bold mb-3">Generate Barcode</h5>
+              <div class="inventual-breadcrumb-area-inner-wrap">
+                  <span class="text-[14px] text-gray font-normal inline-block me-2">Products</span>
+                  <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
+                  <span class="text-[14px] text-gray font-normal inline-block me-2">Generate Barcode</span>
+              </div>
+          </div>
+      </div>
+      <div class="inventual-content-area px-7">
+         <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
+             <h4 class="text-[20px] font-bold text-black mb-9">Generate Barcode</h4>
+             <div class="inventual-barcode-area">
+               <div class="grid grid-cols-12 gap-x-7 md:gap-x-0 sm:gap-x-0">
+                 <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                   <div class="inventual-barcode-left h-full md:mb-7 sm:mb-7">
+                    <div class="inventual-select-field mb-5">
+                      <h5 class="text-[15px] text-black font-semibold mb-3">Select Product</h5>
+                      <div class="inventual-input-field-style">
+                        <mat-form-field class="w-full" [floatLabel]="'always'">
+                          <mat-label class="hidden">Scan / search products by code / name</mat-label>
+                          <input matInput [placeholder]="'Scan / search products by code / name'">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="inventual-addsale-product-wrapper border border-b-0 border-solid border-gray-borderThree">
+                      <div class="inventual-addsale-product-wrapper-inner">
+                        <div class="inventual-addsale-product-wrapper-inner-wrap">
+                            <div class="inventual-addsale-product-list h-12 border-b border-solid border-gray-borderThree">
+                                <div class="inventual-addsale-product-name">
+                                    <h5 class="text-[15px] font-semibold text-black">Name</h5>
+                                </div>
+                                <div class="inventual-addsale-product-code">
+                                    <h5 class="text-[15px] font-semibold text-black">Code</h5>
+                                </div>
+                                <div class="inventual-addsale-product-qty">
+                                    <h5 class="text-[15px] font-semibold text-black">Quantity</h5>
+                                </div>
+                                <div class="inventual-addsale-product-action">
+                                    <h5 class="text-[15px] font-semibold text-black">Action</h5>
+                                </div>
+                            </div>
+                            <div class="inventual-addsale-product-list border-b border-solid border-gray-borderThree custom-height-70">
+                                <div class="inventual-addsale-product-name">
+                                    <span class="text-[14px] font-normal text-gray">Green lemon</span>
+                                </div>
+                                <div class="inventual-addsale-product-code">
+                                    <span class="text-[14px] font-normal text-gray">875542233</span>
+                                </div>
+                                <div class="inventual-addsale-product-qty">
+                                    <span class="text-gray flex items-center">
+                                        <button type="button" (click)="counter('count', 'subtract')"><mat-icon>remove</mat-icon></button>
+                                        <p>{{ counters['count'] }}</p>
+                                        <button type="button" class="active" (click)="counter('count', 'add')"><mat-icon>add</mat-icon></button>
+                                    </span>
+                                </div>
+                                <div class="inventual-addsale-product-action">
+                                    <a href="javascript:void(0)" class="product-delete-btn"><mat-icon>clear</mat-icon></a>
+                                </div>
+                            </div>
+                        </div>  
+                      </div>
+                      </div>
+                   <div class="inventual-barcode-print-checkbox">
+                    <span class="text-black text-[15px] font-bold block pt-6 mb-4">Print Information</span>
+                    <div class="inventual-checkbox-field-style mb-2 inline-block me-7">
+                      <input type="checkbox" name="discount" id="Discount">
+                      <label for="Discount" class="text-[15px] font-semibold text-black inline-block sm:text-[12px]">Name</label>
+                    </div>
+                    <div class="inventual-checkbox-field-style mb-2 inline-block me-7">
+                      <input type="checkbox" name="warehouse" id="warehouse">
+                      <label for="warehouse" class="text-[15px] font-semibold text-black inline-block sm:text-[12px]">Code</label>
+                    </div>
+                    <div class="inventual-checkbox-field-style mb-2 inline-block me-7">
+                      <input type="checkbox" name="Import" id="Import">
+                      <label for="Import" class="text-[15px] font-semibold text-black inline-block sm:text-[12px]">Import by Inventual</label>
+                    </div>
+                    <div class="inventual-checkbox-field-style mb-2 inline-block me-7">
+                      <input type="checkbox" name="Price" id="Price">
+                      <label for="Price" class="text-[15px] font-semibold text-black inline-block sm:text-[12px]">Price</label>
+                    </div>
+                    <div class="inventual-checkbox-field-style mb-2 inline-block me-7">
+                      <input type="checkbox" name="Promotional" id="Promotional">
+                      <label for="Promotional" class="text-[15px] font-semibold text-black inline-block sm:text-[12px]">Promotional Price</label>
+                    </div>
+                   </div>
+                    <div class="inventual-select-field mb-7 pt-3">
+                      <h5 class="text-[15px] text-black font-semibold mb-3">Paper Size</h5>
+                      <div class="inventual-select-field-style">
+                        <mat-form-field>
+                          <mat-select class="block" [placeholder]="'Select Size'">
+                            <mat-option value="language-1">50 mm (1.95 Inch)</mat-option>
+                            <mat-option value="language-2">40 mm (1.65 Inch)</mat-option>
+                            <mat-option value="language-3">30 mm (1.35 Inch)</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="inventual-material-btn">
+                      <button mat-raised-button color="accent" class="mb-1">Update</button>
+                      <button mat-raised-button color="primary" class="mb-1">Print</button>
+                    </div>
+                  </div>
+                 </div>
+                 <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                   <div class="inventual-barcode-right bg-white p-7 rounded-[3px] border border-solid border-gray-borderThree h-full">
+                     <div class="grid grid-cols-12 gap-x-7 md:gap-x-5 sm:gap-x-0">
+                       <div class="col-span-4 lg:col-span-6 sm:col-span-6 md:col-span-6">
+                         <div class="inventual-barcode mb-10 text-center">
+                           <img src="../../../../assets/img/icon/barcode.png" alt="img not found">
+                         </div>
+                       </div>
+                       <div class="col-span-4 lg:col-span-6 sm:col-span-6 md:col-span-6">
+                        <div class="inventual-barcode mb-10 text-center">
+                          <img src="../../../../assets/img/icon/barcode.png" alt="img not found">
+                        </div>
+                      </div>
+                      <div class="col-span-4 lg:col-span-6 sm:col-span-6 md:col-span-6">
+                        <div class="inventual-barcode mb-10 text-center">
+                          <img src="../../../../assets/img/icon/barcode.png" alt="img not found">
+                        </div>
+                      </div>
+                      <div class="col-span-4 lg:col-span-6 sm:col-span-6 md:col-span-6">
+                        <div class="inventual-barcode mb-10 text-center">
+                          <img src="../../../../assets/img/icon/barcode.png" alt="img not found">
+                        </div>
+                      </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+         </div>
+      </div>
+      <div class="inventual-copyright-area">
+          <app-copyright></app-copyright>
+      </div>
+  </div>
+</div>

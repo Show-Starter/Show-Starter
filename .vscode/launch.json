@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Product",
+            "request": "launch",
+            "mainClass": "com.example.showstarter.mappings.Product",
+            "projectName": "rest-service"
+        },
+        {
+            "type": "java",
+            "name": "Event",
+            "request": "launch",
+            "mainClass": "com.example.showstarter.mappings.Event",
+            "projectName": "rest-service"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<rest-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.showstarter.Application",
+            "projectName": "showstarter",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

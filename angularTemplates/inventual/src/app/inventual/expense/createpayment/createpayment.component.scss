@@ -1,0 +1,49 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+// Select field style
+@include inventualSelectFieldStyle;
+// Input field style
+@include inventualInputFieldStyle;
+//calender field style
+@include inventualCalenderFieldStyle;
+@include inventualMaterialBtn;
+
+.custom-height-70 {
+    height: 70px;
+    min-height: 70px;
+}
+
+.inventual-input-field-style textarea {
+	@apply h-12;
+	@apply leading-[46px];
+	@apply border;
+	@apply border-solid;
+	@apply border-gray-borderThree;
+	@apply px-5;
+	@apply rounded-[3px];
+	@apply outline-none;
+	@apply block;
+	@apply text-[14px];
+	@apply text-gray;
+	@apply font-primary;
+	@apply font-normal;
+	@apply w-full;
+	@apply bg-gray-bg;
+	transition: all linear 0.3s;
+	&:focus {
+		@apply bg-white;
+	}
+    &::-moz-placeholder,
+	&::placeholder {
+		@apply text-gray;
+		@apply opacity-100;
+		@apply font-primary;
+		@apply font-normal;
+	}
+}
+.inventual-input-field-style textarea {
+	height: 120px;
+	@apply py-2.5;
+}

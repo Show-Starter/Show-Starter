@@ -1,0 +1,183 @@
+
+  <div class="inventual-header-content flex items-center justify-end custom-height-70">
+    <div class="inventual-header-timer text-end items-end  flex-col justify-center pe-7 custom-height-70 hidden">
+      <h5 class="font-bold text-[20px] text-black mb-1">03:43:35</h5>
+      <span class="font-semibold text-[12px] text-black">30/12/2022</span>
+    </div>
+    <div class="inventual-header-shortmenu pe-5 sm:pe-4 border-e items-center flex flex-col justify-center border-gray-border border-solid custom-height-70">
+      <a href="javascript:void(0)" (click)="shortmenu()" class="h-10 w-10 leading-[38px] border border-gray-borderTwo border-solid text-center inline-block rounded-[3px] text-gray-lightTwo short">
+        <mat-icon>add</mat-icon>
+      </a>
+      <div class="inventual-quick-dropdown" [class.shortmenu-enable]="menuShortcutActive">
+        <ul>
+          <li><a [routerLink]="['/trading/sales/possale']">POS Sale</a></li>
+          <li><a [routerLink]="['/trading/sales/newsale']">Add New Sale</a></li>
+          <li><a [routerLink]="['/trading/purchase/addpurchase']">Add Purchase</a></li>
+          <li><a [routerLink]="['/product/adjustment']">Add Adjustment</a></li>
+          <li><a [routerLink]="['/expesne/addexpense']">Add Expense</a></li>
+          <li><a [routerLink]="['/warehouselist']">Warehouse</a></li>
+          <li><a [routerLink]="['/client/adduser']">Add User</a></li>
+          <li><a [routerLink]="['/people/addsupplier']">Add Supplier</a></li>
+          <li><a [routerLink]="['/people/addcustomer']">Add Customer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="inventual-header-notify-wrapper px-5 border-e border-solid border-gray-border flex items-center custom-height-70">
+      <div class="inventual-header-notification pe-5 relative">
+        <a href="javascript:void(0)" class="noti" (click)="notifydropdown()"><svg xmlns="http://www.w3.org/2000/svg" width="20.338" height="22.469" viewBox="0 0 20.338 22.469">
+            <g id="bell" transform="translate(-24.16 0)">
+              <path id="Path_47" data-name="Path 47"
+                d="M42.168,14.7a.583.583,0,0,1-.583-.583V10a7.27,7.27,0,0,0-5.1-6.928,2.295,2.295,0,1,0-4.322,0A7.269,7.269,0,0,0,27.072,10v4.116a.583.583,0,0,1-.583.583,2.33,2.33,0,0,0,0,4.66h5.435a2.484,2.484,0,1,0,4.808,0h5.435a2.33,2.33,0,0,0,0-4.66ZM33.357,2.3a.972.972,0,1,1,1.809.5,7.237,7.237,0,0,0-1.672,0,.965.965,0,0,1-.137-.5ZM35.49,19.985a1.161,1.161,0,1,1-2.137-.628h1.953A1.153,1.153,0,0,1,35.49,19.985Zm6.678-1.951H26.49a1.006,1.006,0,0,1,0-2.013A1.908,1.908,0,0,0,28.4,14.115V10a5.933,5.933,0,0,1,11.866,0v4.116a1.908,1.908,0,0,0,1.906,1.906,1.006,1.006,0,0,1,0,2.013Z"
+                fill="#616161" />
+            </g>
+          </svg>
+        </a>
+
+        <div class="inventual-notify-dropdown" [class.notifydropdown-enable]="notifyShortcutActive">
+          <div class="inventual-notify-dropdown-wrapper px-4 border border-gray-borderThree border-solid">
+            <div class="inventual-notify-dropdown-list py-4 flex items-center border-b border-gray-borderThree border-solid">
+              <div class="inventual-notify-img">
+                <a [routerLink]="['/message']"><img src="../../../../assets/img/user/user-1.png" alt="img not found"></a>
+              </div>
+              <div class="inventual-notify-text">
+                <h6><a [routerLink]="['/message']">Alex Send you Message</a></h6>
+                <span>31 Dec 2022 - 02:26 PM</span>
+              </div>
+            </div>
+            <div class="inventual-notify-dropdown-list py-4 flex items-center border-b border-gray-borderThree border-solid">
+              <div class="inventual-notify-img">
+                <a [routerLink]="['/message']"><img src="../../../../assets/img/user/user-2.png" alt="img not found"></a>
+              </div>
+              <div class="inventual-notify-text">
+                <h6><a [routerLink]="['/message']">Peter Send you Message</a></h6>
+                <span>31 Dec 2022 - 08:36 PM</span>
+              </div>
+            </div>
+            <div class="inventual-notify-dropdown-list py-4 flex items-center border-b border-gray-borderThree border-solid">
+              <div class="inventual-notify-img">
+                <a [routerLink]="['/message']"><img src="../../../../assets/img/user/user-3.png" alt="img not found"></a>
+              </div>
+              <div class="inventual-notify-text">
+                <h6><a [routerLink]="['/message']">Resport created successfully</a></h6>
+                <span>31 Dec 2022 - 04:45 PM</span>
+              </div>
+            </div>
+            <div class="inventual-notify-dropdown-list py-4 flex items-center border-b border-gray-borderThree border-solid">
+              <div class="inventual-notify-img">
+                <a [routerLink]="['/message']"><img src="../../../../assets/img/user/user-4.png" alt="img not found"></a>
+              </div>
+              <div class="inventual-notify-text">
+                <h6><a [routerLink]="['/message']">Jhon Send you Message</a></h6>
+                <span>31 Dec 2022 - 07:30 AM</span>
+              </div>
+            </div>
+            <div class="inventual-notify-dropdown-list py-4 flex items-center justify-center">
+              <a [routerLink]="['/message']" class="text-[14px] text-gray inline-block">See all <mat-icon>arrow_forward</mat-icon></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inventual-header-email pe-5 relative">
+        <a href="javascript:void(0)" class="emai" (click)="emaildropdown()"><svg xmlns="http://www.w3.org/2000/svg" width="20.796" height="16.637" viewBox="0 0 20.796 16.637">
+            <g id="Layer_3" data-name="Layer 3" transform="translate(-1 -4)">
+              <path id="Path_49" data-name="Path 49"
+                d="M19.239,4H3.557A2.56,2.56,0,0,0,1,6.557V18.08a2.56,2.56,0,0,0,2.557,2.557H19.239A2.56,2.56,0,0,0,21.8,18.08V6.557A2.56,2.56,0,0,0,19.239,4ZM3.557,5.386H19.239A1.172,1.172,0,0,1,20.41,6.557v.53L11.4,12.881,2.386,7.088v-.53A1.172,1.172,0,0,1,3.557,5.386ZM19.239,19.251H3.557A1.172,1.172,0,0,1,2.386,18.08V8.736l8.637,5.552a.693.693,0,0,0,.75,0L20.41,8.736V18.08a1.172,1.172,0,0,1-1.171,1.171Z"
+                fill="#616161" />
+            </g>
+          </svg>
+        </a>
+        <div class="inventual-notify-dropdown inventual-email-dropdown" [class.emaildropdown-enable]="emailShortcutActive">
+          <div class="inventual-notify-dropdown-wrapper px-4 border border-gray-borderThree border-solid">
+            <div class="inventual-notify-dropdown-list py-4 flex items-center border-b border-gray-borderThree border-solid">
+              <div class="inventual-notify-img">
+                <a [routerLink]="['/message']"><img src="../../../../assets/img/user/user-1.png" alt="img not found"></a>
+              </div>
+              <div class="inventual-notify-text">
+                <h6><a [routerLink]="['/message']">Alex Send you Message</a></h6>
+                <span>31 Dec 2022 - 02:26 PM</span>
+              </div>
+            </div>
+            <div class="inventual-notify-dropdown-list py-4 flex items-center border-b border-gray-borderThree border-solid">
+              <div class="inventual-notify-img">
+                <a [routerLink]="['/message']"><img src="../../../../assets/img/user/user-2.png" alt="img not found"></a>
+              </div>
+              <div class="inventual-notify-text">
+                <h6><a [routerLink]="['/message']">Peter Send you Message</a></h6>
+                <span>31 Dec 2022 - 08:36 PM</span>
+              </div>
+            </div>
+            <div class="inventual-notify-dropdown-list py-4 flex items-center border-b border-gray-borderThree border-solid">
+              <div class="inventual-notify-img">
+                <a [routerLink]="['/message']"><img src="../../../../assets/img/user/user-3.png" alt="img not found"></a>
+              </div>
+              <div class="inventual-notify-text">
+                <h6><a [routerLink]="['/message']">Resport created successfully</a></h6>
+                <span>31 Dec 2022 - 04:45 PM</span>
+              </div>
+            </div>
+            <div class="inventual-notify-dropdown-list py-4 flex items-center border-b border-gray-borderThree border-solid">
+              <div class="inventual-notify-img">
+                <a [routerLink]="['/message']"><img src="../../../../assets/img/user/user-4.png" alt="img not found"></a>
+              </div>
+              <div class="inventual-notify-text">
+                <h6><a [routerLink]="['/message']">Jhon Send you Message</a></h6>
+                <span>31 Dec 2022 - 07:30 AM</span>
+              </div>
+            </div>
+            <div class="inventual-notify-dropdown-list py-4 flex items-center justify-center">
+              <a [routerLink]="['/message']" class="text-[14px] text-gray inline-block">See all <mat-icon>arrow_forward</mat-icon></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inventual-header-language flex items-center relative" (click)="langdropdown()">
+        <div class="inventual-header-language-icon me-3 md:me-0 sm:me-0">
+          <a href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" width="17.637" height="17.637"
+              viewBox="0 0 17.637 17.637">
+              <path id="world-wide-web"
+                d="M17.148,11.72a8.82,8.82,0,0,0,0-5.8.635.635,0,0,0-.028-.08,8.819,8.819,0,0,0-16.6,0,.626.626,0,0,0-.028.08,8.82,8.82,0,0,0,0,5.8.635.635,0,0,0,.028.08,8.819,8.819,0,0,0,16.6,0A.63.63,0,0,0,17.148,11.72ZM8.82,16.373c-.336,0-.877-.608-1.33-1.966a13.844,13.844,0,0,1-.521-2.228h3.7a13.855,13.855,0,0,1-.521,2.228C9.7,15.765,9.156,16.373,8.82,16.373Zm-2-5.458c-.061-.674-.093-1.377-.093-2.1s.032-1.423.093-2.1h4.008c.061.674.093,1.377.093,2.1s-.032,1.423-.093,2.1Zm-5.55-2.1a7.533,7.533,0,0,1,.3-2.1H5.549c-.059.688-.089,1.393-.089,2.1s.03,1.409.089,2.1H1.562A7.533,7.533,0,0,1,1.266,8.819ZM8.82,1.264c.336,0,.877.608,1.33,1.966a13.845,13.845,0,0,1,.521,2.228H6.97A13.843,13.843,0,0,1,7.49,3.23C7.943,1.872,8.485,1.264,8.82,1.264Zm3.272,5.458h3.986a7.567,7.567,0,0,1,0,4.194H12.092c.059-.688.089-1.393.089-2.1S12.151,7.41,12.092,6.722Zm3.492-1.264H11.947A12.132,12.132,0,0,0,10.8,1.527,7.587,7.587,0,0,1,15.584,5.458ZM6.845,1.527A12.132,12.132,0,0,0,5.694,5.458H2.056A7.588,7.588,0,0,1,6.845,1.527ZM2.056,12.179H5.694A12.133,12.133,0,0,0,6.845,16.11,7.587,7.587,0,0,1,2.056,12.179ZM10.8,16.11a12.132,12.132,0,0,0,1.152-3.931h3.637A7.587,7.587,0,0,1,10.8,16.11Z"
+                transform="translate(-0.002)" fill="#616161" />
+            </svg></a>
+        </div>
+        <div class="inventual-header-language-content md:hidden sm:hidden">
+          <ul>
+            <li class="flex "><a href="javascript:void(0)" class="text-[14px] font-bold text-gray">ENG <mat-icon>keyboard_arrow_down
+                </mat-icon></a></li>
+          </ul>
+        </div>
+        <div class="inventual-quick-dropdown inventual-quick-lang-dropdown" [class.langmenu-enable]="langShortcutActive">
+          <ul>
+            <li><a href="javascript:void(0)">English</a></li>
+            <li><a href="javascript:void(0)">Turkish</a></li>
+            <li><a href="javascript:void(0)">Spanish</a></li>
+            <li><a href="javascript:void(0)">French</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="inventual-header-profile relative ps-5 flex flex-wrap items-center pe-11 sm:pe-0 md:pe-0" (click)="prodropdown()">
+      <div class="inventual-header-profile-img w-12 sm:me-0 md:me-0 cursor-pointer">
+        <a href="javascript:void(0)"><img src="../../../../assets/img/icon/header-profile.svg" class="object-cover"
+            alt="profile not found"></a>
+      </div>
+      <div class="inventual-header-profile-info md:hidden sm:hidden ps-2.5 cursor-pointer">
+          <h5 class="text-[15px] font-bold text-black cursor-pointer">Shane Watson</h5>
+          <span class="text-[13px] font-normal text-gray cursor-pointer">Admin User</span>
+          <mat-icon class="cursor-pointer">keyboard_arrow_down</mat-icon>
+      </div>
+
+      <div class="inventual-quick-dropdown inventual-quick-pro-dropdown" [class.promenu-enable]="proShortcutActive">
+        <ul>
+          <li><a [routerLink]="['/profile']"><i class="fal fa-user"></i> Profile</a></li>
+          <li><a [routerLink]="['']"><i class="fal fa-sign-out"></i> Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="inventual-header-overlay" (click)="shortmenu()" [class.shortmenu-enable]="menuShortcutActive"></div>
+<div class="inventual-header-overlay" (click)="notifydropdown()" [class.notifydropdown-enable]="notifyShortcutActive"></div>
+<div class="inventual-header-overlay" (click)="emaildropdown()" [class.emaildropdown-enable]="emailShortcutActive"></div>
+<div class="inventual-header-overlay" (click)="langdropdown()" [class.langmenu-enable]="langShortcutActive"></div>
+<div class="inventual-header-overlay" (click)="prodropdown()" [class.promenu-enable]="proShortcutActive"></div>

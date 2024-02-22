@@ -1,0 +1,124 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+
+// Select field style
+@include inventualSelectFieldStyle;
+//calender field style
+@include inventualCalenderFieldStyle;
+//inventual header searchbar
+@include inventualHeaderSearch;
+//inventual header searchbar action
+@include inventualHeaderSearchAction;
+@include inventualMaterialBtn;
+
+.inventual-managesale-table-date,
+.inventual-managesale-table-warehouse,
+.inventual-managesale-table-name,
+.inventual-managesale-table-pqty,
+.inventual-managesale-table-pamount,
+.inventual-managesale-table-sqty,
+.inventual-managesale-table-samount,
+.inventual-managesale-table-prqty,
+.inventual-managesale-table-pramount,
+.inventual-managesale-table-srqty,
+.inventual-managesale-table-sramount {
+	@apply flex;
+	@apply flex-col;
+	@apply justify-center;
+	& h5 {
+		@apply text-[15px];
+		@apply font-semibold;
+		@apply text-black;
+	}
+	& span {
+		@apply text-[14px];
+		@apply font-normal;
+		@apply text-gray;
+	}
+}
+.inventual-managesale-table-date {
+	min-width: 200px;
+	width: 14%;
+    @apply ps-5;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 180px;
+		width: 15%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 160px;
+		width: 17%;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		min-width: 220px;
+		width: 21%;
+	}
+	@media (max-width: 1200px) {
+		min-width: 145px;
+		width: 17%;
+	}
+}
+.inventual-managesale-table-warehouse {
+	min-width: 560px;
+	width: 38%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 400px;
+		width: 34%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 320px;
+		width: 33%;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		min-width: 350px;
+		width: 33%;
+	}
+	@media (min-width: 992px) and (max-width: 1200px) {
+		min-width: 300px;
+		width: 34%;
+	}
+	@media (max-width: 991px) {
+		min-width: 180px;
+		width: 28%;
+	}
+}
+.inventual-managesale-table-pqty {
+	min-width: 550px;
+	width: 38%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 450px;
+		width: 38%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 320px;
+		width: 34%;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		min-width: 320px;
+		width: 32%;
+	}
+	@media (min-width: 992px) and (max-width: 1200px) {
+		min-width: 290px;
+		width: 33%;
+	}
+    @media (max-width: 991px) {
+		min-width: 150px;
+		width: 28%;
+	}
+}
+@include commonActionMenuStyle;
+
+.inventual-managesale-table-inner {
+	@media (max-width: 767px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.inventual-managesale-table-inner-wrapper {
+	@media (max-width: 767px) {
+		width: 650px;
+		min-width: 100%;
+		scrollbar-height: thin;
+	}
+}
