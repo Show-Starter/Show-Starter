@@ -57,8 +57,8 @@
             	<version>2.13.0</version>
             	<configuration>
                 	<schemaVersion>v2</schemaVersion>
-                	<resourceGroup>showstarters</resourceGroup>
-                	<appName>showstarters</appName>
+                	<resourceGroup>showstarter</resourceGroup>
+                	<appName>showstarter</appName>
 					<pricing>F1</pricing>
 					<runtime>
 						<os>Linux</os>
