@@ -40,6 +40,33 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+            	<groupId>com.microsoft.azure</groupId>
+            	<artifactId>>azure-webapp-maven-plugin</artifactId>
+            	<version>2.13.0</version>
+            	<configuration>
+                	<schemaVersion>v2</schemaVersion>
+                	<resourceGroup>showstarters</resourceGroup>
+                	<appName>showstarters</appName>
+					<pricing>F1</pricing>
+					<runtime>
+						<os>Linux</os>
+						<javaVersion>Java 17</javaVersion>
+						<webcontainer>Java SE</webcontainer>
+					</runtime>
+					<deployment>
+						<resources>
+							<resource>
+								<directory>${project.basedir}/target</directory>
+								<includes>
+									<include>*.jar</include>
+								</includes>
+							</resource>
+						</resources>
+					</deployment>
+            	</configuration>
+        	</plugin>
 		</plugins>
 	</build>
 
