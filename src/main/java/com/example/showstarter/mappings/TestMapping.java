@@ -16,6 +16,7 @@ public class TestMapping {
 
 	@GetMapping("/events")
 	public List<Event> events_map() {
+		System.out.println("In the process of making something great!");
 		Event[] events = Event.get_all_events();
 		List<Event> eventsList = new ArrayList<>();
 
