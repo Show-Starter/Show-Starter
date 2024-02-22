@@ -11,4 +11,9 @@ public class TestMapping {
 		return "Greetings from Spring Boot!";
 	}
 
+	@GetMapping("/events")
+	public String events_map() {
+		return "Hello World!";
+	}
+
 }

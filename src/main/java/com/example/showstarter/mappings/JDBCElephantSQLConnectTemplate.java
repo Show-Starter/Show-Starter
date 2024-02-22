@@ -13,9 +13,9 @@ public class JDBCElephantSQLConnectTemplate {
             System.out.println(e.getMessage());
         }
 
-        String url = "jdbc:postgresql://lallah.db.elephantsql.com:5432/kzurexlm";
-        String username = "kzurexlm";
-        String password = "8cLSxkF5VRaqYjTWTigrt4AqHw20izSY";
+        String url = "jdbc:postgresql://lallah.db.elephantsql.com:5432/orunmzej";
+        String username = "orunmzej";
+        String password = "WkVYLIBK36XLSG5ceqh9oQuYTbEEndjH";
 
         try {
             Connection db = DriverManager.getConnection(url, username, password);
