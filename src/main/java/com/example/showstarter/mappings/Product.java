@@ -1,4 +1,4 @@
-package com.example.showstarter;
+package com.example.showstarter.mappings;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,13 +1,13 @@
-package com.example.showstarter;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+package com.example.showstarter.mappings;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class EventTest {
-	
-	@Test
-	public void get_all_events_test() {
+
+    @Test
+    void get_all_events_test() {
 		Event[] events = Event.get_all_events();
 		
 		assertEquals(events[0].eventID, 1);
