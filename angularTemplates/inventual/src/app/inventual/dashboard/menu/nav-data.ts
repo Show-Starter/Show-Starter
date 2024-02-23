@@ -18,7 +18,8 @@ export const navbarData: INavbarData[] = [
       {
         routeLink: '/product/productlist',
         label: 'Product List',
-      },
+      } 
+      /** ,
       {
         routeLink: '/product/productcategory',
         label: 'Category',
@@ -43,8 +44,14 @@ export const navbarData: INavbarData[] = [
         routeLink: '/product/adjustment',
         label: 'Adjustment',
       },
+      */
     ],
   },
+  
+
+  //Trading 
+
+  /** 
   {
     routeLink: 'trading',
     icon: 'fal fa-sack-dollar',
@@ -279,4 +286,5 @@ export const navbarData: INavbarData[] = [
     icon: 'fal fa-cog',
     label: 'Administrative Tools',
   },
+  */
 ];
