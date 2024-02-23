@@ -22,5 +22,5 @@ public class Application {
     public String logIn() {
         return "Welcome to Show Starter";
     }
-    
+
 }

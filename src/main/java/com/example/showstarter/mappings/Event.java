@@ -59,15 +59,18 @@ public class Event {
         return eventsArr;
     }
 
-    // public static void add_event(String eventName, String location, String eventType, String eventDate, String eventTime, int invoiceNum) {
-    //     JdbcTemplate jdbcTemplate = new JdbcTemplate();
-    //     try{
-    //         jdbcTemplate = DatabaseConfig.jdbcTemplate();
-    //     } catch {
-    //         e.printStackTrace();
-    //     }
+    public static void add_event(String eventName, String location, String eventType, String eventDate, String eventTime, int invoiceNum) {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        try{
+            jdbcTemplate = DatabaseConfig.jdbcTemplate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-    //     String sql = "INSERT INTO events ()"
-    // }
+        String sql = "INSERT INTO events (event_name, location, event_type, event_date, event_time, invoice_number) VALUES " +
+            "(\'" + eventName + "\', \'" + location + "\', \'" + eventType + "\', \'" + eventDate + "\', \'" + eventTime + "\', \'" + invoiceNum + "\')";
+
+        jdbcTemplate.execute(sql);
+    }
 
 }
