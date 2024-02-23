@@ -3,8 +3,6 @@ package com.example.showstarter.mappings;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microsoft.applicationinsights.core.dependencies.apachecommons.lang3.ObjectUtils.Null;
-
 @RestController
 public class TestMapping {
 
