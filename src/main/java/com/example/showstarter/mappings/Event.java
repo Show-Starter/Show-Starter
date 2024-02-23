@@ -36,13 +36,9 @@ public class Event {
 
     @Autowired
     public Event(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
     }
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-	
-	// Pulls all events from database and creates an event based on each tuple in the events table
+    // Pulls all events from database and creates an event based on each tuple in the events table
 	public static Event[] get_all_events() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         try {
@@ -63,13 +59,5 @@ public class Event {
 
         return eventsArr;
     }
-
-    // public static void main(String[] args) {
-    //     // Create an instance of Event to access non-static methods
-    //     // JdbcTemplate jdbcTemplate = new JdbcTemplate(); // You may need to create this instance
-    //     Event[] events = get_all_events();
-
-    //     System.out.println(events.length);
-    // }
 
 }
