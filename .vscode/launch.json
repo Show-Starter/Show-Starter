@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "com.example.showstarter.Application",
+            "projectName": "rest-service"
+        },
+        {
+            "type": "java",
             "name": "Product",
             "request": "launch",
             "mainClass": "com.example.showstarter.mappings.Product",

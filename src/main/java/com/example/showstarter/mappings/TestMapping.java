@@ -1,6 +1,7 @@
 package com.example.showstarter.mappings;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,16 +16,11 @@ public class TestMapping {
 	}
 
 	@GetMapping("/events")
-	public List<Event> events_map() {
+	public String events_map() {
 		System.out.println("In the process of making something great!");
 		Event[] events = Event.get_all_events();
-		List<Event> eventsList = new ArrayList<>();
 
-		for (int i = 0; i < events.length; i++) {
-			eventsList.add(events[i]);
-		}
-
-		return eventsList;
+		return "Currently in db: " + events.length + " events";
 	}
 
 }

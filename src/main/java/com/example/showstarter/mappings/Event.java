@@ -31,7 +31,7 @@ public class Event {
 	}
 
     public Event() {
-        //TODO Auto-generated constructor stub
+
     }
 
     @Autowired
@@ -44,7 +44,6 @@ public class Event {
         try {
             jdbcTemplate = DatabaseConfig.jdbcTemplate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -59,5 +58,16 @@ public class Event {
 
         return eventsArr;
     }
+
+    // public static void add_event(String eventName, String location, String eventType, String eventDate, String eventTime, int invoiceNum) {
+    //     JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    //     try{
+    //         jdbcTemplate = DatabaseConfig.jdbcTemplate();
+    //     } catch {
+    //         e.printStackTrace();
+    //     }
+
+    //     String sql = "INSERT INTO events ()"
+    // }
 
 }
