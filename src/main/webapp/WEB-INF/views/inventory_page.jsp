@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.example.showstarter.mappings.Product" %>
+<%@ page import="com.example.showstarter.mappings.Event" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,8 +50,15 @@
     </style>
 </head>
 <body>
-    
-    <% Product[] products = Product.get_all_products(); %>
+
+    <% 
+        Product[] allProducts = Product.get_all_products();
+        Product[] products = new Product[9];
+
+        for (int i = 0; i < products.length; i++) {
+            products[i] = allProducts[i];
+        }
+    %>
     
     <header>
         <div>
@@ -66,9 +74,14 @@
     </div>
 
     <script>
+    
         var products = [
             <% for (Product product : products) { %>
-            { name: <%="\"" + Product.getName(product) + "\""%>, group: <%="\"" + Product.getProduct_group(product) + "\""%>, method: <%="\"" + Product.getStock_method(product) + "\""%>, rentalPrice: <%="\"" + Product.getRental_price(product) + "\""%> },
+            { name: <%="\"" + Product.getName(product) + "\""%>, 
+                group: <%="\"" + Product.getProduct_group(product) + "\""%>, 
+                method: <%="\"" + Product.getStock_method(product) + "\""%>, 
+                price: <%="\"" + Integer.toString(Product.getRental_price(product)) + "\""%>, 
+                event: <%="\"" + Product.verify_event_id(Product.getEventID(product)) + "\""%> },
             <% } %>
         ];
 
@@ -91,8 +104,9 @@
                 productBox.classList.add("product-box");
                 productBox.innerHTML = "<h2>" + product.name + "</h2>" +
                                        "<p>Group: " + product.group + "</p>" +
-                                       "<p>Stock Method: " + product.method + "</p>" +
-                                       "<p>Rental Price: " + product.rentalPrice + "</p>";
+                                       "<p>Stocking Method: " + product.method + "</p>" +
+                                       "<p>Rental Price: " + product.price + "</p>" +
+                                       "<p>Event: " + product.event + "</p>";
 
                 productDetailsDiv.appendChild(productBox);
             });

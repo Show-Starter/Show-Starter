@@ -68,5 +68,13 @@ public class Product {
     public static int getEventID(Product product) {
         return product.eventID;
     }
+
+    public static String verify_event_id(int eventID) {
+        if (eventID == 0) {
+            return "No event assigned.";
+        } else {
+            return Integer.toString(eventID);
+        }
+    }
 	
 }

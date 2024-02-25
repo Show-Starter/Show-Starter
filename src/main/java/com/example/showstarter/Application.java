@@ -35,7 +35,7 @@ public class Application {
         Product[] products = Product.get_all_products();
 
         System.out.println("Total Products: " + products.length);
-        // System.out.println("Product name on index 247: " + Product.getName(products[247]));
+        System.out.println("Product name on index 247: " + Product.getName(products[247]));
 
         return "inventory_page";
     }
