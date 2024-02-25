@@ -71,12 +71,46 @@ public class Event {
         jdbcTemplate.execute(sql);
     }
 
+    public static Event get_event_from_id(int eventID) {
+        Event event;
+
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        try{
+            jdbcTemplate = DatabaseConfig.jdbcTemplate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (eventID > 0) {
+            String sql = "SELECT * FROM events WHERE event_id = " + "eventID";
+
+            jdbcTemplate.execute(sql);
+            List<Event> events = jdbcTemplate.query(sql, new CustomRowMapperEvent());
+
+            if (events.size() != 1) {
+                return null;
+            } else {
+                event = events.get(0);
+            }
+
+            return event;
+        } else {
+            return null;
+        }
+
+        
+    }
+
     public static int getEventID(Event event) {
         return event.eventID;
     }
 
     public static String getEventName(Event event) {
+        if (event == null) {
+            return null;
+        } else {
         return event.eventName;
+        }
     }
 
     public static String getLocation(Event event) {

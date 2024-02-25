@@ -1,9 +1,9 @@
 package com.example.showstarter.mappings;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Product {
 	int productID;
@@ -21,50 +21,52 @@ public class Product {
 		this.rental_price = rental_price;
 		this.eventID = eventID;
 	}
+
+    public Product() {
+    }
 	
 	public static Product[] get_all_products() {
-		Product[] products = new Product[0];
-		int numProducts = 0;
-		
-		try {
-            Class.forName("org.postgresql.Driver");
-        }
-        catch (java.lang.ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-
-        String url = "jdbc:postgresql://lallah.db.elephantsql.com:5432/orunmzej";
-        String username = "orunmzej";
-        String password = "WkVYLIBK36XLSG5ceqh9oQuYTbEEndjH";
-
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
         try {
-            Connection db = DriverManager.getConnection(url, username, password);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM products");
-            while (rs.next()) {
-            	numProducts++;
-            }
-            products = new Product[numProducts];
-            rs = st.executeQuery("SELECT * FROM products");
-            int i = 0;
-            while (rs.next()) {
-                products[i] = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
-                i++;
-            }
-            rs.close();
-            st.close();
-            }
-        catch (java.sql.SQLException e) {
-            System.out.println(e.getMessage());
+            jdbcTemplate = DatabaseConfig.jdbcTemplate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-		
-		return products;
-	}
 
-    // public static void main(String[] args) {
-    //     Product[] products = get_all_products();
+        String sql = "SELECT * FROM products";
+        List<Product> products = jdbcTemplate.query(sql, new CustomRowMapperProduct());
 
-    //     System.out.println(products[74].name);
-    // }
+        Product[] productsArr = new Product[products.size()];
+
+        for (int i = 0; i < productsArr.length; i++) {
+            productsArr[i] = products.get(i);
+        }
+
+        return productsArr;
+    }
+
+    public static int getProductID(Product product) {
+        return product.productID;
+    }
+
+    public static String getName(Product product) {
+        return product.name;
+    }
+
+    public static String getProduct_group(Product product) {
+        return product.product_group;
+    }
+
+    public static String getStock_method(Product product) {
+        return product.stock_method;
+    }
+
+    public static int getRental_price(Product product) {
+        return product.rental_price;
+    }
+
+    public static int getEventID(Product product) {
+        return product.eventID;
+    }
 	
 }

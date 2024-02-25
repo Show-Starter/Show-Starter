@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.showstarter.mappings.Event;
+import com.example.showstarter.mappings.Product;
 
 @SpringBootApplication
 @Controller
@@ -28,5 +29,15 @@ public class Application {
 
 		return "events_page";
 	}
+
+    @RequestMapping("/inventory")
+    public String products_map() {
+        Product[] products = Product.get_all_products();
+
+        System.out.println("Total Products: " + products.length);
+        // System.out.println("Product name on index 247: " + Product.getName(products[247]));
+
+        return "inventory_page";
+    }
 
 }
