@@ -71,6 +71,16 @@ import { WarehousereportComponent } from './inventual/report/warehousereport/war
 
 const routes: Routes = [ 
   { path: '', component: LoginComponent, pathMatch: 'full' },
+
+  {path: 'products/productlist',
+  component: ProductlistComponent
+  },
+  { path: '', component: LoginComponent, pathMatch: 'full' },
+
+  {path: 'products/addproduct',
+  component: AddproductComponent
+  },
+
   {
     path: 'dashboard',
     component: DashboardComponent

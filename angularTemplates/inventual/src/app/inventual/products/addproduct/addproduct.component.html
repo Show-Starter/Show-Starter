@@ -168,10 +168,10 @@
                   <div class="inventual-select-field-style">
                     <mat-form-field>
                       <mat-select class="block" [placeholder]="'Vat @10%'">
-                        <mat-option value="language-1">Vat @10%</mat-option>
-                        <mat-option value="language-2">Vat @9%</mat-option>
-                        <mat-option value="language-3">Vat @11%</mat-option>
-                        <mat-option value="language-3">Vat @12%</mat-option>
+                        <mat-option value="language-1">Vat </mat-option>
+                        <mat-option value="language-2">Vat </mat-option>
+                        <mat-option value="language-3">Vat </mat-option>
+                        <mat-option value="language-3">Vat </mat-option>
                       </mat-select>
                     </mat-form-field>
                   </div>
@@ -287,9 +287,12 @@
                 <label for="code" class="text-[15px] font-semibold text-black inline-block sm:text-[12px]">This product has IMEI Code</label>
             </div>
             <div class="inventual-material-btn">
-                <button mat-raised-button color="primary">Submit</button>
+                <button mat-raised-button color="primary" [routerLink]="['/products/productlist']">Submit</button>
            </div>
         </div>
+        <div class="inventual-material-btn">
+          <button mat-raised-button color="red" [routerLink]="['/products/productlist']">Cancel</button>
+     </div>
       </div>
       <div class="inventual-copyright-area">
         <app-copyright></app-copyright>

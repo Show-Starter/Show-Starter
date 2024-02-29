@@ -6,7 +6,7 @@ import { Component, Renderer2, ElementRef, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'inventual';
+  title = 'Show Starter';
 
   isRTL = false;
 
