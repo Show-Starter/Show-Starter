@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   isSettingsAreaActive = false;
 
-  public products!: Product[];
+  public products: Product[];
 
   toggleSettingsArea() {
     this.isSettingsAreaActive = !this.isSettingsAreaActive;
