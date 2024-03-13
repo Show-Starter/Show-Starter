@@ -1,43 +1,38 @@
 package com.example.showstarter;
 
+import java.util.Arrays;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.example.showstarter.mappings.Event;
-import com.example.showstarter.mappings.Product;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @SpringBootApplication
-@Controller
+@EnableJpaRepositories(basePackages = "com.example.showstarter.repo")
+@EntityScan(basePackages = "com.example.showstarter.model")
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
-    @RequestMapping
-    public String index() {
-        return "index";
+    @Bean
+    public CorsFilter corsFilter() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setAllowedOrigins(Arrays.asList("https://localhost:4200"));
+        corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
+            "Accept", "Authorization", "Origin, Accept", "X-Requested-Width",
+            "Access-Control-Request-Method", "Access-Control-Request-Headers"));
+        corsConfiguration.setExposedHeaders(Arrays.asList("Origin", "Content-Type", "Accept", "Authorization",
+            "Access-Control-Allow-Origin", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"));
+        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
+        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+        return new CorsFilter(urlBasedCorsConfigurationSource);
     }
-
-    @RequestMapping("/events")
-	public String events_map() {
-		Event[] events = Event.get_all_events();
-
-        System.out.println("The total number of events: " + events.length);
-
-		return "events_page";
-	}
-
-    @RequestMapping("/inventory")
-    public String products_map() {
-        Product[] products = Product.get_all_products();
-
-        System.out.println("Total Products: " + products.length);
-        System.out.println("Product name on index 247: " + Product.getName(products[247]));
-
-        return "inventory_page";
-    }
-
 }

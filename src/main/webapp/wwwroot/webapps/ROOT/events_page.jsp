@@ -68,7 +68,9 @@
     <script>
         var events = [
         	<% for (Event event : events) { %>
-            { name: <%="\"" + Event.getEventName(event) + "\""%>, location: <%="\"" + Event.getLocation(event) + "\""%>, type: <%="\"" + Event.getEventType(event) + "\""%> },
+            { name: <%="\"" + Event.getEventName(event) + "\""%>, 
+            location: <%="\"" + Event.getLocation(event) + "\""%>, 
+            type: <%="\"" + Event.getEventType(event) + "\""%> },
             <% } %>
         ];
 
@@ -76,7 +78,9 @@
         function searchEvents() {
             var searchTerm = document.getElementById("search").value.toLowerCase();
             var filteredEvents = events.filter(function(event) {
-                return event.name.toLowerCase().includes(searchTerm);
+                return event.name.toLowerCase().includes(searchTerm) ||
+                    event.location.toLowerCase().includes(searchTerm) ||
+                    event.type.toLowerCase().includes(searchTerm);
             });
             displayEvents(filteredEvents);
         }

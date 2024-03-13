@@ -118,6 +118,7 @@ import { SublevelMenuComponent } from './dashboard/menu/sublevel-menu.component'
 import { UserreportComponent } from './report/userreport/userreport.component';
 import { CustomerreportComponent } from './report/customerreport/customerreport.component';
 import { WarehousereportComponent } from './report/warehousereport/warehousereport.component';
+import { EditProductComponent } from './products/edit-product/edit-product.component';
 
 
 @NgModule({ 
@@ -243,7 +244,8 @@ import { WarehousereportComponent } from './report/warehousereport/warehouserepo
     SublevelMenuComponent,
     UserreportComponent,
     CustomerreportComponent,
-    WarehousereportComponent
+    WarehousereportComponent,
+    EditProductComponent
   ]
 })
 export class InventualModule { }

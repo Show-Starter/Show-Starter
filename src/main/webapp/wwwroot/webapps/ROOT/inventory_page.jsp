@@ -89,7 +89,10 @@
         function searchProducts() {
             var searchTerm = document.getElementById("search").value.toLowerCase();
             var filteredProducts = products.filter(function(product) {
-                return product.name.toLowerCase().includes(searchTerm);
+                return product.name.toLowerCase().includes(searchTerm) || 
+                    product.method.toLowerCase().includes(searchTerm) ||
+                    product.price.toLowerCase().includes(searchTerm) ||
+                    product.event.toLowerCase().includes(searchTerm);
             });
             displayProducts(filteredProducts);
         }
