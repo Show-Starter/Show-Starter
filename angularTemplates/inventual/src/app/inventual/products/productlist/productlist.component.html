@@ -67,415 +67,83 @@
                    </div>
                 </div>
 
-                <div class="inventual-manageproduct-table-area">
-                    <div class="inventual-manageproduct-table-inner1">
-                        <div class="inventual-manageproduct-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1">
-                                    <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
-                                    [indeterminate]="someComplete()" (change)="setAll($event.checked)">
-                                    {{task.name}}
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <h5>ID</h5>
-                                </div>
+                
+                    <div class="inventual-manageproduct-table-area">
+                        <div class="inventual-manageproduct-table-inner1">
+                            <div class="inventual-manageproduct-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
+                                <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
+                                    <div class="inventual-manageproduct-table-checkbox1">
+                                        <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
+                                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                                        {{task.name}}
+                                        </mat-checkbox>
+                                    </div>
+                                    <div class="inventual-manageproduct-table-sl1">
+                                        <h5>ID</h5>
+                                    </div>
+                                    
+                                    <div class="inventual-manageproduct-table-image1">
+                                        <h5>Name</h5>
+                                    </div>
+                                    
+                                    <div class="inventual-manageproduct-table-variant1">
+                                        <h5>Product Group</h5> 
+                                    </div>
                                 
-                                <div class="inventual-manageproduct-table-image1">
-                                    <h5>Name</h5>
-                                </div>
-                                
-                                <div class="inventual-manageproduct-table-variant1">
-                                    <h5>Product Group</h5> 
-                                </div>
-                            
-                                <div class="inventual-manageproduct-table-price1">
-                                    <h5>Rental Price</h5>
-                                </div>
-                                
-                                <div class="inventual-manageproduct-table-action1">
-                                    <h5>Action</h5>
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck1($event.checked)">
-                                        <label for="mat-checkbox-2-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>01</span>
-                                </div>
-                        
-
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>Cotton T-shirt </span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-                    
-
-                            
-                                
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>250 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item [routerLink]="['/products/addproduct']">
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" (change)="setSingleCheck3($event.checked)">
-                                        <label for="mat-checkbox-4-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>02</span>
-                                </div>
-                        
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>Green Lemon </span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-                                
-                                
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>141 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'" (change)="setSingleCheck4($event.checked)">
-                                        <label for="mat-checkbox-5-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>03</span>
-                                </div>
-                            
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>Apple Device</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-                        
-                        
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>2,052 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'" (change)="setSingleCheck5($event.checked)">
-                                        <label for="mat-checkbox-6-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>04</span>
-                                </div>
-        
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>Earphone</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-                                
-                            
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>36 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'" (change)="setSingleCheck6($event.checked)">
-                                        <label for="mat-checkbox-7-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>05</span>
-                                </div>
-                        
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>Inventual Face wash </span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-                                
-                                
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>80 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'" (change)="setSingleCheck7($event.checked)">
-                                        <label for="mat-checkbox-8-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>06</span>
-                                </div>
-                                
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>White Cream</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-                            
-                    
-                                
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>58 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'" (change)="setSingleCheck8($event.checked)">
-                                        <label for="mat-checkbox-9-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>01</span>
-                                </div>
-                                
-                                
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>Meat & Fish</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-        
-
-                        
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>101 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'" (change)="setSingleCheck9($event.checked)">
-                                        <label for="mat-checkbox-10-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>08</span>
-                                </div>
-                        
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>Fresh Mineral Water</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-                                
-                            
-                                
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>58 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'" (change)="setSingleCheck10($event.checked)">
-                                        <label for="mat-checkbox-11-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>09</span>
+                                    <div class="inventual-manageproduct-table-price1">
+                                        <h5>Rental Price</h5>
+                                    </div>
+                                    
+                                    <div class="inventual-manageproduct-table-action1">
+                                        <h5>Action</h5>
+                                    </div>
                                 </div>
 
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>Computer Mouse</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-            
+                                    <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20" *ngFor="let product of products">
+                                        
+                                        <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
+                                            <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck1($event.checked)">
+                                                <label for="mat-checkbox-2-input"></label>
+                                            </mat-checkbox>
+                                        </div>
+                                        <div class="inventual-manageproduct-table-sl1">
+                                            <span>{{product.productId}}</span>
+                                        </div>
+                                
+
+                                        <div class="inventual-manageproduct-table-name1">
+                                            <span>{{product.name}}</span>
+                                        </div>
+                                        <div class="inventual-manageproduct-table-code1">
+                                            <span>{{product.product_group}}</span>
+                                        </div>
                             
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>69 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
-                            </div>
-                            <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'" (change)="setSingleCheck11($event.checked)">
-                                        <label for="mat-checkbox-12-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="inventual-manageproduct-table-sl1">
-                                    <span>10</span>
-                                </div>
-                            
-                                <div class="inventual-manageproduct-table-name1">
-                                    <span>Smart LED TV</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-code1">
-                                    <span>20</span>
-                                </div>
-                            
-                            
-                                <div class="inventual-manageproduct-table-price1">
-                                    <span>47 USD</span>
-                                </div>
-                                <div class="inventual-manageproduct-table-action1">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>                                      
-                                </div>
+
+                                    
+                                        
+                                        <div class="inventual-manageproduct-table-price1">
+                                            <span>{{product.rental_price}}</span>
+                                        </div>
+                                        <div class="inventual-manageproduct-table-action1">
+                                            <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
+                                                Action <mat-icon>arrow_drop_down</mat-icon>
+                                            </button>
+                                            <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                                <button mat-menu-item [routerLink]="['/products/addproduct']">
+                                                    <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
+                                                    <span>Edit Product</span>
+                                                </button>
+                                                <button mat-menu-item>
+                                                    <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
+                                                    <span>Delete</span>
+                                                </button>
+                                            </mat-menu>                                      
+                                        </div>
+                                    </div>
+                                
                             </div>
                         </div>
-                    </div>
+                        
                     <div class="inventual-pagination-area">
                         <app-pagination></app-pagination>
                     </div>

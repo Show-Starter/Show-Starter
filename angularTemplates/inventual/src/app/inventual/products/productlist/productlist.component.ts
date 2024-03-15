@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { Product } from 'src/app/product';
+import { AppComponent } from 'src/app/app.component'
 
 //for checkbox
 export interface Task {
@@ -17,6 +19,9 @@ export interface Task {
   encapsulation: ViewEncapsulation.None
 })
 export class ProductlistComponent implements OnInit {
+
+  public products: Product[] = AppComponent.products;
+
   //checkbox start
   task: Task = {
     name: '',

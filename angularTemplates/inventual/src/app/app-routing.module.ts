@@ -67,6 +67,7 @@ import { TransferlistComponent } from './inventual/transfer/transferlist/transfe
 import { UserreportComponent } from './inventual/report/userreport/userreport.component';
 import { CustomerreportComponent } from './inventual/report/customerreport/customerreport.component';
 import { WarehousereportComponent } from './inventual/report/warehousereport/warehousereport.component';
+import { AppComponent } from './app.component';
 
 
 const routes: Routes = [ 

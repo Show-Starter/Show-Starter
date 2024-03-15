@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   isSettingsAreaActive = false;
 
-  public products: Product[];
+  public static products: Product[];
 
   toggleSettingsArea() {
     this.isSettingsAreaActive = !this.isSettingsAreaActive;
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
   public getProducts(): void {
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
-        this.products = response;
+        AppComponent.products = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
