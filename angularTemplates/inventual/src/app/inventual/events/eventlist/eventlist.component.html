@@ -1,4 +1,4 @@
-<div class="inventual-dashboard-area">
+<!-- <div class="inventual-dashboard-area">
     <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
       <div class="inventual-header-bar-responsive" (click)="myfunction()">
         <mat-icon>reorder</mat-icon>
@@ -20,21 +20,21 @@
       </div>
         <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
             <div class="inventual-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-black font-bold mb-3">Product List</h5>
+                <h5 class="text-[20px] text-black font-bold mb-3">event List</h5>
                 <div class="inventual-breadcrumb-area-inner-wrap">
                     <span class="text-[14px] text-gray font-normal inline-block me-2">Trading</span>
                     <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
-                    <span class="text-[14px] text-gray font-normal inline-block me-2">Product</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">event</span>
                     <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
-                    <span class="text-[14px] text-gray font-normal inline-block me-2">Product List</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">event List</span>
                 </div>
             </div>
         </div>
         <div class="inventual-content-area px-7">
-           <div class="inventual-manageproduct-area bg-white p-7 custom-shadow rounded-8 mb-5">
-               <h4 class="text-[20px] font-bold text-black mb-9">Product List</h4>
+           <div class="inventual-manageevent-area bg-white p-7 custom-shadow rounded-8 mb-5">
+               <h4 class="text-[20px] font-bold text-black mb-9">Events</h4>
                <div class="inventual-material-btn mb-7">
-                    <button mat-raised-button color="accent" [routerLink]="['/product/addproduct']" class="mb-1"><mat-icon>add_circle_outline</mat-icon> Add Product</button>
+                    <button mat-raised-button color="accent" [routerLink]="['/events/addevent']" class="mb-1"><mat-icon>add_circle_outline</mat-icon> Add Event</button>
 
                </div>
                <div class="inventual-table-header-search-area">
@@ -53,10 +53,13 @@
                                         <span>Name</span>
                                     </button>
                                     <button mat-menu-item>
-                                        <span>Product Group</span>
+                                        <span>Location</span>
                                     </button>
                                     <button mat-menu-item>
-                                        <span>Rental Price</span>
+                                        <span>Date</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Time</span>
                                     </button>
                                     
                                 </mat-menu>
@@ -68,71 +71,75 @@
                 </div>
 
                 
-                    <div class="inventual-manageproduct-table-area">
-                        <div class="inventual-manageproduct-table-inner1">
-                            <div class="inventual-manageproduct-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
-                                <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                    <div class="inventual-manageproduct-table-checkbox1">
+                    <div class="inventual-manageevent-table-area">
+                        <div class="inventual-manageevent-table-inner1">
+                            <div class="inventual-manageevent-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
+                                <div class="inventual-manageevent-table-list1 flex border-b border-solid border-gray-borderThree h-20">
+                                    <div class="inventual-manageevent-table-checkbox1">
                                         <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
                                         [indeterminate]="someComplete()" (change)="setAll($event.checked)">
                                         {{task.name}}
                                         </mat-checkbox>
                                     </div>
-                                    <div class="inventual-manageproduct-table-sl1">
+                                    <div class="inventual-manageevent-table-sl1">
                                         <h5>ID</h5>
                                     </div>
                                     
-                                    <div class="inventual-manageproduct-table-image1">
+                                    <div class="inventual-manageevent-table-sl1">
                                         <h5>Name</h5>
                                     </div>
                                     
-                                    <div class="inventual-manageproduct-table-variant1">
-                                        <h5>Product Group</h5> 
+                                    <div class="inventual-manageevent-table-sl1">
+                                        <h5>Location</h5> 
                                     </div>
                                 
-                                    <div class="inventual-manageproduct-table-price1">
-                                        <h5>Rental Price</h5>
+                                    <div class="inventual-manageevent-table-sl1">
+                                        <h5>Date</h5>
                                     </div>
                                     
-                                    <div class="inventual-manageproduct-table-action1">
-                                        <h5>Action</h5>
+                                    <div class="inventual-manageevent-table-sl1">
+                                        <h5>Time</h5>
+                                    </div>
+
+                                    <div class="inventual-manageevent-table-sl1">
+                                        <h5>Invoice Num</h5>
                                     </div>
                                 </div>
                                 
-                                <div *ngFor="let product of products">
-                                    <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
+                                <div *ngFor="let event of events">
+                                    <div class="inventual-manageevent-table-list1 flex border-b border-solid border-gray-borderThree h-20">
                                         
-                                        <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
+                                        <div class="inventual-manageevent-table-checkbox1 default-light-theme">
                                             <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck1($event.checked)">
                                                 <label for="mat-checkbox-2-input"></label>
                                             </mat-checkbox>
                                         </div>
-                                        <div class="inventual-manageproduct-table-sl1">
-                                            <span>{{product.productId}}</span>
+                                        <div class="inventual-manageevent-table-sl1">
+                                            <span>{{event.eventID}}</span>
                                         </div>
                                 
 
-                                        <div class="inventual-manageproduct-table-name1">
-                                            <span>{{product.name}}</span>
+                                        <div class="inventual-manageevent-table-name1">
+                                            <span>{{event.name}}</span>
                                         </div>
-                                        <div class="inventual-manageproduct-table-code1">
-                                            <span>{{product.product_group}}</span>
+                                        <div class="inventual-manageevent-table-sl1">
+                                            <span>{{event.location}}</span>
                                         </div>
-                            
+                                        <div class="inventual-manageevent-table-sl1">
+                                            <span>{{event.date}}</span>
+                                        </div>
+                                        <div class="inventual-manageevent-table-sl1">
+                                            <span>{{event.time}}</span>
+                                        </div>
 
-                                    
-                                        
-                                        <div class="inventual-manageproduct-table-price1">
-                                            <span>{{product.rental_price}}</span>
-                                        </div>
-                                        <div class="inventual-manageproduct-table-action1">
+                                        <div class="inventual-manageevent-table-action1">
                                             <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
                                                 Action <mat-icon>arrow_drop_down</mat-icon>
                                             </button>
                                             <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                                <button mat-menu-item [routerLink]="['/products/addproduct']">
+                                                <button mat-menu-item [routerLink]="['/events/addevent']">
                                                     <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                                    <span>Edit Product</span>
+                                                    <span>Edit event</span>
                                                 </button>
                                                 <button mat-menu-item>
                                                     <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
@@ -155,4 +162,4 @@
             <app-copyright></app-copyright>
         </div>
     </div>
-</div>
+</div> -->

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { Product } from 'src/app/product';
+import { Event } from 'src/app/event';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ProductService } from 'src/app/product.service';
+import { EventService } from 'src/app/event.service';
 
 //for checkbox
 export interface Task {
@@ -14,14 +14,14 @@ export interface Task {
 //for checkbox
 
 @Component({
-  selector: 'app-productlist',
-  templateUrl: './productlist.component.html',
-  styleUrls: ['./productlist.component.scss'],
+  selector: 'app-eventlist',
+  templateUrl: './eventlist.component.html',
+  styleUrls: ['./eventlist.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ProductlistComponent implements OnInit {
+export class EventlistComponent implements OnInit {
 
-  public products: Product[];
+  public events: Event[];
 
   //checkbox start
   task: Task = {
@@ -243,14 +243,14 @@ export class ProductlistComponent implements OnInit {
   }
   //sidebar menu activation end
 
-  constructor(private productService: ProductService) { }
+  constructor(private eventService: EventService) { }
 
-  ngOnInit(): void {this.getProducts()}
+  ngOnInit(): void {this.getEvents()}
 
-  public getProducts(): void {
-    this.productService.getProducts().subscribe(
-      (response: Product[]) => {
-        this.products = response;
+  public getEvents(): void {
+    this.eventService.getEvents().subscribe(
+      (response: Event[]) => {
+        this.events = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

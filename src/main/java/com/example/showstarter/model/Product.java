@@ -20,19 +20,16 @@ public class Product implements Serializable {
 	private String stock_method;
 	private Integer rental_price;
 	private Integer eventID;
-    @Column(nullable = false, updatable = false)
-    private String productCode;
 
     public Product() {}
 	
-	public Product(String name, String product_group, String stock_method, int rental_price, int eventID, String productCode) {
+	public Product(String name, String product_group, String stock_method, int rental_price, int eventID) {
 		// this.productID = productID;
 		this.name = name;
 		this.product_group = product_group;
 		this.stock_method = stock_method;
 		this.rental_price = rental_price;
 		this.eventID = eventID;
-        this.productCode = productCode;
 	}
 
     public Long getId() {
@@ -82,43 +79,4 @@ public class Product implements Serializable {
     public void setEventID(Integer eventID) {
         this.eventID = eventID;
     }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-	
-	// public static Product[] get_all_products() {
-    //     JdbcTemplate jdbcTemplate = new JdbcTemplate();
-    //     try {
-    //         jdbcTemplate = DatabaseConfig.jdbcTemplate();
-    //     } catch (SQLException e) {
-    //         e.printStackTrace();
-    //     }
-
-    //     String sql = "SELECT * FROM products";
-    //     List<Product> products = jdbcTemplate.query(sql, new CustomRowMapperProduct());
-
-    //     Product[] productsArr = new Product[products.size()];
-
-    //     for (int i = 0; i < products.size(); i++) {
-    //         productsArr[i] = products.get(i);
-    //     }
-
-    //     return productsArr;
-    // }
-
-    // public static String verify_event_id(int eventID) {
-    //     if (eventID == 0) {
-    //         return "No event assigned.";
-    //     } else {
-    //         return Integer.toString(eventID);
-    //     }
-    // }
-
-    
-
 }

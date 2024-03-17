@@ -1,7 +1,6 @@
 package com.example.showstarter.service;
 
 import java.util.List;
-import java.util.UUID;
 import jakarta.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -20,7 +19,6 @@ public class ProductService {
     }
 
     public Product addProduct(Product product) {
-        product.setProductCode(UUID.randomUUID().toString());
         return productRepo.save(product);
     }
 

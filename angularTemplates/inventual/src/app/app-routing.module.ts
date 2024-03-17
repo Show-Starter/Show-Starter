@@ -68,6 +68,7 @@ import { UserreportComponent } from './inventual/report/userreport/userreport.co
 import { CustomerreportComponent } from './inventual/report/customerreport/customerreport.component';
 import { WarehousereportComponent } from './inventual/report/warehousereport/warehousereport.component';
 import { AppComponent } from './app.component';
+import { EventlistComponent } from './inventual/events/eventlist/eventlist.component';
 
 
 const routes: Routes = [ 
@@ -337,6 +338,10 @@ const routes: Routes = [
   {
     path: 'transfer/transferlist',
     component: TransferlistComponent
+  },
+  {
+    path: 'events/eventlist',
+    component: EventlistComponent
   }
 ];
 
