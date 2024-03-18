@@ -134,11 +134,11 @@
                                                     <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
                                                     <span>Edit Product</span>
                                                 </button>
-                                                <button mat-menu-item>
+                                                <button mat-menu-item (click)="deleteProduct(product.productId)">
                                                     <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
                                                     <span>Delete</span>
                                                 </button>
-                                            </mat-menu>                                      
+                                              </mat-menu>                                   
                                         </div>
                                     </div>
                                 </div>

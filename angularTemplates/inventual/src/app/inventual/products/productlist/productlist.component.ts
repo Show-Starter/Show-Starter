@@ -37,7 +37,22 @@ export class ProductlistComponent implements OnInit {
     completed: false,
     color: 'primary'
   };
+  
+  public deleteProduct(productId: number): void {
+    this.productService.deleteProduct(productId).subscribe({
+      next: () => {
+        console.log('Product deleted successfully');
+        this.refreshProducts(); // Refresh the product list
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('There was an error!', error);
+      }
+    });
+  }
 
+  private refreshProducts(): void {
+    this.getProducts(); // Re-fetch the products after deletion
+  }
   public getProducts(): void {
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
