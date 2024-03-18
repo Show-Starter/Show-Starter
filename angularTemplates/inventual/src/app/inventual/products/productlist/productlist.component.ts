@@ -19,6 +19,7 @@ interface Task {
 export class ProductlistComponent implements OnInit {
   public products: Product[];
   public parsedProducts: Product[] = [];
+  public searchText: string = '';
   public tasks: Task[] = [];
   public currentPage: number = 1;
   public itemsPerPage: number = 50;
@@ -37,7 +38,7 @@ export class ProductlistComponent implements OnInit {
     completed: false,
     color: 'primary'
   };
-  
+
   public deleteProduct(productId: number): void {
     this.productService.deleteProduct(productId).subscribe({
       next: () => {
@@ -50,6 +51,18 @@ export class ProductlistComponent implements OnInit {
     });
   }
 
+  public filterProducts(): void {
+    if (!this.searchText) {
+      this.parsedProducts = this.products; // If no search text, show all products
+    } else {
+      this.parsedProducts = this.products.filter(product =>
+        product.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        product.product_group.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        product.rental_price.toString().includes(this.searchText)
+      );
+    }
+  }
+  
   private refreshProducts(): void {
     this.getProducts(); // Re-fetch the products after deletion
   }
@@ -58,6 +71,7 @@ export class ProductlistComponent implements OnInit {
       (response: Product[]) => {
         this.products = response;
         this.initParse();
+        this.filterProducts();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

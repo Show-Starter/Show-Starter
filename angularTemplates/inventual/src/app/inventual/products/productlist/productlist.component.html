@@ -41,7 +41,7 @@
                    <div class="grid grid-cols-12 gap-x-5 mb-7 pb-0.5">
                        <div class="col-span-5 md:col-span-6 sm:col-span-12">
                            <div class="inventual-table-header-search relative sm:mb-4">
-                               <input type="text" placeholder="Search List">
+                            <input type="text" placeholder="Search List" [(ngModel)]="searchText" (ngModelChange)="filterProducts()">
                                <span><mat-icon>search</mat-icon></span>
                            </div>
                        </div>
