@@ -89,6 +89,7 @@
 .inventual-manageproduct-table-code1 {
 	min-width: 300px;
 	width: 10%;
+	padding-left: 30px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 40px;
 		width: 20%;
@@ -101,6 +102,7 @@
 .inventual-manageproduct-table-variant1 {
 	min-width: 100;
 	width: 6%;
+	padding-left: 30px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 70px;
 		width: 20%;
@@ -114,6 +116,7 @@
 .inventual-manageproduct-table-price1 {
 	min-width: 125px;
 	width: 8%;
+	padding-left: 30px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		width: 10%;
 		min-width: 150px;
@@ -123,6 +126,12 @@
 		min-width: 150px;
 	}
 }
+.common-action-menu-style {
+	margin-left: 110px;
+}
+
+
+
 
 .inventual-manageproduct-table-image-inner {
     @apply inline-block;
