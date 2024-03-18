@@ -40,7 +40,7 @@
                   <div class="inventual-input-field-style">
                     <mat-form-field class="w-full" [floatLabel]="'always'">
                       <mat-label class="hidden">HP Elitebook</mat-label>
-                      <input matInput [placeholder]="'HP Elitebook'">
+                      <input matInput [placeholder]="'Microphone, Stage, etc...'">
                     </mat-form-field>
                   </div>
                 </div>
@@ -48,15 +48,34 @@
 
               <div class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
                 <div class="inventual-select-field mb-5">
-                  <h5 class="text-[15px] text-black font-semibold mb-3">Category</h5>
+                  <h5 class="text-[15px] text-black font-semibold mb-3">Product Groups</h5>
                   <div class="inventual-select-field-style">
                     <mat-form-field>
                       <mat-select class="block" [placeholder]="'Select Type'">
-                        <mat-option value="language-1">Select Category</mat-option>
-                        <mat-option value="language-2">Computer</mat-option>
-                        <mat-option value="language-3">Television</mat-option>
-                        <mat-option value="language-4">Shoes</mat-option>
-                        <mat-option value="language-5">Fruits</mat-option>
+                        <mat-option value="language-1">Select Product Group</mat-option>
+                        <mat-option value="language-2">Audio</mat-option>
+                        <mat-option value="language-3">Cables</mat-option>
+                        <mat-option value="language-4">Cameras</mat-option>
+                        <mat-option value="language-5">Computers/Networking</mat-option>
+                        <mat-option value="language-6">Decor</mat-option>
+                        <mat-option value="language-7">Dj</mat-option>
+                        <mat-option value="language-8">Drape</mat-option>
+                        <mat-option value="language-9">Furniture</mat-option>
+                        <mat-option value="language-10">FX</mat-option>
+                        <mat-option value="language-11">Ladders/Lifts</mat-option>
+                        <mat-option value="language-12">Lighting</mat-option>
+                        <mat-option value="language-13">Bulk</mat-option>
+                        <mat-option value="language-14">Material Handling</mat-option>
+                        <mat-option value="language-15">Photobooth</mat-option>
+                        <mat-option value="language-16">Props</mat-option>
+                        <mat-option value="language-17">Rigging</mat-option>
+                        <mat-option value="language-18">Staging</mat-option>
+                        <mat-option value="language-19">Toolkits/Supplies</mat-option>
+                        <mat-option value="language-4">Video</mat-option>
+
+
+
+
                       </mat-select>
                     </mat-form-field>
                   </div>
@@ -64,26 +83,24 @@
               </div>
               <div class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
                 <div class="inventual-select-field mb-7">
-                  <h5 class="text-[15px] text-black font-semibold mb-3">Product Code</h5>
+                  <h5 class="text-[15px] text-black font-semibold mb-3">Product Price</h5>
                   <div class="inventual-input-field-style">
                     <mat-form-field class="w-full" [floatLabel]="'always'">
-                      <mat-label class="hidden">8952202236</mat-label>
-                      <input matInput [placeholder]="'8952202236'">
+                      <mat-label class="hidden">89.99</mat-label>
+                      <input matInput [placeholder]="'89.99'">
                     </mat-form-field>
                   </div>
                 </div>
               </div>
 
-            <div class="inventual-material-btn">
-                <button mat-raised-button color="primary" [routerLink]="['/products/productlist']">Submit</button>
-           </div>
+
         </div>
-        <div class="inventual-material-btn">
-          <button mat-raised-button color="red" [routerLink]="['/products/productlist']">Cancel</button>
-     </div>
+        <div class="inventual-material-btn1 button-group">
+          <button mat-raised-button color="warn" [routerLink]="['/products/productlist']">Cancel</button>
+          <button mat-raised-button color="primary" [routerLink]="['/products/productlist']">Submit</button>
+          
+        </div>
       </div>
-      <div class="inventual-copyright-area">
-        <app-copyright></app-copyright>
-      </div>
+     
     </div>
   </div>
