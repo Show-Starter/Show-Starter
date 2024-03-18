@@ -86,11 +86,11 @@
                                         <h5>Name</h5>
                                     </div>
                                     
-                                    <div class="inventual-manageproduct-table-variant1">
+                                    <div class="inventual-manageproduct-table-sl1">
                                         <h5>Product Group</h5> 
                                     </div>
                                 
-                                    <div class="inventual-manageproduct-table-price1">
+                                    <div class="inventual-manageproduct-table-sl1">
                                         <h5>Rental Price</h5>
                                     </div>
                                     
@@ -99,12 +99,12 @@
                                     </div>
                                 </div>
                                 
-                                <div *ngFor="let product of products">
+                                <div *ngFor="let product of parsedProducts; let i = index">
                                     <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
                                         
                                         <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                            <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck1($event.checked)">
-                                                <label for="mat-checkbox-2-input"></label>
+                                            <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck(i, $event.checked)">
+                                                <label for="mat-checkbox-{{i}}-input"></label>
                                             </mat-checkbox>
                                         </div>
                                         <div class="inventual-manageproduct-table-sl1">
@@ -146,7 +146,7 @@
                         </div>
                         
                     <div class="inventual-pagination-area">
-                        <app-pagination></app-pagination>
+                        <app-pagination [currentPage]="currentPage" [totalItems]="products.length" [itemsPerPage]="itemsPerPage" (pageChange)="onPageChange($any($event))"></app-pagination>
                     </div>
                 </div>
            </div>

@@ -1,40 +1,18 @@
 <div class="inventual-pagination-wrapper">
     <div class="grid grid-cols-12">
-        <div class="col-span-3 md:col-span-6 sm:col-span-12">
-            <div class="inventual-pagination-sort flex items-center flex-wrap sm:mb-4 sm:justify-center">
-                <figure class="text-[14px] font-normal text-gray me-1.5">Rows per page : </figure>
-                <div class="inventual-select-field-style w-16">
-                    <mat-form-field>
-                        <mat-select class="block" [placeholder]="'15'">
-                            <mat-option value="language-1">20</mat-option>
-                            <mat-option value="language-2">25</mat-option>
-                            <mat-option value="language-3">35</mat-option>
-                            <mat-option value="language-4">45</mat-option>
-                            <mat-option value="language-5">50</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </div>
         <div class="col-span-9 md:col-span-6 sm:col-span-12">
             <div class="inventual-pagination inventual-pagination-ltr ltr:block rtl:hidden text-end sm:text-center">
                 <ul>
-                    <li><a href="javascript:void(0)"><mat-icon>arrow_back_ios</mat-icon></a></li>
-                    <li><a href="javascript:void(0)" class="active">01</a></li>
-                    <li><a href="javascript:void(0)">02</a></li>
-                    <li><a href="javascript:void(0)">03</a></li>
-                    <li><a href="javascript:void(0)">04</a></li>
-                    <li><a href="javascript:void(0)"><mat-icon>arrow_forward_ios</mat-icon></a></li>
+                    <li><a href="javascript:void(0)" (click)="changePage(currentPage - 1)"><mat-icon>arrow_back_ios</mat-icon></a></li>
+                    <li *ngFor="let page of pages" [class.active]="currentPage === page"><a href="javascript:void(0)" (click)="changePage(page)">{{ page }}</a></li>
+                    <li><a href="javascript:void(0)" (click)="changePage(currentPage + 1)"><mat-icon>arrow_forward_ios</mat-icon></a></li>
                 </ul>
             </div>
             <div class="inventual-pagination inventual-pagination-rtl rtl:block ltr:hidden text-end sm:text-center">
                 <ul>
-                    <li><a href="javascript:void(0)"><mat-icon>arrow_forward_ios</mat-icon></a></li>
-                    <li><a href="javascript:void(0)" class="active">01</a></li>
-                    <li><a href="javascript:void(0)">02</a></li>
-                    <li><a href="javascript:void(0)">03</a></li>
-                    <li><a href="javascript:void(0)">04</a></li>
-                    <li><a href="javascript:void(0)"><mat-icon>arrow_back_ios</mat-icon></a></li>
+                    <li><a href="javascript:void(0)" (click)="changePage(currentPage + 1)"><mat-icon>arrow_forward_ios</mat-icon></a></li>
+                    <li *ngFor="let page of pages" [class.active]="currentPage === page"><a href="javascript:void(0)" (click)="changePage(page)">{{ page }}</a></li>
+                    <li><a href="javascript:void(0)" (click)="changePage(currentPage - 1)"><mat-icon>arrow_back_ios</mat-icon></a></li>
                 </ul>
             </div>
         </div>
