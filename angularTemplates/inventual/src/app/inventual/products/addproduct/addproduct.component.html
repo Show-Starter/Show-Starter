@@ -39,8 +39,7 @@
                   <h5 class="text-[15px] text-black font-semibold mb-3">Product Name</h5>
                   <div class="inventual-input-field-style">
                     <mat-form-field class="w-full" [floatLabel]="'always'">
-                      <mat-label class="hidden">HP Elitebook</mat-label>
-                      <input matInput [placeholder]="'Microphone, Stage, etc...'">
+                      <input matInput [(ngModel)]="newProduct.name" name="productName" placeholder="Microphone, Stage, etc...">
                     </mat-form-field>
                   </div>
                 </div>
@@ -51,7 +50,7 @@
                   <h5 class="text-[15px] text-black font-semibold mb-3">Product Groups</h5>
                   <div class="inventual-select-field-style">
                     <mat-form-field>
-                      <mat-select class="block" [placeholder]="'Select Type'">
+                      <mat-select [(ngModel)]="newProduct.product_group" class="block" [placeholder]="'Select Type'">
                         <mat-option value="language-1">Select Product Group</mat-option>
                         <mat-option value="language-2">Audio</mat-option>
                         <mat-option value="language-3">Cables</mat-option>
@@ -87,7 +86,7 @@
                   <div class="inventual-input-field-style">
                     <mat-form-field class="w-full" [floatLabel]="'always'">
                       <mat-label class="hidden">89.99</mat-label>
-                      <input matInput [placeholder]="'89.99'">
+                      <input [(ngModel)]="newProduct.rental_price" matInput [placeholder]="'89.99'">
                     </mat-form-field>
                   </div>
                 </div>
