@@ -19,7 +19,7 @@ interface Task {
 export class ProductlistComponent implements OnInit {
   public products: Product[];
   public parsedProducts: Product[] = [];
-  public searchText: string = '';
+  public searchText: string;
   public tasks: Task[] = [];
   public currentPage: number = 1;
   public itemsPerPage: number = 50;
@@ -52,7 +52,7 @@ export class ProductlistComponent implements OnInit {
   }
 
   public filterProducts(): void {
-    if (!this.searchText) {
+    if (this.searchText == '') {
       this.parsedProducts = this.products; // If no search text, show all products
     } else {
       this.parsedProducts = this.products.filter(product =>
@@ -66,10 +66,12 @@ export class ProductlistComponent implements OnInit {
   private refreshProducts(): void {
     this.getProducts(); // Re-fetch the products after deletion
   }
+
   public getProducts(): void {
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
         this.products = response;
+        console.log("productID: " + this.products[0].id);
         this.initParse();
         this.filterProducts();
       },
