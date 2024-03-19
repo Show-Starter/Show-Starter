@@ -84,6 +84,7 @@ const routes: Routes = [
   component: AddproductComponent
   },
 
+
   {
     path: 'dashboard',
     component: DashboardComponent

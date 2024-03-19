@@ -122,6 +122,7 @@ import { EditProductComponent } from './products/edit-product/edit-product.compo
 import { EventlistComponent } from './events/eventlist/eventlist.component';
 
 
+
 @NgModule({ 
   imports: [
     CommonModule,
@@ -130,6 +131,7 @@ import { EventlistComponent } from './events/eventlist/eventlist.component';
     MatDialogModule,
     MatSelectModule,
     MatFormFieldModule,
+    
     MatIconModule,
     MatButtonModule,
     MatInputModule,
