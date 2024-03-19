@@ -1,10 +1,9 @@
 export interface Event {
-    eventId: number;
+    id: number;
     name: string;
     location: string;
     type: string;
     date: string;
     time: string;
     invoice_num: number;
-    eventCode: string;
 }

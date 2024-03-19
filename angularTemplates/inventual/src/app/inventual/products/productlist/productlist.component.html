@@ -73,10 +73,10 @@
                             <div class="inventual-manageproduct-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
                                 <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
                                     <div class="inventual-manageproduct-table-checkbox1">
-                                        <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
+                                        <!-- <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
                                         [indeterminate]="someComplete()" (change)="setAll($event.checked)">
                                         {{task.name}}
-                                        </mat-checkbox>
+                                        </mat-checkbox> -->
                                     </div>
                                     <div class="inventual-manageproduct-table-sl1">
                                         <h5>ID</h5>
@@ -103,26 +103,26 @@
                                     <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
                                         
                                         <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                            <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck(i, $event.checked)">
+                                            <!-- <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck(i, $event.checked)">
                                                 <label for="mat-checkbox-{{i}}-input"></label>
-                                            </mat-checkbox>
+                                            </mat-checkbox> -->
                                         </div>
-                                        <div class="inventual-manageproduct-table-name1">
+                                        <div class="inventual-manageproduct-table-sl1">
                                             <span>{{product.id}}</span>
                                         </div>
                                 
 
-                                        <div class="inventual-manageproduct-table-name1">
+                                        <div class="inventual-manageproduct-table-sl1">
                                             <span>{{product.name}}</span>
                                         </div>
-                                        <div class="inventual-manageproduct-table-code1">
+                                        <div class="inventual-manageproduct-table-sl1">
                                             <span>{{product.product_group}}</span>
                                         </div>
                             
 
                                     
                                         
-                                        <div class="inventual-manageproduct-table-price1">
+                                        <div class="inventual-manageproduct-table-sl1">
                                             <span>{{product.rental_price}}</span>
                                         </div>
                                         <div class="inventual-manageproduct-table-action1">
