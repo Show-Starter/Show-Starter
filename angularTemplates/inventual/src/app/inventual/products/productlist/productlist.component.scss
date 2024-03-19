@@ -22,8 +22,7 @@
 .inventual-manageproduct-table-price1,
 .inventual-manageproduct-table-action1 {
 	@apply flex;
-	@apply flex-col;
-	@apply justify-center;
+	@apply justify-start;
 	& h5 {
 		@apply text-[15px];
 		@apply font-semibold;
@@ -50,6 +49,7 @@
 .inventual-manageproduct-table-sl1 {
 	min-width: 300px;
 	width: 10%;
+	margin-right: 0px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 40px;
 		width: 20%;
@@ -127,8 +127,9 @@
 	}
 }
 .common-action-menu-style {
-	margin-left: 110px;
+	margin-left: 0px;
 }
+
 
 
 
