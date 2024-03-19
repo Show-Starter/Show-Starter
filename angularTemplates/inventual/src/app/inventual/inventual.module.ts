@@ -75,7 +75,7 @@ import { ExpenselistComponent } from './expense/expenselist/expenselist.componen
 import { AdduserComponent } from './usermanagement/adduser/adduser.component';
 import { CreateroleComponent } from './usermanagement/createrole/createrole.component';
 import { UserlistComponent } from './usermanagement/userlist/userlist.component';
-import { WarehouselistComponent } from './warehouse/warehouselist/warehouselist.component';
+
 import { AddwarehouseComponent } from './trading/sale/popup/addwarehouse/addwarehouse.component';
 import { ProductreportComponent } from './report/productreport/productreport.component';
 import { StockreportComponent } from './report/stockreport/stockreport.component';
@@ -119,6 +119,7 @@ import { UserreportComponent } from './report/userreport/userreport.component';
 import { CustomerreportComponent } from './report/customerreport/customerreport.component';
 import { WarehousereportComponent } from './report/warehousereport/warehousereport.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
+import { EventlistComponent } from './events/eventlist/eventlist.component';
 
 
 @NgModule({ 
@@ -203,7 +204,7 @@ import { EditProductComponent } from './products/edit-product/edit-product.compo
     AdduserComponent,
     CreateroleComponent,
     UserlistComponent,
-    WarehouselistComponent,
+    
     AddwarehouseComponent,
     ProductreportComponent,
     StockreportComponent,
@@ -245,7 +246,8 @@ import { EditProductComponent } from './products/edit-product/edit-product.compo
     UserreportComponent,
     CustomerreportComponent,
     WarehousereportComponent,
-    EditProductComponent
+    EditProductComponent,
+    EventlistComponent
   ]
 })
 export class InventualModule { }

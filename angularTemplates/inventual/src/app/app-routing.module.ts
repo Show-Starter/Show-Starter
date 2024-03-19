@@ -40,7 +40,7 @@ import { ExpenselistComponent } from './inventual/expense/expenselist/expenselis
 import { AdduserComponent } from './inventual/usermanagement/adduser/adduser.component';
 import { CreateroleComponent } from './inventual/usermanagement/createrole/createrole.component';
 import { UserlistComponent } from './inventual/usermanagement/userlist/userlist.component';
-import { WarehouselistComponent } from './inventual/warehouse/warehouselist/warehouselist.component';
+
 import { ProductreportComponent } from './inventual/report/productreport/productreport.component';
 import { StockreportComponent } from './inventual/report/stockreport/stockreport.component';
 import { PaymentreportComponent } from './inventual/report/paymentreport/paymentreport.component';
@@ -66,9 +66,10 @@ import { AddtransferComponent } from './inventual/transfer/addtransfer/addtransf
 import { TransferlistComponent } from './inventual/transfer/transferlist/transferlist.component';
 import { UserreportComponent } from './inventual/report/userreport/userreport.component';
 import { CustomerreportComponent } from './inventual/report/customerreport/customerreport.component';
-import { WarehousereportComponent } from './inventual/report/warehousereport/warehousereport.component';
-import { AppComponent } from './app.component';
+
 import { EventlistComponent } from './inventual/events/eventlist/eventlist.component';
+import { AppComponent } from './app.component';
+
 
 
 const routes: Routes = [ 
@@ -247,10 +248,7 @@ const routes: Routes = [
     path: 'client/userlist',
     component: UserlistComponent
   },
-  {
-    path: 'warehouselist',
-    component: WarehouselistComponent
-  },
+
   {
     path: 'report/productreport',
     component: ProductreportComponent
@@ -291,10 +289,7 @@ const routes: Routes = [
     path: 'report/customerreport',
     component: CustomerreportComponent
   },
-  {
-    path: 'report/warehousereport',
-    component: WarehousereportComponent
-  },
+
   {
     path: 'report/supplierreport',
     component: SupplierreportComponent
