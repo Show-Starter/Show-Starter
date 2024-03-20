@@ -3,6 +3,7 @@ import { ThemePalette } from '@angular/material/core';
 import { Product } from 'src/app/product';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductService } from 'src/app/product.service';
+import { Router } from '@angular/router';
 
 interface Task {
   name: string;
@@ -17,17 +18,17 @@ interface Task {
   encapsulation: ViewEncapsulation.None
 })
 export class ProductlistComponent implements OnInit {
-  public products: Product[];
+  public products: Product[] = [];
   public parsedProducts: Product[] = [];
-  public searchText: string;
+  public searchText: string = '';
   public tasks: Task[] = [];
   public currentPage: number = 1;
-  public itemsPerPage: number = 50;
+  public itemsPerPage: number = 100;
   public allComplete: boolean = false;
 
   menuSidebarActive: boolean = false;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,private router:Router) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -51,13 +52,18 @@ export class ProductlistComponent implements OnInit {
     });
   }
 
+  public editProduct(productId: number): void {
+    this.router.navigateByUrl(`/products/addproduct/${productId}`);
+  }
+
   public filterProducts(): void {
+   
     if (this.searchText == '') {
-      this.parsedProducts = this.products; // If no search text, show all products
+      this.initParse(); // If no search text, show all products
     } else {
       this.parsedProducts = this.products.filter(product =>
-        product.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        product.product_group.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        (product.name != null && product.name.toLowerCase().includes(this.searchText.toLowerCase())) ||
+        (product.product_group != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase())) ||
         product.rental_price.toString().includes(this.searchText)
       );
     }
@@ -83,6 +89,7 @@ export class ProductlistComponent implements OnInit {
 
   private initParse(): void {
     this.tasks = [];
+    this.parsedProducts = [];
     for (let i = 0; i < this.products.length; i++) {
       if (i >= (this.currentPage - 1) * this.itemsPerPage && i < this.currentPage * this.itemsPerPage) {
         this.parsedProducts.push(this.products[(this.itemsPerPage * (this.currentPage - 1)) + i]);

@@ -100,7 +100,7 @@
                                 </div>
                                 
                                 <div *ngFor="let product of parsedProducts; let i = index">
-                                    <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
+                                    <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-black-borderThree h-20">
                                         
                                         <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
                                             <!-- <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck(i, $event.checked)">
@@ -130,14 +130,14 @@
                                                 Action <mat-icon>arrow_drop_down</mat-icon>
                                             </button>
                                             <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                                <button mat-menu-item [routerLink]="['/products/addproduct']">
+                                                <button mat-menu-item (click)="editProduct(product.id)">
                                                     <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
                                                     <span>Edit Product</span>
                                                 </button>
-                                                <button mat-menu-item (click)="deleteProduct(product.id)">
+                                                <button mat-menu-item (click)="deleteProduct(product.id)" http-equiv="refresh" content="3">
                                                     <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
                                                     <span>Delete</span>
-                                                    <meta http-equiv="refresh" content="3">
+                                                    <meta >
                                                 </button>
                                               </mat-menu>                                   
                                         </div>

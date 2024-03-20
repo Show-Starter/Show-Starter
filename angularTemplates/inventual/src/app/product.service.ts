@@ -10,6 +10,11 @@ export class ProductService {
 
     constructor(private http: HttpClient){}
 
+    public GetById() {
+
+        this.http.get<Product[]>(`${this.apiServerUrl}/inventory/id`);
+    }
+
     public getProducts(): Observable<Product[]> {
         return this.http.get<Product[]>(`${this.apiServerUrl}/inventory/all`);
     }

@@ -1,7 +1,8 @@
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Product } from 'src/app/product'; // Ensure this path is correct
+import { ProductService } from 'src/app/product.service'; // Ensure this path is correct
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Product } from 'src/app/product';
-import { ProductService } from 'src/app/product.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-addproduct',
@@ -10,51 +11,67 @@ import { ProductService } from 'src/app/product.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AddproductComponent implements OnInit {
-  //sidebar menu activation start
-  menuSidebarActive:boolean=false;
+  @Input() editProduct: Product | null = null;
 
-  newProduct: Product = {
-    // Initialize all required properties of Product here
+  product: Product = {
+    id: 0,
     name: '',
     rental_price: 0,
-    id: 0,
     product_group: '',
-    stock_method: '',
     eventID: 0,
-    productCode: ''
+    productCode: '',
+    stock_method: ''
+
+
+
+    // Initialize other properties as necessary
   };
-  
-  
-  addedProduct: Product;
+  // Assuming 'menuSidebarActive' is for unrelated sidebar logic
+  menuSidebarActive: boolean = false;
 
-  public addProduct(): void {
-    this.productService.addProduct(this.newProduct).subscribe(
-      (response: Product) => {
-        console.log('Product added', response);
-        // Optionally redirect the user or clear the form
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
+  public id: number;
+  public isEdit: boolean = false;
+  constructor(private productService: ProductService, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.params.forEach((params: Params) => {
+      this.id = params['id'];
+      if (this.id) {
+        this.isEdit = true;
       }
-    );
+      console.log(this.id);
+      console.log(this.isEdit);
+      this.productService.GetById();
+    });
+    if (this.editProduct) {
+      // We're in edit mode, populate the form
+      this.product = { ...this.editProduct };
+    }
+    // Else, it's add mode, and 'product' is already initialized
   }
 
 
-  myfunction(){
-    if(this.menuSidebarActive==false){
-      this.menuSidebarActive=true;
-    }
-    else {
-      this.menuSidebarActive=false;
+  saveProduct() {
+    if (this.editProduct) {
+      // Edit mode logic here
+      // Call the ProductService method to update an existing product
+      // Example:
+      // this.productService.updateProduct(this.product.id, this.product).subscribe(...)
+    } else {
+      // Add mode logic
+      this.productService.addProduct(this.product).subscribe(
+        (response: Product) => {
+          console.log('Product added', response);
+          // Optionally redirect the user or clear the form
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
     }
   }
-  //sidebar menu activation end
 
-  constructor(private productService: ProductService) {}
-
-  ngOnInit(): void {}
-
-
-  
-
+  myfunction() {
+    this.menuSidebarActive = !this.menuSidebarActive; // Simplified toggle logic
+  }
 }
