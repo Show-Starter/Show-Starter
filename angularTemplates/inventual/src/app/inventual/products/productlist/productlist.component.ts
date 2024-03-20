@@ -3,6 +3,7 @@ import { ThemePalette } from '@angular/material/core';
 import { Product } from 'src/app/product';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductService } from 'src/app/product.service';
+import { Router } from '@angular/router';
 
 interface Task {
   name: string;
@@ -27,7 +28,7 @@ export class ProductlistComponent implements OnInit {
 
   menuSidebarActive: boolean = false;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,private router:Router) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -49,6 +50,10 @@ export class ProductlistComponent implements OnInit {
         console.error('There was an error!', error);
       }
     });
+  }
+
+  public editProduct(productId: number): void {
+    this.router.navigateByUrl(`/products/addproduct/${productId}`);
   }
 
   public filterProducts(): void {

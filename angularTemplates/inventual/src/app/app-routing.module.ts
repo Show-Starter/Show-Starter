@@ -84,6 +84,10 @@ const routes: Routes = [
   component: AddproductComponent
   },
 
+  {path: 'products/addproduct/:id',
+  component: AddproductComponent
+  },
+
 
   {
     path: 'dashboard',

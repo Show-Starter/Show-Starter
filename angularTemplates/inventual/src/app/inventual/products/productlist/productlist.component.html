@@ -130,7 +130,7 @@
                                                 Action <mat-icon>arrow_drop_down</mat-icon>
                                             </button>
                                             <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                                <button mat-menu-item [routerLink]="['/products/addproduct']">
+                                                <button mat-menu-item (click)="editProduct(product.id)">
                                                     <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
                                                     <span>Edit Product</span>
                                                 </button>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Product } from 'src/app/product'; // Ensure this path is correct
 import { ProductService } from 'src/app/product.service'; // Ensure this path is correct
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-addproduct',
@@ -21,14 +22,27 @@ export class AddproductComponent implements OnInit {
     productCode: '',
     stock_method: ''
 
+
+
     // Initialize other properties as necessary
   };
   // Assuming 'menuSidebarActive' is for unrelated sidebar logic
   menuSidebarActive: boolean = false;
 
-  constructor(private productService: ProductService) {}
+  public id: number;
+  public isEdit: boolean = false;
+  constructor(private productService: ProductService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.params.forEach((params: Params) => {
+      this.id = params['id'];
+      if (this.id) {
+        this.isEdit = true;
+      }
+      console.log(this.id);
+      console.log(this.isEdit);
+      this.productService.GetById();
+    });
     if (this.editProduct) {
       // We're in edit mode, populate the form
       this.product = { ...this.editProduct };
