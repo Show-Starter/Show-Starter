@@ -120,6 +120,7 @@ import { CustomerreportComponent } from './report/customerreport/customerreport.
 import { WarehousereportComponent } from './report/warehousereport/warehousereport.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { EventlistComponent } from './events/eventlist/eventlist.component';
+import { InvoicelistComponent } from './invoices/invoicelist/invoicelist.component';
 
 
 @NgModule({ 
@@ -247,7 +248,8 @@ import { EventlistComponent } from './events/eventlist/eventlist.component';
     CustomerreportComponent,
     WarehousereportComponent,
     EditProductComponent,
-    EventlistComponent
+    EventlistComponent,
+    InvoicelistComponent
   ]
 })
 export class InventualModule { }
