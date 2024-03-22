@@ -9,10 +9,9 @@ export class ProductService {
     apiServerUrl = environment.apiBaseUrl;
 
     constructor(private http: HttpClient){}
-
-    public GetById() {
-
-        this.http.get<Product[]>(`${this.apiServerUrl}/inventory/id`);
+    
+    public getById(id: number): Observable<Product> {
+        return this.http.get<Product>(`${this.apiServerUrl}/inventory/${id}`);
     }
 
     public getProducts(): Observable<Product[]> {

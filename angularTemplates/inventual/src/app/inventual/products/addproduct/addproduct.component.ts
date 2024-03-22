@@ -34,20 +34,24 @@ export class AddproductComponent implements OnInit {
   constructor(private productService: ProductService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.params.forEach((params: Params) => {
-      this.id = params['id'];
-      if (this.id) {
+    
+    this.route.params.subscribe((params: Params) => {
+      const id = +params['id']; // Convert to number
+      if (id) {
         this.isEdit = true;
+        this.id = id;
+        // Fetch the product details if in edit mode
+        this.productService.getById(id).subscribe(
+          (product: Product) => {
+            this.product = { ...product }; // Spread operator to clone the object
+          },
+          (error: HttpErrorResponse) => {
+            console.error('Error fetching product details:', error.message);
+            alert('Failed to load product details.');
+          }
+        );
       }
-      console.log(this.id);
-      console.log(this.isEdit);
-      this.productService.GetById();
     });
-    if (this.editProduct) {
-      // We're in edit mode, populate the form
-      this.product = { ...this.editProduct };
-    }
-    // Else, it's add mode, and 'product' is already initialized
   }
 
 
