@@ -1,5 +1,7 @@
 package com.example.showstarter.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ public class Event {
 	private String name;
 	private String location;
 	private String type;
-	private String date;
+	private Date date;
 	private String time;
 	private int invoice_num;
 	
@@ -24,7 +26,7 @@ public class Event {
 		this.name = name;
 		this.location = location;
 		this.type = type;
-		this.date = date;
+		this.date = Date.valueOf(date);
 		this.time = time;
 		this.invoice_num = invoice_num;
 	}
@@ -63,11 +65,11 @@ public class Event {
         this.type = type;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

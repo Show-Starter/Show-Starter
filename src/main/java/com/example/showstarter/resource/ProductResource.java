@@ -3,7 +3,9 @@ package com.example.showstarter.resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.showstarter.model.Item;
 import com.example.showstarter.model.Product;
+import com.example.showstarter.service.ItemService;
 import com.example.showstarter.service.ProductService;
 import org.springframework.http.HttpStatus;
 
@@ -16,9 +18,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/inventory")
 public class ProductResource {
     private final ProductService productService;
+    private final ItemService itemService;
 
-    public ProductResource(ProductService productService) {
+    public ProductResource(ProductService productService, ItemService itemService) {
         this.productService = productService;
+        this.itemService = itemService;
     }
 
     @GetMapping("/all")
@@ -49,6 +53,18 @@ public class ProductResource {
     public ResponseEntity<?> deleteProduct(@PathVariable("id") Long productID) {
         productService.deleteProduct(productID);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/items/{id}")
+    public ResponseEntity<List<Item>> getAllItems(@PathVariable("id") Long productID) {
+        List<Item> items = itemService.findAllItems(productID);
+        return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    @PostMapping("/items/add")
+    public ResponseEntity<Item> addItem(@RequestBody Item item) {
+        Item newItem = itemService.addItem(item);
+        return new ResponseEntity<>(newItem, HttpStatus.CREATED);
     }
 
 }
