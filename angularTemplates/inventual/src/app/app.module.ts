@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProductService } from './product.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { EventService } from './event.service';
+import { ItemService } from './item.service';
 
 
 @NgModule({
@@ -25,7 +27,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
   ],
-  providers: [ProductService],
+  providers: [ProductService, EventService, ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

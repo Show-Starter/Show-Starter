@@ -3,7 +3,7 @@ export interface Event {
     name: string;
     location: string;
     type: string;
-    date: string;
+    date: Date;
     time: string;
     invoice_num: number;
 }

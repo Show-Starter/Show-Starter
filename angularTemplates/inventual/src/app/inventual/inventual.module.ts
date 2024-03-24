@@ -121,6 +121,7 @@ import { WarehousereportComponent } from './report/warehousereport/warehouserepo
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { EventlistComponent } from './events/eventlist/eventlist.component';
 import { InvoicelistComponent } from './invoices/invoicelist/invoicelist.component';
+import { ItemlistComponent } from './products/itemlist/itemlist.component';
 
 
 
@@ -251,7 +252,8 @@ import { InvoicelistComponent } from './invoices/invoicelist/invoicelist.compone
     WarehousereportComponent,
     EditProductComponent,
     EventlistComponent,
-    InvoicelistComponent
+    InvoicelistComponent,
+    ItemlistComponent
   ]
 })
 export class InventualModule { }

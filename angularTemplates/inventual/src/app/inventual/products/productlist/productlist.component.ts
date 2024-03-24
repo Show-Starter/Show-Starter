@@ -25,6 +25,7 @@ export class ProductlistComponent implements OnInit {
   public currentPage: number = 1;
   public itemsPerPage: number = 100;
   public allComplete: boolean = false;
+  public itemListURL = "http://localhost:4200/products/itemlist?id=";
 
   menuSidebarActive: boolean = false;
 
@@ -52,8 +53,12 @@ export class ProductlistComponent implements OnInit {
     });
   }
 
-  public editProduct(productId: number): void {
-    this.router.navigateByUrl(`/products/addproduct/${productId}`);
+  public updateProduct(product: Product): void {
+    this.productService.updateProduct(product);
+  }
+
+  public goToItemList(itemId: number): void {
+    this.router.navigateByUrl(`/products/itemlist?id=${itemId}`);
   }
 
   public filterProducts(): void {
@@ -64,7 +69,8 @@ export class ProductlistComponent implements OnInit {
       this.parsedProducts = this.products.filter(product =>
         (product.name != null && product.name.toLowerCase().includes(this.searchText.toLowerCase())) ||
         (product.product_group != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase())) ||
-        product.rental_price.toString().includes(this.searchText)
+        (product.rental_price.toString().includes(this.searchText)) ||
+        product.id == +this.searchText
       );
     }
   }

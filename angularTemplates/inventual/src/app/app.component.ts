@@ -28,7 +28,6 @@ export class AppComponent implements OnInit {
     const storedDirection = localStorage.getItem('direction');
     this.isRTL = storedDirection === 'rtl';
     this.setDocumentDirection();
-    this.getProducts();
   }
 
   setDirection(direction: 'rtl' | 'ltr') {
@@ -45,16 +44,5 @@ export class AppComponent implements OnInit {
   private setDocumentDirection() {
     const direction = this.isRTL ? 'rtl' : 'ltr';
     this.renderer.setAttribute(this.el.nativeElement.ownerDocument.documentElement, 'dir', direction);
-  }
-
-  public getProducts(): void {
-    this.productService.getProducts().subscribe(
-      (response: Product[]) => {
-        AppComponent.products = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
   }
 }

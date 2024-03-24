@@ -19,5 +19,8 @@ public interface ItemRepo extends JpaRepository<Item, Long> {
 
     @Query("select date from Event e where e.id = ?1")
     Date findDateByEventID(Integer eventID);
+
+    @Query("select name from Event e where e.id = ?1")
+    String findEventNameByEventID(Integer eventID);
     
 }

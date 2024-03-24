@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.showstarter.exception.ProductNotFoundException;
 import com.example.showstarter.model.Item;
 import com.example.showstarter.repo.ItemRepo;
 
@@ -23,6 +24,7 @@ public class ItemService {
     public Item addItem(Item item) {
         item.setSerial_num(UUID.randomUUID().toString());
         item.setNext_date(findDateByEventID(item.getEventID()));
+        item.setEvent_name(findEventNameByEventID(item.getEventID()));
         return itemRepo.save(item);
     }
 
@@ -48,8 +50,20 @@ public class ItemService {
         return itemRepo.findDateByEventID(eventID);
     }
 
-    // public Item findItemById(Long itemID) {
-    //     return itemRepo.findItemById(itemID)
-    //         .orElseThrow(() -> new ItemNotFoundException("Item by id " + itemID + " was not found"));
-    // }
+    public String findEventNameByEventID(Integer eventID) {
+        return itemRepo.findEventNameByEventID(eventID);
+    }
+
+    public boolean isItemAvailable(Date itemDate, Date eventDate) {
+        if (itemDate.toString().equals(eventDate.toString())) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Item findItemById(Long itemID) {
+        return itemRepo.findItemById(itemID)
+            .orElseThrow(() -> new ProductNotFoundException("Item by id " + itemID + " was not found"));
+    }
 }

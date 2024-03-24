@@ -69,6 +69,7 @@ import { CustomerreportComponent } from './inventual/report/customerreport/custo
 
 import { EventlistComponent } from './inventual/events/eventlist/eventlist.component';
 import { AppComponent } from './app.component';
+import { ItemlistComponent } from './inventual/products/itemlist/itemlist.component';
 
 
 
@@ -342,6 +343,10 @@ const routes: Routes = [
   {
     path: 'events/eventlist',
     component: EventlistComponent
+  },
+  {
+    path: 'products/itemlist',
+    component: ItemlistComponent
   }
 ];
 

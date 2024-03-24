@@ -67,4 +67,22 @@ public class ProductResource {
         return new ResponseEntity<>(newItem, HttpStatus.CREATED);
     }
 
+    @GetMapping("/items/find/{id}")
+    public ResponseEntity<Item> getItemById(@PathVariable("id") Long itemID) {
+        Item item = itemService.findItemById(itemID);
+        return new ResponseEntity<>(item, HttpStatus.OK);
+    }
+
+    @PutMapping("/items/update")
+    public ResponseEntity<Item> updateItem(@RequestBody Item item) {
+        Item updateItem = itemService.updateItem(item);
+        return new ResponseEntity<>(updateItem, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/items/delete/{id}")
+    public ResponseEntity<?> deleteItem(@PathVariable("id") Long itemID) {
+        itemService.deleteItem(itemID);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
