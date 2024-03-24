@@ -34,42 +34,39 @@ export class AddproductComponent implements OnInit {
   constructor(private productService: ProductService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    
     this.route.params.subscribe((params: Params) => {
       const id = +params['id']; // Convert to number
       if (id) {
         this.isEdit = true;
-        this.id = id;
-        // Fetch the product details if in edit mode
-        this.productService.getById(id).subscribe(
-          (product: Product) => {
-            this.product = { ...product }; // Spread operator to clone the object
-          },
-          (error: HttpErrorResponse) => {
-            console.error('Error fetching product details:', error.message);
-            alert('Failed to load product details.');
-          }
-        );
+        // Fetch the product details and populate the form
       }
     });
   }
 
 
   saveProduct() {
-    if (this.editProduct) {
-      // Edit mode logic here
-      // Call the ProductService method to update an existing product
-      // Example:
-      // this.productService.updateProduct(this.product.id, this.product).subscribe(...)
-    } else {
-      // Add mode logic
-      this.productService.addProduct(this.product).subscribe(
-        (response: Product) => {
-          console.log('Product added', response);
-          // Optionally redirect the user or clear the form
+    if (this.isEdit) {
+      // Call the ProductService to update an existing product
+      this.productService.updateProduct(this.product).subscribe(
+        (response) => {
+          console.log('Product updated', response);
+          // Handle post-update logic here, like redirecting to the product list
         },
-        (error: HttpErrorResponse) => {
-          alert(error.message);
+        (error) => {
+          // Handle error
+          console.error('Error updating product:', error);
+        }
+      );
+    } else {
+      // Call the ProductService to add a new product
+      this.productService.addProduct(this.product).subscribe(
+        (response) => {
+          console.log('Product added', response);
+          // Handle post-add logic here
+        },
+        (error) => {
+          // Handle error
+          console.error('Error adding product:', error);
         }
       );
     }

@@ -68,6 +68,8 @@ export class EventlistComponent implements OnInit {
     }
     this.task.subtasks.forEach(t => t.completed = completed);
   }
+
+  
   //checkbox end
 
   //sidebar menu activation start
@@ -98,3 +100,4 @@ export class EventlistComponent implements OnInit {
   }
 
 }
+
