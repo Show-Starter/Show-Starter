@@ -26,6 +26,7 @@ export class ProductlistComponent implements OnInit {
   public itemsPerPage: number = 100;
   public allComplete: boolean = false;
   public itemListURL = "http://localhost:4200/products/itemlist?id=";
+  public editProductURL = "http://localhost:4200/products/edit-product?id=";
 
   menuSidebarActive: boolean = false;
 
@@ -53,8 +54,8 @@ export class ProductlistComponent implements OnInit {
     });
   }
 
-  public updateProduct(product: Product): void {
-    this.productService.updateProduct(product);
+  public goToEditProduct(productId: number): void {
+    this.router.navigateByUrl(`/products/edit-product?id=${productId}`);
   }
 
   public goToItemList(itemId: number): void {

@@ -1,2 +1,110 @@
-
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-bar-responsive" (click)="myfunction()">
+        <mat-icon>reorder</mat-icon>
+      </div>
+      <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+        <app-menu></app-menu>
+      </div>
+      <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-area">
+        <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-gray-border">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <app-header></app-header>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+        <div class="inventual-breadcrumb-area-inner px-0.5">
+          <h5 class="text-[20px] text-black font-bold mb-3">Edit Product</h5>
+          <div class="inventual-breadcrumb-area-inner-wrap">
+            <span class="text-[14px] text-gray font-normal inline-block me-2">Product</span>
+            <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
+            <span class="text-[14px] text-gray font-normal inline-block me-2">Edit Product</span>
+          </div>
+        </div>
+      </div>
+      <div class="inventual-content-area px-7">
+        <div class="inventual-unit-area bg-white p-7 custom-shadow rounded-8 mb-5">
+          <h4 class="text-[20px] text-black font-bold mb-10">Edit {{this.product.name}}</h4>
+          <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+            <div class="col-span-9 lg:col-span-8 sm:col-span-12 md:col-span-12">
+              <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                <div class="col-span-8 lg:col-span-6 md:col-span-6 sm:col-span-12">
+                  <div class="inventual-select-field mb-7">
+                    <h5 class="text-[15px] text-black font-semibold mb-3">Product Name</h5>
+                    <div class="inventual-input-field-style">
+                      <mat-form-field class="w-full" [floatLabel]="'always'">
+                        <input matInput [placeholder]="product.name" [(ngModel)]="product.name" name="productName">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
+                  <div class="inventual-select-field mb-5">
+                    <h5 class="text-[15px] text-black font-semibold mb-3">Product Groups</h5>
+                    <div class="inventual-select-field-style">
+                      <mat-form-field>
+                        <mat-select class="block" [placeholder]="product.product_group" [(ngModel)]="product.product_group">
+                          
+                
+                          <mat-option value="language-1">Select Product Group</mat-option>
+                          <mat-option value="Audio">Audio</mat-option>
+                          <mat-option value="Cables">Cables</mat-option>
+                          <mat-option value="Cameras">Cameras</mat-option>
+                          <mat-option value="Computers/Networking">Computers/Networking</mat-option>
+                          <mat-option value="Decor">Decor</mat-option>
+                          <mat-option value="Dj">Dj</mat-option>
+                          <mat-option value="Drape">Drape</mat-option>
+                          <mat-option value="Furniture">Furniture</mat-option>
+                          <mat-option value="FX">FX</mat-option>
+                          <mat-option value="Ladder/Lifts">Ladders/Lifts</mat-option>
+                          <mat-option value="Lighting">Lighting</mat-option>
+                          <mat-option value="Bulk">Bulk</mat-option>
+                          <mat-option value="Material Handling">Material Handling</mat-option>
+                          <mat-option value="Photobooth">Photobooth</mat-option>
+                          <mat-option value="Props">Props</mat-option>
+                          <mat-option value="Rigging">Rigging</mat-option>
+                          <mat-option value="Staging">Staging</mat-option>
+                          <mat-option value="Toolkits/Supplies">Toolkits/Supplies</mat-option>
+                          <mat-option value="Video">Video</mat-option>
+  
+  
+  
+  
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
+                  <div class="inventual-select-field mb-7">
+                    <h5 class="text-[15px] text-black font-semibold mb-3">Product Price</h5>
+                    <div class="inventual-input-field-style">
+                      <mat-form-field class="w-full" [floatLabel]="'always'">
+                        <mat-label class="hidden">89.99</mat-label>
+                        <input  matInput [placeholder]="product.rental_price.toString()" [(ngModel)]="product.rental_price">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+  
+  
+          </div>
+          <div class="inventual-material-btn1 button-group">
+            <button mat-raised-button color="warn" [routerLink]="['/products/productlist']">Cancel</button>
+            <button mat-raised-button color="primary" (click)="saveProduct()" [routerLink]="['/products/productlist']">
+              Update
+            </button>          
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  
   

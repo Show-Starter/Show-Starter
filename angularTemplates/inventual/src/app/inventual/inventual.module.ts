@@ -176,6 +176,7 @@ import { ItemlistComponent } from './products/itemlist/itemlist.component';
     ManagesaleComponent,
     OrderdiscountComponent,
     QuickaddcustomerComponent,
+    EventlistComponent,
     MakepaymentComponent,
     PaginationComponent,
     AddpaymentComponent,

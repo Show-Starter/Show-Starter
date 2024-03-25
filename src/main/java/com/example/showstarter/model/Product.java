@@ -19,17 +19,15 @@ public class Product implements Serializable {
 	private String product_group;
 	private String stock_method;
 	private Integer rental_price;
-	private Integer eventID;
 
     public Product() {}
 	
-	public Product(String name, String product_group, String stock_method, int rental_price, int eventID) {
+	public Product(String name, String product_group, String stock_method, int rental_price, int stock_level) {
 		// this.productID = productID;
 		this.name = name;
 		this.product_group = product_group;
 		this.stock_method = stock_method;
 		this.rental_price = rental_price;
-		this.eventID = eventID;
 	}
 
     public Long getId() {
@@ -70,13 +68,5 @@ public class Product implements Serializable {
 
     public void setRental_price(Integer rental_price) {
         this.rental_price = rental_price;
-    }
-
-    public Integer getEventID() {
-        return eventID;
-    }
-
-    public void setEventID(Integer eventID) {
-        this.eventID = eventID;
     }
 }

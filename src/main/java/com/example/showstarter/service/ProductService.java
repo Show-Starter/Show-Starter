@@ -38,4 +38,8 @@ public class ProductService {
         return productRepo.findProductById(productID)
             .orElseThrow(() -> new ProductNotFoundException("Product by id " + productID + " was not found"));
     }
+
+    public int getStockLevelById(Long productID) {
+        return productRepo.getStockLevelById(productID);
+    }
 }

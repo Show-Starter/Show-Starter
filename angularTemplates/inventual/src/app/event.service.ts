@@ -10,7 +10,23 @@ export class EventService {
 
     constructor(private http: HttpClient){}
 
+
+    public getById(id: number): Observable<Event> {
+        return this.http.get<Event>(`${this.apiServerUrl}/events/find/${id}`);
+    }
     public getEvents(): Observable<Event[]> {
         return this.http.get<Event[]>(`${this.apiServerUrl}/events/all`);
+    }
+
+    public addEvent(product: Event): Observable<Event> {
+        return this.http.post<Event>(`${this.apiServerUrl}/events/add`, event);
+    }
+
+    public updateEvent(product: Event): Observable<Event> {
+        return this.http.put<Event>(`${this.apiServerUrl}/events/update`, event);
+    }
+
+    public deleteEvent(eventID: Number): Observable<void> {
+        return this.http.delete<void>(`${this.apiServerUrl}/events/delete/${eventID}`);
     }
 }

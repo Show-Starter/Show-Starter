@@ -21,11 +21,8 @@ export class AddproductComponent implements OnInit {
     eventID: 0,
     productCode: '',
     stock_method: ''
-
-
-
-    // Initialize other properties as necessary
   };
+  
   // Assuming 'menuSidebarActive' is for unrelated sidebar logic
   menuSidebarActive: boolean = false;
 
@@ -38,6 +35,7 @@ export class AddproductComponent implements OnInit {
       const id = +params['id']; // Convert to number
       if (id) {
         this.isEdit = true;
+        console.log(this.isEdit);
         // Fetch the product details and populate the form
       }
     });

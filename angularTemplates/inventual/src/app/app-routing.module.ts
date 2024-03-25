@@ -70,6 +70,7 @@ import { CustomerreportComponent } from './inventual/report/customerreport/custo
 import { EventlistComponent } from './inventual/events/eventlist/eventlist.component';
 import { AppComponent } from './app.component';
 import { ItemlistComponent } from './inventual/products/itemlist/itemlist.component';
+import { EditProductComponent } from './inventual/products/edit-product/edit-product.component';
 
 
 
@@ -347,6 +348,10 @@ const routes: Routes = [
   {
     path: 'products/itemlist',
     component: ItemlistComponent
+  },
+  {
+    path: 'products/edit-product',
+    component: EditProductComponent
   }
 ];
 

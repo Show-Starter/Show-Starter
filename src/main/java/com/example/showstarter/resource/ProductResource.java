@@ -37,6 +37,12 @@ public class ProductResource {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
+    @GetMapping("/stock_level/{id}")
+    public ResponseEntity<Integer> getStockLevelById(@PathVariable("id") Long productID) {
+        int stock_level = productService.getStockLevelById(productID);
+        return new ResponseEntity<>(stock_level, HttpStatus.OK);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         Product newProduct = productService.addProduct(product);
