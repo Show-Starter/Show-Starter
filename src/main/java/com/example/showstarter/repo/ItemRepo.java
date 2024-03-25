@@ -22,5 +22,6 @@ public interface ItemRepo extends JpaRepository<Item, Long> {
 
     @Query("select name from Event e where e.id = ?1")
     String findEventNameByEventID(Integer eventID);
-    
+
+    int countByProductID(Long productID);
 }

@@ -18,9 +18,8 @@ export class AddproductComponent implements OnInit {
     name: '',
     rental_price: 0,
     product_group: '',
-    eventID: 0,
-    productCode: '',
-    stock_method: ''
+    stock_method: '',
+    stock_level: 0,
   };
   
   // Assuming 'menuSidebarActive' is for unrelated sidebar logic
@@ -43,6 +42,15 @@ export class AddproductComponent implements OnInit {
 
 
   saveProduct() {
+    this.productService.getStockLevel(this.product.id).subscribe(
+      (response: number) => {
+        this.product.stock_level = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+    
     if (this.isEdit) {
       // Call the ProductService to update an existing product
       this.productService.updateProduct(this.product).subscribe(

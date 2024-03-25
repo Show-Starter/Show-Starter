@@ -4,4 +4,5 @@ export interface Product {
     product_group: string;
     stock_method: string;
     rental_price: number;
+    stock_level: number;
 }

@@ -24,9 +24,8 @@ export class EditProductComponent implements OnInit {
     name: '',
     rental_price: 0,
     product_group: '',
-    eventID: 0,
-    productCode: '',
-    stock_method: ''
+    stock_method: '',
+    stock_level: 0,
   };
 
   constructor(private productService: ProductService, private http: HttpClient, 
@@ -53,6 +52,15 @@ export class EditProductComponent implements OnInit {
   }
 
   public saveProduct() {
+    this.productService.getStockLevel(this.product.id).subscribe(
+      (response: number) => {
+        this.product.stock_level = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+
     this.productService.updateProduct(this.product).subscribe(
       (response) => {
         console.log('Product updated', response);

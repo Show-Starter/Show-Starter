@@ -66,4 +66,8 @@ public class ItemService {
         return itemRepo.findItemById(itemID)
             .orElseThrow(() -> new ProductNotFoundException("Item by id " + itemID + " was not found"));
     }
+
+    public Integer countByProductId(Long productID) {
+        return itemRepo.countByProductID(productID);
+    }
 }

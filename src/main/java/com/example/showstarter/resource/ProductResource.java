@@ -39,7 +39,7 @@ public class ProductResource {
 
     @GetMapping("/stock_level/{id}")
     public ResponseEntity<Integer> getStockLevelById(@PathVariable("id") Long productID) {
-        int stock_level = productService.getStockLevelById(productID);
+        int stock_level = itemService.countByProductId(productID);
         return new ResponseEntity<>(stock_level, HttpStatus.OK);
     }
 

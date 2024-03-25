@@ -30,4 +30,8 @@ export class ProductService {
     public deleteProduct(productID: Number): Observable<void> {
         return this.http.delete<void>(`${this.apiServerUrl}/inventory/delete/${productID}`);
     }
+
+    public getStockLevel(productID: number): Observable<number> {
+        return this.http.get<number>(`${this.apiServerUrl}/inventory/stock_level/${productID}`);
+    }
 }

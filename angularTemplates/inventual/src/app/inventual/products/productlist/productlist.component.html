@@ -91,6 +91,10 @@
                                     <div class="inventual-manageproduct-table-sl1">
                                         <h5>Rental Price</h5>
                                     </div>
+
+                                    <div class="inventual-manageproduct-table-sl1">
+                                        <h5>Stock Level</h5>
+                                    </div>
                                     
                                     <div class="inventual-manageproduct-table-action1">
                                         <h5>Action</h5>
@@ -120,6 +124,11 @@
                                         <div class="inventual-manageproduct-table-sl1">
                                             <span> ${{product.rental_price}}</span>
                                         </div>
+
+                                        <div class="inventual-manageproduct-table-sl1">
+                                            <span>{{product.stock_level}}</span>
+                                        </div>
+
                                         <div class="inventual-manageproduct-table-action1">
                                             <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
                                                 Action <mat-icon>arrow_drop_down</mat-icon>
