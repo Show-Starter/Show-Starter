@@ -38,6 +38,7 @@ export class AddproductComponent implements OnInit {
       const id = +params['id']; // Convert to number
       if (id) {
         this.isEdit = true;
+        console.log(this.isEdit);
         // Fetch the product details and populate the form
       }
     });
