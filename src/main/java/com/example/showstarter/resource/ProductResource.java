@@ -1,12 +1,12 @@
 package com.example.showstarter.resource;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.example.showstarter.model.Item;
 import com.example.showstarter.model.Product;
 import com.example.showstarter.service.ItemService;
 import com.example.showstarter.service.ProductService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.http.HttpStatus;
 
 import java.sql.Date;
@@ -75,10 +75,15 @@ public class ProductResource {
     }
 
     @GetMapping("/items/event_name/{id}")
-    public ResponseEntity<String> getEventNameFromEventID(@PathVariable("id") Integer eventID) {
+    public ResponseEntity<Object> getEventNameFromEventID(@PathVariable("id") Integer eventID) throws JsonProcessingException {
         String event_name = itemService.findEventNameByEventID(eventID);
         System.out.println("Event name: " + event_name);
-        return new ResponseEntity<>(event_name, HttpStatus.OK);
+        
+        // Convert the event_name string to JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonEventName = objectMapper.writeValueAsString(event_name);
+        
+        return new ResponseEntity<>(jsonEventName, HttpStatus.OK);
     }
 
     @PostMapping("/items/add")

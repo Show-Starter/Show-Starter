@@ -94,8 +94,9 @@ export class ItemlistComponent implements OnInit {
     this.itemService.getItems(this.productID).subscribe(
       (response: Item[]) => {
         this.items = response;
+        console.log("Items Arr Length: " + this.items.length);
         for (let i = 0; i < this.items.length; i++) {
-          console.log(i);
+          console.log("Item i: " + i);
           this.eventService.getEventDate(this.items[i].eventID).subscribe(
             (response: Date) => {
               this.items[i].next_date = response.toString();
@@ -105,17 +106,14 @@ export class ItemlistComponent implements OnInit {
             }
           );
 
-          // this.eventService.getEventName(this.items[i].eventID).subscribe(
-          //   (response: String) => {
-          //     console.log("Response: " + response);
-          //     this.items[i].event_name = response;
-          //   },
-          //   (error: HttpErrorResponse) => {
-          //     alert(error.message);
-          //   }
-          // );
-
-          console.log("Event Name: " + this.items[i].event_name + " Next Date: " + this.items[i].next_date.toString());
+          this.eventService.getEventName(this.items[i].eventID).subscribe(
+            (response: String) => {
+              this.items[i].event_name = response;
+            },
+            (error: HttpErrorResponse) => {
+              alert(error.message);
+            }
+          );
         }
         this.initParse();
       },
