@@ -1,8 +1,8 @@
 export interface Item {
     id: number;
-    product_id: number;
+    productID: number;
     serial_num: string;
-    event_id: number;
-    event_name: string;
-    next_date: Date;
+    eventID: number;
+    event_name: String;
+    next_date: string;
 }

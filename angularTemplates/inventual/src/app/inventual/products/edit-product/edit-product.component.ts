@@ -28,8 +28,7 @@ export class EditProductComponent implements OnInit {
     stock_level: 0,
   };
 
-  constructor(private productService: ProductService, private http: HttpClient, 
-    private router: Router, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private http: HttpClient, private route: ActivatedRoute) {
       this.route.queryParams.subscribe(params => {
         this.productID = params['id'];
         console.log("Product ID: " + this.productID); // Print the parameter to the console. 

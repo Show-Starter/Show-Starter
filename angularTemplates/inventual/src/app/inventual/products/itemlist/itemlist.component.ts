@@ -6,6 +6,7 @@ import { ItemService } from 'src/app/item.service';
 import { Product } from 'src/app/product';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EventService } from 'src/app/event.service';
 
 interface Task {
   name: string;
@@ -36,7 +37,7 @@ export class ItemlistComponent implements OnInit {
   searchText = '';
 
   constructor(private itemService: ItemService, private http: HttpClient, 
-    private router: Router, private route: ActivatedRoute) {
+    private router: Router, private route: ActivatedRoute, private eventService: EventService) {
       this.route.queryParams.subscribe(params => {
         this.productID = params['id'];
         console.log("Product ID: " + this.productID); // Print the parameter to the console. 
@@ -93,6 +94,29 @@ export class ItemlistComponent implements OnInit {
     this.itemService.getItems(this.productID).subscribe(
       (response: Item[]) => {
         this.items = response;
+        for (let i = 0; i < this.items.length; i++) {
+          console.log(i);
+          this.eventService.getEventDate(this.items[i].eventID).subscribe(
+            (response: Date) => {
+              this.items[i].next_date = response.toString();
+            },
+            (error: HttpErrorResponse) => {
+              alert(error.message);
+            }
+          );
+
+          // this.eventService.getEventName(this.items[i].eventID).subscribe(
+          //   (response: String) => {
+          //     console.log("Response: " + response);
+          //     this.items[i].event_name = response;
+          //   },
+          //   (error: HttpErrorResponse) => {
+          //     alert(error.message);
+          //   }
+          // );
+
+          console.log("Event Name: " + this.items[i].event_name + " Next Date: " + this.items[i].next_date.toString());
+        }
         this.initParse();
       },
       (error: HttpErrorResponse) => {

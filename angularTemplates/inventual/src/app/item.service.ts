@@ -15,7 +15,6 @@ export class ItemService {
     }
 
     public getItems(product_id: number): Observable<Item[]> {
-        console.log("WE ARE HERE");
         return this.http.get<Item[]>(`${this.apiServerUrl}/inventory/items/${product_id}`);
     }
 

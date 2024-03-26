@@ -9,6 +9,7 @@ import com.example.showstarter.service.ItemService;
 import com.example.showstarter.service.ProductService;
 import org.springframework.http.HttpStatus;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -65,6 +66,19 @@ public class ProductResource {
     public ResponseEntity<List<Item>> getAllItems(@PathVariable("id") Long productID) {
         List<Item> items = itemService.findAllItems(productID);
         return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    @GetMapping("/items/next_date/{id}")
+    public ResponseEntity<Date> getNextDateFromEventID(@PathVariable("id") Integer eventID) {
+        Date next_date = itemService.findDateByEventID(eventID);
+        return new ResponseEntity<>(next_date, HttpStatus.OK);
+    }
+
+    @GetMapping("/items/event_name/{id}")
+    public ResponseEntity<String> getEventNameFromEventID(@PathVariable("id") Integer eventID) {
+        String event_name = itemService.findEventNameByEventID(eventID);
+        System.out.println("Event name: " + event_name);
+        return new ResponseEntity<>(event_name, HttpStatus.OK);
     }
 
     @PostMapping("/items/add")

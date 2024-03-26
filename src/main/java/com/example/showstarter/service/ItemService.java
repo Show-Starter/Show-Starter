@@ -23,8 +23,8 @@ public class ItemService {
 
     public Item addItem(Item item) {
         item.setSerial_num(UUID.randomUUID().toString());
-        item.setNext_date(findDateByEventID(item.getEventID()));
-        item.setEvent_name(findEventNameByEventID(item.getEventID()));
+        // item.setNext_date(findDateByEventID(item.getEventID()));
+        // item.setEvent_name(findEventNameByEventID(item.getEventID()));
         return itemRepo.save(item);
     }
 
@@ -33,12 +33,12 @@ public class ItemService {
     }
 
     public Item updateItem(Item item) {
-        if (item.getEventID() != null) {
-            item.setNext_date(itemRepo.findDateByEventID(item.getEventID()));
-        }
-        else {
-            item.setNext_date(null);
-        }
+        // if (item.getEventID() != null) {
+        //     item.setNext_date(itemRepo.findDateByEventID(item.getEventID()));
+        // }
+        // else {
+        //     item.setNext_date(null);
+        // }
         return itemRepo.save(item);
     }
 
