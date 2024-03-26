@@ -20,26 +20,33 @@
       </div>
         <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
             <div class="inventual-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-black font-bold mb-3">Add Adjustment</h5>
+                <h5 class="text-[20px] text-black font-bold mb-3">Create event</h5>
                 <div class="inventual-breadcrumb-area-inner-wrap">
-                    <span class="text-[14px] text-gray font-normal inline-block me-2">Product</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Event</span>
                     <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
-                    <span class="text-[14px] text-gray font-normal inline-block me-2">Add Adjustment</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Create Event</span>
                 </div>
             </div>
         </div>
         <div class="inventual-content-area px-7">
            <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
-               <h4 class="text-[20px] font-bold text-black mb-9">Add Adjustment</h4>
+               <h4 class="text-[20px] font-bold text-black mb-9">Create Event</h4>
                <div class="inventual-addbrand-upload-area flex items-center sm:block pb-2.5">
-                 <div class="inventual-input-field-style relative me-7 mb-5 sm:me-0 sm:mb-5">
-                   <div class="inventual-input-field-file-image1">
-                     <label for="fileUpload">Upload Image</label>
-                     <input type="file" id="fileUpload">
-                   </div>
-                 </div>
+                 
                  <div class="grid grid-cols-12 w-full gap-x-7 sm:gap-x-0">
                      <div class="col-span-6 sm:col-span-12">
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Name</h5>
+                                <div class="inventual-input-field-style">
+                                  <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">HP</mat-label>
+                                    <input matInput [placeholder]="'Warehouse'">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                         </div>
+                         
                         <div class="inventual-calender-field mb-5">
                             <h5 class="text-[15px] text-black font-semibold mb-3">Date</h5>
                             <div class="inventual-calender-field-style">
@@ -54,7 +61,7 @@
                      </div>
                      <div class="col-span-6 sm:col-span-12">
                         <div class="inventual-select-field w-full mb-5">
-                            <h5 class="text-[15px] text-black font-semibold mb-3">Warehouse</h5>
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Location</h5>
                             <div class="inventual-input-field-style">
                               <mat-form-field class="w-full" [floatLabel]="'always'">
                                 <mat-label class="hidden">HP</mat-label>
