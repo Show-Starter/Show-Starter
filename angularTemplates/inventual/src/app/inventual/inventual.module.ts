@@ -122,6 +122,7 @@ import { EditProductComponent } from './products/edit-product/edit-product.compo
 import { EventlistComponent } from './events/eventlist/eventlist.component';
 import { InvoicelistComponent } from './invoices/invoicelist/invoicelist.component';
 import { ItemlistComponent } from './products/itemlist/itemlist.component';
+import { CreateEventComponent } from './events/create-event/create-event.component';
 
 
 
@@ -254,7 +255,8 @@ import { ItemlistComponent } from './products/itemlist/itemlist.component';
     EditProductComponent,
     EventlistComponent,
     InvoicelistComponent,
-    ItemlistComponent
+    ItemlistComponent,
+    CreateEventComponent
   ]
 })
 export class InventualModule { }

@@ -71,6 +71,7 @@ import { EventlistComponent } from './inventual/events/eventlist/eventlist.compo
 import { AppComponent } from './app.component';
 import { ItemlistComponent } from './inventual/products/itemlist/itemlist.component';
 import { EditProductComponent } from './inventual/products/edit-product/edit-product.component';
+import { CreateEventComponent } from './inventual/events/create-event/create-event.component';
 
 
 
@@ -84,6 +85,9 @@ const routes: Routes = [
 
   {path: 'products/addproduct',
   component: AddproductComponent
+  },
+  {path:   'events/create-event',
+  component: CreateEventComponent
   },
 
   {path: 'products/addproduct/:id',
