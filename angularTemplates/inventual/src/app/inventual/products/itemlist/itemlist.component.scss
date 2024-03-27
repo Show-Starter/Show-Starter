@@ -35,19 +35,23 @@
 		@apply text-gray;
 	}
 }
-.inventual-manageitem-table-checkbox1 {
-	min-width: 140px;
-	width: 4%;
+
+.inventual-manageitem-table-sl1 {
+	min-width: 300px;
+	width: 5%;
+	margin-right: 0px;
+	padding-left: 50px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
-		min-width: 50px;
-		width: 4%;
+		min-width: 40px;
+		width: 20%;
 	}
 	@media (max-width: 1600px) {
-		min-width: 50px;
-		width: 4%;
+		min-width: 40px;
+		width: 20%;
 	}
 }
-.inventual-manageitem-table-sl1 {
+
+.inventual-manageitem-table-action1{	
 	min-width: 300px;
 	width: 10%;
 	margin-right: 0px;
