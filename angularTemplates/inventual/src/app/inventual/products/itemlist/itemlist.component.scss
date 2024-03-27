@@ -23,6 +23,7 @@
 .inventual-manageitem-table-action1 {
 	@apply flex;
 	@apply justify-start;
+	@apply items-center;
 	& h5 {
 		@apply text-[15px];
 		@apply font-semibold;

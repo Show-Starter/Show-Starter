@@ -35,6 +35,7 @@
 		@apply text-gray;
 	}
 }
+
 .inventual-manageproduct-table-image1{
 	min-width: 300px;
 	width: 5%;
@@ -48,10 +49,13 @@
 		width: 20%;
 	}
 }
+
+
 .inventual-manageproduct-table-sl1 {
 	min-width: 300px;
 	width: 5%;
 	margin-right: 0px;
+	padding-left: 50px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 40px;
 		width: 20%;
