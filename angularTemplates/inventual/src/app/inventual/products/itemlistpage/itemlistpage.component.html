@@ -1,0 +1,164 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-bar-responsive" (click)="myfunction()">
+        <mat-icon>reorder</mat-icon>
+      </div>
+      <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+        <app-menu></app-menu>
+      </div>
+      <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-area">
+        <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-gray-border">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <app-header></app-header>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-black font-bold mb-3">Item List</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Items</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Item List</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Items</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+           <div class="inventual-manageitem-area bg-white p-7 custom-shadow rounded-8 mb-5">
+               <h4 class="text-[20px] font-bold text-black mb-9">{{ this.productName }} Item List</h4>
+               <div class="inventual-material-btn mb-7">
+                    <button mat-raised-button color="accent" [routerLink]="['/item/additem']" class="mb-1"><mat-icon>add_circle_outline</mat-icon> Add Item</button>
+
+               </div>
+               <div class="inventual-table-header-search-area">
+                   <div class="grid grid-cols-12 gap-x-5 mb-7 pb-0.5">
+                       <div class="col-span-5 md:col-span-6 sm:col-span-12">
+                           <div class="inventual-table-header-search relative sm:mb-4">
+                            <input type="text" placeholder="Search List" [(ngModel)]="searchText" (ngModelChange)="filterItems()">
+                               <span><mat-icon>search</mat-icon></span>
+                           </div>
+                       </div>
+                       <div class="col-span-28 md:col-span-24 sm:col-span-48">
+                           <div class="inventual-table-header-search-action-btn text-end sm:text-start">
+
+                              <mat-menu #beforeMenuA="matMenu" xPosition="before">
+                                    <button mat-menu-item>
+                                        <span>Name</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Item Group</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Rental Price</span>
+                                    </button>
+                                    
+                                </mat-menu>
+
+
+                           </div>
+                       </div>
+                   </div>
+                </div>
+
+                
+                    <div class="inventual-manageitem-table-area">
+                        <div class="inventual-manageitem-table-inner1">
+                            <div class="inventual-manageitem-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
+                                <div class="inventual-manageitem-table-list1 flex border-b border-solid border-gray-borderThree h-20">
+                                    <div class="inventual-manageitem-table-checkbox1">
+                                        <!-- <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
+                                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                                        {{task.name}}
+                                        </mat-checkbox> -->
+                                    </div>
+                                    <div class="inventual-manageitem-table-sl1">
+                                        <h5>ID</h5>
+                                    </div>
+
+                                    <div class="inventual-manageitem-table-sl1">
+                                        <h5>Item</h5>
+                                    </div>
+                                    
+                                    <div class="inventual-manageitem-table-image1">
+                                        <h5>Serial Number</h5>
+                                    </div>
+
+                                    <div class="inventual-manageitem-table-sl1">
+                                        <h5>Event</h5> 
+                                    </div>
+
+                                    <div class="inventual-manageitem-table-sl1">
+                                        <h5>Next Date</h5> 
+                                    </div>
+                                    
+                                    <div class="inventual-manageitem-table-action1">
+                                        <h5>Action</h5>
+                                    </div>
+                                </div>
+                                
+                                <div *ngFor="let item of items; let i = index">
+                                    <div class="inventual-manageitem-table-list1 flex border-b border-solid border-black-borderThree h-20">
+                                        
+                                        <div class="inventual-manageitem-table-checkbox1 default-light-theme">
+                                            <!-- <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck(i, $event.checked)">
+                                                <label for="mat-checkbox-{{i}}-input"></label>
+                                            </mat-checkbox> -->
+                                        </div>
+                                        <div class="inventual-manageitem-table-sl1">
+                                            <span>{{item.id}}</span>
+                                        </div>
+
+                                        <div class="inventual-manageitem-table-sl1">
+                                            <span>{{productName}}</span>
+                                        </div>
+                                        <div class="inventual-manageitem-table-sl1">
+                                            <span>{{item.serial_num}}</span>
+                                        </div>
+
+                                        <div class="inventual-manageitem-table-sl1">
+                                            <span>{{item.event_name}}</span>
+                                        </div>
+                                        
+                                        <div class="inventual-manageitem-table-sl1">
+                                            <span>{{item.next_date}}</span>
+                                        </div>
+                                        <div class="inventual-manageitem-table-action1">
+                                            <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
+                                                Action <mat-icon>arrow_drop_down</mat-icon>
+                                            </button>
+                                            <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                                <button mat-menu-item (click)="updateItem(item.id)">
+                                                    <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
+                                                    <span>Edit Item</span>
+                                                </button>
+                                                <button mat-menu-item (click)="deleteItem(item.id)" http-equiv="refresh" content="3">
+                                                    <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
+                                                    <span>Delete</span>
+                                                    <meta >
+                                                </button>
+                                            </mat-menu>                                   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    <div class="inventual-pagination-area">
+                        <app-pagination [currentPage]="currentPage" [totalItems]="items.length" [itemsPerPage]="itemsPerPage" (pageChange)="onPageChange($any($event))"></app-pagination>
+                    </div>
+                </div>
+           </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+</div>
+

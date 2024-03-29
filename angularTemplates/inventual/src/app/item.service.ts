@@ -13,6 +13,9 @@ export class ItemService {
     public getById(id: number): Observable<Item> {
         return this.http.get<Item>(`${this.apiServerUrl}/inventory/items/find/${id}`);
     }
+    public getAllItems(): Observable<Item[]> {
+        return this.http.get<Item[]>(`${this.apiServerUrl}/inventory/items/all`);
+    }
 
     public getItems(product_id: number): Observable<Item[]> {
         return this.http.get<Item[]>(`${this.apiServerUrl}/inventory/items/${product_id}`);

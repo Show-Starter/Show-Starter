@@ -66,9 +66,9 @@ import { AddtransferComponent } from './inventual/transfer/addtransfer/addtransf
 import { TransferlistComponent } from './inventual/transfer/transferlist/transferlist.component';
 import { UserreportComponent } from './inventual/report/userreport/userreport.component';
 import { CustomerreportComponent } from './inventual/report/customerreport/customerreport.component';
-
 import { EventlistComponent } from './inventual/events/eventlist/eventlist.component';
 import { AppComponent } from './app.component';
+import { ItemlistpageComponent } from './inventual/products/itemlistpage/itemlistpage.component';
 import { ItemlistComponent } from './inventual/products/itemlist/itemlist.component';
 import { EditProductComponent } from './inventual/products/edit-product/edit-product.component';
 import { CreateEventComponent } from './inventual/events/create-event/create-event.component';
@@ -96,7 +96,10 @@ const routes: Routes = [
 
   { path: 'items/itemlist/:id', component: ItemlistComponent },
 
-
+  {
+    path: 'products/itemlistpage',
+    component: ItemlistpageComponent
+  },
 
   {
     path: 'dashboard',

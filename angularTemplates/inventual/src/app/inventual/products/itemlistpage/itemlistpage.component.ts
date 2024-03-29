@@ -15,12 +15,11 @@ interface Task {
 }
 
 @Component({
-  selector: 'app-itemlist',
-  templateUrl: './itemlist.component.html',
-  styleUrls: ['./itemlist.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-itemlistpage',
+  templateUrl: './itemlistpage.component.html',
+  styleUrls: ['./itemlistpage.component.scss']
 })
-export class ItemlistComponent implements OnInit {
+export class ItemlistpageComponent {
   public items: Item[] = [];
   // public parsedItems: Item[] = [];
   // public searchText: string = '';
@@ -47,8 +46,8 @@ export class ItemlistComponent implements OnInit {
   ngOnInit(): void {
     // this.productID = 178;
     // this.productID = +!this.route.snapshot.paramMap.get('id');
-    this.getItems();
-    this.getProductName(this.productID);
+    this.getAllItems();
+    
   }
 
   public task: Task = {
@@ -87,38 +86,19 @@ export class ItemlistComponent implements OnInit {
   }
   
   private refreshItems(productID: number): void {
-    this.getItems(); // Re-fetch the items after deletion
+    this.getAllItems(); // Re-fetch the items after deletion
   }
   
 
   
 
-  public getItems(): void {
-    this.itemService.getItems(this.productID).subscribe(
+   public getAllItems(): void {
+    this.itemService.getAllItems().subscribe(
       (response: Item[]) => {
         this.items = response;
-        console.log("Items Arr Length: " + this.items.length);
-        for (let i = 0; i < this.items.length; i++) {
-          console.log("Item i: " + i);
-          this.eventService.getEventDate(this.items[i].eventID).subscribe(
-            (response: Date) => {
-              this.items[i].next_date = response.toString();
-            },
-            (error: HttpErrorResponse) => {
-              alert(error.message);
-            }
-          );
 
-          this.eventService.getEventName(this.items[i].eventID).subscribe(
-            (response: String) => {
-              this.items[i].event_name = response;
-            },
-            (error: HttpErrorResponse) => {
-              alert(error.message);
-            }
-          );
-        }
         this.initParse();
+        this.filterItems();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -181,4 +161,6 @@ export class ItemlistComponent implements OnInit {
   public myfunction(): void {
     this.menuSidebarActive = !this.menuSidebarActive;
   }
+
+
 }

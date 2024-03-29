@@ -1,0 +1,172 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+
+// btn style
+@include inventualMaterialBtn;
+
+//inventual header searchbar
+@include inventualHeaderSearch;
+@include inventualCheckboxFieldStyle;
+
+//inventual header searchbar action
+@include inventualHeaderSearchAction;
+
+.inventual-manageitem-table-checkbox1,
+.inventual-manageitem-table-sl1,
+.inventual-manageitem-table-image1,
+.inventual-manageitem-table-name1
+.inventual-manageitem-table-code1
+.inventual-manageitem-table-variant1
+.inventual-manageitem-table-price1,
+.inventual-manageitem-table-action1 {
+	@apply flex;
+	@apply justify-start;
+	@apply items-center;
+	& h5 {
+		@apply text-[15px];
+		@apply font-semibold;
+		@apply text-black;
+	}
+	& span {
+		@apply text-[14px];
+		@apply font-normal;
+		@apply text-gray;
+	}
+}
+
+.inventual-manageitem-table-sl1 {
+	min-width: 300px;
+	width: 5%;
+	margin-right: 0px;
+	padding-left: 50px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 40px;
+		width: 20%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 40px;
+		width: 20%;
+	}
+}
+
+.inventual-manageitem-table-action1{	
+	min-width: 300px;
+	width: 10%;
+	margin-right: 0px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 40px;
+		width: 20%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 40px;
+		width: 20%;
+	}
+}
+.inventual-manageitem-table-image1 {
+	min-width: 100px;
+	width: 6%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 70px;
+		width: 20%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 70px;
+		width: 20%;
+	}
+}
+
+.inventual-manageitem-table-name1 {
+	min-width: 300px;
+	width: 10%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 40px;
+		width: 20%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 40px;
+		width: 20%;
+	}
+}
+
+
+.inventual-manageitem-table-code1 {
+	min-width: 300px;
+	width: 10%;
+	padding-left: 30px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 40px;
+		width: 20%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 40px;
+		width: 20%;
+	}
+}
+.inventual-manageitem-table-variant1 {
+	min-width: 100;
+	width: 6%;
+	padding-left: 30px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 70px;
+		width: 20%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 70px;
+		width: 20%;
+	}
+}
+
+.inventual-manageitem-table-price1 {
+	min-width: 125px;
+	width: 8%;
+	padding-left: 30px;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 10%;
+		min-width: 150px;
+	}
+	@media (max-width: 1600px) {
+		width: 10%;
+		min-width: 150px;
+	}
+}
+.common-action-menu-style {
+	margin-left: 0px;
+}
+
+.inventual-manageitem-table-list1 {
+    border: 1px solid #00000033;
+}
+
+.inventual-table-header-search {
+    border: 1px solid #00000033;
+}
+
+
+
+.inventual-manageitem-table-image-inner {
+    @apply inline-block;
+    @apply h-12;
+    @apply w-12;
+    @apply bg-gray-bgThree;
+    @apply rounded-[5px];
+    @apply p-2;
+}
+
+@include commonActionMenuStyle;
+
+.inventual-manageitem-table-inner1 {
+	@media (max-width: 1600px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.inventual-manageitem-table-inner-wrapper1 {
+	@media (max-width: 1600px) {
+		width: 1225px;
+        min-width: 100%;
+		scrollbar-height: thin;
+	}
+}
+
