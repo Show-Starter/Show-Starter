@@ -94,6 +94,9 @@ const routes: Routes = [
   component: AddproductComponent
   },
 
+  { path: 'items/itemlist/:id', component: ItemlistComponent },
+
+
 
   {
     path: 'dashboard',
