@@ -51,19 +51,7 @@ export class AddproductComponent implements OnInit {
       }
     )
     
-    if (this.isEdit) {
-      // Call the ProductService to update an existing product
-      this.productService.updateProduct(this.product).subscribe(
-        (response) => {
-          console.log('Product updated', response);
-          // Handle post-update logic here, like redirecting to the product list
-        },
-        (error) => {
-          // Handle error
-          console.error('Error updating product:', error);
-        }
-      );
-    } else {
+   
       // Call the ProductService to add a new product
       this.productService.addProduct(this.product).subscribe(
         (response) => {
@@ -75,7 +63,7 @@ export class AddproductComponent implements OnInit {
           console.error('Error adding product:', error);
         }
       );
-    }
+  
   }
 
   myfunction() {
