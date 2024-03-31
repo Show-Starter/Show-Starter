@@ -59,6 +59,19 @@
 		@apply ps-2.5;
 	}
 }
+
+.inventual-addsale-product-sl,
+.inventual-addsale-product-name,
+.inventual-addsale-product-code,
+.inventual-addsale-product-qty,
+.inventual-addsale-product-type,
+.inventual-addsale-product-action {
+	flex: 2;
+	align-items: center;
+}
+
+
+
 .inventual-addsale-product-action {
 	@apply border-e-0;
 }
@@ -192,3 +205,11 @@
 		scrollbar-height: thin;
 	}
 }
+.inventual-addsale-product-qty {
+	@include productCounter;
+	display: flex;
+	flex-direction: row; /* Ensure items are laid out horizontally */
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+  }
