@@ -4,6 +4,7 @@ import { Event } from 'src/app/event';
 import { HttpErrorResponse } from '@angular/common/http';
 import { EventService } from 'src/app/event.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Task {
   name: string;
@@ -29,7 +30,8 @@ export class EventlistComponent implements OnInit {
 
   menuSidebarActive: boolean = false;
 
-  constructor(private eventService: EventService,private router:Router) {}
+  constructor(private eventService: EventService,private router:Router,
+              private dialog: MatDialog,) {}
 
   ngOnInit(): void {
     this.getEvents();

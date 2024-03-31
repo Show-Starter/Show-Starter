@@ -29,13 +29,13 @@ export const navbarData: INavbarData[] = [
         routeLink: '/product/productlist',
         label: 'Product List',
       }, 
-
+/*
       {
         routeLink: '/products/itemlistpage', // JUST ADDED Ensure this path matches your Angular routing configuration
         label: 'Item List', // The label for the navigation menu
       }
 
-/*
+
       {
         routeLink: 'items',
         icon: 'fal fa-box-open',
