@@ -4,6 +4,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AddProductDialogComponent } from '../add-product-dialog/add-product-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ProductService } from 'src/app/product.service';
+import { Product } from 'src/app/product';
+
 
 
 @Component({
@@ -30,13 +33,14 @@ myfunction(){
 
 openAddProductDialog(): void {
   const dialogRef = this.dialog.open(AddProductDialogComponent, {
-    width: '250px', // Set your desired width
-    // data: {name: this.name, animal: this.animal} // Optional: if you want to pass data to the dialog
+    width: '1000px',
   });
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    // Handle your result here
+  dialogRef.afterClosed().subscribe((selectedProducts: Product[]) => {
+    if (selectedProducts && selectedProducts.length) {
+      console.log('Selected Products:', selectedProducts);
+      // Here you can add the selected products to a table or process them as needed
+    }
   });
 }
 

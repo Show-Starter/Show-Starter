@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddadjustmentComponent } from './addadjustment.component';
-
-describe('AddadjustmentComponent', () => {
-  let component: AddadjustmentComponent;
-  let fixture: ComponentFixture<AddadjustmentComponent>;
+import { CreateEventComponent } from './create-event.component';
+describe('CreateEventComponent', () => {
+  let component: CreateEventComponent;
+  let fixture: ComponentFixture<CreateEventComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddadjustmentComponent ]
+      declarations: [ CreateEventComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddadjustmentComponent);
+    fixture = TestBed.createComponent(CreateEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ProductService } from 'src/app/product.service';
+import { Product } from 'src/app/product';
 
 
 
@@ -8,19 +10,24 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './add-product-dialog.component.html',
   styleUrls: ['./add-product-dialog.component.scss']
 })
-export class AddProductDialogComponent {
-  constructor(public dialog: MatDialog) {}
+export class AddProductDialogComponent implements OnInit {
+  products: Product[] = [];
+  selectedProducts: Product[] = [];
 
-openAddProductDialog(): void {
-  const dialogRef = this.dialog.open(AddProductDialogComponent, {
-    width: '1000px', // Set your desired width
-    // data: {name: this.name, animal: this.animal} // Optional: if you want to pass data to the dialog
-  });
+  constructor(private productService: ProductService,
+              private MatDialog: MatDialog) { }
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    // Handle your result here
-  });
-}
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe(products => {
+      this.products = products;
+    });
+  }
 
+  toggleProductSelection(product: Product, isChecked: boolean): void {
+    if (isChecked) {
+      this.selectedProducts.push(product);
+    } else {
+      this.selectedProducts = this.selectedProducts.filter(p => p.id !== product.id);
+    }
+  }
 }
