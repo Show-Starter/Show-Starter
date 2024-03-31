@@ -38,11 +38,24 @@ openAddProductDialog(): void {
 
   dialogRef.afterClosed().subscribe((selectedProducts: Product[]) => {
     if (selectedProducts && selectedProducts.length) {
-      console.log('Selected Products:', selectedProducts);
-      // Here you can add the selected products to a table or process them as needed
+      selectedProducts.forEach(product => {
+        const existingProduct = this.selectedProducts.find(p => p.product.id === product.id);
+        if (existingProduct) {
+          existingProduct.quantity += 1; // Or handle as needed
+        } else {
+          this.selectedProducts.push({ product: product, quantity: 1 });
+        }
+      });
+      // Optionally calculate subtotals here if pricing logic is required
     }
   });
 }
+
+selectedProducts: Array<{
+  product: Product,
+  quantity: number,
+  subtotal?: number
+}> = [];
 
 //sidebar menu activation end
 
@@ -55,12 +68,17 @@ counters: { [key: string]: number } = {
   count4: 1
 };
 
-counter(key: string, type: string) {
-  if (type === "add") {
-    this.counters[key]++;
-  } else if (type === "subtract" && this.counters[key] > 1) {
-    this.counters[key]--;
+counter(index: number, type: string) {
+  let item = this.selectedProducts[index];
+  if (type === 'add') {
+    item.quantity++;
+  } else if (type === 'subtract' && item.quantity > 1) {
+    item.quantity--;
   }
+}
+
+removeProduct(index: number) {
+  this.selectedProducts.splice(index, 1);
 }
 
 constructor(public dialog: MatDialog) {}

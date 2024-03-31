@@ -127,171 +127,21 @@
                                 <h5 class="text-[15px] font-semibold text-black">Action</h5>
                             </div>
                         </div>
-                        <div class="inventual-addsale-product-list border-b border-solid border-gray-borderThree custom-height-70">
-                            <div class="inventual-addsale-product-sl">
-                                <span class="text-[14px] font-normal text-gray">01</span>
-                            </div>
-                            <div class="inventual-addsale-product-name">
-                                <span class="text-[14px] font-normal text-gray">Green lemon</span>
-                            </div>
-                            <div class="inventual-addsale-product-code">
-                                <span class="text-[14px] font-normal text-gray">875542233</span>
-                            </div>
+                        <div *ngFor="let item of selectedProducts; let i = index" class="inventual-addsale-product-list border-b border-solid border-gray-borderThree custom-height-70">
+                            <div class="inventual-addsale-product-sl">{{ i + 1 }}</div>
+                            <div class="inventual-addsale-product-name">{{ item.product.name }}</div>
                             <div class="inventual-addsale-product-qty">
-                                <span class="text-gray flex items-center">
-                                    <button type="button" (click)="counter('count', 'subtract')"><mat-icon>remove</mat-icon></button>
-                                    <p>{{ counters['count'] }}</p>
-                                    <button type="button" class="active" (click)="counter('count', 'add')"><mat-icon>add</mat-icon></button>
-                                </span>
+                                <button (click)="counter(i, 'subtract')">-</button>
+                                <span>{{ item.quantity }}</span>
+                                <button (click)="counter(i, 'add')">+</button>
                             </div>
-                            <div class="inventual-addsale-product-type me-20">
-                                <div class="inventual-select-field">
-                                    <div class="inventual-select-field-style">
-                                        <mat-form-field>
-                                            <mat-select class="block" [placeholder]="'Addition'">
-                                                <mat-option value="language-1">Addition</mat-option>
-                                                <mat-option value="language-2">Subtraction </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="inventual-addsale-product-type">{{ item.product.rental_price | currency }}</div>
+                            <!-- Calculate subtotal based on quantity * price -->
+                            <div class="inventual-addsale-product-type">{{ (item.product.rental_price * item.quantity) | currency }}</div>
                             <div class="inventual-addsale-product-action">
-                                <a href="javascript:void(0)" class="product-delete-btn"><mat-icon>clear</mat-icon></a>
+                              <a href="javascript:void(0)" (click)="removeProduct(i)"><mat-icon>clear</mat-icon></a>
                             </div>
-                        </div>
-                        <div class="inventual-addsale-product-list border-b border-solid border-gray-borderThree custom-height-70">
-                            <div class="inventual-addsale-product-sl">
-                                <span class="text-[14px] font-normal text-gray">02</span>
-                            </div>
-                            <div class="inventual-addsale-product-name">
-                                <span class="text-[14px] font-normal text-gray">Dell laptop</span>
-                            </div>
-                            <div class="inventual-addsale-product-code">
-                                <span class="text-[14px] font-normal text-gray">878718975</span>
-                            </div>
-                            <div class="inventual-addsale-product-qty">
-                                <span class="text-gray flex items-center">
-                                    <button type="button" (click)="counter('count1', 'subtract')"><mat-icon>remove</mat-icon></button>
-                                    <p>{{ counters['count1'] }}</p>
-                                    <button type="button" class="active" (click)="counter('count1', 'add')"><mat-icon>add</mat-icon></button>
-                                </span>
-                            </div>
-                            <div class="inventual-addsale-product-type me-20">
-                                <div class="inventual-select-field">
-                                    <div class="inventual-select-field-style">
-                                        <mat-form-field>
-                                            <mat-select class="block" [placeholder]="'Addition'">
-                                                <mat-option value="language-1">Addition</mat-option>
-                                                <mat-option value="language-2">Subtraction </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inventual-addsale-product-action">
-                                <a href="javascript:void(0)" class="product-delete-btn"><mat-icon>clear</mat-icon></a>
-                            </div>
-                        </div>
-                        <div class="inventual-addsale-product-list border-b border-solid border-gray-borderThree custom-height-70">
-                            <div class="inventual-addsale-product-sl">
-                                <span class="text-[14px] font-normal text-gray">03</span>
-                            </div>
-                            <div class="inventual-addsale-product-name">
-                                <span class="text-[14px] font-normal text-gray">Salwar Kamiz</span>
-                            </div>
-                            <div class="inventual-addsale-product-code">
-                                <span class="text-[14px] font-normal text-gray">458948949</span>
-                            </div>
-                            <div class="inventual-addsale-product-qty">
-                                <span class="text-gray flex items-center">
-                                    <button type="button" (click)="counter('count2', 'subtract')"><mat-icon>remove</mat-icon></button>
-                                    <p>{{ counters['count2'] }}</p>
-                                    <button type="button" class="active" (click)="counter('count2', 'add')"><mat-icon>add</mat-icon></button>
-                                </span>
-                            </div>
-                            <div class="inventual-addsale-product-type me-20">
-                                <div class="inventual-select-field">
-                                    <div class="inventual-select-field-style">
-                                        <mat-form-field>
-                                            <mat-select class="block" [placeholder]="'Addition'">
-                                                <mat-option value="language-1">Addition</mat-option>
-                                                <mat-option value="language-2">Subtraction </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inventual-addsale-product-action">
-                                <a href="javascript:void(0)" class="product-delete-btn"><mat-icon>clear</mat-icon></a>
-                            </div>
-                        </div>
-                        <div class="inventual-addsale-product-list border-b border-solid border-gray-borderThree custom-height-70">
-                            <div class="inventual-addsale-product-sl">
-                                <span class="text-[14px] font-normal text-gray">04</span>
-                            </div>
-                            <div class="inventual-addsale-product-name">
-                                <span class="text-[14px] font-normal text-gray">Tibet Shampoo</span>
-                            </div>
-                            <div class="inventual-addsale-product-code">
-                                <span class="text-[14px] font-normal text-gray">875654989</span>
-                            </div>
-                            <div class="inventual-addsale-product-qty">
-                                <span class="text-gray flex items-center">
-                                    <button type="button" (click)="counter('count3', 'subtract')"><mat-icon>remove</mat-icon></button>
-                                    <p>{{ counters['count3'] }}</p>
-                                    <button type="button" class="active" (click)="counter('count3', 'add')"><mat-icon>add</mat-icon></button>
-                                </span>
-                            </div>
-                            <div class="inventual-addsale-product-type me-20">
-                                <div class="inventual-select-field">
-                                    <div class="inventual-select-field-style">
-                                        <mat-form-field>
-                                            <mat-select class="block" [placeholder]="'Addition'">
-                                                <mat-option value="language-1">Addition</mat-option>
-                                                <mat-option value="language-2">Subtraction </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inventual-addsale-product-action">
-                                <a href="javascript:void(0)" class="product-delete-btn"><mat-icon>clear</mat-icon></a>
-                            </div>
-                        </div>
-                        <div class="inventual-addsale-product-list border-b border-solid border-gray-borderThree custom-height-70">
-                            <div class="inventual-addsale-product-sl">
-                                <span class="text-[14px] font-normal text-gray">05</span>
-                            </div>
-                            <div class="inventual-addsale-product-name">
-                                <span class="text-[14px] font-normal text-gray">Cannon Printer</span>
-                            </div>
-                            <div class="inventual-addsale-product-code">
-                                <span class="text-[14px] font-normal text-gray">985112105</span>
-                            </div>
-                            <div class="inventual-addsale-product-qty">
-                                <span class="text-gray flex items-center">
-                                    <button type="button" (click)="counter('count4', 'subtract')"><mat-icon>remove</mat-icon></button>
-                                    <p>{{ counters['count4'] }}</p>
-                                    <button type="button" class="active" (click)="counter('count4', 'add')"><mat-icon>add</mat-icon></button>
-                                </span>
-                            </div>
-                            <div class="inventual-addsale-product-type me-20">
-                                <div class="inventual-select-field">
-                                    <div class="inventual-select-field-style">
-                                        <mat-form-field>
-                                            <mat-select class="block" [placeholder]="'Addition'">
-                                                <mat-option value="language-1">Addition</mat-option>
-                                                <mat-option value="language-2">Subtraction </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inventual-addsale-product-action">
-                                <a href="javascript:void(0)" class="product-delete-btn"><mat-icon>clear</mat-icon></a>
-                            </div>
-                        </div>
+                          </div>
                     </div>  
                 </div>
                 </div>
