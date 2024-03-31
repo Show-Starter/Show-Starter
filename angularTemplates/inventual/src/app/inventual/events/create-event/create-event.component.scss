@@ -1,4 +1,6 @@
 @import '../../../../custom-palettes.scss';
+@include inventualMaterialBtn;
+
 
 .inventual-input-field-file-image1 input {
 	@apply hidden;

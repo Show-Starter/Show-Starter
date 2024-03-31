@@ -124,6 +124,7 @@ import { InvoicelistComponent } from './invoices/invoicelist/invoicelist.compone
 import { ItemlistComponent } from './products/itemlist/itemlist.component';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { ItemlistpageComponent } from './products/itemlistpage/itemlistpage.component';
+import { AddProductDialogComponent } from './events/add-product-dialog/add-product-dialog.component';
 
 
 
@@ -258,7 +259,8 @@ import { ItemlistpageComponent } from './products/itemlistpage/itemlistpage.comp
     InvoicelistComponent,
     ItemlistComponent,
     CreateEventComponent,
-    ItemlistpageComponent
+    ItemlistpageComponent,
+    AddProductDialogComponent
   ]
 })
 export class InventualModule { }

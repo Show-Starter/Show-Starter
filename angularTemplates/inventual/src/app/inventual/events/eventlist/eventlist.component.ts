@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { EventService } from 'src/app/event.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { AddProductDialogComponent } from '../add-product-dialog/add-product-dialog.component';
 
 interface Task {
   name: string;
@@ -54,6 +55,7 @@ export class EventlistComponent implements OnInit {
       }
     });
   }
+
 
   public updateEvent(event: Event): void {
     this.eventService.updateEvent(event);
