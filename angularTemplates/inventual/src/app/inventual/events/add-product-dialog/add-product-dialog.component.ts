@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from 'src/app/product.service';
 import { Product } from 'src/app/product';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -11,6 +13,7 @@ import { Product } from 'src/app/product';
   styleUrls: ['./add-product-dialog.component.scss']
 })
 export class AddProductDialogComponent implements OnInit {
+
   products: Product[] = [];
   selectedProducts: Product[] = [];
 
@@ -23,6 +26,9 @@ export class AddProductDialogComponent implements OnInit {
     });
   }
 
+  isSelected(product: Product): boolean {
+    return this.selectedProducts.some(selected => selected.id === product.id);
+  }
   toggleProductSelection(product: Product, isChecked: boolean): void {
     if (isChecked) {
       this.selectedProducts.push(product);
@@ -30,4 +36,15 @@ export class AddProductDialogComponent implements OnInit {
       this.selectedProducts = this.selectedProducts.filter(p => p.id !== product.id);
     }
   }
+  
+
+
 }
+
+
+
+
+
+
+
+
