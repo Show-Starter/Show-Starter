@@ -5,6 +5,12 @@
       <!-- Include any header or search functionality here -->
     </div>
   </div>
+  <div class="col-span-5 md:col-span-6 sm:col-span-12">
+    <div class="inventual-table-header-search relative sm:mb-4">
+     <input type="text" placeholder="Search List" [(ngModel)]="searchText" (ngModelChange)="filterProducts()">
+        <span><mat-icon>search</mat-icon></span>
+    </div>
+</div>
   
   <div class="inventual-add-product-dialog-table-area">
     <div class="inventual-add-product-dialog-table-inner1">
@@ -20,7 +26,7 @@
       </div>
       
       <!-- Product Rows -->
-      <div *ngFor="let product of products; let i = index" class="inventual-add-product-dialog-table-list1 flex border-b border-solid border-black-borderThree h-20">
+      <div *ngFor="let product of parsedProducts; let i = index" class="inventual-add-product-dialog-table-list1 flex border-b border-solid border-black-borderThree h-20">
         <div class="inventual-add-product-dialog-table-checkbox1">
           <mat-checkbox [checked]="isSelected(product)" (change)="toggleProductSelection(product, $event.checked)"></mat-checkbox>
         </div>
@@ -39,4 +45,5 @@
 <mat-dialog-actions>
   <button mat-button [mat-dialog-close]="selectedProducts">Add Selected</button>
   <button mat-button mat-dialog-close>Cancel</button>
+
 </mat-dialog-actions>

@@ -48,7 +48,7 @@ export class EventlistComponent implements OnInit {
     this.eventService.deleteEvent(eventID).subscribe({
       next: () => {
         console.log('Event deleted successfully');
-        this.refreshProducts(); // Refresh the product list
+        this.refreshEvents(); // Refresh the product list
       },
       error: (error: HttpErrorResponse) => {
         console.error('There was an error!', error);
@@ -65,7 +65,7 @@ export class EventlistComponent implements OnInit {
     this.router.navigateByUrl(`/events/find?id=${id}`);
   }
 
-  public filterProducts(): void {
+  public filterEvents(): void {
    
     if (this.searchText == '') {
       this.initParse(); // If no search text, show all products
@@ -79,7 +79,7 @@ export class EventlistComponent implements OnInit {
     }
   }
   
-  private refreshProducts(): void {
+  private refreshEvents(): void {
     this.getEvents(); // Re-fetch the products after deletion
   }
 
@@ -89,7 +89,7 @@ export class EventlistComponent implements OnInit {
         this.events = response;
         console.log("eventID: " + this.events[0].id);
         this.initParse();
-        this.filterProducts();
+        this.filterEvents();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

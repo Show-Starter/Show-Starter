@@ -86,13 +86,7 @@
                      
                      <div class="col-span-12">
                         <div class="inventual-select-field w-full mb-5">
-                            <h5 class="text-[15px] text-black font-semibold mb-3">Select Product</h5>
-                            <div class="inventual-input-field-style">
-                              <mat-form-field class="w-full" [floatLabel]="'always'">
-                                <mat-label class="hidden">HP</mat-label>
-                                <input matInput [placeholder]="'Scan / search products by code / name'">
-                              </mat-form-field>
-                            </div>
+
                             <div class="inventual-material-btn mb-7">
                                 <button mat-raised-button color="accent" (click)="openAddProductDialog()" class="mb-1">
                                     <mat-icon>add_circle_outline</mat-icon> Add Product
@@ -109,7 +103,7 @@
                     <div class="inventual-addsale-product-wrapper-inner-wrap">
                         <div class="inventual-addsale-product-list h-12 border-b border-solid border-gray-borderThree">
                             <div class="inventual-addsale-product-sl">
-                                <h5 class="text-[15px] font-semibold text-black">SL</h5>
+                                <h5 class="text-[15px] font-semibold text-black">ID</h5>
                             </div>
                             <div class="inventual-addsale-product-name">
                                 <h5 class="text-[15px] font-semibold text-black">Name</h5>
@@ -147,6 +141,9 @@
                 </div>
            </div>
            <button mat-raised-button color="warn" [routerLink]="['/events/eventlist']">Cancel</button>
+           <button mat-raised-button color="primary"  [routerLink]="['/events/eventlist']">
+            Next
+          </button>    
         </div>
         <div class="inventual-copyright-area">
             <app-copyright></app-copyright>
