@@ -108,9 +108,9 @@
                             <div class="inventual-addsale-product-name">
                                 <h5 class="text-[15px] font-semibold text-black">Name</h5>
                             </div>
-                            <div class="inventual-addsale-product-code">
+                            <!-- <div class="inventual-addsale-product-code">
                                 <h5 class="text-[15px] font-semibold text-black">Code</h5>
-                            </div>
+                            </div> -->
                             <div class="inventual-addsale-product-qty">
                                 <h5 class="text-[15px] font-semibold text-black">Quantity</h5>
                             </div>
@@ -129,7 +129,7 @@
                                 <span>{{ item.quantity }}</span>
                                 <button (click)="counter(i, 'add')">+</button>
                             </div>
-                            <div class="inventual-addsale-product-type">15</div>
+                            <!-- <div class="inventual-addsale-product-type">15</div> -->
                             <!-- Calculate subtotal based on quantity * price -->
                             <div class="inventual-addsale-product-type">{{ (item.product.rental_price * item.quantity) | currency }}</div>
                             <div class="inventual-addsale-product-action">
