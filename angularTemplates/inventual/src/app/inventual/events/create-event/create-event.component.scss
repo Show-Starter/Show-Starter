@@ -70,7 +70,11 @@
 	align-items: center;
 }
 
-
+.inventual-button-container {
+    @apply flex;
+    @apply justify-end; // This ensures the content is aligned to the end of the container
+    @apply w-full; // Take the full width to allow alignment to work correctly
+}
 
 .inventual-addsale-product-action {
 	@apply border-e-0;
