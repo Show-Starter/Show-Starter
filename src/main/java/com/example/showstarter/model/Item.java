@@ -15,13 +15,11 @@ public class Item {
     @Column(nullable = false, updatable = false)
     private Integer productID;
 	private String serial_num;
-	private Integer eventID;
 	
 	public Item(int productID, String serial_num, int eventID) {
 		// this.id = id;
 		this.productID = productID;
 		this.serial_num = serial_num;
-        this.eventID = eventID;
 	}
 
     public Item() {}
@@ -48,13 +46,5 @@ public class Item {
 
     public void setSerial_num(String serial_num) {
         this.serial_num = serial_num;
-    }
-
-    public Integer getEventID() {
-        return eventID;
-    }
-
-    public void setEventID(Integer eventID) {
-        this.eventID = eventID;
     }
 }

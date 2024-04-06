@@ -4,12 +4,8 @@ import com.example.showstarter.model.Item;
 import com.example.showstarter.model.Product;
 import com.example.showstarter.service.ItemService;
 import com.example.showstarter.service.ProductService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.http.HttpStatus;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -68,23 +64,23 @@ public class ProductResource {
         return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
-    @GetMapping("/items/next_date/{id}")
-    public ResponseEntity<Date> getNextDateFromEventID(@PathVariable("id") Integer eventID) {
-        Date next_date = itemService.findDateByEventID(eventID);
-        return new ResponseEntity<>(next_date, HttpStatus.OK);
-    }
+    // @GetMapping("/items/next_date/{id}")
+    // public ResponseEntity<Date> getNextDateFromEventID(@PathVariable("id") Integer eventID) {
+    //     Date next_date = itemService.findDateByEventID(eventID);
+    //     return new ResponseEntity<>(next_date, HttpStatus.OK);
+    // }
 
-    @GetMapping("/items/event_name/{id}")
-    public ResponseEntity<Object> getEventNameFromEventID(@PathVariable("id") Integer eventID) throws JsonProcessingException {
-        String event_name = itemService.findEventNameByEventID(eventID);
-        System.out.println("Event name: " + event_name);
+    // @GetMapping("/items/event_name/{id}")
+    // public ResponseEntity<Object> getEventNameFromEventID(@PathVariable("id") Integer eventID) throws JsonProcessingException {
+    //     String event_name = itemService.findEventNameByEventID(eventID);
+    //     System.out.println("Event name: " + event_name);
         
-        // Convert the event_name string to JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonEventName = objectMapper.writeValueAsString(event_name);
+    //     // Convert the event_name string to JSON
+    //     ObjectMapper objectMapper = new ObjectMapper();
+    //     String jsonEventName = objectMapper.writeValueAsString(event_name);
         
-        return new ResponseEntity<>(jsonEventName, HttpStatus.OK);
-    }
+    //     return new ResponseEntity<>(jsonEventName, HttpStatus.OK);
+    // }
 
     @PostMapping("/items/add")
     public ResponseEntity<Item> addItem(@RequestBody Item item) {

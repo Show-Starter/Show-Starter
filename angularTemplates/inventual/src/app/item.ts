@@ -1,8 +1,10 @@
+import { ItemEvent } from "./itemevent";
+
 export interface Item {
     id: number;
     productID: number;
     serial_num: string;
-    eventID: number;
+    item_events: ItemEvent[];
+    next_date: Date;
     event_name: String;
-    next_date: string;
 }

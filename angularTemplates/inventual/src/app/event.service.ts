@@ -31,7 +31,7 @@ export class EventService {
     }
 
     public getEventDate(eventID: Number): Observable<Date> {
-        return this.http.get<Date>(`${this.apiServerUrl}/inventory/items/next_date/${eventID}`);
+        return this.http.get<Date>(`${this.apiServerUrl}/item_event/next_date/${eventID}`);
     }
 
     public getEventName(eventID: Number): Observable<String> {

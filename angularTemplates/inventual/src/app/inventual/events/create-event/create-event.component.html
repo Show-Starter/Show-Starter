@@ -52,7 +52,7 @@
                             <div class="inventual-calender-field-style">
                                 <mat-form-field appearance="fill" floatLabel="always">
                                     <mat-label class="hidden">Choose a date</mat-label>
-                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'">
+                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'" [(ngModel)]="event.date" name="date">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>

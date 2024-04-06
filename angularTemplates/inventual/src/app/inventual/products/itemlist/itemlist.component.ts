@@ -7,6 +7,8 @@ import { Product } from 'src/app/product';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from 'src/app/event.service';
+import { ItemEventService } from 'src/app/itemevent.service';
+import { ItemEvent } from 'src/app/itemevent';
 
 interface Task {
   name: string;
@@ -36,7 +38,7 @@ export class ItemlistComponent implements OnInit {
   productName: String;
   searchText = '';
 
-  constructor(private itemService: ItemService, private http: HttpClient, 
+  constructor(private itemService: ItemService, private http: HttpClient, private itemEventService: ItemEventService,
     private router: Router, private route: ActivatedRoute, private eventService: EventService) {
       this.route.queryParams.subscribe(params => {
         this.productID = params['id'];
@@ -99,24 +101,72 @@ export class ItemlistComponent implements OnInit {
         this.items = response;
         console.log("Items Arr Length: " + this.items.length);
         for (let i = 0; i < this.items.length; i++) {
-          console.log("Item i: " + i);
-          this.eventService.getEventDate(this.items[i].eventID).subscribe(
-            (response: Date) => {
-              this.items[i].next_date = response.toString();
+          // console.log("Item i: " + i);
+          // this.eventService.getEventDate(this.items[i].eventID).subscribe(
+          //   (response: Date) => {
+          //     this.items[i].next_date = response.toString();
+          //   },
+          //   (error: HttpErrorResponse) => {
+          //     alert(error.message);
+          //   }
+          // );
+
+          // this.eventService.getEventName(this.items[i].eventID).subscribe(
+          //   (response: String) => {
+          //     this.items[i].event_name = response;
+          //   },
+          //   (error: HttpErrorResponse) => {
+          //     alert(error.message);
+          //   }
+          // );
+          // console.log(this.items[i].id);
+          this.items[i].item_events = [];
+
+          this.itemEventService.getItemEventsByItemID(this.items[i].id).subscribe(
+            (response: ItemEvent[]) => {
+              this.items[i].item_events = response;
+              console.log(this.items[i].item_events[0].eventID);
             },
             (error: HttpErrorResponse) => {
               alert(error.message);
             }
           );
 
-          this.eventService.getEventName(this.items[i].eventID).subscribe(
-            (response: String) => {
-              this.items[i].event_name = response;
-            },
-            (error: HttpErrorResponse) => {
-              alert(error.message);
+          const event_dates: Date[] = [];
+
+          console.log(this.items[i].item_events[0].eventID);
+
+          if (this.items[i].item_events) {
+            for (let j = 0; j < this.items[i].item_events.length; j++) {
+              this.eventService.getEventDate(this.items[i].item_events[j].eventID).subscribe(
+                (response: Date) => {
+                  console.log("Date: " + response);
+                  this.items[i].item_events[j].event_date = response;
+                  event_dates.push(this.items[i].item_events[j].event_date);
+                },
+                (error: HttpErrorResponse) => {
+                  alert(error.message);
+                }
+              );
+
+              this.eventService.getEventName(this.items[i].item_events[j].eventID).subscribe(
+                (response: String) => {
+                  this.items[i].item_events[j].event_name = response;
+                },
+                (error: HttpErrorResponse) => {
+                  alert(error.message);
+                }
+              );
             }
-          );
+
+            var closestDate = this.findClosestDate(event_dates);
+            for (let j = 0; j < this.items[i].item_events.length; j++) {
+              if (closestDate == this.items[i].item_events[j].event_date) {
+                this.items[i].next_date = this.items[i].item_events[j].event_date;
+                this.items[i].event_name = this.items[i].item_events[j].event_name;
+              }
+            }
+          }
         }
         this.initParse();
       },
@@ -180,5 +230,24 @@ export class ItemlistComponent implements OnInit {
 
   public myfunction(): void {
     this.menuSidebarActive = !this.menuSidebarActive;
+  }
+
+  public findClosestDate(dates: Date[]): Date | null {
+    const targetDate = new Date();
+
+    if (dates.length === 0) return null;
+
+    let closestDate = dates[0];
+    let closestDifference = Math.abs(targetDate.getTime() - closestDate.getTime());
+
+    for (let i = 1; i < dates.length; i++) {
+        const currentDifference = Math.abs(targetDate.getTime() - dates[i].getTime());
+        if (currentDifference < closestDifference) {
+            closestDate = dates[i];
+            closestDifference = currentDifference;
+        }
+    }
+
+    return closestDate;
   }
 }
