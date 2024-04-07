@@ -1,7 +1,6 @@
 @import '../../../../custom-palettes.scss';
 
 .inventual-add-product-dialog-table-checkbox1,
-.inventual-add-product-dialog-table-sl1,
 .inventual-add-product-dialog-table-image1,
 .inventual-add-product-dialog-table-name1
 .inventual-add-product-dialog-table-code1
@@ -24,68 +23,10 @@
 	}
 }
 
-/* Assuming a shared class for simplicity, adjust flex values as necessary */
-.inventual-add-product-dialog-table-checkbox1 { flex: 1; }
-.inventual-add-product-dialog-table-sl1 { flex: 2; } /* ID and similar */
-.inventual-add-product-dialog-table-image1 { flex: 3; } /* Name, potentially needing more space */
-.inventual-add-product-dialog-table-action1 { flex: 1; } /* Actions, if they need limited space */
 
-/* Adjusting for media queries if necessary */
-@media (max-width: 1600px) {
-  .inventual-add-product-dialog-table-sl1,
-  .inventual-add-product-dialog-table-image1,
-  .inventual-add-product-dialog-table-action1
-   {
-    /* Adjust flex basis or width as necessary for smaller screens */
-	text-align: right;
 
-  }
-}
-/* Adjusting layout for Product Group, Rental Price, and Stock Level headers */
 
-.inventual-add-product-dialog-table-sl1:nth-child(4),
-.inventual-add-product-dialog-table-sl1:nth-child(5),
-.inventual-add-product-dialog-table-sl1:nth-child(6) {
-  flex: 3; /* Distribute remaining space evenly */
-  text-align: center; /* Optionally center the text */
-}
-
-.inventual-add-product-dialog-table-sl1,
-.inventual-add-product-dialog-table-sl1:nth-child(2),
-.inventual-add-product-dialog-table-sl1:nth-child(3) {
-  flex: 4; /* Distribute remaining space evenly */
-  text-align: left; /* Optionally center the text */
-}
-
-						
-
-.inventual-add-product-dialog-table-sl1:nth-child(5) {
-	 /* Pushes the column to the right */
-	flex: 4;
-	text-align: right;
-  }
-
-/* Adjust the display for the list container */
-.inventual-add-product-dialog-table-list1 {
-	display: table;
-	width: 100%;
-	border-collapse: collapse; /* Ensure consistent borders */
-  }
   
-  /* Set each column as a table cell */
-  .inventual-add-product-dialog-table-list1 > div {
-	display: table-cell;
-	padding: 8px 10px; /* Adjust padding as needed */
-	
-  }
-  
-  /* Optional: Apply specific styling to the checkbox column */
-  .inventual-add-product-dialog-table-checkbox1 {
-	width: 50px; /* Adjust width as needed */
-  }
-
-
-  /**
 .inventual-add-product-dialog-table-image1{
 	min-width: 300px;
 	width: 5%;
@@ -100,24 +41,38 @@
 	}
 }
 
-  /**
+  
 
 .inventual-add-product-dialog-table-sl1 {
 	min-width: 300px;
-	width: 0%;
+	width: 5%;
 	margin-right: 0px;
 	margin-left: 0px;
 	padding-left: 50px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 40px;
-		width: 50%;
+		width: 20%;
 	}
 	@media (max-width: 1600px) {
 		min-width: 40px;
-		width: 50%;
+		width: 20%;
 	}
 }
-/**
+.inventual-add-product-dialog-table-sl2 {
+	min-width: 300px;
+	width: 5%;
+	padding-left: 14%;
+	
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 40px;
+		width: 20%;
+	}
+	@media (max-width: 1800px) {
+		min-width: 150px;
+		width: 480px;
+	}
+}
+
 
 .inventual-add-product-dialog-table-name1 {
 	min-width: 300px;
@@ -134,7 +89,7 @@
 		width: 20%;
 	}
 }
-/**
+
 
 .inventual-add-product-dialog-table-code1 {
 	min-width: 300px;
@@ -164,7 +119,7 @@
 	}
 }
 
-/*
+
 .inventual-add-product-dialog-table-variant1 {
 	min-width: 100;
 	width: 6%;
@@ -178,9 +133,9 @@
 		width: 20%;
 	}
 }
-**/
 
-/**
+
+
 
 .inventual-add-product-dialog-table-price1 {
 	min-width: 125px;
@@ -195,8 +150,10 @@
 		min-width: 150px;
 	}
 }
-**/
 
+.inventual-add-product-dialog-table-checkbox1{
+	padding-left: 50px;
+}
 .common-action-menu-style {
 	margin-left: 0px;
 }
@@ -205,6 +162,7 @@
 	
     border: 1px solid #00000033;
 	margin-left: 0px;
+	height: auto;
 	display: flex;
     align-items: center; /* This ensures vertical alignment */
 

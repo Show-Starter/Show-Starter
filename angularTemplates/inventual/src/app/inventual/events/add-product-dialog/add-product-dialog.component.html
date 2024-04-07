@@ -16,9 +16,9 @@
     <div class="inventual-add-product-dialog-table-inner1">
       <!-- Table Headers -->
       <div class="inventual-add-product-dialog-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-        <div class="inventual-add-product-dialog-table-checkbox1">Select</div>
+        <div class="inventual-add-product-dialog-table-sl1">Select</div>
         <div class="inventual-add-product-dialog-table-sl1">ID</div>
-        <div class="inventual-add-product-dialog-table-image1">Name</div>
+        <div class="inventual-add-product-dialog-table-sl1">Name</div>
         <div class="inventual-add-product-dialog-table-sl1">Product Group</div>
         <div class="inventual-add-product-dialog-table-sl1">Rental Price</div>
         <div class="inventual-add-product-dialog-table-sl1">Stock Level</div>
@@ -30,11 +30,12 @@
         <div class="inventual-add-product-dialog-table-checkbox1">
           <mat-checkbox [checked]="isSelected(product)" (change)="toggleProductSelection(product, $event.checked)"></mat-checkbox>
         </div>
-        <div class="inventual-add-product-dialog-table-sl1">{{product.id}}</div>
-        <div class="inventual-add-product-dialog-table-sl1">{{product.name}}</div>
-        <div class="inventual-add-product-dialog-table-sl1">{{product.product_group}}</div>
-        <div class="inventual-add-product-dialog-table-sl1">${{product.rental_price}}</div>
-        <div class="inventual-add-product-dialog-table-sl1">{{product.stock_level}}</div>
+        
+        <div class="inventual-add-product-dialog-table-sl2">{{product.id}}</div>
+        <div class="inventual-add-product-dialog-table-sl2">{{product.name}}</div>
+        <div class="inventual-add-product-dialog-table-sl2">{{product.product_group}}</div>
+        <div class="inventual-add-product-dialog-table-sl2">${{product.rental_price}}</div>
+        <div class="inventual-add-product-dialog-table-sl2">{{product.stock_level}}</div>
         <div class="inventual-add-product-dialog-table-action1">
           <!-- Optionally include actions or leave empty if not needed -->
         </div>
