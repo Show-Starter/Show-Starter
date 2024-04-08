@@ -25,6 +25,7 @@ export class CreateEventComponent implements OnInit {
 
   approvedProducts: Product[];
   approvedItems: Item[];
+  postSelectedProducts: Product[] = [];
 
   //sidebar menu activation start
   menuSidebarActive:boolean=false;
@@ -46,7 +47,12 @@ export class CreateEventComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((selectedProducts: Product[]) => {
+      
       if (selectedProducts && selectedProducts.length) {
+        this.selectedProducts = selectedProducts.map(product => ({
+          product: product,
+          quantity: 1, // Default quantity can be set to 1 or any logic you have
+        }));
         selectedProducts.forEach(product => {
           
           const items = this.getItems(product.id);
@@ -59,6 +65,7 @@ export class CreateEventComponent implements OnInit {
 
               if (this.event.date != date && !this.checkIfInApproved(item)) {
                 this.approvedItems.push(item);
+                console.log("This item was approved")
               }
             });
 
@@ -74,6 +81,7 @@ export class CreateEventComponent implements OnInit {
         // Optionally calculate subtotals here if pricing logic is required
       }
     });
+    
   }
 
   selectedProducts: Array<{
