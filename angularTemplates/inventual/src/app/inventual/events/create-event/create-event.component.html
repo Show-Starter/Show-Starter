@@ -41,7 +41,7 @@
                                 <div class="inventual-input-field-style">
                                   <mat-form-field class="w-full" [floatLabel]="'always'">
                                     <mat-label class="hidden">HP</mat-label>
-                                    <input matInput [placeholder]="'Event Name'">
+                                    <input matInput [placeholder]="'Event Name'" [(ngModel)]="event.name" name="name">
                                   </mat-form-field>
                                 </div>
                               </div>
@@ -65,7 +65,7 @@
                             <div class="inventual-input-field-style">
                               <mat-form-field class="w-full" [floatLabel]="'always'">
                                 <mat-label class="hidden">HP</mat-label>
-                                <input matInput [placeholder]="'Event Location'">
+                                <input matInput [placeholder]="'Event Location'" [(ngModel)]="event.location" name="location">
                               </mat-form-field>
                             </div>
                           </div>
@@ -78,7 +78,7 @@
                             <div class="inventual-input-field-style">
                               <mat-form-field class="w-full" [floatLabel]="'always'">
                                 <mat-label class="hidden">HP</mat-label>
-                                <input matInput [placeholder]="'18:00'">
+                                <input matInput [placeholder]="'8:00 PM'" [(ngModel)]="event.time" name="time">
                               </mat-form-field>
                             </div>
                           </div>
@@ -142,7 +142,7 @@
            </div>
            <div>
            <button mat-raised-button color="warn" [routerLink]="['/events/eventlist']">Cancel</button>
-           <button mat-raised-button color="primary"  [routerLink]="['/events/eventlist']">
+           <button mat-raised-button color="primary" (click)="addEvent()">
             Save 
           </button>    
         </div>

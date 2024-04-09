@@ -1,0 +1,41 @@
+@import '../../../../custom-palettes.scss';
+
+.inventual-dialog-wrapper {
+    /* Add any necessary padding, margin, or alignment styles here */
+  }
+  
+  .inventual-dialog-title {
+    /* Styling for the dialog title. Example: */
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 1rem; /* Adjust as needed */
+  }
+  
+  .inventual-dialog-content {
+    /* Styling for the dialog content. Example: */
+    font-size: 15px;
+    color: black;
+    margin-bottom: 1rem; /* Adjust as needed */
+  }
+  
+  .inventual-dialog-actions {
+    /* Styling for the dialog actions area. Example: */
+    display: flex;
+    justify-content: flex-end; /* Aligns buttons to the right */
+  }
+  
+  .inventual-dialog-close-btn {
+    /* Styling for the close button. Example: */
+    background-color: #E0E0E0; /* Light gray, adjust as needed */
+    color: black;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    border-radius: 0.25rem; /* Adjust for rounded corners as needed */
+    font-weight: bold;
+  }
+  
+  /* You can add :hover and :active states for the button as well */
+  .inventual-dialog-close-btn:hover {
+    background-color: #C0C0C0; /* Darker shade for hover state */
+  }

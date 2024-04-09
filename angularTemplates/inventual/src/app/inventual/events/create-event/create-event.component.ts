@@ -12,7 +12,8 @@ import { ItemEventService } from 'src/app/itemevent.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Event } from 'src/app/event';
 import { DatePipe } from '@angular/common';
-
+import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -181,7 +182,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   constructor(public dialog: MatDialog, private itemEventService: ItemEventService,
-    private itemService: ItemService, private eventService: EventService) {}
+    private itemService: ItemService, private eventService: EventService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -244,7 +245,11 @@ export class CreateEventComponent implements OnInit {
     return inApproved;
   }
 
-  getProductTotalAvailable(productID: number): Number {
+
+
+
+
+  getProductTotalAvailable(productID: number): number {
     var numberAvailable = 0;
 
     this.approvedItems.forEach(approvedItem => {
@@ -255,5 +260,39 @@ export class CreateEventComponent implements OnInit {
 
     return numberAvailable;
   }
+
+  addEvent(): void {
+    let isQuantityValid = true;
+  
+    this.selectedProducts.forEach(product => {
+      const available = this.getProductTotalAvailable(product.product.id);
+      if (product.quantity > available) {
+        isQuantityValid = false;
+        this.dialog.open(CustomMessageDialogComponent, {
+          width: '400px',
+          data: { title: 'Error', message: `You have too many of the product ${product.product.name}s added. Available: ${available}` }
+        });
+        return; // Break the forEach loop
+      }
+    });
+  
+    if (!isQuantityValid) {
+      return; // Stop the event addition if any quantity is invalid
+    }
+
+    this.eventService.addEvent(this.event).subscribe(
+      (response) => {
+        console.log('Event added', response);
+        // Handle post-add logic here
+      },
+      (error) => {
+        // Handle error
+        console.error('Error adding Event:', error);
+      }
+    );
+
+    this.router.navigate(['/events/eventlist']);
+  }
+
 
 }
