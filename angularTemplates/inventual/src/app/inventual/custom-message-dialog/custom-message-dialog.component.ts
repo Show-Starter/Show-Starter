@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-custom-message-dialog',
   templateUrl: './custom-message-dialog.component.html',
-  styleUrls: ['./custom-message-dialog.component.css']
+  styleUrls: ['./custom-message-dialog.component.scss']
 })
 export class CustomMessageDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}

@@ -78,60 +78,59 @@ export class ItemlistComponent implements OnInit {
   }
 
   main() {
-  this.getItems().subscribe(
-    (items: Item[]) => {
-      this.items = items;
+    this.getItems().subscribe(
+      (items: Item[]) => {
+        this.items = items;
 
-      this.items.forEach(item => {
-        this.getItemEvents(item.id).subscribe(
-          (response: ItemEvent[]) => {
-            item.item_events = response;
+        this.items.forEach(item => {
+          this.getItemEvents(item.id).subscribe(
+            (response: ItemEvent[]) => {
+              console.log(response.length > 0);
+              if (response.length > 0) {
+                item.item_events = response;
 
-            // Call getNextEventID inside the subscription to getItemEvents
-            this.getNextEventID(item.item_events).subscribe(
-              (response: number) => {
-                item.eventID = response;
+                this.getNextEventID(item.item_events).subscribe(
+                  (response: number) => {
+                    item.eventID = response;
 
-                // Check if eventID is defined before making further requests
-                if (item.eventID !== undefined) {
-                  // Now that eventID is set, make further requests
-                  this.getEventDate(item.eventID).subscribe(
-                    (response: Date) => {
-                      item.next_date = response;
-                      console.log("item.next_date: " + item.next_date);
-                    },
-                    (error: HttpErrorResponse) => {
-                      alert(error.message);
-                    }
-                  );
+                    // Now that eventID is set, make further requests
+                    this.getEventDate(item.eventID).subscribe(
+                      (response: Date) => {
+                        item.next_date = response;
+                        console.log("item.next_date: " + item.next_date);
+                      },
+                      (error: HttpErrorResponse) => {
+                        alert(error.message);
+                      }
+                    );
 
-                  this.getEventName(item.eventID).subscribe(
-                    (response: String) => {
-                      item.event_name = response;
-                      console.log("item.event_name: " + item.event_name);
-                    },
-                    (error: HttpErrorResponse) => {
-                      alert(error.message);
-                    }
-                  );
-                }
-              },
-              (error: HttpErrorResponse) => {
-                alert(error.message);
+                    this.getEventName(item.eventID).subscribe(
+                      (response: String) => {
+                        item.event_name = response;
+                        console.log("item.event_name: " + item.event_name);
+                      },
+                      (error: HttpErrorResponse) => {
+                        alert(error.message);
+                      }
+                    );
+                  },
+                  (error: HttpErrorResponse) => {
+                    alert(error.message);
+                  }
+                );
               }
-            );
-          },
-          (error: HttpErrorResponse) => {
-            alert(error.message);
-          }
-        );
-      });
-    },
-    (error: HttpErrorResponse) => {
-      alert(error.message);
-    }
-  );
-}
+            },
+            (error: HttpErrorResponse) => {
+              alert(error.message);
+            }
+          );
+        });
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 
   
 

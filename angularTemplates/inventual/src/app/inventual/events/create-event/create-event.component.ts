@@ -14,6 +14,7 @@ import { Event } from 'src/app/event';
 import { DatePipe } from '@angular/common';
 import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -62,81 +63,63 @@ export class CreateEventComponent implements OnInit {
           quantity: 1, // Default quantity can be set to 1 or any logic you have
         }));
         selectedProducts.forEach(product => {
-          let gotItems = false;
-
-          // console.log(product.id);
-          
           let items: Item[] = [];
-          
-
-          this.itemService.getItems(product.id).subscribe(
+        
+          this.getItems(product.id).subscribe(
             (response: Item[]) => {
               items = response;
+        
+              console.log("items length: " + items.length);
+        
+              items.forEach(item => {
+                console.log("In Item For Loop");
+        
+                let itemEvents: ItemEvent[] = [];
+        
+                this.getItemEvents(item.id).subscribe(
+                  (response: ItemEvent[]) => {
+                    itemEvents = response;
+        
+                    if (!itemEvents.length) {
+                      this.approvedItems.push(item);
+                    }
+        
+                    itemEvents.forEach(itemEvent => {
+                      this.getEventDate(itemEvent.eventID).subscribe(
+                        (response: Date) =>{
+                          const date: Date = response;
+        
+                          const datepipe: DatePipe = new DatePipe('en-US');
+                          const newEventDate = datepipe.transform(this.event.date, 'yyyy-MM-dd');
+                          const itemEventDate = datepipe.transform(date, 'yyyy-MM-dd');
+        
+                          const dateComp = newEventDate === itemEventDate;
+                          console.log(dateComp);
+        
+                          if (!dateComp && !this.checkIfInApproved(item)) {
+                            this.approvedItems.push(item);
+                            console.log("Item " + item.id + " Added to Approve");
+                          }
+                        },
+                        (error: HttpErrorResponse) => {
+                          alert(error.message);
+                        }
+                      );
+                    });
+                  },
+                  (error: HttpErrorResponse) => {
+                    alert(error.message);
+                  }
+                );
+              });
             },
             (error: HttpErrorResponse) => {
-              items = [];
+              alert(error.message);
             }
           );
-
-          setTimeout(() => {
           
-            items.forEach(item => {
-
-              let gotItemEvents = false;
-
-              let itemEvents: ItemEvent[] = [];
-
-              this.itemEventService.getItemEventsByItemID(item.id).subscribe(
-                (response: ItemEvent[]) => {
-                  itemEvents = response;
-                  gotItemEvents = true;
-                },
-                (error: HttpErrorResponse) => {
-                  itemEvents = [];
-                  gotItemEvents = true;
-                }
-              );
-              
-              setTimeout(() => {
-
-                if (!itemEvents.length) {
-                  this.approvedItems.push(item);
-                }
-
-                itemEvents.forEach(itemEvent => {
-
-                  setTimeout(() => {
-                    var date: Date = new Date;
-                    
-                    this.eventService.getEventDate(itemEvent.eventID).subscribe(
-                      (response: Date) => {
-                        date = response;
-                      },
-                      (error: HttpErrorResponse) => {
-                        alert(error.message);
-                      }
-                    );
-
-                    setTimeout(() => {
-
-                      const datepipe: DatePipe = new DatePipe('en-US');
-                      var newEventDate = datepipe.transform(this.event.date, 'YYYY-MM-dd');
-                      var itemEventDate = datepipe.transform(date, 'YYYY-MM-dd');
-
-                      const dateComp = newEventDate === itemEventDate
-                      console.log(dateComp);
-
-                      if (!dateComp && !this.checkIfInApproved(item)) {
-                        this.approvedItems.push(item);
-                      }
-
-                    }, 1500)
-                  }, 1500);
-                });
-              }, 1500);
-            });
-          }, 2000);
         });
+
       }
 
       this.selectedProducts = selectedProducts.map(product => ({
@@ -182,51 +165,57 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getItems(productID: number): Item[] {
-    var items: Item[] = [];
+  getItems(productID: number): Observable<Item[]> {
+    return new Observable<Item[]>((observer) => {
+      var items: Item[] = [];
+      this.itemService.getItems(productID).subscribe(
+        (response: Item[]) => {
+          items = response;
 
-    this.itemService.getItems(productID).subscribe(
-      (response: Item[]) => {
-        items = response;
-        console.log("Items length: " + items.length);
-        return items;
-      },
-      (error: HttpErrorResponse) => {
-        return null;
-      }
-    );
+          console.log("Items length: " + items.length);
 
-    return items;
+          observer.next(items);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
   }
 
-  getItemEvents(itemID: number): ItemEvent[] {
-    var itemEvents: ItemEvent[] = [];
+  getItemEvents(itemID: number): Observable<ItemEvent[]> {
+    return new Observable<ItemEvent[]>((observer) => {
+      var itemEvents: ItemEvent[] = [];
 
-    this.itemEventService.getItemEventsByItemID(itemID).subscribe(
-      (response: ItemEvent[]) => {
-        itemEvents = response;
-      },
-      (error: HttpErrorResponse) => {
-        return null;
-      }
-    );
-
-    return itemEvents;
+      this.itemEventService.getItemEventsByItemID(itemID).subscribe(
+        (response: ItemEvent[]) => {
+          itemEvents = response;
+          observer.next(itemEvents);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
   }
 
-  getEventDate(eventID: number): Date {
-    var date: Date = new Date;
+  getEventDate(eventID: number): Observable<Date> {
+    return new Observable<Date>((observer) => {
+      let eventDate: Date = new Date;
 
-    this.eventService.getEventDate(eventID).subscribe(
-      (response: Date) => {
-        date = response;
-      },
-      (error: HttpErrorResponse) => {
-        return null;
-      }
-    );
-
-    return date;
+      this.eventService.getEventDate(eventID).subscribe(
+        (response: Date) => {
+          eventDate = response;
+          observer.next(eventDate);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
   }
 
   checkIfInApproved(item: Item): Boolean {
@@ -240,10 +229,6 @@ export class CreateEventComponent implements OnInit {
 
     return inApproved;
   }
-
-
-
-
 
   getProductTotalAvailable(productID: number): number {
     var numberAvailable = 0;
