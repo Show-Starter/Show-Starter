@@ -111,7 +111,6 @@ export class CreateEventComponent implements OnInit {
                     this.eventService.getEventDate(itemEvent.eventID).subscribe(
                       (response: Date) => {
                         date = response;
-                        console.log("Returned Date: " + date);
                       },
                       (error: HttpErrorResponse) => {
                         alert(error.message);
@@ -122,16 +121,13 @@ export class CreateEventComponent implements OnInit {
 
                       const datepipe: DatePipe = new DatePipe('en-US');
                       var newEventDate = datepipe.transform(this.event.date, 'YYYY-MM-dd');
-                      console.log("newEventDate: " + newEventDate);
                       var itemEventDate = datepipe.transform(date, 'YYYY-MM-dd');
-                      console.log("itemEventDate: " + itemEventDate);
 
                       const dateComp = newEventDate === itemEventDate
                       console.log(dateComp);
 
                       if (!dateComp && !this.checkIfInApproved(item)) {
                         this.approvedItems.push(item);
-                        console.log("ITEM ADDED");
                       }
 
                     }, 1500)

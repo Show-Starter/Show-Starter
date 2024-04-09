@@ -7,6 +7,10 @@ import { Product } from 'src/app/product';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from 'src/app/event.service';
+import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { ItemEvent } from 'src/app/itemevent';
+import { ItemEventService } from 'src/app/itemevent.service';
 
 interface Task {
   name: string;
@@ -21,7 +25,7 @@ interface Task {
   encapsulation: ViewEncapsulation.None
 })
 export class ItemlistComponent implements OnInit {
-  public items: Item[] = [];
+  items: Item[] = [];
   // public parsedItems: Item[] = [];
   // public searchText: string = '';
   public tasks: Task[] = [];
@@ -36,7 +40,7 @@ export class ItemlistComponent implements OnInit {
   productName: String;
   searchText = '';
 
-  constructor(private itemService: ItemService, private http: HttpClient, 
+  constructor(private itemService: ItemService, private http: HttpClient, private itemEventService: ItemEventService,
     private router: Router, private route: ActivatedRoute, private eventService: EventService) {
       this.route.queryParams.subscribe(params => {
         this.productID = params['id'];
@@ -47,7 +51,7 @@ export class ItemlistComponent implements OnInit {
   ngOnInit(): void {
     // this.productID = 178;
     // this.productID = +!this.route.snapshot.paramMap.get('id');
-    this.getItems();
+    this.main();
     this.getProductName(this.productID);
   }
 
@@ -56,6 +60,80 @@ export class ItemlistComponent implements OnInit {
     completed: false,
     color: 'primary'
   };
+
+  getItems(): Observable<Item[]> {
+    return new Observable<Item[]>((observer) => {
+      var items: Item[] = [];
+      this.itemService.getItems(this.productID).subscribe(
+        (response: Item[]) => {
+          items = response;
+          observer.next(items);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
+  }
+
+  main() {
+  this.getItems().subscribe(
+    (items: Item[]) => {
+      this.items = items;
+
+      this.items.forEach(item => {
+        this.getItemEvents(item.id).subscribe(
+          (response: ItemEvent[]) => {
+            item.item_events = response;
+
+            // Call getNextEventID inside the subscription to getItemEvents
+            this.getNextEventID(item.item_events).subscribe(
+              (response: number) => {
+                item.eventID = response;
+
+                // Check if eventID is defined before making further requests
+                if (item.eventID !== undefined) {
+                  // Now that eventID is set, make further requests
+                  this.getEventDate(item.eventID).subscribe(
+                    (response: Date) => {
+                      item.next_date = response;
+                      console.log("item.next_date: " + item.next_date);
+                    },
+                    (error: HttpErrorResponse) => {
+                      alert(error.message);
+                    }
+                  );
+
+                  this.getEventName(item.eventID).subscribe(
+                    (response: String) => {
+                      item.event_name = response;
+                      console.log("item.event_name: " + item.event_name);
+                    },
+                    (error: HttpErrorResponse) => {
+                      alert(error.message);
+                    }
+                  );
+                }
+              },
+              (error: HttpErrorResponse) => {
+                alert(error.message);
+              }
+            );
+          },
+          (error: HttpErrorResponse) => {
+            alert(error.message);
+          }
+        );
+      });
+    },
+    (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  );
+}
+
+  
 
   public deleteItem(itemId: number): void {
     this.itemService.deleteItem(itemId).subscribe({
@@ -89,19 +167,6 @@ export class ItemlistComponent implements OnInit {
   private refreshItems(productID: number): void {
     this.getItems(); // Re-fetch the items after deletion
   }
-  
-
-  
-
-  public getItems(): void {
-    this.itemService.getItems(this.productID).subscribe(
-      (response: Item[]) => {
-        this.items = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      });     
-  }
 
   private initParse(): void {
     this.tasks = [];
@@ -113,7 +178,7 @@ export class ItemlistComponent implements OnInit {
     }
   }
 
-  public getProductName(id: number): String {
+  getProductName(id: number): String {
     this.http.get<Product>(`${this.apiServerUrl}/inventory/find/${id}`).subscribe(
         (response: Product) => {
           console.log("Product Name: " + response.name);
@@ -125,7 +190,86 @@ export class ItemlistComponent implements OnInit {
     );
 
     return this.productName;
-}
+  }
+
+  getItemEvents(itemID: number): Observable<ItemEvent[]> {
+    return new Observable<ItemEvent[]>((observer) => {
+      var itemEvents: ItemEvent[] = [];
+
+      this.itemEventService.getItemEventsByItemID(itemID).subscribe(
+        (response: ItemEvent[]) => {
+          itemEvents = response;
+          observer.next(itemEvents);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
+  }
+
+  getEventDate(eventID: number): Observable<Date> {
+    return new Observable<Date>((observer) => {
+      let eventDate: Date = new Date;
+
+      this.eventService.getEventDate(eventID).subscribe(
+        (response: Date) => {
+          eventDate = response;
+          observer.next(eventDate);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
+  }
+
+  getNextEventID(itemEvents: ItemEvent[]): Observable<number> {
+    return new Observable<number>((observer) => {
+      var closestDate: Date = new Date('2999-12-31');
+      var closestEventID: number = itemEvents[0].eventID;
+
+      itemEvents.forEach(itemEvent => {
+        var date: Date = new Date;
+
+        this.getEventDate(itemEvent.eventID).subscribe(
+          (response: Date) => {
+            date = response;
+          },
+          (error: HttpErrorResponse) => {
+            alert(error.message);
+          }
+        );
+
+        if (date < closestDate) {
+          closestDate = date;
+          closestEventID = itemEvent.eventID;
+        }
+      })
+
+      observer.next(closestEventID);
+      observer.complete();
+    });
+  }
+
+  getEventName(eventID: number): Observable<String> {
+    return new Observable<String>((observer) => {
+      var eventName: String = "";
+
+      this.eventService.getEventName(eventID).subscribe(
+        (response: String) => {
+          eventName = response;
+          observer.next(eventName);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
+  }
 
   public toggleSidebar(): void {
     this.menuSidebarActive = !this.menuSidebarActive;
