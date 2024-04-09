@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { Item } from 'src/app/item';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ItemService } from 'src/app/item.service';
 import { Product } from 'src/app/product';
 import { environment } from 'src/environments/environment';
@@ -97,33 +97,10 @@ export class ItemlistComponent implements OnInit {
     this.itemService.getItems(this.productID).subscribe(
       (response: Item[]) => {
         this.items = response;
-        console.log("Items Arr Length: " + this.items.length);
-        for (let i = 0; i < this.items.length; i++) {
-          console.log("Item i: " + i);
-          this.eventService.getEventDate(this.items[i].eventID).subscribe(
-            (response: Date) => {
-              this.items[i].next_date = response.toString();
-            },
-            (error: HttpErrorResponse) => {
-              alert(error.message);
-            }
-          );
-
-          this.eventService.getEventName(this.items[i].eventID).subscribe(
-            (response: String) => {
-              this.items[i].event_name = response;
-            },
-            (error: HttpErrorResponse) => {
-              alert(error.message);
-            }
-          );
-        }
-        this.initParse();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
-      }
-    );
+      });     
   }
 
   private initParse(): void {

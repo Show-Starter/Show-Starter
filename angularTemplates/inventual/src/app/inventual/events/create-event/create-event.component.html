@@ -52,7 +52,7 @@
                             <div class="inventual-calender-field-style">
                                 <mat-form-field appearance="fill" floatLabel="always">
                                     <mat-label class="hidden">Choose a date</mat-label>
-                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'">
+                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'" [(ngModel)]="event.date" name="eventDate">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>
@@ -126,7 +126,7 @@
                             <div class="inventual-addsale-product-name">{{ item.product.name }}</div>
                             <div class="inventual-addsale-product-qty">
                                 <button (click)="counter(i, 'subtract')">-</button>
-                                <span>{{ item.quantity }}</span>
+                                <span>{{ item.quantity }} / {{ this.getProductTotalAvailable(item.product.id) }}</span>
                                 <button (click)="counter(i, 'add')">+</button>
                             </div>
                             <!-- <div class="inventual-addsale-product-type">15</div> -->

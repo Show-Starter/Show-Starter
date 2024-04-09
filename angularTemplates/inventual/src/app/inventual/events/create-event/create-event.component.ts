@@ -11,6 +11,7 @@ import { EventService } from 'src/app/event.service';
 import { ItemEventService } from 'src/app/itemevent.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Event } from 'src/app/event';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -23,13 +24,20 @@ import { Event } from 'src/app/event';
 })
 export class CreateEventComponent implements OnInit {
 
-  approvedProducts: Product[];
-  approvedItems: Item[];
+  approvedItems: Item[] = [];
 
   //sidebar menu activation start
   menuSidebarActive:boolean=false;
 
-  event: Event;
+  event: Event = {
+    id: 0,
+    name: "",
+    location: "",
+    type: "",
+    date: new Date,
+    time: "",
+    invoice_num: 0
+  };
 
   myfunction(){
     if(this.menuSidebarActive==false){
@@ -48,31 +56,91 @@ export class CreateEventComponent implements OnInit {
     dialogRef.afterClosed().subscribe((selectedProducts: Product[]) => {
       if (selectedProducts && selectedProducts.length) {
         selectedProducts.forEach(product => {
+          let gotItems = false;
+
+          // console.log(product.id);
           
-          const items = this.getItems(product.id);
+          let items: Item[] = [];
+          
 
-          items.forEach(item => {
-            const itemEvents = this.getItemEvents(item.id);
+          this.itemService.getItems(product.id).subscribe(
+            (response: Item[]) => {
+              items = response;
+            },
+            (error: HttpErrorResponse) => {
+              items = [];
+            }
+          );
 
-            itemEvents.forEach(itemEvent => {
-              const date = this.getEventDate(itemEvent.eventID);
+          setTimeout(() => {
+          
+            items.forEach(item => {
 
-              if (this.event.date != date && !this.checkIfInApproved(item)) {
-                this.approvedItems.push(item);
-              }
+              let gotItemEvents = false;
+
+              let itemEvents: ItemEvent[] = [];
+
+              this.itemEventService.getItemEventsByItemID(item.id).subscribe(
+                (response: ItemEvent[]) => {
+                  itemEvents = response;
+                  gotItemEvents = true;
+                },
+                (error: HttpErrorResponse) => {
+                  itemEvents = [];
+                  gotItemEvents = true;
+                }
+              );
+              
+              setTimeout(() => {
+
+                if (!itemEvents.length) {
+                  this.approvedItems.push(item);
+                }
+
+                itemEvents.forEach(itemEvent => {
+
+                  setTimeout(() => {
+                    var date: Date = new Date;
+                    
+                    this.eventService.getEventDate(itemEvent.eventID).subscribe(
+                      (response: Date) => {
+                        date = response;
+                        console.log("Returned Date: " + date);
+                      },
+                      (error: HttpErrorResponse) => {
+                        alert(error.message);
+                      }
+                    );
+
+                    setTimeout(() => {
+
+                      const datepipe: DatePipe = new DatePipe('en-US');
+                      var newEventDate = datepipe.transform(this.event.date, 'YYYY-MM-dd');
+                      console.log("newEventDate: " + newEventDate);
+                      var itemEventDate = datepipe.transform(date, 'YYYY-MM-dd');
+                      console.log("itemEventDate: " + itemEventDate);
+
+                      const dateComp = newEventDate === itemEventDate
+                      console.log(dateComp);
+
+                      if (!dateComp && !this.checkIfInApproved(item)) {
+                        this.approvedItems.push(item);
+                        console.log("ITEM ADDED");
+                      }
+
+                    }, 1500)
+                  }, 1500);
+                });
+              }, 1500);
             });
-
-          });
-
-          // const existingProduct = this.selectedProducts.find(p => p.product.id === product.id);
-          // if (existingProduct) {
-          //   existingProduct.quantity += 1; // Or handle as needed
-          // } else {
-          //   this.selectedProducts.push({ product: product, quantity: 1 });
-          // }
+          }, 2000);
         });
-        // Optionally calculate subtotals here if pricing logic is required
       }
+
+      this.selectedProducts = selectedProducts.map(product => ({
+          product: product,
+          quantity: 1, // Default quantity can be set to 1 or any logic you have
+      }));
     });
   }
 
@@ -117,6 +185,8 @@ export class CreateEventComponent implements OnInit {
     this.itemService.getItems(productID).subscribe(
       (response: Item[]) => {
         items = response;
+        console.log("Items length: " + items.length);
+        return items;
       },
       (error: HttpErrorResponse) => {
         return null;
