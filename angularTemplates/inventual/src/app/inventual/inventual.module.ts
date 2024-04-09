@@ -126,6 +126,7 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { ItemlistpageComponent } from './products/itemlistpage/itemlistpage.component';
 import { AddProductDialogComponent } from './events/add-product-dialog/add-product-dialog.component';
 import { CustomMessageDialogComponent } from './custom-message-dialog/custom-message-dialog.component';
+import { EditEventComponent } from './events/edit-event/edit-event.component';
 
 
 
@@ -263,7 +264,9 @@ import { CustomMessageDialogComponent } from './custom-message-dialog/custom-mes
     CreateEventComponent,
     ItemlistpageComponent,
     AddProductDialogComponent,
-    CustomMessageDialogComponent
+    CustomMessageDialogComponent,
+    EditEventComponent
+    
   ]
 })
 export class InventualModule { }
