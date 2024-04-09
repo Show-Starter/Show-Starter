@@ -54,7 +54,12 @@ export class CreateEventComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((selectedProducts: Product[]) => {
+      
       if (selectedProducts && selectedProducts.length) {
+        this.selectedProducts = selectedProducts.map(product => ({
+          product: product,
+          quantity: 1, // Default quantity can be set to 1 or any logic you have
+        }));
         selectedProducts.forEach(product => {
           let gotItems = false;
 
@@ -142,6 +147,7 @@ export class CreateEventComponent implements OnInit {
           quantity: 1, // Default quantity can be set to 1 or any logic you have
       }));
     });
+    
   }
 
   selectedProducts: Array<{
