@@ -76,7 +76,7 @@ import { AddProductDialogComponent } from './inventual/events/add-product-dialog
 import { CustomMessageDialogComponent } from './inventual/custom-message-dialog/custom-message-dialog.component';
 import { ItemEventService } from './itemevent.service';
 import { EditEventComponent } from './inventual/events/edit-event/edit-event.component';
-
+import { InvoicelistComponent } from './inventual/invoices/invoicelist/invoicelist.component';
 
 const routes: Routes = [ 
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -92,6 +92,9 @@ const routes: Routes = [
   {
     path: 'events/edit-event',
     component: EditEventComponent
+  },
+  {path: 'invoices/invoicelist',
+    component: InvoicelistComponent
   },
 
   {path: 'events/add-product-dialog',

@@ -8,13 +8,23 @@ export const navbarData: INavbarData[] = [
   },
   {
     routeLink: 'events',
-    icon: 'fal fa-sack-dollar',
+    icon: 'fal fa-calendar',
     label: 'Events',
     items: [
       {routeLink: '/events/eventlist',
         label: 'Event List'}
     ]
   },
+
+  {routeLink: 'invoices',
+  icon: 'fal fa-sack-dollar',
+  label: 'Invoices',
+  items:[
+    {routeLink: '/invoices/invoicelist',
+    label: 'Invoice List'
+    }
+  ]
+},
 
   {
     routeLink: 'product',
@@ -29,7 +39,9 @@ export const navbarData: INavbarData[] = [
         routeLink: '/product/productlist',
         label: 'Product List',
       }, 
+
 /*
+
       {
         routeLink: '/products/itemlistpage', // JUST ADDED Ensure this path matches your Angular routing configuration
         label: 'Item List', // The label for the navigation menu
@@ -77,6 +89,7 @@ export const navbarData: INavbarData[] = [
       */
     ],
   },
+
   
 
   //Trading 
