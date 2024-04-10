@@ -74,7 +74,8 @@ import { EditProductComponent } from './inventual/products/edit-product/edit-pro
 import { CreateEventComponent } from './inventual/events/create-event/create-event.component';
 import { AddProductDialogComponent } from './inventual/events/add-product-dialog/add-product-dialog.component'
 import { CustomMessageDialogComponent } from './inventual/custom-message-dialog/custom-message-dialog.component';
-
+import { ItemEventService } from './itemevent.service';
+import { EditEventComponent } from './inventual/events/edit-event/edit-event.component';
 
 
 const routes: Routes = [ 
@@ -88,6 +89,11 @@ const routes: Routes = [
   {path: 'products/addproduct',
   component: AddproductComponent
   },
+  {
+    path: 'events/edit-event',
+    component: EditEventComponent
+  },
+
   {path: 'events/add-product-dialog',
     component: AddProductDialogComponent
 },

@@ -266,6 +266,7 @@ import { EditEventComponent } from './events/edit-event/edit-event.component';
     AddProductDialogComponent,
     CustomMessageDialogComponent,
     EditEventComponent
+    
   ]
 })
 export class InventualModule { }

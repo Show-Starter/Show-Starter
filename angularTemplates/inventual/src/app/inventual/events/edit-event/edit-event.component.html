@@ -1,1 +1,160 @@
-<p>edit-event works!</p>
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-bar-responsive" (click)="myfunction()">
+        <mat-icon>reorder</mat-icon>
+      </div>
+      <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+        <app-menu></app-menu>
+      </div>
+      <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-area">
+        <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-gray-border">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <app-header></app-header>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-black font-bold mb-3">Create event</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Event</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Create Event</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+           <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
+               <h4 class="text-[20px] font-bold text-black mb-9">Create Event</h4>
+               <div class="inventual-addbrand-upload-area flex items-center sm:block pb-2.5">
+                 
+                 <div class="grid grid-cols-12 w-full gap-x-7 sm:gap-x-0">
+                     <div class="col-span-6 sm:col-span-12">
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Name</h5>
+                                <div class="inventual-input-field-style">
+                                  <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">HP</mat-label>
+                                    <input matInput [placeholder]="'Event Name'" [(ngModel)]="event.name" name="name">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                         </div>
+                         
+                        <div class="inventual-calender-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Date</h5>
+                            <div class="inventual-calender-field-style">
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label class="hidden">Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'" [(ngModel)]="event.date" name="eventDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field w-full mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Location</h5>
+                            <div class="inventual-input-field-style">
+                              <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">HP</mat-label>
+                                <input matInput [placeholder]="'Event Location'" [(ngModel)]="event.location" name="location">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                     </div>
+
+
+                     <div class="col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field w-full mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Time</h5>
+                            <div class="inventual-input-field-style">
+                              <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">HP</mat-label>
+                                <input matInput [placeholder]="'8:00 PM'" [(ngModel)]="event.time" name="time">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                     </div>
+                     
+                     <div class="col-span-12">
+                        <div class="inventual-select-field w-full mb-5">
+
+                            <div class="inventual-material-btn mb-7">
+                                <button mat-raised-button color="accent" (click)="openAddProductDialog()" class="mb-1">
+                                    <mat-icon>add_circle_outline</mat-icon> Add Product
+                                  </button>
+                           </div>
+                          </div>
+                     </div>
+                  
+                 </div>
+                 
+               </div>
+               <div class="inventual-addsale-product-wrapper border border-b-0 border-solid border-gray-borderThree">
+                <div class="inventual-addsale-product-wrapper-inner">
+                    <div class="inventual-addsale-product-wrapper-inner-wrap">
+                        <div class="inventual-addsale-product-list h-12 border-b border-solid border-gray-borderThree">
+                            <div class="inventual-addsale-product-sl">
+                                <h5 class="text-[15px] font-semibold text-black">ID</h5>
+                            </div>
+                            <div class="inventual-addsale-product-name">
+                                <h5 class="text-[15px] font-semibold text-black">Name</h5>
+                            </div>
+                            <!-- <div class="inventual-addsale-product-code">
+                                <h5 class="text-[15px] font-semibold text-black">Code</h5>
+                            </div> -->
+                            <div class="inventual-addsale-product-qty">
+                                <h5 class="text-[15px] font-semibold text-black">Quantity</h5>
+                            </div>
+                            <div class="inventual-addsale-product-type me-20">
+                                <h5 class="text-[15px] font-semibold text-black">Price</h5>
+                            </div>
+                            <div class="inventual-addsale-product-action">
+                                <h5 class="text-[15px] font-semibold text-black">Action</h5>
+                            </div>
+                        </div>
+                        <div *ngFor="let item of selectedProducts; let i = index" class="inventual-addsale-product-list border-b border-solid border-gray-borderThree custom-height-70">
+                            <div class="inventual-addsale-product-sl">{{ item.product.id }}</div>
+                            <div class="inventual-addsale-product-name">{{ item.product.name }}</div>
+                            <div class="inventual-addsale-product-qty">
+                                <button (click)="counter(i, 'subtract')">-</button>
+                                <span>{{ item.quantity }} / {{ this.getProductTotalAvailable(item.product.id) }}</span>
+                                <button (click)="counter(i, 'add')">+</button>
+                            </div>
+                            <!-- <div class="inventual-addsale-product-type">15</div> -->
+                            <!-- Calculate subtotal based on quantity * price -->
+                            <div class="inventual-addsale-product-type">{{ (item.product.rental_price * item.quantity) | currency }}</div>
+                            <div class="inventual-addsale-product-action">
+                              <a href="javascript:void(0)" (click)="removeProduct(i)"><mat-icon>clear</mat-icon></a>
+                            </div>
+                          </div>
+                    </div>  
+                </div>
+                </div>
+           </div>
+           <div>
+           <button mat-raised-button color="warn" [routerLink]="['/events/eventlist']">Cancel</button>
+           <button mat-raised-button color="primary" (click)="addEvent()">
+            Save 
+          </button>    
+        </div>
+          <div class="inventual-button-container">
+          <button class="Invoice" mat-raised-button color="primary"  [routerLink]="['/events/eventlist']">
+            Create Your Invoice
+          </button>  
+          </div>
+        </div>
+  
+        <div class="inventual-copyright-area">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+</div>
