@@ -21,6 +21,10 @@ public class ItemEventService {
         return itemEventRepo.findByItemID(itemID);
     }
 
+    public List<ItemEvent> findItemEventsByEventID(Long eventID) {
+        return itemEventRepo.findByEventID(eventID);
+    }
+
     public ItemEvent addItemEvent(ItemEvent itemEvent) {
         return itemEventRepo.save(itemEvent);
     }

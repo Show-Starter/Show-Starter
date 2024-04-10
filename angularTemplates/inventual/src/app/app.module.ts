@@ -8,7 +8,7 @@ import { InventualModule } from './inventual/inventual.module';
 import { MatIconModule } from '@angular/material/icon';
 import { ProductService } from './product.service';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { EventService } from './event.service';
 import { ItemService } from './item.service';
 
@@ -22,7 +22,7 @@ import { ItemService } from './item.service';
     InventualModule,
     MatIconModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,

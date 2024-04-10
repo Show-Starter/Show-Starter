@@ -14,6 +14,8 @@ public interface ItemEventRepo extends JpaRepository<ItemEvent, Long> {
     Optional<ItemEvent> findItemEventById(Long id);
 
     List<ItemEvent> findByItemID(Long itemID);
+
+    List<ItemEvent> findByEventID(Long eventID);
     
 }
 
