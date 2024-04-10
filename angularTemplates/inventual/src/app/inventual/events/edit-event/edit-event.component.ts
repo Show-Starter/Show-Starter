@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AddProductDialogComponent } from '../add-product-dialog/add-product-dialog.component';
@@ -13,6 +14,7 @@ import { Event } from 'src/app/event';
 import { DatePipe } from '@angular/common';
 import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -25,6 +27,7 @@ import { Router } from '@angular/router';
 export class EditEventComponent implements OnInit {
 
   approvedItems: Item[] = [];
+  eventProducts: Product[] = [];
 
   //sidebar menu activation start
   menuSidebarActive:boolean=false;
@@ -48,6 +51,7 @@ export class EditEventComponent implements OnInit {
     }
   }
 
+  // Need to figure out how to display eventProduct OnInIt
   openAddProductDialog(): void {
     const dialogRef = this.dialog.open(AddProductDialogComponent, {
       width: '1000px',
@@ -61,81 +65,63 @@ export class EditEventComponent implements OnInit {
           quantity: 1, // Default quantity can be set to 1 or any logic you have
         }));
         selectedProducts.forEach(product => {
-          let gotItems = false;
-
-          // console.log(product.id);
-          
           let items: Item[] = [];
-          
-
-          this.itemService.getItems(product.id).subscribe(
+        
+          this.getItems(product.id).subscribe(
             (response: Item[]) => {
               items = response;
+        
+              console.log("items length: " + items.length);
+        
+              items.forEach(item => {
+                console.log("In Item For Loop");
+        
+                let itemEvents: ItemEvent[] = [];
+        
+                this.getItemEvents(item.id).subscribe(
+                  (response: ItemEvent[]) => {
+                    itemEvents = response;
+        
+                    if (!itemEvents.length) {
+                      this.approvedItems.push(item);
+                    }
+        
+                    itemEvents.forEach(itemEvent => {
+                      this.getEventDate(itemEvent.eventID).subscribe(
+                        (response: Date) =>{
+                          const date: Date = response;
+        
+                          const datepipe: DatePipe = new DatePipe('en-US');
+                          const newEventDate = datepipe.transform(this.event.date, 'yyyy-MM-dd');
+                          const itemEventDate = datepipe.transform(date, 'yyyy-MM-dd');
+        
+                          const dateComp = newEventDate === itemEventDate;
+                          console.log(dateComp);
+        
+                          if (!dateComp && !this.checkIfInApproved(item)) {
+                            this.approvedItems.push(item);
+                            console.log("Item " + item.id + " Added to Approve");
+                          }
+                        },
+                        (error: HttpErrorResponse) => {
+                          alert(error.message);
+                        }
+                      );
+                    });
+                  },
+                  (error: HttpErrorResponse) => {
+                    alert(error.message);
+                  }
+                );
+              });
             },
             (error: HttpErrorResponse) => {
-              items = [];
+              alert(error.message);
             }
           );
-
-          setTimeout(() => {
           
-            items.forEach(item => {
-
-              let gotItemEvents = false;
-
-              let itemEvents: ItemEvent[] = [];
-
-              this.itemEventService.getItemEventsByItemID(item.id).subscribe(
-                (response: ItemEvent[]) => {
-                  itemEvents = response;
-                  gotItemEvents = true;
-                },
-                (error: HttpErrorResponse) => {
-                  itemEvents = [];
-                  gotItemEvents = true;
-                }
-              );
-              
-              setTimeout(() => {
-
-                if (!itemEvents.length) {
-                  this.approvedItems.push(item);
-                }
-
-                itemEvents.forEach(itemEvent => {
-
-                  setTimeout(() => {
-                    var date: Date = new Date;
-                    
-                    this.eventService.getEventDate(itemEvent.eventID).subscribe(
-                      (response: Date) => {
-                        date = response;
-                      },
-                      (error: HttpErrorResponse) => {
-                        alert(error.message);
-                      }
-                    );
-
-                    setTimeout(() => {
-
-                      const datepipe: DatePipe = new DatePipe('en-US');
-                      var newEventDate = datepipe.transform(this.event.date, 'YYYY-MM-dd');
-                      var itemEventDate = datepipe.transform(date, 'YYYY-MM-dd');
-
-                      const dateComp = newEventDate === itemEventDate
-                      console.log(dateComp);
-
-                      if (!dateComp && !this.checkIfInApproved(item)) {
-                        this.approvedItems.push(item);
-                      }
-
-                    }, 1500)
-                  }, 1500);
-                });
-              }, 1500);
-            });
-          }, 2000);
         });
+
       }
 
       this.selectedProducts = selectedProducts.map(product => ({
@@ -176,56 +162,178 @@ export class EditEventComponent implements OnInit {
     this.selectedProducts.splice(index, 1);
   }
 
-  constructor(public dialog: MatDialog, private itemEventService: ItemEventService,
+  constructor(public dialog: MatDialog, private itemEventService: ItemEventService, private productService: ProductService,
     private itemService: ItemService, private eventService: EventService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  getItems(productID: number): Item[] {
-    var items: Item[] = [];
+  getItems(productID: number): Observable<Item[]> {
+    return new Observable<Item[]>((observer) => {
+      var items: Item[] = [];
+      this.itemService.getItems(productID).subscribe(
+        (response: Item[]) => {
+          items = response;
 
-    this.itemService.getItems(productID).subscribe(
-      (response: Item[]) => {
-        items = response;
-        console.log("Items length: " + items.length);
-        return items;
-      },
-      (error: HttpErrorResponse) => {
-        return null;
-      }
-    );
+          console.log("Items length: " + items.length);
 
-    return items;
+          observer.next(items);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
   }
 
-  getItemEvents(itemID: number): ItemEvent[] {
-    var itemEvents: ItemEvent[] = [];
+  getItemEvents(itemID: number): Observable<ItemEvent[]> {
+    return new Observable<ItemEvent[]>((observer) => {
+      var itemEvents: ItemEvent[] = [];
 
-    this.itemEventService.getItemEventsByItemID(itemID).subscribe(
-      (response: ItemEvent[]) => {
-        itemEvents = response;
-      },
-      (error: HttpErrorResponse) => {
-        return null;
-      }
-    );
-
-    return itemEvents;
+      this.itemEventService.getItemEventsByItemID(itemID).subscribe(
+        (response: ItemEvent[]) => {
+          itemEvents = response;
+          observer.next(itemEvents);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
   }
 
-  getEventDate(eventID: number): Date {
-    var date: Date = new Date;
+  getEventDate(eventID: number): Observable<Date> {
+    return new Observable<Date>((observer) => {
+      let eventDate: Date = new Date;
 
-    this.eventService.getEventDate(eventID).subscribe(
-      (response: Date) => {
-        date = response;
-      },
-      (error: HttpErrorResponse) => {
-        return null;
-      }
-    );
+      this.eventService.getEventDate(eventID).subscribe(
+        (response: Date) => {
+          eventDate = response;
+          observer.next(eventDate);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
+  }
 
-    return date;
+  getItemEventsByEventID(eventID: number): Observable<ItemEvent[]> {
+    return new Observable<ItemEvent[]>((observer) => {
+      let itemEvents: ItemEvent[] = [];
+
+      this.itemEventService.getItemEventsByEventID(eventID).subscribe(
+        (response: ItemEvent[]) => {
+          itemEvents = response;
+          observer.next(itemEvents);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      )
+    });
+  }
+
+  getEventProductsFromEventID(eventID: number): Observable<Product[]> {
+    return new Observable<Product[]>((observer) => {
+
+      let itemEvents: ItemEvent[] = [];
+
+      this.getItemEventsByEventID(eventID).subscribe(
+        (response: ItemEvent[]) => {
+          itemEvents = response;
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+
+      itemEvents.forEach(itemEvent => {
+
+        let productID: number = 0;
+
+        this.getItemByItemID(itemEvent.itemID).subscribe(
+
+          (response: Item) => {
+            productID = response.productID;
+          },
+          (error: HttpErrorResponse) => {
+            alert(error.message);
+          }
+
+        );
+
+        let inEventProducts: boolean = false;
+
+        this.eventProducts.forEach(eventProduct => {
+
+          if (eventProduct.id == productID) {
+            inEventProducts = true;
+          }
+
+        });
+
+        if (!inEventProducts) {
+          
+          this.getProductByProductID(productID).subscribe(
+
+            (response: Product) => {
+              this.eventProducts.push(response);
+              console.log(response.name + " added to eventProducts!")
+            },
+            (error: HttpErrorResponse) => {
+              alert(error.message);
+            }
+
+          );
+
+        }
+
+      });
+
+    });
+  }
+
+  getItemByItemID(itemID: number): Observable<Item> {
+    return new Observable<Item>((observer) => {
+      let item: Item;
+
+      this.itemService.getById(itemID).subscribe(
+        (response: Item) => {
+          item = response;
+          observer.next(item);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+
+      );
+
+    });
+  }
+
+  getProductByProductID(productID: number): Observable<Product> {
+    return new Observable<Product>((observer) => {
+      let product: Product;
+
+      this.productService.getById(productID).subscribe(
+        (response: Product) => {
+          product = response;
+          observer.next(product);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+
+      );
+
+    });
+
   }
 
   checkIfInApproved(item: Item): Boolean {
@@ -239,10 +347,6 @@ export class EditEventComponent implements OnInit {
 
     return inApproved;
   }
-
-
-
-
 
   getProductTotalAvailable(productID: number): number {
     var numberAvailable = 0;
@@ -291,5 +395,3 @@ export class EditEventComponent implements OnInit {
 
 
 }
-
-

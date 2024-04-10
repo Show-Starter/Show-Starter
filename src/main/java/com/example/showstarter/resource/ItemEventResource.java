@@ -35,6 +35,12 @@ public class ItemEventResource {
         return new ResponseEntity<>(itemEvents, HttpStatus.OK);
     }
 
+    @GetMapping("/find/event/{id}")
+    public ResponseEntity<List<ItemEvent>> getItemEventsByEventID(@PathVariable("id") Long eventID) {
+        List<ItemEvent> itemEvents = itemEventService.findItemEventsByEventID(eventID);
+        return new ResponseEntity<>(itemEvents, HttpStatus.OK);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<ItemEvent>> getAllItemEvents() {
         List<ItemEvent> itemEvents = itemEventService.findAllItemEvents();

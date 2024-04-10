@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { ItemEvent } from "./itemevent";
+import { Item } from "./item";
 
 @Injectable({providedIn: 'root'})
 export class ItemEventService {
@@ -20,6 +21,10 @@ export class ItemEventService {
 
     public getItemEventsByItemID(itemID: number): Observable<ItemEvent[]> {
         return this.http.get<ItemEvent[]>(`${this.apiServerUrl}/item_event/find/${itemID}`)
+    }
+
+    public getItemEventsByEventID(eventID: number): Observable<ItemEvent[]> {
+        return this.http.get<ItemEvent[]>(`${this.apiServerUrl}/item_event/find/event/${eventID}`)
     }
 
     public addItemEvent(item_event: ItemEvent): Observable<ItemEvent> {

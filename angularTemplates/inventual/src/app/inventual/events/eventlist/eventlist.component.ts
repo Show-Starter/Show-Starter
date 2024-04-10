@@ -61,8 +61,8 @@ export class EventlistComponent implements OnInit {
     this.eventService.updateEvent(event);
   }
 
-  public goToItemList(id: number): void {
-    this.router.navigateByUrl(`/events/find?id=${id}`);
+  public goToEditEvent(id: number): void {
+    this.router.navigateByUrl(`/events/edit-event?id=${id}`)
   }
 
   public filterEvents(): void {

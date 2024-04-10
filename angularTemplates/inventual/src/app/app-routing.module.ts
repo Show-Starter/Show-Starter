@@ -90,7 +90,7 @@ const routes: Routes = [
   component: AddproductComponent
   },
   {
-    path: 'events/edit-event',
+    path: 'events/edit-event/:id',
     component: EditEventComponent
   },
 
