@@ -20,17 +20,17 @@
       </div>
         <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
             <div class="inventual-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-black font-bold mb-3">Create event</h5>
+                <h5 class="text-[20px] text-black font-bold mb-3">Edit Event</h5>
                 <div class="inventual-breadcrumb-area-inner-wrap">
                     <span class="text-[14px] text-gray font-normal inline-block me-2">Event</span>
                     <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
-                    <span class="text-[14px] text-gray font-normal inline-block me-2">Create Event</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Edit Event</span>
                 </div>
             </div>
         </div>
         <div class="inventual-content-area px-7">
            <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
-               <h4 class="text-[20px] font-bold text-black mb-9">Create Event</h4>
+               <h4 class="text-[20px] font-bold text-black mb-9">Edit Event</h4>
                <div class="inventual-addbrand-upload-area flex items-center sm:block pb-2.5">
                  
                  <div class="grid grid-cols-12 w-full gap-x-7 sm:gap-x-0">
@@ -41,7 +41,7 @@
                                 <div class="inventual-input-field-style">
                                   <mat-form-field class="w-full" [floatLabel]="'always'">
                                     <mat-label class="hidden">HP</mat-label>
-                                    <input matInput [placeholder]="'Event Name'" [(ngModel)]="event.name" name="name">
+                                    <input matInput [placeholder]="event.name" [(ngModel)]="event.name" name="name">
                                   </mat-form-field>
                                 </div>
                               </div>
@@ -52,7 +52,7 @@
                             <div class="inventual-calender-field-style">
                                 <mat-form-field appearance="fill" floatLabel="always">
                                     <mat-label class="hidden">Choose a date</mat-label>
-                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'" [(ngModel)]="event.date" name="eventDate">
+                                    <input matInput [matDatepicker]="picker" [placeholder]="event.date.toString()" [(ngModel)]="event.date">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>
@@ -65,7 +65,7 @@
                             <div class="inventual-input-field-style">
                               <mat-form-field class="w-full" [floatLabel]="'always'">
                                 <mat-label class="hidden">HP</mat-label>
-                                <input matInput [placeholder]="'Event Location'" [(ngModel)]="event.location" name="location">
+                                <input matInput [placeholder]="event.location" [(ngModel)]="event.location" name="location">
                               </mat-form-field>
                             </div>
                           </div>
@@ -78,7 +78,7 @@
                             <div class="inventual-input-field-style">
                               <mat-form-field class="w-full" [floatLabel]="'always'">
                                 <mat-label class="hidden">HP</mat-label>
-                                <input matInput [placeholder]="'8:00 PM'" [(ngModel)]="event.time" name="time">
+                                <input matInput [placeholder]="event.time" [(ngModel)]="event.time" name="time">
                               </mat-form-field>
                             </div>
                           </div>

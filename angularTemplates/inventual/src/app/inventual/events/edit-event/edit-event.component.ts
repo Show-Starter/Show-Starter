@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AddProductDialogComponent } from '../add-product-dialog/add-product-dialog.component';
@@ -13,8 +12,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Event } from 'src/app/event';
 import { DatePipe } from '@angular/common';
 import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, catchError, forkJoin, map, mergeMap, of, switchMap, throwError } from 'rxjs';
+import { ObserversModule } from '@angular/cdk/observers';
 
 
 @Component({
@@ -26,13 +26,26 @@ import { Observable } from 'rxjs';
 })
 export class EditEventComponent implements OnInit {
 
+  // eventID: number;
+
   approvedItems: Item[] = [];
-  eventProducts: Product[] = [];
+  eventProducts: Product[] | undefined = [];
 
   //sidebar menu activation start
   menuSidebarActive:boolean=false;
 
-  event: Event = {
+  constructor(public dialog: MatDialog, private itemEventService: ItemEventService, private productService: ProductService,
+    private itemService: ItemService, private eventService: EventService, private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.event.id = params['id'];
+      console.log("Event ID: " + this.event.id); // Print the parameter to the console. 
+    });
+    this.main();
+  }
+
+  public event: Event = {
     id: 0,
     name: "",
     location: "",
@@ -41,6 +54,73 @@ export class EditEventComponent implements OnInit {
     time: "",
     invoice_num: 0
   };
+
+  selectedProducts: Array<{
+    product: Product,
+    quantity: number,
+    subtotal?: number
+  }> = [];
+
+  async main() {
+    try {
+      if (!this.event) {
+        console.log("Event is not defined.");
+        return;
+      }
+  
+      console.log("this.event.id = " + this.event.id);
+  
+      // Fetch event details
+      const fetchedEvent = await this.getEventByID(this.event.id).toPromise();
+  
+      if (!fetchedEvent) {
+        console.log("Failed to fetch event details.");
+        return;
+      }
+  
+      this.event = fetchedEvent;
+  
+      // Fetch event products
+      let eventProducts: Product[] = [];
+      const fetchedProducts = await this.getEventProductsFromEventID(this.event.id).toPromise();
+  
+      if (fetchedProducts) {
+        eventProducts = fetchedProducts;
+      } else {
+        console.log("Failed to fetch event products.");
+      }
+  
+      console.log("eventProducts.length = " + eventProducts.length);
+
+      console.log("selectedProducts.length = " + this.selectedProducts.length)
+  
+      for (const product of eventProducts) {
+        if (!this.selectedProducts.some(selectedProduct => selectedProduct.product.id === product.id)) {
+            try {
+                const quantity = await this.getProductQuantity(product.id).toPromise();
+
+                if (quantity) {
+
+                  this.selectedProducts.push({
+                      product: product,
+                      quantity: quantity
+                  });
+                  console.log(`${product.id} pushed to selectedProducts`);
+
+                }
+            } catch (error: any) {
+                console.error(`Error fetching quantity for product ${product.id}: ${error.message}`);
+            }
+        }
+      }
+    } catch (error: any) {
+      console.error("An error occurred:", error);
+      alert(error.message);
+    }
+  }
+  
+  
+  
 
   myfunction(){
     if(this.menuSidebarActive==false){
@@ -132,12 +212,6 @@ export class EditEventComponent implements OnInit {
     
   }
 
-  selectedProducts: Array<{
-    product: Product,
-    quantity: number,
-    subtotal?: number
-  }> = [];
-
   //sidebar menu activation end
 
   //counter
@@ -162,10 +236,54 @@ export class EditEventComponent implements OnInit {
     this.selectedProducts.splice(index, 1);
   }
 
-  constructor(public dialog: MatDialog, private itemEventService: ItemEventService, private productService: ProductService,
-    private itemService: ItemService, private eventService: EventService, private router: Router) {}
+  // METHODS FOR API CALLS
 
-  ngOnInit(): void {}
+  getEventByID(eventID: number): Observable<Event> {
+    return new Observable<Event>((observer) => {
+
+      let event: Event;
+
+      this.eventService.getById(eventID).subscribe(
+        (response: Event) => {
+          event = response;
+          observer.next(event);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+
+    });
+
+  }
+  
+  getProductQuantity(productID: number): Observable<number> {
+    let quantity = 0;
+    
+    return this.getItemEventsByEventID(this.event.id).pipe(
+      switchMap((itemEvents: ItemEvent[]) => {
+        const itemObservables = itemEvents.map(itemEvent => {
+          return this.getItemByItemID(itemEvent.itemID).pipe(
+            map((item: Item) => ({ item, itemEvent }))
+          );
+        });
+        return forkJoin(itemObservables);
+      }),
+      map((responses: { item: Item, itemEvent: ItemEvent }[]) => {
+        responses.forEach(response => {
+          if (response.item.productID === productID) {
+            quantity++;
+          }
+        });
+        return quantity;
+      }),
+      catchError((error: HttpErrorResponse) => {
+        alert(error.message);
+        return throwError(error);
+      })
+    );
+  }
 
   getItems(productID: number): Observable<Item[]> {
     return new Observable<Item[]>((observer) => {
@@ -238,63 +356,43 @@ export class EditEventComponent implements OnInit {
   }
 
   getEventProductsFromEventID(eventID: number): Observable<Product[]> {
-    return new Observable<Product[]>((observer) => {
-
-      let itemEvents: ItemEvent[] = [];
-
-      this.getItemEventsByEventID(eventID).subscribe(
-        (response: ItemEvent[]) => {
-          itemEvents = response;
-        },
-        (error: HttpErrorResponse) => {
-          alert(error.message);
-        }
-      );
-
-      itemEvents.forEach(itemEvent => {
-
-        let productID: number = 0;
-
-        this.getItemByItemID(itemEvent.itemID).subscribe(
-
-          (response: Item) => {
-            productID = response.productID;
-          },
-          (error: HttpErrorResponse) => {
-            alert(error.message);
-          }
-
-        );
-
-        let inEventProducts: boolean = false;
-
-        this.eventProducts.forEach(eventProduct => {
-
-          if (eventProduct.id == productID) {
-            inEventProducts = true;
-          }
-
-        });
-
-        if (!inEventProducts) {
-          
-          this.getProductByProductID(productID).subscribe(
-
-            (response: Product) => {
-              this.eventProducts.push(response);
-              console.log(response.name + " added to eventProducts!")
-            },
-            (error: HttpErrorResponse) => {
-              alert(error.message);
-            }
-
+    let itemEvents: ItemEvent[];
+    let products: Product[] = [];
+  
+    return this.getItemEventsByEventID(eventID).pipe(
+      mergeMap((response: ItemEvent[]) => {
+        itemEvents = response;
+        const observables: Observable<Product>[] = [];
+  
+        itemEvents.forEach(itemEvent => {
+          observables.push(
+            this.getItemByItemID(itemEvent.itemID).pipe(
+              mergeMap((item: Item) => {
+                const productID = item.productID;
+                return this.getProductByProductID(productID).pipe(
+                  catchError((error: any) => {
+                    console.error('Error fetching product:', error);
+                    // Return a default product or throw the error
+                    return of({} as Product); // Example: Return an empty product
+                    // OR
+                    // return throwError(error); // Rethrow the error
+                  })
+                );
+              })
+            )
           );
-
-        }
-
-      });
-
-    });
+        });
+  
+        return forkJoin(observables);
+      }),
+      catchError((error: any) => {
+        console.error('Error fetching item events:', error);
+        // Propagate the error or return a default value
+        return throwError(error); // Example: Propagate the error
+        // OR
+        // return of([]); // Example: Return an empty array
+      })
+    );
   }
 
   getItemByItemID(itemID: number): Observable<Item> {

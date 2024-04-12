@@ -49,8 +49,6 @@ export class ItemlistComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    // this.productID = 178;
-    // this.productID = +!this.route.snapshot.paramMap.get('id');
     this.main();
     this.getProductName(this.productID);
   }
