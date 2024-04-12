@@ -121,4 +121,9 @@ export class InvoicelistComponent implements OnInit {
   public myfunction(): void {
     this.menuSidebarActive = !this.menuSidebarActive;
   }
+
+
+
+  //until we have invoice in backend
+
 }
