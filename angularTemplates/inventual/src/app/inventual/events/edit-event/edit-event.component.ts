@@ -279,8 +279,49 @@ export class EditEventComponent implements OnInit {
     }
   }
 
-  removeProduct(index: number) {
+  async removeProduct(index: number) {
+
+    const productID = this.selectedProducts[index].product.id;
+
+    let items: Item[] | undefined;
+    try {
+        items = await this.getItems(productID).toPromise();
+    } catch (error) {
+        console.error('Error fetching product quantity:', error);
+        this.dialog.open(CustomMessageDialogComponent, {
+            width: '400px',
+            data: { title: 'Error', message: `Error fetching items for ${productID}. Please try again.` }
+        });
+        return; // Stop the event addition if there's an error fetching quantity
+    }
+
+    if (items) {
+      items.forEach(async item => {
+        let itemEvents: ItemEvent[] | undefined;
+        try {
+            itemEvents = await this.getItemEvents(item.id).toPromise();
+        } catch (error) {
+            console.error('Error fetching product quantity:', error);
+            this.dialog.open(CustomMessageDialogComponent, {
+                width: '400px',
+                data: { title: 'Error', message: `Error fetching item events for ${item.id}. Please try again.` }
+            });
+            return; // Stop the event addition if there's an error fetching quantity
+        }
+
+        if (itemEvents) {
+
+          itemEvents.forEach(itemEvent => {
+            if (itemEvent.eventID == this.event.id) {
+              this.itemEventService.deleteItemEvent(itemEvent.id).toPromise();
+            }
+          });
+        }
+      });
+    }
+
     this.selectedProducts.splice(index, 1);
+    
   }
 
   // METHODS FOR API CALLS
@@ -603,8 +644,48 @@ export class EditEventComponent implements OnInit {
             // items added
             } else if (productQuantity < obj.quantity) {
                 // Added quantity logic
+              console.log("ITEMS ADDED");
+              let addAmount = obj.quantity - productQuantity;
+              let amountAdded = 0;
 
-                
+              if (items) {
+
+                items.forEach(async item => {
+
+                  let itemEvents: ItemEvent[] | undefined;
+                  try {
+                      itemEvents = await this.getItemEvents(item.id).toPromise();
+                  } catch (error) {
+                      console.error('Error fetching product quantity:', error);
+                      this.dialog.open(CustomMessageDialogComponent, {
+                          width: '400px',
+                          data: { title: 'Error', message: `Error fetching product quantity for ${obj.product.name}. Please try again.` }
+                      });
+                      return; // Stop the event addition if there's an error fetching quantity
+                  }
+
+                  if (itemEvents) {
+                    let itemAdded = false;
+
+                    itemEvents.forEach(itemEvent => {
+                      if (itemEvent.eventID == this.event.id) {
+                        itemAdded = true;
+                      }
+                    });
+
+                    if (!itemAdded && amountAdded < addAmount) {
+                      let newItemEvent: ItemEvent = {
+                            id: 0,
+                            itemID: item.id,
+                            eventID: this.event.id
+                      }
+                      this.itemEventService.addItemEvent(newItemEvent).toPromise();
+                      amountAdded++;
+                    }
+
+                  }
+                })
+              }
             }
         }
     }
