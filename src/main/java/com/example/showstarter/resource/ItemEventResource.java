@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,12 +49,12 @@ public class ItemEventResource {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<ItemEvent> addItemEvent(@RequestBody ItemEvent itemEvent) {
-        ItemEvent newItemEvent = itemEventService.addItemEvent(itemEvent);
-        return new ResponseEntity<>(newItemEvent, HttpStatus.CREATED);
+    public ResponseEntity<?> addItemEventByItemIDAndEventID(@RequestBody ItemEvent itemEvent) {
+        ItemEvent newitemEvent = itemEventService.addItemEvent(itemEvent);
+        return new ResponseEntity<>(newitemEvent, HttpStatus.CREATED);
     }
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteItemEvent(@PathVariable("id") Long itemEventID) {
         itemEventService.deleteById(itemEventID);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -76,7 +77,7 @@ public class ItemEventResource {
         return new ResponseEntity<>(jsonEventName, HttpStatus.OK);
     }
 
-    @PostMapping("/delete/{eventID}/{itemID}")
+    @DeleteMapping("/delete/{eventID}/{itemID}")
     public ResponseEntity<?> deleteItemEventByEventAndItemID(@PathVariable("eventID") Long eventID, @PathVariable("itemID") Long itemID) {
         itemEventService.deleteByEventAndItemID(eventID, itemID);
         return new ResponseEntity<>(HttpStatus.OK);
