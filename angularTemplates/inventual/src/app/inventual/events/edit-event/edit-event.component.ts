@@ -40,7 +40,6 @@ export class EditEventComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.event.id = params['id'];
-      console.log("Event ID: " + this.event.id); // Print the parameter to the console. 
     });
     this.main();
   }
@@ -68,8 +67,6 @@ export class EditEventComponent implements OnInit {
         return;
       }
   
-      console.log("this.event.id = " + this.event.id);
-  
       // Fetch event details
       const fetchedEvent = await this.getEventByID(this.event.id).toPromise();
   
@@ -90,10 +87,6 @@ export class EditEventComponent implements OnInit {
         console.log("Failed to fetch event products.");
       }
   
-      console.log("eventProducts.length = " + eventProducts.length);
-
-      console.log("selectedProducts.length = " + this.selectedProducts.length)
-  
       for (const product of eventProducts) {
         if (!this.selectedProducts.some(selectedProduct => selectedProduct.product.id === product.id)) {
             try {
@@ -105,7 +98,6 @@ export class EditEventComponent implements OnInit {
                       product: product,
                       quantity: quantity
                   });
-                  console.log(`${product.id} pushed to selectedProducts`);
 
                 }
             } catch (error: any) {
@@ -117,6 +109,59 @@ export class EditEventComponent implements OnInit {
       console.error("An error occurred:", error);
       alert(error.message);
     }
+
+    this.selectedProducts.forEach(obj => {
+      let items: Item[] = [];
+    
+      this.getItems(obj.product.id).subscribe(
+        (response: Item[]) => {
+          items = response;
+    
+          items.forEach(item => {
+    
+            let itemEvents: ItemEvent[] = [];
+    
+            this.getItemEvents(item.id).subscribe(
+              (response: ItemEvent[]) => {
+                itemEvents = response;
+    
+                if (!itemEvents.length) {
+                  this.approvedItems.push(item);
+                }
+    
+                itemEvents.forEach(itemEvent => {
+                  this.getEventDate(itemEvent.eventID).subscribe(
+                    (response: Date) =>{
+                      const date: Date = response;
+    
+                      const datepipe: DatePipe = new DatePipe('en-US');
+                      const newEventDate = datepipe.transform(this.event.date, 'yyyy-MM-dd');
+                      const itemEventDate = datepipe.transform(date, 'yyyy-MM-dd');
+    
+                      const dateComp = newEventDate === itemEventDate;
+    
+                      if ((!dateComp && !this.checkIfInApproved(item)) || (itemEvent.eventID == this.event.id && !this.checkIfInApproved(item))) {
+                        this.approvedItems.push(item);
+                      }
+                    },
+                    (error: HttpErrorResponse) => {
+                      alert(error.message);
+                    }
+                  );
+                });
+              },
+              (error: HttpErrorResponse) => {
+                alert(error.message);
+              }
+            );
+          });
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+      
+    });
   }
   
   
@@ -140,21 +185,25 @@ export class EditEventComponent implements OnInit {
     dialogRef.afterClosed().subscribe((selectedProducts: Product[]) => {
       
       if (selectedProducts && selectedProducts.length) {
-        this.selectedProducts = selectedProducts.map(product => ({
-          product: product,
-          quantity: 1, // Default quantity can be set to 1 or any logic you have
-        }));
+        
         selectedProducts.forEach(product => {
+
+          let selectedProduct = {
+            product: product,
+            quantity: 1, // Default quantity can be set to 1 or any logic you have
+          };
+
+          this.selectedProducts.push(selectedProduct);
+
+          console.log("this.selectedProducts.length = " + this.selectedProducts.length);
+
           let items: Item[] = [];
         
           this.getItems(product.id).subscribe(
             (response: Item[]) => {
               items = response;
         
-              console.log("items length: " + items.length);
-        
               items.forEach(item => {
-                console.log("In Item For Loop");
         
                 let itemEvents: ItemEvent[] = [];
         
@@ -176,11 +225,9 @@ export class EditEventComponent implements OnInit {
                           const itemEventDate = datepipe.transform(date, 'yyyy-MM-dd');
         
                           const dateComp = newEventDate === itemEventDate;
-                          console.log(dateComp);
         
                           if (!dateComp && !this.checkIfInApproved(item)) {
                             this.approvedItems.push(item);
-                            console.log("Item " + item.id + " Added to Approve");
                           }
                         },
                         (error: HttpErrorResponse) => {
@@ -204,10 +251,10 @@ export class EditEventComponent implements OnInit {
 
       }
 
-      this.selectedProducts = selectedProducts.map(product => ({
-          product: product,
-          quantity: 1, // Default quantity can be set to 1 or any logic you have
-      }));
+      // this.selectedProducts = selectedProducts.map(product => ({
+      //     product: product,
+      //     quantity: 1, // Default quantity can be set to 1 or any logic you have
+      // }));
     });
     
   }
@@ -259,31 +306,35 @@ export class EditEventComponent implements OnInit {
   }
   
   getProductQuantity(productID: number): Observable<number> {
-    let quantity = 0;
-    
-    return this.getItemEventsByEventID(this.event.id).pipe(
-      switchMap((itemEvents: ItemEvent[]) => {
-        const itemObservables = itemEvents.map(itemEvent => {
-          return this.getItemByItemID(itemEvent.itemID).pipe(
-            map((item: Item) => ({ item, itemEvent }))
-          );
-        });
-        return forkJoin(itemObservables);
-      }),
-      map((responses: { item: Item, itemEvent: ItemEvent }[]) => {
-        responses.forEach(response => {
-          if (response.item.productID === productID) {
-            quantity++;
-          }
-        });
-        return quantity;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        alert(error.message);
-        return throwError(error);
-      })
-    );
-  }
+  let quantity = 0;
+  const itemIDsSet = new Set<number>();
+
+  return this.getItemEventsByEventID(this.event.id).pipe(
+    switchMap((itemEvents: ItemEvent[]) => {
+      const itemObservables = itemEvents.map(itemEvent => {
+        return this.getItemByItemID(itemEvent.itemID).pipe(
+          map((item: Item) => ({ item, itemEvent }))
+        );
+      });
+      return forkJoin(itemObservables);
+    }),
+    map((responses: { item: Item, itemEvent: ItemEvent }[]) => {
+      responses.forEach(response => {
+        const currentItemID = response.itemEvent.itemID;
+        if (!itemIDsSet.has(currentItemID) && response.item.productID === productID) {
+          quantity++;
+          itemIDsSet.add(currentItemID);
+        }
+      });
+      return quantity;
+    }),
+    catchError((error: HttpErrorResponse) => {
+      alert(error.message);
+      return throwError(error);
+    })
+  );
+}
+
 
   getItems(productID: number): Observable<Item[]> {
     return new Observable<Item[]>((observer) => {
@@ -447,6 +498,7 @@ export class EditEventComponent implements OnInit {
   }
 
   getProductTotalAvailable(productID: number): number {
+
     var numberAvailable = 0;
 
     this.approvedItems.forEach(approvedItem => {
@@ -456,40 +508,63 @@ export class EditEventComponent implements OnInit {
     });
 
     return numberAvailable;
-  }
+  } 
 
-  addEvent(): void {
+  async updateEvent(): Promise<void> {
     let isQuantityValid = true;
-  
-    this.selectedProducts.forEach(product => {
-      const available = this.getProductTotalAvailable(product.product.id);
-      if (product.quantity > available) {
-        isQuantityValid = false;
-        this.dialog.open(CustomMessageDialogComponent, {
-          width: '400px',
-          data: { title: 'Error', message: `You have too many of the product ${product.product.name}s added. Available: ${available}` }
-        });
-        return; // Break the forEach loop
-      }
-    });
-  
-    if (!isQuantityValid) {
-      return; // Stop the event addition if any quantity is invalid
+
+    for (const obj of this.selectedProducts) {
+        const available = this.getProductTotalAvailable(obj.product.id);
+        if (obj.quantity > available) {
+            isQuantityValid = false;
+            this.dialog.open(CustomMessageDialogComponent, {
+                width: '400px',
+                data: { title: 'Error', message: `You have too many of the product ${obj.product.name}s added. Available: ${available}` }
+            });
+            return; // Stop the event addition if any quantity is invalid
+        }
+
+        let productQuantity: number | undefined;
+        try {
+            productQuantity = await this.getProductQuantity(obj.product.id).toPromise();
+        } catch (error) {
+            console.error('Error fetching product quantity:', error);
+            this.dialog.open(CustomMessageDialogComponent, {
+                width: '400px',
+                data: { title: 'Error', message: `Error fetching product quantity for ${obj.product.name}. Please try again.` }
+            });
+            return; // Stop the event addition if there's an error fetching quantity
+        }
+
+        if (productQuantity !== undefined && productQuantity !== obj.quantity) {
+            if (productQuantity > obj.quantity) {
+                // Removed quantity logic
+            } else if (productQuantity < obj.quantity) {
+                // Added quantity logic
+            }
+        }
     }
 
-    this.eventService.addEvent(this.event).subscribe(
-      (response) => {
-        console.log('Event added', response);
-        // Handle post-add logic here
-      },
-      (error) => {
-        // Handle error
-        console.error('Error adding Event:', error);
-      }
+    if (!isQuantityValid) {
+        return; // Stop the event addition if any quantity is invalid
+    }
+
+    this.eventService.updateEvent(this.event).subscribe(
+        (response) => {
+            console.log('Event updated', response);
+            // Handle post-update logic here
+        },
+        (error) => {
+            // Handle error
+            console.error('Error updating Event:', error);
+            this.dialog.open(CustomMessageDialogComponent, {
+                width: '400px',
+                data: { title: 'Error', message: `Error updating event. Please try again.` }
+            });
+        }
     );
 
     this.router.navigate(['/events/eventlist']);
   }
-
 
 }

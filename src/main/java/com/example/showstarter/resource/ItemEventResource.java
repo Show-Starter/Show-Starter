@@ -75,4 +75,11 @@ public class ItemEventResource {
         
         return new ResponseEntity<>(jsonEventName, HttpStatus.OK);
     }
+
+    @PostMapping("/delete/{eventID}/{itemID}")
+    public ResponseEntity<?> deleteItemEventByEventAndItemID(@PathVariable("eventID") Long eventID, @PathVariable("itemID") Long itemID) {
+        itemEventService.deleteByEventAndItemID(eventID, itemID);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

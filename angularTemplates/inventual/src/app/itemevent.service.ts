@@ -38,4 +38,8 @@ export class ItemEventService {
     public deleteItemEvent(eventID: Number): Observable<void> {
         return this.http.delete<void>(`${this.apiServerUrl}/item_event/delete/${eventID}`);
     }
+
+    public deleteItemEventByEventAndItemID(eventID: Number, itemID: Number): Observable<void> {
+        return this.http.delete<void>(`${this.apiServerUrl}/item_event/delete/${eventID}/${itemID}`);
+    }
 }

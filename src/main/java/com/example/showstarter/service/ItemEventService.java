@@ -36,4 +36,8 @@ public class ItemEventService {
     public void deleteById(Long itemEventID) {
         itemEventRepo.deleteById(itemEventID);
     }
+
+    public void deleteByEventAndItemID(Long itemID, Long eventID) {
+        itemEventRepo.deleteByItemIDAndEventID(itemID, eventID);
+    }
 }
