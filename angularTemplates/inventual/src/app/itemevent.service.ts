@@ -27,16 +27,16 @@ export class ItemEventService {
         return this.http.get<ItemEvent[]>(`${this.apiServerUrl}/item_event/find/event/${eventID}`)
     }
 
-    public addItemEvent(item_event: ItemEvent): Observable<ItemEvent> {
-        return this.http.post<ItemEvent>(`${this.apiServerUrl}/item_event/add`, item_event);
+    public addItemEvent(newItemEvent: ItemEvent): Observable<ItemEvent> {
+        return this.http.post<ItemEvent>(`${this.apiServerUrl}/item_event/add`, newItemEvent);
     }
 
     public updateItemEvent(item_event: ItemEvent): Observable<ItemEvent> {
         return this.http.put<ItemEvent>(`${this.apiServerUrl}/item_event/update`, item_event);
     }
 
-    public deleteItemEvent(eventID: Number): Observable<void> {
-        return this.http.delete<void>(`${this.apiServerUrl}/item_event/delete/${eventID}`);
+    public deleteItemEvent(itemEventID: Number): Observable<void> {
+        return this.http.delete<void>(`${this.apiServerUrl}/item_event/delete/${itemEventID}`);
     }
 
     public deleteItemEventByEventAndItemID(eventID: Number, itemID: Number): Observable<void> {
