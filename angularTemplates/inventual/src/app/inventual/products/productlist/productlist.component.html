@@ -1,212 +1,232 @@
 <div class="inventual-dashboard-area">
-    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
-      <div class="inventual-header-bar-responsive" (click)="myfunction()">
-        <mat-icon>reorder</mat-icon>
-      </div>
-      <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
-        <app-menu></app-menu>
-      </div>
-      <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
     </div>
-    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
-      <div class="inventual-header-area">
-        <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-gray-border">
-          <div class="grid grid-cols-12 items-center h-full">
-            <div class="col-span-12">
-              <app-header></app-header>
+    <div
+      class="inventual-menu-wrapper bg-white border-e border-b border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+      <app-menu></app-menu>
+    </div>
+    <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  </div>
+  <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-area">
+      <div
+        class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-gray-border">
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <app-header></app-header>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+      <div class="inventual-breadcrumb-area-inner px-0.5">
+        <h5 class="text-[20px] text-black font-bold mb-3">Product List</h5>
+        <div class="inventual-breadcrumb-area-inner-wrap">
+          <span class="text-[14px] text-gray font-normal inline-block me-2">Products</span>
+          <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
+          <span class="text-[14px] text-gray font-normal inline-block me-2">Product List</span>
+        </div>
+      </div>
+    </div>
+    <div class="inventual-content-area px-7">
+      <div class="inventual-manageproduct-area bg-white p-7 custom-shadow rounded-8 mb-5">
+        <h4 class="text-[20px] font-bold text-black mb-9">Product List</h4>
+        <div class="inventual-material-btn mb-7">
+          <button mat-raised-button color="accent" [routerLink]="['/product/addproduct']"
+            class="mb-1"><mat-icon>add_circle_outline</mat-icon> Add Product</button>
+
+        </div>
+        <div class="inventual-table-header-search-area">
+          <div class="grid grid-cols-12 gap-x-5 mb-7 pb-0.5">
+            <div class="col-span-5 md:col-span-6 sm:col-span-12">
+              <div class="inventual-table-header-search relative sm:mb-4">
+                <input type="text" placeholder="Search List" [(ngModel)]="searchText"
+                  (ngModelChange)="filterProducts()">
+                <span><mat-icon>search</mat-icon> </span>
+                
+              </div>
+
+              <div class="col-span-3 md:col-span-4 sm:col-span-12">
+                <div class="inventual-table-header-search-action-btn text-end sm:text-start">
+                  <button type="button" class="filter" [matMenuTriggerFor]="beforeMenuH" [(ngModel)]="searchText"
+                  (ngModelChange)="filterProducts()"><svg id="filter" xmlns="http://www.w3.org/2000/svg"
+                    width="15.766" height="13.34" viewBox="0 0 15.766 13.34">
+                    <path id="Path_196" data-name="Path 196"
+                      d="M18.159,6.213H9.67A1.214,1.214,0,0,0,8.457,5H7.245A1.214,1.214,0,0,0,6.032,6.213H3.606a.606.606,0,1,0,0,1.213H6.032A1.214,1.214,0,0,0,7.245,8.638H8.457A1.214,1.214,0,0,0,9.67,7.426h8.489a.606.606,0,1,0,0-1.213ZM7.245,7.426V6.213H8.457v.6s0,0,0,0,0,0,0,0v.6Z"
+                      transform="translate(-3 -5)" fill="#611bcb" />
+                    <path id="Path_197" data-name="Path 197"
+                      d="M18.159,14.213H14.521A1.214,1.214,0,0,0,13.308,13H12.1a1.214,1.214,0,0,0-1.213,1.213H3.606a.606.606,0,1,0,0,1.213h7.277A1.214,1.214,0,0,0,12.1,16.638h1.213a1.214,1.214,0,0,0,1.213-1.213h3.638a.606.606,0,1,0,0-1.213ZM12.1,15.426V14.213h1.213v.6s0,0,0,0,0,0,0,0v.6Z"
+                      transform="translate(-3 -8.149)" fill="#611bcb" />
+                    <path id="Path_198" data-name="Path 198"
+                      d="M18.159,22.213H9.67A1.214,1.214,0,0,0,8.457,21H7.245a1.214,1.214,0,0,0-1.213,1.213H3.606a.606.606,0,0,0,0,1.213H6.032a1.214,1.214,0,0,0,1.213,1.213H8.457A1.214,1.214,0,0,0,9.67,23.426h8.489a.606.606,0,0,0,0-1.213ZM7.245,23.426V22.213H8.457v.6s0,0,0,0,0,0,0,0v.6Z"
+                      transform="translate(-3 -11.298)" fill="#611bcb" />
+                  </svg> Filter
+                </button>
+                <mat-menu #beforeMenuH="matMenu" xPosition="before">
+                  <button mat-menu-item (click)="selectProductGroup('Audio')">
+                    <span>Audio</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Cables')">
+                    <span>Cables</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Decor')">
+                    <span>Decor</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Dj')">
+                    <span>Dj</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Bulk')">
+                    <span>Bulk</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Lighting')">
+                    <span>Lighting</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Props')">
+                    <span>Props</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Rigging')">
+                    <span>Rigging</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Staging')">
+                    <span>Staging</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Tools / Kit Supplies')">
+                    <span>Tools / Kit Supplies</span>
+                  </button>
+                  <button mat-menu-item (click)="selectProductGroup('Video')">
+                    <span>Video</span>
+                  </button>
+                </mat-menu>
+                </div>
+              </div>
+              <div class="col-span-28 md:col-span-24 sm:col-span-48">
+                <div class="inventual-table-header-search-action-btn text-end sm:text-start">
+
+                  <mat-menu #beforeMenuA="matMenu" xPosition="before">
+                    <button mat-menu-item>
+                      <span>Name</span>
+                    </button>
+                    <button mat-menu-item>
+                      <span>Product Group</span>
+                    </button>
+                    <button mat-menu-item>
+                      <span>Rental Price</span>
+                    </button>
+
+                  </mat-menu>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="inventual-manageproduct-table-area">
+            <div class="inventual-manageproduct-table-inner1">
+              <div
+                class="inventual-manageproduct-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
+                <div
+                  class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
+                  <div class="inventual-manageproduct-table-checkbox1">
+                    <!-- <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
+                                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
+                                        {{task.name}}
+                                        </mat-checkbox> -->
+                  </div>
+                  <div class="inventual-manageproduct-table-sl1">
+                    <h5>ID</h5>
+                  </div>
+
+                  <div class="inventual-manageproduct-table-sl1">
+                    <h5>Name</h5>
+                  </div>
+
+                  <div class="inventual-manageproduct-table-sl1">
+                    <h5>Product Group</h5>
+                  </div>
+
+                  <div class="inventual-manageproduct-table-sl1">
+                    <h5>Rental Price</h5>
+                  </div>
+
+                  <div class="inventual-manageproduct-table-sl1">
+                    <h5>Stock Level</h5>
+                  </div>
+
+                  <div class="inventual-manageproduct-table-action1">
+                    <h5>Action</h5>
+                  </div>
+                </div>
+
+                <div *ngFor="let product of parsedProducts; let i = index">
+                  <div
+                    class="inventual-manageproduct-table-list1 flex border-b border-solid border-black-borderThree h-20">
+
+                    <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
+                      <!-- <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck(i, $event.checked)">
+                                                <label for="mat-checkbox-{{i}}-input"></label>
+                                            </mat-checkbox> -->
+                    </div>
+                    <div class="inventual-manageproduct-table-sl1">
+                      <span>{{product.id}}</span>
+                    </div>
+
+
+                    <div class="inventual-manageproduct-table-sl1">
+                      <span>{{product.name}}</span>
+                    </div>
+                    <div class="inventual-manageproduct-table-sl1">
+                      <span>{{product.product_group}}</span>
+                    </div>
+
+                    <div class="inventual-manageproduct-table-sl1">
+                      <span> ${{product.rental_price}}</span>
+                    </div>
+
+                    <div class="inventual-manageproduct-table-sl1">
+                      <span>{{product.stock_level}}</span>
+                    </div>
+
+                    <div class="inventual-manageproduct-table-action1">
+                      <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style"
+                        aria-label="Example icon-button with a menu">
+                        Action <mat-icon>arrow_drop_down</mat-icon>
+                      </button>
+                      <mat-menu #beforeMenu="matMenu" xPosition="before">
+                        <button mat-menu-item (click)="goToItemList(product.id)">
+                          <img src="../../../../../assets/img/icon/action-1.png" alt="icon not found">
+                          <span>View Items</span>
+                        </button>
+
+                        <button mat-menu-item (click)="goToEditProduct(product.id)">
+                          <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
+                          <span>Edit Product</span>
+                        </button>
+
+                        <button mat-menu-item (click)="deleteProduct(product.id)" http-equiv="refresh" content="3">
+                          <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
+                          <span>Delete</span>
+                          <meta>
+                        </button>
+                      </mat-menu>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="inventual-pagination-area">
+              <app-pagination [currentPage]="currentPage" [totalItems]="products.length" [itemsPerPage]="itemsPerPage"
+                (pageChange)="onPageChange($any($event))"></app-pagination>
             </div>
           </div>
         </div>
       </div>
-        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
-            <div class="inventual-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-black font-bold mb-3">Product List</h5>
-                <div class="inventual-breadcrumb-area-inner-wrap">
-                    <span class="text-[14px] text-gray font-normal inline-block me-2">Products</span>
-                    <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
-                    <span class="text-[14px] text-gray font-normal inline-block me-2">Product List</span>
-                </div>
-            </div>
-        </div>
-        <div class="inventual-content-area px-7">
-           <div class="inventual-manageproduct-area bg-white p-7 custom-shadow rounded-8 mb-5">
-               <h4 class="text-[20px] font-bold text-black mb-9">Product List</h4>
-               <div class="inventual-material-btn mb-7">
-                    <button mat-raised-button color="accent" [routerLink]="['/product/addproduct']" class="mb-1"><mat-icon>add_circle_outline</mat-icon> Add Product</button>
-
-               </div>
-               <div class="inventual-table-header-search-area">
-                   <div class="grid grid-cols-12 gap-x-5 mb-7 pb-0.5">
-                    <div class="inventual-table-header-search-action-btn text-end sm:text-start">
-                        <button type="button" class="filter" [matMenuTriggerFor]="beforeMenuH"   (ngModelChange)="filterProducts()" ><svg id="filter" xmlns="http://www.w3.org/2000/svg" width="15.766" height="13.34" viewBox="0 0 15.766 13.34">
-                            <path id="Path_196" data-name="Path 196" d="M18.159,6.213H9.67A1.214,1.214,0,0,0,8.457,5H7.245A1.214,1.214,0,0,0,6.032,6.213H3.606a.606.606,0,1,0,0,1.213H6.032A1.214,1.214,0,0,0,7.245,8.638H8.457A1.214,1.214,0,0,0,9.67,7.426h8.489a.606.606,0,1,0,0-1.213ZM7.245,7.426V6.213H8.457v.6s0,0,0,0,0,0,0,0v.6Z" transform="translate(-3 -5)" fill="#611bcb"/>
-                            <path id="Path_197" data-name="Path 197" d="M18.159,14.213H14.521A1.214,1.214,0,0,0,13.308,13H12.1a1.214,1.214,0,0,0-1.213,1.213H3.606a.606.606,0,1,0,0,1.213h7.277A1.214,1.214,0,0,0,12.1,16.638h1.213a1.214,1.214,0,0,0,1.213-1.213h3.638a.606.606,0,1,0,0-1.213ZM12.1,15.426V14.213h1.213v.6s0,0,0,0,0,0,0,0v.6Z" transform="translate(-3 -8.149)" fill="#611bcb"/>
-                            <path id="Path_198" data-name="Path 198" d="M18.159,22.213H9.67A1.214,1.214,0,0,0,8.457,21H7.245a1.214,1.214,0,0,0-1.213,1.213H3.606a.606.606,0,0,0,0,1.213H6.032a1.214,1.214,0,0,0,1.213,1.213H8.457A1.214,1.214,0,0,0,9.67,23.426h8.489a.606.606,0,0,0,0-1.213ZM7.245,23.426V22.213H8.457v.6s0,0,0,0,0,0,0,0v.6Z" transform="translate(-3 -11.298)" fill="#611bcb"/>
-                          </svg> Filter
-                          </button>
-                          <mat-menu #beforeMenuH="matMenu" xPosition="before">
-                            <button mat-menu-item (click)="selectProductGroup('Audio')">
-                                <span>Audio</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Cables')">
-                                <span>Cables</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Decor')">
-                                <span>Decor</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Dj')">
-                                <span>Dj</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Bulk')">
-                                <span>Bulk</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Lighting')">
-                                <span>Lighting</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Props')">
-                                <span>Props</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Rigging')">
-                                <span>Rigging</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Staging')">
-                                <span>Staging</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Tools / Kit Supplies')">
-                                <span>Tools / Kit Supplies</span>
-                              </button>
-                              <button mat-menu-item (click)="selectProductGroup('Video')">
-                                <span>Video</span>
-                              </button>
-                            </mat-menu>
-
-                       <div class="col-span-5 md:col-span-6 sm:col-span-12">
-                           <div class="inventual-table-header-search relative sm:mb-4">
-                            <input type="text" placeholder="Search List" [(ngModel)]="searchText" (ngModelChange)="filterProducts()">
-                               <span><mat-icon>search</mat-icon></span>
-                           </div>
-                       </div>
-                       <div class="col-span-28 md:col-span-24 sm:col-span-48">
-                           <div class="inventual-table-header-search-action-btn text-end sm:text-start">
-
-                              <mat-menu #beforeMenuA="matMenu" xPosition="before">
-                                    <button mat-menu-item>
-                                        <span>Name</span>
-                                    </button>
-                                    <button mat-menu-item>
-                                        <span>Product Group</span>
-                                    </button>
-                                    <button mat-menu-item>
-                                        <span>Rental Price</span>
-                                    </button>
-                                    
-                                </mat-menu>
-
-
-                           </div>
-                       </div>
-                   </div>
-                </div>
-
-                
-                    <div class="inventual-manageproduct-table-area">
-                        <div class="inventual-manageproduct-table-inner1">
-                            <div class="inventual-manageproduct-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
-                                <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                                    <div class="inventual-manageproduct-table-checkbox1">
-                                        <!-- <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
-                                        [indeterminate]="someComplete()" (change)="setAll($event.checked)">
-                                        {{task.name}}
-                                        </mat-checkbox> -->
-                                    </div>
-                                    <div class="inventual-manageproduct-table-sl1">
-                                        <h5>ID</h5>
-                                    </div>
-                                    
-                                    <div class="inventual-manageproduct-table-sl1">
-                                        <h5>Name</h5>
-                                    </div>
-                                    
-                                    <div class="inventual-manageproduct-table-sl1">
-                                        <h5>Product Group</h5> 
-                                    </div>
-                                
-                                    <div class="inventual-manageproduct-table-sl1">
-                                        <h5>Rental Price</h5>
-                                    </div>
-
-                                    <div class="inventual-manageproduct-table-sl1">
-                                        <h5>Stock Level</h5>
-                                    </div>
-                                    
-                                    <div class="inventual-manageproduct-table-action1">
-                                        <h5>Action</h5>
-                                    </div>
-                                </div>
-                                
-                                <div *ngFor="let product of parsedProducts; let i = index">
-                                    <div class="inventual-manageproduct-table-list1 flex border-b border-solid border-black-borderThree h-20">
-                                        
-                                        <div class="inventual-manageproduct-table-checkbox1 default-light-theme">
-                                            <!-- <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck(i, $event.checked)">
-                                                <label for="mat-checkbox-{{i}}-input"></label>
-                                            </mat-checkbox> -->
-                                        </div>
-                                        <div class="inventual-manageproduct-table-sl1">
-                                            <span>{{product.id}}</span>
-                                        </div>
-                                
-
-                                        <div class="inventual-manageproduct-table-sl1">
-                                            <span>{{product.name}}</span>
-                                        </div>
-                                        <div class="inventual-manageproduct-table-sl1">
-                                            <span>{{product.product_group}}</span>
-                                        </div>
-                        
-                                        <div class="inventual-manageproduct-table-sl1">
-                                            <span> ${{product.rental_price}}</span>
-                                        </div>
-
-                                        <div class="inventual-manageproduct-table-sl1">
-                                            <span>{{product.stock_level}}</span>
-                                        </div>
-
-                                        <div class="inventual-manageproduct-table-action1">
-                                            <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                                Action <mat-icon>arrow_drop_down</mat-icon>
-                                            </button>
-                                            <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                                <button mat-menu-item (click)="goToItemList(product.id)">
-                                                    <img src="../../../../../assets/img/icon/action-1.png" alt="icon not found">
-                                                    <span>View Items</span>
-                                                </button>
-                                                
-                                                <button mat-menu-item (click)="goToEditProduct(product.id)">
-                                                    <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                                    <span>Edit Product</span>
-                                                </button>
-
-                                                <button mat-menu-item (click)="deleteProduct(product.id)" http-equiv="refresh" content="3">
-                                                    <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                                    <span>Delete</span>
-                                                    <meta >
-                                                </button>
-                                              </mat-menu>                                   
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    <div class="inventual-pagination-area">
-                        <app-pagination [currentPage]="currentPage" [totalItems]="products.length" [itemsPerPage]="itemsPerPage" (pageChange)="onPageChange($any($event))"></app-pagination>
-                    </div>
-                </div>
-           </div>
-        </div>
-        <div class="inventual-copyright-area">
-            <app-copyright></app-copyright>
-        </div>
+      <div class="inventual-copyright-area">
+        <app-copyright></app-copyright>
+      </div>
     </div>
-</div>
+  </div>
