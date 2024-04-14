@@ -4,6 +4,7 @@ import { Product } from 'src/app/product';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductService } from 'src/app/product.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Task {
   name: string;
@@ -22,6 +23,8 @@ export class ProductlistComponent implements OnInit {
   public parsedProducts: Product[] = [];
   public searchText: string = '';
   public tasks: Task[] = [];
+  public productGroups: string[] = []; // Used for display in dropdown, etc.
+  public currentGroupFilter: string = ''; // Holds the current filter for product groups
   public currentPage: number = 1;
   public itemsPerPage: number = 100;
   public allComplete: boolean = false;
@@ -34,6 +37,7 @@ export class ProductlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    
   }
 
   public task: Task = {
@@ -54,6 +58,28 @@ export class ProductlistComponent implements OnInit {
     });
   }
 
+
+ 
+
+ 
+
+
+  
+
+  private extractProductGroups(): void {
+    const groups = new Set(this.products.map(p => p.product_group));
+    this.productGroups = Array.from(groups);
+  }
+
+  public selectProductGroup(group: string): void {
+    this.currentGroupFilter = group;
+    this.filterProducts();
+  }
+  
+
+
+
+  
   public goToEditProduct(productId: number): void {
     this.router.navigateByUrl(`/products/edit-product?id=${productId}`);
   }
@@ -63,18 +89,27 @@ export class ProductlistComponent implements OnInit {
   }
 
   public filterProducts(): void {
-   
-    if (this.searchText == '') {
-      this.initParse(); // If no search text, show all products
-    } else {
-      this.parsedProducts = this.products.filter(product =>
-        (product.name != null && product.name.toLowerCase().includes(this.searchText.toLowerCase())) ||
-        (product.product_group != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase())) ||
-        (product.rental_price.toString().includes(this.searchText)) ||
-        product.id == +this.searchText
-      );
-    }
+    this.parsedProducts = this.products.filter(product => {
+      return (!this.searchText || product.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+              product.product_group.toLowerCase().includes(this.searchText.toLowerCase())) &&
+             (!this.currentGroupFilter || product.product_group === this.currentGroupFilter);
+    });
+    this.paginateProducts();
   }
+
+  private paginateProducts(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.parsedProducts = this.parsedProducts.slice(startIndex, endIndex);
+  }
+  
+  public onGroupFilterChange(newGroup: string): void {
+    this.currentGroupFilter = newGroup;
+    this.filterProducts();
+  }
+
+  
+
   
   private refreshProducts(): void {
     this.getProducts(); // Re-fetch the products after deletion
@@ -84,6 +119,7 @@ export class ProductlistComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
         this.products = response;
+        this.extractProductGroups();
         for (let i = 0; i < this.products.length; i++) {
           this.productService.getStockLevel(this.products[i].id).subscribe(
             (response: number) => {
@@ -145,4 +181,6 @@ export class ProductlistComponent implements OnInit {
   public myfunction(): void {
     this.menuSidebarActive = !this.menuSidebarActive;
   }
+
+  
 }
