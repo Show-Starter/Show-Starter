@@ -591,7 +591,7 @@ export class EditEventComponent implements OnInit {
             return; // Stop the event addition if there's an error fetching quantity
         }
 
-        if (productQuantity == 0) {
+        if (productQuantity == 0 || productQuantity == undefined) {
           let amountAdded = 0;
 
           if(items) {

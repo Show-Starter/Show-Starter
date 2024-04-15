@@ -3,6 +3,8 @@ import { ThemePalette } from '@angular/material/core';
 import { Invoice } from 'src/app/invoice';
 import { HttpErrorResponse } from '@angular/common/http';
 import { InvoiceService } from 'src/app/invoice.service';
+import { Observable } from 'rxjs';
+import { EventService } from 'src/app/event.service';
 
 interface Task {
   name: string;
@@ -27,7 +29,7 @@ export class InvoicelistComponent implements OnInit {
 
   menuSidebarActive: boolean = false;
 
-  constructor(private invoiceService: InvoiceService) {}
+  constructor(private invoiceService: InvoiceService, private eventService: EventService) {}
 
   ngOnInit(): void {
     this.getInvoices();
@@ -87,6 +89,16 @@ export class InvoicelistComponent implements OnInit {
       if (i >= (this.currentPage - 1) * this.itemsPerPage && i < this.currentPage * this.itemsPerPage) {
         this.parsedInvoices.push(this.invoices[(this.itemsPerPage * (this.currentPage - 1)) + i]);
       }
+    }
+  }
+
+  async getEventName(eventID: number): Promise<String> {
+    const event_name = await this.eventService.getEventName(eventID).toPromise();
+
+    if (event_name) {
+      return event_name;
+    } else {
+      return "";
     }
   }
 

@@ -77,6 +77,8 @@ import { CustomMessageDialogComponent } from './inventual/custom-message-dialog/
 import { ItemEventService } from './itemevent.service';
 import { EditEventComponent } from './inventual/events/edit-event/edit-event.component';
 import { InvoicelistComponent } from './inventual/invoices/invoicelist/invoicelist.component';
+import { EditInvoiceComponent } from './inventual/invoices/edit-invoice/edit-invoice.component';
+import { CreateInvoiceComponent } from './inventual/invoices/create-invoice/create-invoice.component';
 
 const routes: Routes = [ 
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -379,6 +381,14 @@ const routes: Routes = [
   {
     path: 'products/edit-product',
     component: EditProductComponent
+  },
+  {
+    path: 'invoices/edit-invoice',
+    component: EditInvoiceComponent
+  },
+  {
+    path: 'invoices/create-invoice',
+    component: CreateInvoiceComponent
   }
 ];
 

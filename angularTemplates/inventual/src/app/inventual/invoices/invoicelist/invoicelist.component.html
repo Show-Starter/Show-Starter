@@ -87,25 +87,17 @@
                                     </div>
                                     
                                     <div class="inventual-manageinvoice-table-sl1">
-                                        <h5>Name</h5>
-                                    </div>
-                                    
-                                    <div class="inventual-manageinvoice-table-sl1">
-                                        <h5>Location</h5> 
+                                        <h5>Event</h5>
                                     </div>
                                 
                                     <div class="inventual-manageinvoice-table-sl1">
-                                        <h5>Date</h5>
+                                        <h5>Amount</h5>
                                     </div>
                                     
                                     <div class="inventual-manageinvoice-table-sl1">
-                                        <h5>Time</h5>
+                                        <h5>Name</h5>
                                     </div>
-
-                                    <div class="inventual-manageinvoice-table-sl1">
-                                        <h5>Invoice Num</h5>
-                                    </div>
-
+                                    
                                     <div class="inventual-manageinvoice-table-sl1">
                                         <h5>Action</h5>
                                     </div>
@@ -114,50 +106,40 @@
                                 </div>
 
                                 <!---->
-                                <div >
-                                    <div class="inventual-manageinvoice-table-list1 flex border-b border-solid border-gray-borderThree h-20">
+                                <div *ngFor="let invoice of parsedInvoices" class="inventual-manageinvoice-table-list1 flex border-b border-solid border-gray-borderThree h-20">
                                         
-                                        <div class="inventual-manageinvoice-table-checkbox1 default-light-theme">
-                                            <!-- <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck1($event.checked)">
-                                                <label for="mat-checkbox-2-input"></label>
-                                            </mat-checkbox> -->
-                                        </div>
-                                        <div class="inventual-manageinvoice-table-sl1">
-                                            <span>blah</span>
-                                        </div>
-                                
+                                    <div class="inventual-manageinvoice-table-checkbox1 default-light-theme">
+                                        <!-- <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck1($event.checked)">
+                                            <label for="mat-checkbox-2-input"></label>
+                                        </mat-checkbox> -->
+                                    </div>
+                                    <div class="inventual-manageinvoice-table-sl1">
+                                        <span>{{ invoice.id }}</span>
+                                    </div>
+                                    <div class="inventual-manageinvoice-table-sl1">
+                                        <span>unknown</span>
+                                    </div>
+                                    <div class="inventual-manageinvoice-table-sl1">
+                                        <span>{{ invoice.amount }}</span>
+                                    </div>
+                                    <div class="inventual-manageinvoice-table-sl1">
+                                        <span>{{ invoice.first_name }} {{ invoice.last_name }}</span>
+                                    </div>
 
-                                        <div class="inventual-manageinvoice-table-sl1">
-                                            <span>blah</span>
-                                        </div>
-                                        <div class="inventual-manageinvoice-table-sl1">
-                                            <span>blah</span>
-                                        </div>
-                                        <div class="inventual-manageinvoice-table-sl1">
-                                            <span>blah</span>
-                                        </div>
-                                        <div class="inventual-manageinvoice-table-sl1">
-                                            <span>blah</span>
-                                        </div>
-                                        <div class="inventual-manageinvoice-table-sl1">
-                                            <span>blah</span>
-                                        </div>
-
-                                        <div class="inventual-manageinvoice-table-action1">
-                                            <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                                Action <mat-icon>arrow_drop_down</mat-icon>
+                                    <div class="inventual-manageinvoice-table-action1">
+                                        <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
+                                            Action <mat-icon>arrow_drop_down</mat-icon>
+                                        </button>
+                                        <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                            <button mat-menu-item [routerLink]="['/invoices/invoicelist']">
+                                                <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
+                                                <span>Edit Invoice</span>
                                             </button>
-                                            <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                                <button mat-menu-item [routerLink]="['/events/edit-event']">
-                                                    <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                                    <span>Edit event</span>
-                                                </button>
-                                                <button mat-menu-item >
-                                                    <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                                    <span>Delete</span>
-                                                </button>
-                                            </mat-menu>                                      
-                                        </div>
+                                            <button mat-menu-item >
+                                                <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
+                                                <span>Delete</span>
+                                            </button>
+                                        </mat-menu>                                      
                                     </div>
                                 </div>
                             </div>
