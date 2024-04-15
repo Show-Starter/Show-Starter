@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ProductService } from 'src/app/product.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 interface Task {
   name: string;
@@ -58,12 +59,6 @@ export class ProductlistComponent implements OnInit {
     });
   }
 
-
- 
-
- 
-
-
   
 
   private extractProductGroups(): void {
@@ -89,11 +84,19 @@ export class ProductlistComponent implements OnInit {
   }
 
   public filterProducts(): void {
-    this.parsedProducts = this.products.filter(product => {
-      return (!this.searchText || product.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-              product.product_group.toLowerCase().includes(this.searchText.toLowerCase())) &&
-             (!this.currentGroupFilter || product.product_group === this.currentGroupFilter);
-    });
+    if (this.searchText == ''){
+      this.initParse(); // If no search text, show all products
+    }else{
+      this.parsedProducts = this.products.filter(product => 
+        (product.name != null && product.name.toLowerCase().includes(this.searchText.toLowerCase()))||
+        (product.name != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase()))||
+        (product.id.toString().includes(this.searchText)) ||
+        product.id == +this.searchText
+        
+    );
+    this.paginateProducts();
+    }
+ 
     this.paginateProducts();
   }
 
@@ -116,10 +119,10 @@ export class ProductlistComponent implements OnInit {
   }
 
   public getProducts(): void {
+   
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
         this.products = response;
-        this.extractProductGroups();
         for (let i = 0; i < this.products.length; i++) {
           this.productService.getStockLevel(this.products[i].id).subscribe(
             (response: number) => {
@@ -133,6 +136,7 @@ export class ProductlistComponent implements OnInit {
         }
         this.initParse();
         this.filterProducts();
+        this.extractProductGroups();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
