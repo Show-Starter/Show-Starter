@@ -83,21 +83,35 @@ export class ProductlistComponent implements OnInit {
     this.router.navigateByUrl(`/products/itemlist?id=${itemId}`);
   }
 
+  public filterProductGroup(): void{
+    if (this.searchText==''){
+      this.initParse();
+    }else{
+      this.parsedProducts = this.products.filter(product =>
+        (product.name != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase()))
+      );
+      this.paginateProducts();
+    }
+  }
+
   public filterProducts(): void {
+  
+
+
     if (this.searchText == ''){
       this.initParse(); // If no search text, show all products
     }else{
-      this.parsedProducts = this.products.filter(product => 
+         this.parsedProducts = this.products.filter(product => 
         (product.name != null && product.name.toLowerCase().includes(this.searchText.toLowerCase()))||
-        (product.name != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase()))||
-        (product.id.toString().includes(this.searchText)) ||
-        product.id == +this.searchText
+         (product.name != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase()))||
+         (product.id.toString().includes(this.searchText)) ||
+         product.id == +this.searchText
         
-    );
-    this.paginateProducts();
-    }
+     );
+     this.paginateProducts();
+     }
  
-    this.paginateProducts();
+     this.paginateProducts();
   }
 
   private paginateProducts(): void {
@@ -137,6 +151,7 @@ export class ProductlistComponent implements OnInit {
         this.initParse();
         this.filterProducts();
         this.extractProductGroups();
+        this.filterProductGroup();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
