@@ -68,7 +68,7 @@ export class ProductlistComponent implements OnInit {
 
   public selectProductGroup(group: string): void {
     this.currentGroupFilter = group;
-    this.filterProducts();
+    this.filterProductGroup();
   }
   
 
@@ -84,15 +84,16 @@ export class ProductlistComponent implements OnInit {
   }
 
   public filterProductGroup(): void{
-    if (this.searchText==''){
-      this.initParse();
-    }else{
-      this.parsedProducts = this.products.filter(product =>
-        (product.name != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase()))
-      );
-      this.paginateProducts();
-    }
+    if (this.currentGroupFilter == ''){
+      this.initParse();  // If no search text and no group filter, show all products
+  } else {
+    this.parsedProducts = this.products.filter(product =>
+      (this.searchText != '' && (product.name.toLowerCase().includes(this.searchText.toLowerCase()) || product.id.toString().includes(this.searchText))) ||
+      (this.currentGroupFilter != '' && product.product_group === this.currentGroupFilter)  // Filter by product group if set
+    );
+    this.paginateProducts();
   }
+}
 
   public filterProducts(): void {
   
