@@ -51,4 +51,10 @@ public class EventResource {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/uninvoiced")
+    public ResponseEntity<List<Event>> getUninvoicedEvents() {
+        List<Event> uninvoicedEvents = eventService.getUninvoicedEvents();
+        return new ResponseEntity<>(uninvoicedEvents, HttpStatus.OK);
+    }
+
 }

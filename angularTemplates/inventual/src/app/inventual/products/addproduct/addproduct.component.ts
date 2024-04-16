@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Product } from 'src/app/product'; // Ensure this path is correct
 import { ProductService } from 'src/app/product.service'; // Ensure this path is correct
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-addproduct',
@@ -27,7 +27,7 @@ export class AddproductComponent implements OnInit {
 
   public id: number;
   public isEdit: boolean = false;
-  constructor(private productService: ProductService, private route: ActivatedRoute) {}
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -42,19 +42,13 @@ export class AddproductComponent implements OnInit {
 
 
   saveProduct() {
-    // this.productService.getStockLevel(this.product.id).subscribe(
-    //   (response: number) => {
-    //     this.product.stock_level = response;
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     alert(error.message);
-    //   }
-    // )
-    
-   
       // Call the ProductService to add a new product
       this.product.rental_price = Number(this.product.rental_price);
       this.productService.addProduct(this.product).toPromise();
+
+      setTimeout(() => {
+        this.router.navigate(['/products/productlist']);
+      }, 1500);
   
   }
 

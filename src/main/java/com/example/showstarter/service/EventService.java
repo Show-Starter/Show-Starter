@@ -38,4 +38,8 @@ public class EventService {
         return eventRepo.findEventById(eventID)
             .orElseThrow(() -> new EventNotFoundException("Event by id " + eventID + " was not found"));
     }
+
+    public List<Event> getUninvoicedEvents() {
+        return eventRepo.getUninvoicedEvents();
+    }
 }

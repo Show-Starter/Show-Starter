@@ -150,9 +150,11 @@
                             </div>
                         </div>
                         
+                    <button mat-raised-button color="warn" [routerLink]="['/products/productlist']">Back</button>
                     <div class="inventual-pagination-area">
                         <app-pagination [currentPage]="currentPage" [totalItems]="items.length" [itemsPerPage]="itemsPerPage" (pageChange)="onPageChange($any($event))"></app-pagination>
                     </div>
+                    
                 </div>
            </div>
         </div>
