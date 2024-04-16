@@ -41,7 +41,28 @@
 	}
 }
 
-  
+.inventual-table-header-search-action-btn{
+	padding-right: 40%;
+}
+
+.inventual-table-header-search-area .grid {
+	display: inline;        /* Ensures the container uses flexbox layout */
+	flex-wrap: wrap;    /* Prevents wrapping to keep items side-by-side */
+	align-items: center;  /* Aligns items vertically in the center */
+	justify-content: flex-start; /* Aligns items to the start of the flex container */
+}
+
+.title-container {
+	display: flex;        /* This will align children (h2 tags) in a row */
+	justify-content: space-around; /* This will space the h2 tags nicely across the container */
+	align-items: center;  /* This will vertically align the h2 tags in case they have different heights */
+  }
+
+  mat-dialog-title[h2] {
+	display: inline-block;  /* Aligns items inline with space management */
+	margin-right: 20px;     /* Adds space to the right of the first h2 */
+  }
+
 
 .inventual-add-product-dialog-table-sl1 {
 	min-width: 300px;
