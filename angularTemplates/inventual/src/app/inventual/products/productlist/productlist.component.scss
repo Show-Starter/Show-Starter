@@ -37,6 +37,13 @@
 	}
 }
 
+.inventual-table-header-search-action-btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.525rem;
+}
+
 .inventual-manageproduct-table-image1{
 	min-width: 300px;
 	width: 5%;
