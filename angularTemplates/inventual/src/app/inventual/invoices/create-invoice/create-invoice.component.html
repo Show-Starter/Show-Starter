@@ -105,45 +105,45 @@
                     </div>
 
                 </div>
-                <div class="inventual-addsale-product-wrapper border border-b-0 border-solid border-gray-borderThree">
-                    <div class="inventual-addsale-product-wrapper-inner">
-                        <div class="inventual-addsale-product-wrapper-inner-wrap">
+                <div class="inventual-invoice-product-wrapper border border-b-0 border-solid border-gray-borderThree">
+                    <div class="inventual-invoice-product-wrapper-inner">
+                        <div class="inventual-invoice-product-wrapper-inner-wrap">
                             <div
-                                class="inventual-addsale-product-list h-12 border-b border-solid border-gray-borderThree">
-                                <div class="inventual-addsale-product-sl">
+                                class="inventual-invoice-product-list h-12 border-b border-solid border-gray-borderThree">
+                                <div class="inventual-invoice-product-sl">
                                     <h5 class="text-[15px] font-semibold text-black">ID</h5>
                                 </div>
-                                <div class="inventual-addsale-product-name">
+                                <div class="inventual-invoice-product-name">
                                     <h5 class="text-[15px] font-semibold text-black">Name</h5>
                                 </div>
-                                <!-- <div class="inventual-addsale-product-code">
+                                <!-- <div class="inventual-invoice-product-code">
                                 <h5 class="text-[15px] font-semibold text-black">Code</h5>
                             </div> -->
-                                <div class="inventual-addsale-product-qty">
+                                <div class="inventual-invoice-product-qty">
                                     <h5 class="text-[15px] font-semibold text-black">Quantity</h5>
                                 </div>
-                                <div class="inventual-addsale-product-type me-20">
+                                <div class="inventual-invoice-product-type me-20">
                                     <h5 class="text-[15px] font-semibold text-black">Price</h5>
                                 </div>
-                                <div class="inventual-addsale-product-action">
+                                <div class="inventual-invoice-product-action">
                                     <h5 class="text-[15px] font-semibold text-black">Action</h5>
                                 </div>
                             </div>
                             <div *ngFor="let item of selectedProducts; let i = index"
-                                class="inventual-addsale-product-list border-b border-solid border-gray-borderThree custom-height-70">
-                                <div class="inventual-addsale-product-sl">{{ item.product.id }}</div>
-                                <div class="inventual-addsale-product-name">{{ item.product.name }}</div>
-                                <div class="inventual-addsale-product-qty">
+                                class="inventual-invoice-product-list border-b border-solid border-gray-borderThree custom-height-70">
+                                <div class="inventual-invoice-product-sl">{{ item.product.id }}</div>
+                                <div class="inventual-invoice-product-name">{{ item.product.name }}</div>
+                                <div class="inventual-invoice-product-qty">
                                     <button (click)="counter(i, 'subtract')">-</button>
                                     <span>{{ item.quantity }} / {{ this.getProductTotalAvailable(item.product.id)
                                         }}</span>
                                     <button (click)="counter(i, 'add')">+</button>
                                 </div>
-                                <!-- <div class="inventual-addsale-product-type">15</div> -->
+                                <!-- <div class="inventual-invoice-product-type">15</div> -->
                                 <!-- Calculate subtotal based on quantity * price -->
-                                <div class="inventual-addsale-product-type">{{ (item.product.rental_price *
+                                <div class="inventual-invoice-product-type">{{ (item.product.rental_price *
                                     item.quantity) | currency }}</div>
-                                <div class="inventual-addsale-product-action">
+                                <div class="inventual-invoice-product-action">
                                     <a href="javascript:void(0)"
                                         (click)="removeProduct(i)"><mat-icon>clear</mat-icon></a>
                                 </div>
@@ -151,16 +151,58 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                    <h4 class="text-[20px] font-bold text-black mb-9">Finish Invoice</h4>
+
+                <div class="grid grid-cols-12 w-full gap-x-7 sm:gap-x-0">
+                    <div class="col-span-6 sm:col-span-12">
+                       <div class="col-span-6 sm:col-span-12">
+                           <div class="inventual-select-field w-full mb-5">
+                               <h5 class="text-[15px] text-black font-semibold mb-3">Name</h5>
+                               <div class="inventual-input-field-style">
+                                 <mat-form-field class="w-full" [floatLabel]="'always'">
+                                   <mat-label class="hidden">HP</mat-label>
+                                   <input matInput [placeholder]="'Event Name'" [(ngModel)]="event.name" name="name">
+                                 </mat-form-field>
+                               </div>
+                             </div>
+                        </div>
+                        
+
+                    </div>
+                    <div class="col-span-6 sm:col-span-12">
+                       <div class="inventual-select-field w-full mb-5">
+                           <h5 class="text-[15px] text-black font-semibold mb-3">Location</h5>
+                           <div class="inventual-input-field-style">
+                             <mat-form-field class="w-full" [floatLabel]="'always'">
+                               <mat-label class="hidden">HP</mat-label>
+                               <input matInput [placeholder]="'Event Location'" [(ngModel)]="event.location" name="location">
+                             </mat-form-field>
+                           </div>
+                         </div>
+                    </div>
+
+
+                    <div class="col-span-6 sm:col-span-12">
+                       <div class="inventual-select-field w-full mb-5">
+                           <h5 class="text-[15px] text-black font-semibold mb-3">Time</h5>
+                           <div class="inventual-input-field-style">
+                             <mat-form-field class="w-full" [floatLabel]="'always'">
+                               <mat-label class="hidden">HP</mat-label>
+                               <input matInput [placeholder]="'8:00 PM'" [(ngModel)]="event.time" name="time">
+                             </mat-form-field>
+                           </div>
+                         </div>
+                    </div>
+                </div>
             </div>
             <div>
-                <button mat-raised-button color="warn" [routerLink]="['/events/eventlist']">Cancel</button>
-                <button mat-raised-button color="primary" (click)="updateEvent()">Save</button>
+                <button mat-raised-button color="warn" [routerLink]="['/invoices/invoicelist']">Cancel</button>
+                <button mat-raised-button color="primary" (click)="updateEvent()">Complete Invoice</button>
             </div>
-            <div class="inventual-button-container">
-                <button class="Invoice" mat-raised-button color="primary" [routerLink]="['/events/eventlist']">
-                    Create Your Invoice
-                </button>
-            </div>
+
         </div>
 
         <div class="inventual-copyright-area">

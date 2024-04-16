@@ -40,15 +40,15 @@
 //calender field style
 @include inventualCalenderFieldStyle;
 
-.inventual-addsale-product-list {
+.inventual-invoice-product-list {
     @apply flex;
 }
-.inventual-addsale-product-sl,
-.inventual-addsale-product-name,
-.inventual-addsale-product-code,
-.inventual-addsale-product-qty,
-.inventual-addsale-product-type,
-.inventual-addsale-product-action {
+.inventual-invoice-product-sl,
+.inventual-invoice-product-name,
+.inventual-invoice-product-code,
+.inventual-invoice-product-qty,
+.inventual-invoice-product-type,
+.inventual-invoice-product-action {
     @apply flex;
     @apply flex-col;
     @apply justify-center;
@@ -60,12 +60,12 @@
 	}
 }
 
-.inventual-addsale-product-sl,
-.inventual-addsale-product-name,
-.inventual-addsale-product-code,
-.inventual-addsale-product-qty,
-.inventual-addsale-product-type,
-.inventual-addsale-product-action {
+.inventual-invoice-product-sl,
+.inventual-invoice-product-name,
+.inventual-invoice-product-code,
+.inventual-invoice-product-qty,
+.inventual-invoice-product-type,
+.inventual-invoice-product-action {
 	flex: 2;
 	align-items: center;
 }
@@ -76,17 +76,17 @@
     @apply w-full; // Take the full width to allow alignment to work correctly
 }
 
-.inventual-addsale-product-action {
+.inventual-invoice-product-action {
 	@apply border-e-0;
 }
 .custom-height-70 {
     height: 70px;
     min-height: 70px;
 }
-.inventual-addsale-product-list .inventual-select-field-style .mat-form-field-flex {
+.inventual-invoice-product-list .inventual-select-field-style .mat-form-field-flex {
 	@apply h-10;
 }
-.inventual-addsale-product-sl {
+.inventual-invoice-product-sl {
     width: 9%;
     min-width: 145px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
@@ -106,7 +106,7 @@
 		min-width: 100px;
 	}
 }
-.inventual-addsale-product-name {
+.inventual-invoice-product-name {
     width: 20%;
     min-width: 300px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
@@ -126,7 +126,7 @@
 		min-width: 180px;
 	}
 }
-.inventual-addsale-product-code {
+.inventual-invoice-product-code {
     width: 19%;
     min-width: 290px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
@@ -147,7 +147,7 @@
 	}
 }
 
-.inventual-addsale-product-qty {
+.inventual-invoice-product-qty {
     width: 20%;
     min-width: 300px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
@@ -168,7 +168,7 @@
 	}
 }
 
-.inventual-addsale-product-type {
+.inventual-invoice-product-type {
 	width: 18%;
     min-width: 270px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
@@ -190,26 +190,26 @@
 		@apply me-12;
 	}
 }
-.inventual-addsale-product-action {
+.inventual-invoice-product-action {
     @include productDeleteBtn;
 }
-.inventual-addsale-product-qty {
+.inventual-invoice-product-qty {
     @include productCounter;
 }
-.inventual-addsale-product-wrapper-inner {
+.inventual-invoice-product-wrapper-inner {
 	@media (max-width: 1199px) {
 		overflow-x: auto;
 		scrollbar-height: thin;
 	}
 }
-.inventual-addsale-product-wrapper-inner-wrap {
+.inventual-invoice-product-wrapper-inner-wrap {
 	@media (max-width: 1199px) {
 		width: 950px;
 		min-width: 100%;
 		scrollbar-height: thin;
 	}
 }
-.inventual-addsale-product-qty {
+.inventual-invoice-product-qty {
 	@include productCounter;
 	display: flex;
 	flex-direction: row; /* Ensure items are laid out horizontally */
