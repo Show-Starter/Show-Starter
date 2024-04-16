@@ -58,21 +58,25 @@ export class CreateEventComponent implements OnInit {
     dialogRef.afterClosed().subscribe((selectedProducts: Product[]) => {
       
       if (selectedProducts && selectedProducts.length) {
-        this.selectedProducts = selectedProducts.map(product => ({
-          product: product,
-          quantity: 1, // Default quantity can be set to 1 or any logic you have
-        }));
+        
         selectedProducts.forEach(product => {
+
+          let selectedProduct = {
+            product: product,
+            quantity: 1, // Default quantity can be set to 1 or any logic you have
+          };
+
+          this.selectedProducts.push(selectedProduct);
+
+          console.log("this.selectedProducts.length = " + this.selectedProducts.length);
+
           let items: Item[] = [];
         
           this.getItems(product.id).subscribe(
             (response: Item[]) => {
               items = response;
         
-              console.log("items length: " + items.length);
-        
               items.forEach(item => {
-                console.log("In Item For Loop");
         
                 let itemEvents: ItemEvent[] = [];
         
@@ -94,11 +98,9 @@ export class CreateEventComponent implements OnInit {
                           const itemEventDate = datepipe.transform(date, 'yyyy-MM-dd');
         
                           const dateComp = newEventDate === itemEventDate;
-                          console.log(dateComp);
         
                           if (!dateComp && !this.checkIfInApproved(item)) {
                             this.approvedItems.push(item);
-                            console.log("Item " + item.id + " Added to Approve");
                           }
                         },
                         (error: HttpErrorResponse) => {
@@ -122,10 +124,6 @@ export class CreateEventComponent implements OnInit {
 
       }
 
-      this.selectedProducts = selectedProducts.map(product => ({
-          product: product,
-          quantity: 1, // Default quantity can be set to 1 or any logic you have
-      }));
     });
     
   }
@@ -263,10 +261,12 @@ export class CreateEventComponent implements OnInit {
       return; // Stop the event addition if any quantity is invalid
     }
 
+    console.log("ADDING EVENT");
     this.eventService.addEvent(this.event).subscribe(
       (response) => {
         console.log('Event added', response);
         eventID = response.id;
+        console.log(eventID);
         // Handle post-add logic here
       },
       (error) => {
@@ -275,9 +275,12 @@ export class CreateEventComponent implements OnInit {
       }
     );
 
-    this.updateEvent(eventID);
+    setTimeout(() => {
+      this.event.id = eventID;
 
-    this.router.navigate(['/events/eventlist']);
+      this.updateEvent();
+    }, 1500);
+    
   }
 
   getItemEventsByEventID(eventID: number): Observable<ItemEvent[]> {
@@ -316,11 +319,11 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
-  getProductQuantity(productID: number, eventID: number): Observable<number> {
+  getProductQuantity(productID: number): Observable<number> {
     let quantity = 0;
     const itemIDsSet = new Set<number>();
   
-    return this.getItemEventsByEventID(eventID).pipe(
+    return this.getItemEventsByEventID(this.event.id).pipe(
       switchMap((itemEvents: ItemEvent[]) => {
         const itemObservables = itemEvents.map(itemEvent => {
           return this.getItemByItemID(itemEvent.itemID).pipe(
@@ -346,7 +349,9 @@ export class CreateEventComponent implements OnInit {
     );
   }
 
-  async updateEvent(eventID: number): Promise<void> {
+  async updateEvent(): Promise<void> {
+    console.log(this.event.id);
+
     let isQuantityValid = true;
 
     for (const obj of this.selectedProducts) {
@@ -362,7 +367,7 @@ export class CreateEventComponent implements OnInit {
 
         let productQuantity: number | undefined;
         try {
-            productQuantity = await this.getProductQuantity(obj.product.id, eventID).toPromise();
+            productQuantity = await this.getProductQuantity(obj.product.id).toPromise();
 
             console.log("productQuantity = " + productQuantity);
         } catch (error) {
@@ -395,7 +400,7 @@ export class CreateEventComponent implements OnInit {
                 const newItemEvent: ItemEvent = {
                   id: 0,
                   itemID: item.id,
-                  eventID: eventID
+                  eventID: this.event.id
                 }
                 this.itemEventService.addItemEvent(newItemEvent).toPromise();
                 amountAdded++;
@@ -427,7 +432,7 @@ export class CreateEventComponent implements OnInit {
 
                   if (itemEvents) {
                     itemEvents.forEach(itemEvent => {
-                      if (itemEvent.eventID == eventID && amountRemoved < removeAmount) {
+                      if (itemEvent.eventID == this.event.id && amountRemoved < removeAmount) {
                         this.itemEventService.deleteItemEvent(itemEvent.id).toPromise();
                         amountRemoved++;
                       }
@@ -463,7 +468,7 @@ export class CreateEventComponent implements OnInit {
                     let itemAdded = false;
 
                     itemEvents.forEach(itemEvent => {
-                      if (itemEvent.eventID == eventID) {
+                      if (itemEvent.eventID == this.event.id) {
                         itemAdded = true;
                       }
                     });
@@ -472,7 +477,7 @@ export class CreateEventComponent implements OnInit {
                       let newItemEvent: ItemEvent = {
                             id: 0,
                             itemID: item.id,
-                            eventID: eventID
+                            eventID: this.event.id
                       }
                       this.itemEventService.addItemEvent(newItemEvent).toPromise();
                       amountAdded++;
@@ -488,21 +493,6 @@ export class CreateEventComponent implements OnInit {
     if (!isQuantityValid) {
         return; // Stop the event addition if any quantity is invalid
     }
-
-    this.eventService.updateEvent(this.event).subscribe(
-        (response) => {
-            console.log('Event updated', response);
-            // Handle post-update logic here
-        },
-        (error) => {
-            // Handle error
-            console.error('Error updating Event:', error);
-            this.dialog.open(CustomMessageDialogComponent, {
-                width: '400px',
-                data: { title: 'Error', message: `Error updating event. Please try again.` }
-            });
-        }
-    );
 
     this.router.navigate(['/events/eventlist']);
   }

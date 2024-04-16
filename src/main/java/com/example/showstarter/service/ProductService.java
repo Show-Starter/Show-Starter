@@ -26,6 +26,10 @@ public class ProductService {
         return productRepo.findAll();
     }
 
+    public List<Product> getProductsByPage(int pageNum) {
+        return productRepo.getProductsByPage(pageNum);
+    }
+
     public Product updateProduct(Product product) {
         return productRepo.save(product);
     }

@@ -250,11 +250,7 @@ export class EditEventComponent implements OnInit {
         });
 
       }
-
-      // this.selectedProducts = selectedProducts.map(product => ({
-      //     product: product,
-      //     quantity: 1, // Default quantity can be set to 1 or any logic you have
-      // }));
+      
     });
     
   }

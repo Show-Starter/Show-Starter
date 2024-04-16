@@ -136,7 +136,7 @@ export class ItemlistComponent implements OnInit {
     this.itemService.deleteItem(itemId).subscribe({
       next: () => {
         console.log('Item deleted successfully');
-        this.refreshItems(this.productID); // Refresh the item list
+        this.refreshItems(); // Refresh the item list
       },
       error: (error: HttpErrorResponse) => {
         console.error('There was an error!', error);
@@ -161,7 +161,7 @@ export class ItemlistComponent implements OnInit {
     }
   }
   
-  private refreshItems(productID: number): void {
+  private refreshItems(): void {
     this.getItems(); // Re-fetch the items after deletion
   }
 
@@ -266,6 +266,22 @@ export class ItemlistComponent implements OnInit {
         }
       );
     });
+  }
+
+  addItem() {
+    const item: Item = {
+      id: 0,
+      productID: this.productID,
+      eventID: 0,
+      serial_num: "",
+      event_name: "",
+      next_date: new Date(),
+      item_events: []
+    }
+
+    this.itemService.addItem(item).toPromise();
+
+    window.location.reload();
   }
 
   public toggleSidebar(): void {

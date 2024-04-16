@@ -38,6 +38,12 @@ public class ProductResource {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
+    @GetMapping("/get/{pageNum}")
+    public ResponseEntity<List<Product>> getProductsByPage(@PathVariable("pageNum") int pageNum) {
+        List<Product> products = productService.getProductsByPage(pageNum);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
     @GetMapping("/stock_level/{id}")
     public ResponseEntity<Integer> getStockLevelById(@PathVariable("id") Long productID) {
         int stock_level = itemService.countByProductId(productID);

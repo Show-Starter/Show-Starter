@@ -93,6 +93,17 @@
                   </div>
                 </div>
               </div>
+              <div class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
+                <div class="inventual-select-field mb-7">
+                  <h5 class="text-[15px] text-black font-semibold mb-3">Stock Method</h5>
+                  <div class="inventual-input-field-style">
+                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                      <mat-label class="hidden">Bulk</mat-label>
+                      <input  matInput [placeholder]="'Bulk'" [(ngModel)]="product.stock_method">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
 
 
         </div>

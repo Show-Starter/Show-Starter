@@ -19,9 +19,8 @@ export class ProductService {
         return this.http.get<Product[]>(`${this.apiServerUrl}/inventory/all`);
     }
 
-
-
     public addProduct(product: Product): Observable<Product> {
+        console.log("HERE");
         return this.http.post<Product>(`${this.apiServerUrl}/inventory/add`, product);
     }
 

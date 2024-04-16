@@ -77,17 +77,17 @@ export class AddProductDialogComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
         this.products = response;
-        for (let i = 0; i < this.products.length; i++) {
-          this.productService.getStockLevel(this.products[i].id).subscribe(
-            (response: number) => {
-              this.products[i].stock_level = response;
-              // console.log("ID: " + this.products[i].id + " Level: " + this.products[i].stock_level);
-            },
-            (error: HttpErrorResponse) => {
-              alert(error.message);
-            }
-          )
-        }
+        // for (let i = 0; i < this.products.length; i++) {
+        //   this.productService.getStockLevel(this.products[i].id).subscribe(
+        //     (response: number) => {
+        //       this.products[i].stock_level = response;
+        //       // console.log("ID: " + this.products[i].id + " Level: " + this.products[i].stock_level);
+        //     },
+        //     (error: HttpErrorResponse) => {
+        //       alert(error.message);
+        //     }
+        //   )
+        // }
         this.initParse();
         this.filterProducts();
       },

@@ -34,7 +34,7 @@
            <div class="inventual-manageitem-area bg-white p-7 custom-shadow rounded-8 mb-5">
                <h4 class="text-[20px] font-bold text-black mb-9">{{ this.productName }} Item List</h4>
                <div class="inventual-material-btn mb-7">
-                    <button mat-raised-button color="accent" [routerLink]="['/item/additem']" class="mb-1"><mat-icon>add_circle_outline</mat-icon> Add Item</button>
+                    <button mat-raised-button color="accent" (click)="addItem()" class="mb-1"><mat-icon>add_circle_outline</mat-icon> Add Item</button>
 
                </div>
                <div class="inventual-table-header-search-area">

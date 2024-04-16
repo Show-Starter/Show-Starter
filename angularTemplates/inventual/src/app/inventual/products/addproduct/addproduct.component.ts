@@ -19,7 +19,7 @@ export class AddproductComponent implements OnInit {
     rental_price: 0,
     product_group: '',
     stock_method: '',
-    stock_level: 0,
+    stock_level: 0
   };
   
   // Assuming 'menuSidebarActive' is for unrelated sidebar logic
@@ -42,27 +42,19 @@ export class AddproductComponent implements OnInit {
 
 
   saveProduct() {
-    this.productService.getStockLevel(this.product.id).subscribe(
-      (response: number) => {
-        this.product.stock_level = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
+    // this.productService.getStockLevel(this.product.id).subscribe(
+    //   (response: number) => {
+    //     this.product.stock_level = response;
+    //   },
+    //   (error: HttpErrorResponse) => {
+    //     alert(error.message);
+    //   }
+    // )
     
    
       // Call the ProductService to add a new product
-      this.productService.addProduct(this.product).subscribe(
-        (response) => {
-          console.log('Product added', response);
-          // Handle post-add logic here
-        },
-        (error) => {
-          // Handle error
-          console.error('Error adding product:', error);
-        }
-      );
+      this.product.rental_price = Number(this.product.rental_price);
+      this.productService.addProduct(this.product).toPromise();
   
   }
 

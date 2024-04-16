@@ -25,7 +25,7 @@ export class EditProductComponent implements OnInit {
     rental_price: 0,
     product_group: '',
     stock_method: '',
-    stock_level: 0,
+    stock_level: 0
   };
 
   constructor(private productService: ProductService, private http: HttpClient, private route: ActivatedRoute) {
@@ -51,14 +51,14 @@ export class EditProductComponent implements OnInit {
   }
 
   public saveProduct() {
-    this.productService.getStockLevel(this.product.id).subscribe(
-      (response: number) => {
-        this.product.stock_level = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
+    // this.productService.getStockLevel(this.product.id).subscribe(
+    //   (response: number) => {
+    //     this.product.stock_level = response;
+    //   },
+    //   (error: HttpErrorResponse) => {
+    //     alert(error.message);
+    //   }
+    // )
 
     this.productService.updateProduct(this.product).subscribe(
       (response) => {
