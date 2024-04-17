@@ -5,6 +5,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { InvoiceService } from 'src/app/invoice.service';
 import { Observable } from 'rxjs';
 import { EventService } from 'src/app/event.service';
+import { Event } from 'src/app/event';
+import { MatDialog } from '@angular/material/dialog';
+import { FindEventDialogComponent } from '../find-event-dialog/find-event-dialog.component';
 
 interface Task {
   name: string;
@@ -26,10 +29,25 @@ export class InvoicelistComponent implements OnInit {
   public currentPage: number = 1;
   public itemsPerPage: number = 50;
   public allComplete: boolean = false;
+  public events: Event[] = [];
+  public parsedEvents: Event[] = [];
+
+ 
+
 
   menuSidebarActive: boolean = false;
+  event: Event = {
+    id: 0,
+    name: "",
+    location: "",
+    type: "",
+    date: new Date,
+    time: "",
+    invoice_num: 0
+  };
 
-  constructor(private invoiceService: InvoiceService, private eventService: EventService) {}
+
+  constructor(private invoiceService: InvoiceService, private eventService: EventService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getInvoices();
@@ -101,6 +119,12 @@ export class InvoicelistComponent implements OnInit {
       return "";
     }
   }
+
+
+
+
+
+  
 
   public toggleSidebar(): void {
     this.menuSidebarActive = !this.menuSidebarActive;
