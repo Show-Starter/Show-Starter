@@ -22,28 +22,19 @@
         </div>
         <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
             <div class="inventual-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-black font-bold mb-3">Create Invoice</h5>
+                <h5 class="text-[20px] text-black font-bold mb-3">Edit Invoice</h5>
                 <div class="inventual-breadcrumb-area-inner-wrap">
                     <span class="text-[14px] text-gray font-normal inline-block me-2">Invoice</span>
                     <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
-                    <span class="text-[14px] text-gray font-normal inline-block me-2">Create Invoice</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Edit Invoice</span>
                 </div>
             </div>
         </div>
 
         <div class="inventual-content-area px-7">
             <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
-                <h4 class="text-[20px] font-bold text-black mb-9">Create Invoice</h4>
-                <div class="col-span-12">
-                    <div class="inventual-select-field w-full mb-5">
-        
-                        <div class="inventual-material-btn mb-7">
-                            <button mat-raised-button color="accent" class="mb-1" (click)="openFindEventDialog()" >
-                                <mat-icon>add_circle_outline</mat-icon> Find Event
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <h4 class="text-[20px] font-bold text-black mb-9">Edit Invoice</h4>
+
                 <div class="inventual-addbrand-upload-area flex items-center sm:block pb-2.5">
 
                     <div class="grid grid-cols-12 w-full gap-x-7 sm:gap-x-0">
@@ -89,7 +80,7 @@
 
 
                 <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
-                    <h4 class="text-[20px] font-bold text-black mb-9">Finish Invoice</h4>
+                    <h4 class="text-[20px] font-bold text-black mb-9">Billing Information</h4>
 
                 <div class="grid grid-cols-12 w-full gap-x-7 sm:gap-x-0">
                     <div class="col-span-6 sm:col-span-12">
@@ -178,7 +169,7 @@
             </div>
             <div>
                 <button mat-raised-button color="warn" [routerLink]="['/invoices/invoicelist']">Cancel</button>
-                <button mat-raised-button color="primary" (click)="addInvoice()">Complete Invoice</button>
+                <button mat-raised-button color="primary" (click)="addInvoice()">Update Invoice</button>
             </div>
 
         </div>
