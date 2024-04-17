@@ -95,11 +95,11 @@
                     <div class="col-span-6 sm:col-span-12">
                        <div class="col-span-6 sm:col-span-12">
                            <div class="inventual-select-field w-full mb-5">
-                               <h5 class="text-[15px] text-black font-semibold mb-3">Name</h5>
+                               <h5 class="text-[15px] text-black font-semibold mb-3">First Name</h5>
                                <div class="inventual-input-field-style">
                                  <mat-form-field class="w-full" [floatLabel]="'always'">
                                    <mat-label class="hidden">HP</mat-label>
-                                   <input matInput [placeholder]="'Event Name'" [(ngModel)]="event.name" name="name">
+                                   <input matInput [placeholder]="'First Name'" [(ngModel)]="invoice.first_name" name="name">
                                  </mat-form-field>
                                </div>
                              </div>
@@ -109,28 +109,71 @@
                     </div>
                     <div class="col-span-6 sm:col-span-12">
                        <div class="inventual-select-field w-full mb-5">
-                           <h5 class="text-[15px] text-black font-semibold mb-3">Location</h5>
+                           <h5 class="text-[15px] text-black font-semibold mb-3">Last Name</h5>
                            <div class="inventual-input-field-style">
                              <mat-form-field class="w-full" [floatLabel]="'always'">
                                <mat-label class="hidden">HP</mat-label>
-                               <input matInput [placeholder]="'Event Location'" [(ngModel)]="event.location" name="location">
+                               <input matInput [placeholder]="'LastName'" [(ngModel)]="invoice.last_name" name="location">
                              </mat-form-field>
                            </div>
                          </div>
                     </div>
-
-
                     <div class="col-span-6 sm:col-span-12">
-                       <div class="inventual-select-field w-full mb-5">
-                           <h5 class="text-[15px] text-black font-semibold mb-3">Time</h5>
-                           <div class="inventual-input-field-style">
-                             <mat-form-field class="w-full" [floatLabel]="'always'">
-                               <mat-label class="hidden">HP</mat-label>
-                               <input matInput [placeholder]="'8:00 PM'" [(ngModel)]="event.time" name="time">
-                             </mat-form-field>
-                           </div>
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Billing Address</h5>
+                                <div class="inventual-input-field-style">
+                                  <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">HP</mat-label>
+                                    <input matInput [placeholder]="'147 Grove Lane'" [(ngModel)]="invoice.bill_add" name="name">
+                                  </mat-form-field>
+                                </div>
+                              </div>
                          </div>
-                    </div>
+                         
+ 
+                     </div>
+                     <div class="col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field w-full mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Billing City</h5>
+                            <div class="inventual-input-field-style">
+                              <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">HP</mat-label>
+                                <input matInput [placeholder]="'Charleston'" [(ngModel)]="invoice.bill_city" name="location">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                     </div>
+                     <div class="col-span-6 sm:col-span-12">
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Card Number</h5>
+                                <div class="inventual-input-field-style">
+                                  <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">HP</mat-label>
+                                    <input matInput [(ngModel)]="invoice.card_num" name="name">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                         </div>
+                         
+ 
+                     </div>
+                     <div class="col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field w-full mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Experation Date</h5>
+                            <div class="inventual-input-field-style">
+                              <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">HP</mat-label>
+                                <input matInput [placeholder]="'06/29'" [(ngModel)]="invoice.exp_date" name="location">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                     </div>
+ 
+
+
+                    
                 </div>
             </div>
             <div>
