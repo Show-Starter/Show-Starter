@@ -32,7 +32,7 @@
         </div>
         <div class="inventual-content-area px-7">
            <div class="inventual-manageinvoice-area bg-white p-7 custom-shadow rounded-8 mb-5">
-               <h4 class="text-[20px] font-bold text-black mb-9">Events</h4>
+               <h4 class="text-[20px] font-bold text-black mb-9">Invoices</h4>
                <div class="inventual-material-btn mb-7">
                     <button mat-raised-button color="accent" [routerLink]="['/invoices/create-invoice']" class="mb-1"><mat-icon>add_circle_outline</mat-icon> Create Invoice</button>
 
@@ -131,7 +131,7 @@
                                             Action <mat-icon>arrow_drop_down</mat-icon>
                                         </button>
                                         <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                            <button mat-menu-item [routerLink]="['/invoices/invoicelist']">
+                                            <button mat-menu-item  [routerLink]="['/invoices/edit-invoice']">
                                                 <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
                                                 <span>Edit Invoice</span>
                                             </button>
