@@ -50,40 +50,20 @@
                         <div class="col-span-6 sm:col-span-12">
                             <div class="col-span-6 sm:col-span-12">
                                 <div class="inventual-select-field w-full mb-5">
-                                    <h5 class="text-[15px] text-black font-semibold mb-3">Name</h5>
-                                    <div class="inventual-input-field-style">
-                                        <mat-form-field class="w-full" [floatLabel]="'always'">
-                                            <mat-label class="hidden">HP</mat-label>
-                                            <input matInput [placeholder]="event.name" [(ngModel)]="event.name"
-                                                name="name">
-                                        </mat-form-field>
-                                    </div>
+                                    <h5 class="text-[15px] text-black font-semibold mb-3">Name:</h5>
+                                    <h5 class="text-[15px] text-black font-semibold mb-3">{{ event.name }}</h5>
                                 </div>
                             </div>
 
                             <div class="inventual-calender-field mb-5">
                                 <h5 class="text-[15px] text-black font-semibold mb-3">Date</h5>
-                                <div class="inventual-calender-field-style">
-                                    <mat-form-field appearance="fill" floatLabel="always">
-                                        <mat-label class="hidden">Choose a date</mat-label>
-                                        <input matInput [matDatepicker]="picker" [placeholder]="event.date.toString()"
-                                            [(ngModel)]="event.date">
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
+                                <h5 class="text-[15px] text-black font-semibold mb-3">{{ event.date }}</h5>
                             </div>
                         </div>
                         <div class="col-span-6 sm:col-span-12">
                             <div class="inventual-select-field w-full mb-5">
                                 <h5 class="text-[15px] text-black font-semibold mb-3">Location</h5>
-                                <div class="inventual-input-field-style">
-                                    <mat-form-field class="w-full" [floatLabel]="'always'">
-                                        <mat-label class="hidden">HP</mat-label>
-                                        <input matInput [placeholder]="event.location" [(ngModel)]="event.location"
-                                            name="location">
-                                    </mat-form-field>
-                                </div>
+                                <h5 class="text-[15px] text-black font-semibold mb-3">{{ event.location }}</h5>
                             </div>
                         </div>
 
@@ -91,65 +71,21 @@
                         <div class="col-span-6 sm:col-span-12">
                             <div class="inventual-select-field w-full mb-5">
                                 <h5 class="text-[15px] text-black font-semibold mb-3">Time</h5>
-                                <div class="inventual-input-field-style">
-                                    <mat-form-field class="w-full" [floatLabel]="'always'">
-                                        <mat-label class="hidden">HP</mat-label>
-                                        <input matInput [placeholder]="event.time" [(ngModel)]="event.time" name="time">
-                                    </mat-form-field>
-                                </div>
+                                <h5 class="text-[15px] text-black font-semibold mb-3">{{ event.time }}</h5>
                             </div>
                         </div>
 
-                        
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Total</h5>
+                                <h5 class="text-[15px] text-black font-semibold mb-3">${{ invoice.amount }}.00</h5>
+                            </div>
+                        </div>
 
                     </div>
 
                 </div>
-                <div class="inventual-invoice-product-wrapper border border-b-0 border-solid border-gray-borderThree">
-                    <div class="inventual-invoice-product-wrapper-inner">
-                        <div class="inventual-invoice-product-wrapper-inner-wrap">
-                            <div
-                                class="inventual-invoice-product-list h-12 border-b border-solid border-gray-borderThree">
-                                <div class="inventual-invoice-product-sl">
-                                    <h5 class="text-[15px] font-semibold text-black">ID</h5>
-                                </div>
-                                <div class="inventual-invoice-product-name">
-                                    <h5 class="text-[15px] font-semibold text-black">Name</h5>
-                                </div>
-                                <!-- <div class="inventual-invoice-product-code">
-                                <h5 class="text-[15px] font-semibold text-black">Code</h5>
-                            </div> -->
-                                <div class="inventual-invoice-product-qty">
-                                    <h5 class="text-[15px] font-semibold text-black">Quantity</h5>
-                                </div>
-                                <div class="inventual-invoice-product-type me-20">
-                                    <h5 class="text-[15px] font-semibold text-black">Price</h5>
-                                </div>
-                                <div class="inventual-invoice-product-action">
-                                    <h5 class="text-[15px] font-semibold text-black">Action</h5>
-                                </div>
-                            </div>
-                            <div *ngFor="let item of eventProducts; let i = index"
-                                class="inventual-invoice-product-list border-b border-solid border-gray-borderThree custom-height-70">
-                                <div class="inventual-invoice-product-sl">{{ item.product.id }}</div>
-                                <div class="inventual-invoice-product-name">{{ item.product.name }}</div>
-                                <div class="inventual-invoice-product-qty">
-                                    <button (click)="counter(i, 'subtract')">-</button>
-                                    <span>{{ item.quantity }}</span>
-                                    <button (click)="counter(i, 'add')">+</button>
-                                </div>
-                                <!-- <div class="inventual-invoice-product-type">15</div> -->
-                                <!-- Calculate subtotal based on quantity * price -->
-                                <div class="inventual-invoice-product-type">{{ (item.product.rental_price *
-                                    item.quantity) | currency }}</div>
-                                <div class="inventual-invoice-product-action">
-                                    <a href="javascript:void(0)"
-                                        (click)="removeProduct(i)"><mat-icon>clear</mat-icon></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
 
                 <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">

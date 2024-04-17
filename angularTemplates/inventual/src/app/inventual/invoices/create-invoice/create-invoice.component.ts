@@ -14,10 +14,11 @@ import { Event } from 'src/app/event';
 import { DatePipe } from '@angular/common';
 import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
 import { Router } from '@angular/router';
-import { Observable, catchError, forkJoin, map, switchMap, throwError } from 'rxjs';
+import { Observable, catchError, forkJoin, map, mergeMap, of, switchMap, throwError } from 'rxjs';
 import { Invoice } from 'src/app/invoice';
 import { InvoiceService } from 'src/app/invoice.service';
 import { FindEventDialogComponent } from '../find-event-dialog/find-event-dialog.component';
+import { EditEventComponent } from '../../events/edit-event/edit-event.component';
 
 
 @Component({
@@ -25,14 +26,14 @@ import { FindEventDialogComponent } from '../find-event-dialog/find-event-dialog
   templateUrl: './create-invoice.component.html',
   styleUrls: ['./create-invoice.component.scss'],
   encapsulation: ViewEncapsulation.None
-  
+
 })
 export class CreateInvoiceComponent implements OnInit {
 
   approvedItems: Item[] = [];
 
   //sidebar menu activation start
-  menuSidebarActive:boolean=false;
+  menuSidebarActive: boolean = false;
 
   event: Event = {
     id: 0,
@@ -44,12 +45,17 @@ export class CreateInvoiceComponent implements OnInit {
     invoice_num: 0,
   };
 
-  myfunction(){
-    if(this.menuSidebarActive==false){
-      this.menuSidebarActive=true;
+  constructor(public dialog: MatDialog, private itemEventService: ItemEventService, private invoiceService: InvoiceService,
+    private itemService: ItemService, private eventService: EventService, private router: Router, private productService: ProductService) { }
+
+  ngOnInit(): void { }
+
+  myfunction() {
+    if (this.menuSidebarActive == false) {
+      this.menuSidebarActive = true;
     }
     else {
-      this.menuSidebarActive=false;
+      this.menuSidebarActive = false;
     }
   }
 
@@ -95,11 +101,6 @@ export class CreateInvoiceComponent implements OnInit {
     this.eventProducts.splice(index, 1);
   }
 
-  constructor(public dialog: MatDialog, private itemEventService: ItemEventService, private invoiceService: InvoiceService,
-    private itemService: ItemService, private eventService: EventService, private router: Router) {}
-
-  ngOnInit(): void {}
-
   async addInvoice() {
     const newInvoice = await this.invoiceService.addInvoice(this.invoice).toPromise();
 
@@ -135,6 +136,87 @@ export class CreateInvoiceComponent implements OnInit {
     const dialogRef = this.dialog.open(FindEventDialogComponent, {
       width: '1000px',
     });
+
+    dialogRef.afterClosed().subscribe(async (selectedEvents: Event[]) => {
+
+      if (selectedEvents) {
+        this.event = selectedEvents[0];
+      }
+
+      const products = await this.getEventProductsFromEventID(this.event.id).toPromise();
+
+      if (products) {
+
+        products.forEach(async product => {
+
+          const productQuantity = await this.getProductQuantity(product.id).toPromise();
+
+          if (productQuantity)  {
+            this.invoice.amount += productQuantity * product.rental_price;
+          }
+        })
+      }
+    });
+  }
+
+  getEventProductsFromEventID(eventID: number): Observable<Product[]> {
+    let itemEvents: ItemEvent[];
+    let products: Product[] = [];
+  
+    return this.getItemEventsByEventID(eventID).pipe(
+      mergeMap((response: ItemEvent[]) => {
+        itemEvents = response;
+        const observables: Observable<Product>[] = [];
+  
+        itemEvents.forEach(itemEvent => {
+          observables.push(
+            this.getItemByItemID(itemEvent.itemID).pipe(
+              mergeMap((item: Item) => {
+                const productID = item.productID;
+                return this.getProductByProductID(productID).pipe(
+                  catchError((error: any) => {
+                    console.error('Error fetching product:', error);
+                    // Return a default product or throw the error
+                    return of({} as Product); // Example: Return an empty product
+                    // OR
+                    // return throwError(error); // Rethrow the error
+                  })
+                );
+              })
+            )
+          );
+        });
+  
+        return forkJoin(observables);
+      }),
+      catchError((error: any) => {
+        console.error('Error fetching item events:', error);
+        // Propagate the error or return a default value
+        return throwError(error); // Example: Propagate the error
+        // OR
+        // return of([]); // Example: Return an empty array
+      })
+    );
+  }
+
+  getProductByProductID(productID: number): Observable<Product> {
+    return new Observable<Product>((observer) => {
+      let product: Product;
+
+      this.productService.getById(productID).subscribe(
+        (response: Product) => {
+          product = response;
+          observer.next(product);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+
+      );
+
+    });
+
   }
 
   getEventDate(eventID: number): Observable<Date> {
@@ -193,7 +275,7 @@ export class CreateInvoiceComponent implements OnInit {
   getProductQuantity(productID: number): Observable<number> {
     let quantity = 0;
     const itemIDsSet = new Set<number>();
-  
+
     return this.getItemEventsByEventID(this.event.id).pipe(
       switchMap((itemEvents: ItemEvent[]) => {
         const itemObservables = itemEvents.map(itemEvent => {

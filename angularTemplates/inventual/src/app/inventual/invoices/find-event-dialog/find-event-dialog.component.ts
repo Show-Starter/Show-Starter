@@ -22,13 +22,15 @@ interface Task {
 export class FindEventDialogComponent implements OnInit {
   public events: Event[] = [];
   public parsedEvents: Event[] = [];
-  public eventProducts: Event[] = [];
+  public selectedEvents: Event[] = [];
   public searchText: string = '';
   public tasks: Task[] = [];
   public currentPage: number = 1;
   public itemsPerPage: number = 100;
   public allComplete: boolean = false;
   public itemListURL = "http://localhost:4200/events/find?id=";
+
+  public event: Event;
 
   menuSidebarActive: boolean = false;
  
@@ -80,13 +82,13 @@ export class FindEventDialogComponent implements OnInit {
   }
 
   isSelected(event: Event): boolean {
-    return this.eventProducts.some(selected => selected.id === event.id);
+    return this.selectedEvents.some(selected => selected.id === event.id);
   }
   toggleEventSelection(event: Event, isChecked: boolean): void {
     if (isChecked) {
-      this.eventProducts.push(event);
+      this.selectedEvents.push(event);
     } else {
-      this.eventProducts = this.eventProducts.filter(p => p.id !== event.id);
+      this.selectedEvents = this.selectedEvents.filter(p => p.id !== event.id);
     }
   }
 
@@ -96,7 +98,6 @@ export class FindEventDialogComponent implements OnInit {
   }
 
   public async getEvents(): Promise<void> {
-    console.log("HERE");
     const events = await this.eventService.getUninvoicedEvents().toPromise();
 
     if (events) {
