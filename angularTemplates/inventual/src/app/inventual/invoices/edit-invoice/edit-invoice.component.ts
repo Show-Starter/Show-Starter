@@ -65,10 +65,12 @@ export class EditInvoiceComponent implements OnInit {
     last_name: "",
     bill_add: "",
     bill_city: "",
+    bill_state: "",
     card_num: 0,
     exp_date: "",
     amount: 0,
-    event_id: 0
+    event_id: 0,
+    event_name: ""
   }
 
   eventProducts: Array<{
