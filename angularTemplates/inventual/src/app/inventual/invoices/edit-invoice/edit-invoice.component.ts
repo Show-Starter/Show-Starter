@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Event } from 'src/app/event';
 import { DatePipe } from '@angular/common';
 import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Observable, catchError, forkJoin, map, mergeMap, of, switchMap, throwError } from 'rxjs';
 import { Invoice } from 'src/app/invoice';
 import { InvoiceService } from 'src/app/invoice.service';
@@ -302,6 +302,11 @@ export class EditInvoiceComponent implements OnInit {
         return throwError(error);
       })
     );
+  }
+
+  async updateInvoice(){
+    await this.invoiceService.updateInvoice(this.invoice).toPromise()
+    this.router.navigate(['/invoices/invoicelist']);
   }
 
 
