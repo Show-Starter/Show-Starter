@@ -1,9 +1,14 @@
-<mat-dialog-content>
-    <span>Date</span>
-    <button mat-menu-item>
-        <span>Time</span>
-    </button>
 
+<h2 mat-dialog-title>Select Products</h2>
+<mat-dialog-content>
+
+    <div class="col-span-5 md:col-span-6 sm:col-span-12">
+        <div class="inventual-table-header-search relative sm:mb-4">
+          <input type="text" placeholder="Search List" [(ngModel)]="searchText" (ngModelChange)="filterEvents()">
+          <span><mat-icon>search</mat-icon></span>
+          
+        </div>
+        </div>
 
 <div class="inventual-manageevent-table-area">
     <div class="inventual-manageevent-table-inner1">

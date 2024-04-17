@@ -62,9 +62,6 @@ export class FindEventDialogComponent implements OnInit {
     this.eventService.updateEvent(event);
   }
 
-  public goToEditEvent(id: number): void {
-    this.router.navigateByUrl(`/events/edit-event?id=${id}`)
-  }
 
 
   public filterEvents(): void {
