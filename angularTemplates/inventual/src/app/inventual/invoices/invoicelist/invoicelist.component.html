@@ -117,10 +117,10 @@
                                         <span>{{ invoice.id }}</span>
                                     </div>
                                     <div class="inventual-manageinvoice-table-sl1">
-                                        <span>unknown</span>
+                                        <span>{{ invoice.event_name }}</span>
                                     </div>
                                     <div class="inventual-manageinvoice-table-sl1">
-                                        <span>{{ invoice.amount }}</span>
+                                        <span>${{ invoice.amount }}.00</span>
                                     </div>
                                     <div class="inventual-manageinvoice-table-sl1">
                                         <span>{{ invoice.first_name }} {{ invoice.last_name }}</span>
@@ -134,10 +134,6 @@
                                             <button mat-menu-item [routerLink]="['/invoices/invoicelist']">
                                                 <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
                                                 <span>Edit Invoice</span>
-                                            </button>
-                                            <button mat-menu-item >
-                                                <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                                <span>Delete</span>
                                             </button>
                                         </mat-menu>                                      
                                     </div>

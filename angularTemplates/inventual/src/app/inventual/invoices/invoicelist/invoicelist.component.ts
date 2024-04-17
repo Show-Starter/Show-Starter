@@ -91,6 +91,15 @@ export class InvoicelistComponent implements OnInit {
     this.invoiceService.getInvoices().subscribe(
       (response: Invoice[]) => {
         this.invoices = response;
+
+        this.invoices.forEach(async invoice => {
+          const event_name = await this.getEventName(invoice.event_id).toPromise();
+
+          if (event_name) {
+            invoice.event_name = event_name.valueOf();
+          }
+        })
+
         console.log("invoiceID: " + this.invoices[0].id);
         this.initParse();
         this.filterInvoices();
@@ -101,6 +110,23 @@ export class InvoicelistComponent implements OnInit {
     );
   }
 
+  getEventName(eventID: number): Observable<String> {
+    return new Observable<String>((observer) => {
+      var eventName: String = "";
+
+      this.eventService.getEventName(eventID).subscribe(
+        (response: String) => {
+          eventName = response;
+          observer.next(eventName);
+          observer.complete();
+        },
+        (error: HttpErrorResponse) => {
+          observer.error(error.message);
+        }
+      );
+    });
+  }
+
   private initParse(): void {
     this.tasks = [];
     for (let i = 0; i < this.invoices.length; i++) {
@@ -109,22 +135,6 @@ export class InvoicelistComponent implements OnInit {
       }
     }
   }
-
-  async getEventName(eventID: number): Promise<String> {
-    const event_name = await this.eventService.getEventName(eventID).toPromise();
-
-    if (event_name) {
-      return event_name;
-    } else {
-      return "";
-    }
-  }
-
-
-
-
-
-  
 
   public toggleSidebar(): void {
     this.menuSidebarActive = !this.menuSidebarActive;
