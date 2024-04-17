@@ -129,14 +129,13 @@
                                     <h5 class="text-[15px] font-semibold text-black">Action</h5>
                                 </div>
                             </div>
-                            <div *ngFor="let item of selectedProducts; let i = index"
+                            <div *ngFor="let item of eventProducts; let i = index"
                                 class="inventual-invoice-product-list border-b border-solid border-gray-borderThree custom-height-70">
                                 <div class="inventual-invoice-product-sl">{{ item.product.id }}</div>
                                 <div class="inventual-invoice-product-name">{{ item.product.name }}</div>
                                 <div class="inventual-invoice-product-qty">
                                     <button (click)="counter(i, 'subtract')">-</button>
-                                    <span>{{ item.quantity }} / {{ this.getProductTotalAvailable(item.product.id)
-                                        }}</span>
+                                    <span>{{ item.quantity }}</span>
                                     <button (click)="counter(i, 'add')">+</button>
                                 </div>
                                 <!-- <div class="inventual-invoice-product-type">15</div> -->
@@ -200,7 +199,7 @@
             </div>
             <div>
                 <button mat-raised-button color="warn" [routerLink]="['/invoices/invoicelist']">Cancel</button>
-                <button mat-raised-button color="primary" (click)="updateEvent()">Complete Invoice</button>
+                <button mat-raised-button color="primary" (click)="addInvoice()">Complete Invoice</button>
             </div>
 
         </div>

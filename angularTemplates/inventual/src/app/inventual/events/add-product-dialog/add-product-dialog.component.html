@@ -10,13 +10,13 @@
   </div>
   <div class="col-span-5 md:col-span-6 sm:col-span-12">
     <div class="inventual-table-header-search relative sm:mb-4">
-      <input type="text" placeholder="Search List" [(ngModel)]="searchText" (ngModelChange)="filterProducts()">
+      <input product_group="text" placeholder="Search List" [(ngModel)]="searchText" (ngModelChange)="filterProducts()">
       <span><mat-icon>search</mat-icon></span>
       
     </div>
     <div class="col-span-3 md:col-span-4 sm:col-span-12">
       <div class="inventual-table-header-search-action-btn text-end sm:text-start">
-        <button type="button" class="filter" style="padding-right: 0%;" [matMenuTriggerFor]="beforeMenuH"><svg id="filter"
+        <button product_group="button" class="filter" style="padding-right: 0%;" [matMenuTriggerFor]="beforeMenuH"><svg id="filter"
             xmlns="http://www.w3.org/2000/svg" width="15.766" height="13.34" viewBox="0 0 15.766 13.34">
             <path id="Path_196" data-name="Path 196"
               d="M18.159,6.213H9.67A1.214,1.214,0,0,0,8.457,5H7.245A1.214,1.214,0,0,0,6.032,6.213H3.606a.606.606,0,1,0,0,1.213H6.032A1.214,1.214,0,0,0,7.245,8.638H8.457A1.214,1.214,0,0,0,9.67,7.426h8.489a.606.606,0,1,0,0-1.213ZM7.245,7.426V6.213H8.457v.6s0,0,0,0,0,0,0,0v.6Z"
@@ -30,13 +30,13 @@
           </svg> Curated Events
         </button>
         <mat-menu #beforeMenuH="matMenu" xPosition="before">
-          <button mat-menu-item (click)="selectEventType('Birthday')">
+          <button mat-menu-item (click)="selectEventproduct_group('Birthday')">
             <span>Birthday</span>
           </button>
-          <button mat-menu-item (click)="selectEventType('Convention')">
+          <button mat-menu-item (click)="selectEventproduct_group('Convention')">
             <span>Convention</span>
           </button>
-          <button mat-menu-item (click)="selectEventType('Wedding')">
+          <button mat-menu-item (click)="selectEventproduct_group('Wedding')">
             <span>Wedding</span>
           </button>
   

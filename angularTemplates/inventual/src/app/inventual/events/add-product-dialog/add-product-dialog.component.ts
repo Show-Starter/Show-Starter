@@ -29,7 +29,7 @@ export class AddProductDialogComponent implements OnInit {
 
   public parsedProducts: Product[] = [];
   public searchText: string = '';
-  public selectedEventType: string = '';
+  public selectedEventproduct_group: string = '';
   public tasks: Task[] = [];
   public currentPage: number = 1;
   public itemsPerPage: number = 10;
@@ -167,25 +167,25 @@ export class AddProductDialogComponent implements OnInit {
 }
   //For Curated Events button 
 
-  selectEventType(eventType: string) {
-    console.log('Event Type Selected:', eventType);
-    if (eventType in this.eventProductMap) {
-        this.selectedEventType = eventType;
+  selectEventproduct_group(eventproduct_group: string) {
+    console.log('Event product_group Selected:', eventproduct_group);
+    if (eventproduct_group in this.eventProductMap) {
+        this.selectedEventproduct_group = eventproduct_group;
         this.filterProductsForEvent();
     } else {
-        console.error('Invalid event type selected:', eventType);
+        console.error('Invalid event product_group selected:', eventproduct_group);
     }
 }
   
 filterProductsForEvent() {
-  const eventTypeProducts = this.eventProductMap[this.selectedEventType];
-  if (!eventTypeProducts) {
-      console.error('No products array found for the selected event type:', this.selectedEventType);
+  const eventproduct_groupProducts = this.eventProductMap[this.selectedEventproduct_group];
+  if (!eventproduct_groupProducts) {
+      console.error('No products array found for the selected event product_group:', this.selectedEventproduct_group);
       this.parsedProducts = [];
       return;
   }
   this.parsedProducts = this.products.filter(product => 
-    eventTypeProducts.some(ep => product.name.toLowerCase().includes(ep.toLowerCase()))
+    eventproduct_groupProducts.some(ep => product.name.toLowerCase().includes(ep.toLowerCase()))
 );
 }
 

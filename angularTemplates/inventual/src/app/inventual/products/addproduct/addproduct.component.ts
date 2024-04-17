@@ -17,8 +17,8 @@ export class AddproductComponent implements OnInit {
     id: 0,
     name: '',
     rental_price: 0,
-    product_group: '',
     stock_method: '',
+    product_group: '',
     stock_level: 0
   };
   
