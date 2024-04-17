@@ -83,18 +83,19 @@ export class FindEventDialogComponent implements OnInit {
     this.getEvents(); // Re-fetch the products after deletion
   }
 
-  public getEvents(): void {
-    this.eventService.getEvents().subscribe(
-      (response: Event[]) => {
-        this.events = response;
-        console.log("eventID: " + this.events[0].id);
-        this.initParse();
-        this.filterEvents();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+  public async getEvents(): Promise<void> {
+    console.log("HERE");
+    const events = await this.eventService.getUninvoicedEvents().toPromise();
+
+    if (events) {
+      this.events = events;
+      console.log(events.length);
+    }
+
+    setTimeout(() => {
+      this.filterEvents();
+    })
+    
   }
 
   private initParse(): void {

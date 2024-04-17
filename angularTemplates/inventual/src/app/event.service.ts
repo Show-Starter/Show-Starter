@@ -37,4 +37,8 @@ export class EventService {
     public getEventName(eventID: Number): Observable<String> {
         return this.http.get<String>(`${this.apiServerUrl}/inventory/items/event_name/${eventID}`);
     }
+
+    public getUninvoicedEvents(): Observable<Event[]> {
+        return this.http.get<Event[]>(`${this.apiServerUrl}/events/uninvoiced`);
+    }
 }

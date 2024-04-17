@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 import { Observable, catchError, forkJoin, map, switchMap, throwError } from 'rxjs';
 import { Invoice } from 'src/app/invoice';
 import { InvoiceService } from 'src/app/invoice.service';
+import { FindEventDialogComponent } from '../find-event-dialog/find-event-dialog.component';
 
 
 @Component({
@@ -33,7 +34,15 @@ export class CreateInvoiceComponent implements OnInit {
   //sidebar menu activation start
   menuSidebarActive:boolean=false;
 
-  event: Event;
+  event: Event = {
+    id: 0,
+    name: "",
+    location: "",
+    type: "",
+    date: new Date(),
+    time: "",
+    invoice_num: 0,
+  };
 
   myfunction(){
     if(this.menuSidebarActive==false){
@@ -119,6 +128,12 @@ export class CreateInvoiceComponent implements OnInit {
           observer.error(error.message);
         }
       );
+    });
+  }
+
+  openFindEventDialog(): void {
+    const dialogRef = this.dialog.open(FindEventDialogComponent, {
+      width: '1000px',
     });
   }
 
