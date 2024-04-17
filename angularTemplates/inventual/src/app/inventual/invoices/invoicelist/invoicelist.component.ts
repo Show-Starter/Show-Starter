@@ -8,6 +8,7 @@ import { EventService } from 'src/app/event.service';
 import { Event } from 'src/app/event';
 import { MatDialog } from '@angular/material/dialog';
 import { FindEventDialogComponent } from '../find-event-dialog/find-event-dialog.component';
+import { Router } from '@angular/router';
 
 interface Task {
   name: string;
@@ -47,7 +48,8 @@ export class InvoicelistComponent implements OnInit {
   };
 
 
-  constructor(private invoiceService: InvoiceService, private eventService: EventService, private dialog: MatDialog) {}
+  constructor(private invoiceService: InvoiceService, private eventService: EventService, private dialog: MatDialog,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.getInvoices();
@@ -58,6 +60,10 @@ export class InvoicelistComponent implements OnInit {
     completed: false,
     color: 'primary'
   };
+
+  goToEditInvoice(invoiceID: number) {
+    this.router.navigateByUrl(`/invoices/edit-invoice?id=${invoiceID}`);
+  }
 
   public deleteInvoice(invoiceId: number): void {
     this.invoiceService.deleteInvoice(invoiceId).subscribe({

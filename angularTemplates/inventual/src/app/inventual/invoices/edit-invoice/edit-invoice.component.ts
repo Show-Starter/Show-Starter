@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Event } from 'src/app/event';
 import { DatePipe } from '@angular/common';
 import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Observable, catchError, forkJoin, map, mergeMap, of, switchMap, throwError } from 'rxjs';
 import { Invoice } from 'src/app/invoice';
 import { InvoiceService } from 'src/app/invoice.service';
@@ -35,20 +35,18 @@ export class EditInvoiceComponent implements OnInit {
   //sidebar menu activation start
   menuSidebarActive: boolean = false;
 
-  event: Event = {
-    id: 0,
-    name: "",
-    location: "",
-    type: "",
-    date: new Date(),
-    time: "",
-    invoice_num: 0,
-  };
+  event: Event;
 
   constructor(public dialog: MatDialog, private itemEventService: ItemEventService, private invoiceService: InvoiceService,
-    private itemService: ItemService, private eventService: EventService, private router: Router, private productService: ProductService) { }
+    private itemService: ItemService, private eventService: EventService, private router: Router, private productService: ProductService, private route: ActivatedRoute) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.invoice.id = params['id'];
+    });
+
+    this.getInvoice();
+  }
 
   myfunction() {
     if (this.menuSidebarActive == false) {
@@ -99,8 +97,22 @@ export class EditInvoiceComponent implements OnInit {
     }
   }
 
-  removeProduct(index: number) {
-    this.eventProducts.splice(index, 1);
+  async getInvoice() {
+    const invoice = await this.invoiceService.getInvoice(this.invoice.id).toPromise();
+
+    if (invoice) {
+      this.invoice = invoice;
+    }
+
+    this.getEvent();
+  }
+
+  async getEvent() {
+    const event = await this.eventService.getById(this.invoice.event_id).toPromise();
+
+    if (event) {
+      this.event = event;
+    }
   }
 
   async addInvoice() {
