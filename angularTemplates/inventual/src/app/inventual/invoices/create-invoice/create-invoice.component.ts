@@ -113,6 +113,7 @@ export class CreateInvoiceComponent implements OnInit {
         this.event.invoice_num = newInvoice.id;
 
         await this.eventService.updateEvent(this.event).toPromise();
+        this.router.navigate(['/invoices/invoicelist']);
       }
     }, 1500);
   }

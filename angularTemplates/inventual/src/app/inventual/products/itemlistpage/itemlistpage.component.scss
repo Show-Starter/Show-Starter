@@ -38,18 +38,19 @@
 
 .inventual-manageitem-table-sl1 {
 	min-width: 300px;
-	width: 5%;
-	margin-right: 0px;
-	padding-left: 50px;
+
+
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 40px;
-		width: 20%;
+		width: 13%;
 	}
 	@media (max-width: 1600px) {
 		min-width: 40px;
-		width: 20%;
+		width: 13%;
 	}
 }
+ 
+
 
 .inventual-manageitem-table-action1{	
 	min-width: 300px;
@@ -57,36 +58,25 @@
 	margin-right: 0px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 40px;
-		width: 20%;
+		width: 13%;
 	}
 	@media (max-width: 1600px) {
 		min-width: 40px;
-		width: 20%;
+		width: 13%;
 	}
 }
-.inventual-manageitem-table-image1 {
-	min-width: 100px;
-	width: 6%;
-	@media (min-width: 1601px) and (max-width: 1900px) {
-		min-width: 70px;
-		width: 20%;
-	}
-	@media (max-width: 1600px) {
-		min-width: 70px;
-		width: 20%;
-	}
-}
+
 
 .inventual-manageitem-table-name1 {
 	min-width: 300px;
 	width: 10%;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 40px;
-		width: 20%;
+		width: 13%;
 	}
 	@media (max-width: 1600px) {
 		min-width: 40px;
-		width: 20%;
+		width: 13%;
 	}
 }
 
@@ -96,25 +86,25 @@
 	width: 10%;
 	padding-left: 30px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
-		min-width: 40px;
-		width: 20%;
+		min-width: 13;
+		width: 13%;
 	}
 	@media (max-width: 1600px) {
 		min-width: 40px;
-		width: 20%;
+		width: 13%;
 	}
 }
 .inventual-manageitem-table-variant1 {
 	min-width: 100;
 	width: 6%;
-	padding-left: 30px;
+	padding-left: 50px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 70px;
-		width: 20%;
+		width: 13%;
 	}
 	@media (max-width: 1600px) {
 		min-width: 70px;
-		width: 20%;
+		width: 13%;
 	}
 }
 
@@ -123,7 +113,7 @@
 	width: 8%;
 	padding-left: 30px;
 	@media (min-width: 1601px) and (max-width: 1900px) {
-		width: 10%;
+		width: 13%;
 		min-width: 150px;
 	}
 	@media (max-width: 1600px) {

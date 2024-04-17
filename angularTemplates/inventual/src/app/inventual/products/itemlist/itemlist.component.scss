@@ -44,10 +44,12 @@
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 40px;
 		width: 20%;
+	
 	}
 	@media (max-width: 1600px) {
 		min-width: 40px;
 		width: 20%;
+		padding-left: 50px;
 	}
 }
 
@@ -70,10 +72,12 @@
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		min-width: 70px;
 		width: 20%;
+		padding-left: 50px;
 	}
 	@media (max-width: 1600px) {
 		min-width: 70px;
 		width: 20%;
+		padding-left: 50px;
 	}
 }
 
