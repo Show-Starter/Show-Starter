@@ -22,6 +22,7 @@ interface Task {
 export class FindEventDialogComponent implements OnInit {
   public events: Event[] = [];
   public parsedEvents: Event[] = [];
+  public eventProducts: Event[] = [];
   public searchText: string = '';
   public tasks: Task[] = [];
   public currentPage: number = 1;
@@ -75,6 +76,17 @@ export class FindEventDialogComponent implements OnInit {
         (event.invoice_num.toString().includes(this.searchText)) ||
         event.id == +this.searchText
       );
+    }
+  }
+
+  isSelected(event: Event): boolean {
+    return this.eventProducts.some(selected => selected.id === event.id);
+  }
+  toggleEventSelection(event: Event, isChecked: boolean): void {
+    if (isChecked) {
+      this.eventProducts.push(event);
+    } else {
+      this.eventProducts = this.eventProducts.filter(p => p.id !== event.id);
     }
   }
 

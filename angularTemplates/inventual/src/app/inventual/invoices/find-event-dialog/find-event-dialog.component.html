@@ -1,74 +1,77 @@
-
 <h2 mat-dialog-title>Select Event</h2>
 <mat-dialog-content>
 
     <div class="col-span-5 md:col-span-6 sm:col-span-12">
         <div class="inventual-table-header-search relative sm:mb-4">
-          <input type="text" placeholder="Search List" [(ngModel)]="searchText" (ngModelChange)="filterEvents()">
-          <span><mat-icon>search</mat-icon></span>
-          
-        </div>
-        </div>
+            <input type="text" placeholder="Search List" [(ngModel)]="searchText" (ngModelChange)="filterEvents()">
+            <span><mat-icon>search</mat-icon></span>
 
-<div class="inventual-manageevent-table-area">
-    <div class="inventual-manageevent-table-inner1">
-        <div class="inventual-manageevent-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
-            <div>
-                <div class="inventual-manageevent-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                    <div class="inventual-manageevent-table-checkbox1">
-                        <!-- <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
+        </div>
+    </div>
+
+    <div class="inventual-manageevent-table-area">
+        <div class="inventual-manageevent-table-inner1">
+            <div
+                class="inventual-manageevent-table-inner-wrapper1 border border-solid border-gray-borderThree border-b-0 mb-7">
+                <div>
+                    <div class="inventual-manageevent-table-list1 flex border-b border-solid border-gray-borderThree h-20">
+                        <div class="inventual-manageevent-table-checkbox1">
+                            <!-- <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color"
                              [indeterminate]="someComplete()" (change)="setAll($event.checked)">
                              {{task.name}}
                              </mat-checkbox> -->
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <h5>ID</h5>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <h5>Name</h5>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <h5>Location</h5>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <h5>Date</h5>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <h5>Time</h5>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <h5>Invoice Num</h5>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <h5>Select</h5>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <h5>ID</h5>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <h5>Name</h5>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <h5>Location</h5>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <h5>Date</h5>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <h5>Time</h5>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <h5>Invoice Num</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div *ngFor="let event of parsedEvents">
-                <div class="inventual-manageevent-table-list1 flex border-b border-solid border-gray-borderThree h-20">
-                    <div class="inventual-manageevent-table-checkbox1 default-light-theme">
-                        <!-- <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck1($event.checked)">
-                                     <label for="mat-checkbox-2-input"></label>
-                                 </mat-checkbox> -->
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <span>{{event.id}}</span>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <span>{{event.name}}</span>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <span>{{event.location}}</span>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <span>{{event.date}}</span>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <span>{{event.time}}</span>
-                    </div>
-                    <div class="inventual-manageevent-table-sl1">
-                        <span>{{event.invoice_num}}</span>
+                <div *ngFor="let event of parsedEvents">
+                    <div
+                        class="inventual-manageevent-table-list1 flex border-b border-solid border-gray-borderThree h-20">
+                        <div class="inventual-add-event-dialog-table-checkbox1">
+                            <mat-checkbox [checked]="isSelected(event)"
+                              (change)="toggleEventSelection(event, $event.checked)"></mat-checkbox>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <span>{{event.id}}</span>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <span>{{event.name}}</span>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <span>{{event.location}}</span>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <span>{{event.date}}</span>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <span>{{event.time}}</span>
+                        </div>
+                        <div class="inventual-manageevent-table-sl1">
+                            <span>{{event.invoice_num}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </mat-dialog-content>
