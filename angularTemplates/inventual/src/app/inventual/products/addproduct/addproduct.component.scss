@@ -16,6 +16,15 @@
 //inventual header searchbar action
 @include inventualHeaderSearchAction;
 
+
+
+.inventual-table-header-search-action-btn {
+    display: inline;
+    flex-wrap: wrap;
+	text-align:  left;
+    justify-content: flex-start;
+    gap: 0.525rem;
+}
 .custom-height-70 {
     height: 70px;
     min-height: 70px;
