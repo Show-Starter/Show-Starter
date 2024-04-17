@@ -79,6 +79,7 @@ import { EditEventComponent } from './inventual/events/edit-event/edit-event.com
 import { InvoicelistComponent } from './inventual/invoices/invoicelist/invoicelist.component';
 import { EditInvoiceComponent } from './inventual/invoices/edit-invoice/edit-invoice.component';
 import { CreateInvoiceComponent } from './inventual/invoices/create-invoice/create-invoice.component';
+import { FindEventDialogComponent } from './inventual/invoices/find-event-dialog/find-event-dialog.component';
 
 const routes: Routes = [ 
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -90,6 +91,9 @@ const routes: Routes = [
 
   {path: 'products/addproduct',
   component: AddproductComponent
+  },
+  {path: 'invoices/find-event-dialog',
+    component: FindEventDialogComponent
   },
   {
     path: 'events/edit-event',

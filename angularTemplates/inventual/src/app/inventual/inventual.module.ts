@@ -129,6 +129,7 @@ import { CustomMessageDialogComponent } from './custom-message-dialog/custom-mes
 import { EditEventComponent } from './events/edit-event/edit-event.component';
 import { EditInvoiceComponent } from './invoices/edit-invoice/edit-invoice.component';
 import { CreateInvoiceComponent } from './invoices/create-invoice/create-invoice.component';
+import { FindEventDialogComponent } from './invoices/find-event-dialog/find-event-dialog.component';
 
 
 
@@ -270,7 +271,8 @@ import { CreateInvoiceComponent } from './invoices/create-invoice/create-invoice
     CustomMessageDialogComponent,
     EditEventComponent,
     EditInvoiceComponent,
-    CreateInvoiceComponent
+    CreateInvoiceComponent,
+    FindEventDialogComponent
   ]
 })
 export class InventualModule { }
