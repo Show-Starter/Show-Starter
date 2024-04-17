@@ -38,8 +38,9 @@
 }
 
 .inventual-table-header-search-action-btn {
-    display: flex;
+    display: inline;
     flex-wrap: wrap;
+	text-align:  left;
     justify-content: flex-start;
     gap: 0.525rem;
 }

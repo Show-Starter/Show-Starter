@@ -95,25 +95,20 @@ export class ProductlistComponent implements OnInit {
   }
 }
 
-  public filterProducts(): void {
-  
+public filterProducts(): void {
 
-
-    if (this.searchText == ''){
-      this.initParse(); // If no search text, show all products
-    }else{
-         this.parsedProducts = this.products.filter(product => 
-        (product.name != null && product.name.toLowerCase().includes(this.searchText.toLowerCase()))||
-         (product.name != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase()))||
-         (product.id.toString().includes(this.searchText)) ||
-         product.id == +this.searchText
-        
-     );
-     this.paginateProducts();
-     }
- 
-     this.paginateProducts();
+  if (this.searchText == '') {
+    this.initParse(); // If no search text, show all products
+  } else {
+    this.parsedProducts = this.products.filter(product =>
+      (product.name != null && product.name.toLowerCase().includes(this.searchText.toLowerCase())) ||
+      (product.product_group != null && product.product_group.toLowerCase().includes(this.searchText.toLowerCase())) ||
+      (product.rental_price.toString().includes(this.searchText)) ||
+      product.id == +this.searchText
+    );
+    this.paginateProducts();
   }
+}
 
   private paginateProducts(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
