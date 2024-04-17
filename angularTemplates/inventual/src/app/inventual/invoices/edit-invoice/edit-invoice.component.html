@@ -1,1 +1,190 @@
-<p>edit-invoice works!</p>
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menu></app-menu>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div
+                class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-gray-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-black font-bold mb-3">Create Invoice</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Invoice</span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-gray font-normal inline-block me-2">Create Invoice</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <h4 class="text-[20px] font-bold text-black mb-9">Create Invoice</h4>
+                <div class="col-span-12">
+                    <div class="inventual-select-field w-full mb-5">
+        
+                        <div class="inventual-material-btn mb-7">
+                            <button mat-raised-button color="accent" class="mb-1" (click)="openFindEventDialog()" >
+                                <mat-icon>add_circle_outline</mat-icon> Find Event
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventual-addbrand-upload-area flex items-center sm:block pb-2.5">
+
+                    <div class="grid grid-cols-12 w-full gap-x-7 sm:gap-x-0">
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="col-span-6 sm:col-span-12">
+                                <div class="inventual-select-field w-full mb-5">
+                                    <h5 class="text-[15px] text-black font-semibold mb-3">Name:</h5>
+                                    <h5 class="text-[15px] text-black font-semibold mb-3">{{ event.name }}</h5>
+                                </div>
+                            </div>
+
+                            <div class="inventual-calender-field mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Date</h5>
+                                <h5 class="text-[15px] text-black font-semibold mb-3">{{ event.date }}</h5>
+                            </div>
+                        </div>
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Location</h5>
+                                <h5 class="text-[15px] text-black font-semibold mb-3">{{ event.location }}</h5>
+                            </div>
+                        </div>
+
+
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Time</h5>
+                                <h5 class="text-[15px] text-black font-semibold mb-3">{{ event.time }}</h5>
+                            </div>
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Total</h5>
+                                <h5 class="text-[15px] text-black font-semibold mb-3">${{ invoice.amount }}.00</h5>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                
+
+
+                <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                    <h4 class="text-[20px] font-bold text-black mb-9">Finish Invoice</h4>
+
+                <div class="grid grid-cols-12 w-full gap-x-7 sm:gap-x-0">
+                    <div class="col-span-6 sm:col-span-12">
+                       <div class="col-span-6 sm:col-span-12">
+                           <div class="inventual-select-field w-full mb-5">
+                               <h5 class="text-[15px] text-black font-semibold mb-3">First Name</h5>
+                               <div class="inventual-input-field-style">
+                                 <mat-form-field class="w-full" [floatLabel]="'always'">
+                                   <mat-label class="hidden">HP</mat-label>
+                                   <input matInput [placeholder]="'First Name'" [(ngModel)]="invoice.first_name" name="name">
+                                 </mat-form-field>
+                               </div>
+                             </div>
+                        </div>
+                        
+
+                    </div>
+                    <div class="col-span-6 sm:col-span-12">
+                       <div class="inventual-select-field w-full mb-5">
+                           <h5 class="text-[15px] text-black font-semibold mb-3">Last Name</h5>
+                           <div class="inventual-input-field-style">
+                             <mat-form-field class="w-full" [floatLabel]="'always'">
+                               <mat-label class="hidden">HP</mat-label>
+                               <input matInput [placeholder]="'LastName'" [(ngModel)]="invoice.last_name" name="location">
+                             </mat-form-field>
+                           </div>
+                         </div>
+                    </div>
+                    <div class="col-span-6 sm:col-span-12">
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Billing Address</h5>
+                                <div class="inventual-input-field-style">
+                                  <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">HP</mat-label>
+                                    <input matInput [placeholder]="'147 Grove Lane'" [(ngModel)]="invoice.bill_add" name="name">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                         </div>
+                         
+ 
+                     </div>
+                     <div class="col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field w-full mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Billing City</h5>
+                            <div class="inventual-input-field-style">
+                              <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">HP</mat-label>
+                                <input matInput [placeholder]="'Charleston'" [(ngModel)]="invoice.bill_city" name="location">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                     </div>
+                     <div class="col-span-6 sm:col-span-12">
+                        <div class="col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field w-full mb-5">
+                                <h5 class="text-[15px] text-black font-semibold mb-3">Card Number</h5>
+                                <div class="inventual-input-field-style">
+                                  <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">HP</mat-label>
+                                    <input matInput [(ngModel)]="invoice.card_num" name="name">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                         </div>
+                         
+ 
+                     </div>
+                     <div class="col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field w-full mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Experation Date</h5>
+                            <div class="inventual-input-field-style">
+                              <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">HP</mat-label>
+                                <input matInput [placeholder]="'06/29'" [(ngModel)]="invoice.exp_date" name="location">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                     </div>
+ 
+
+
+                    
+                </div>
+            </div>
+            <div>
+                <button mat-raised-button color="warn" [routerLink]="['/invoices/invoicelist']">Cancel</button>
+                <button mat-raised-button color="primary" (click)="addInvoice()">Complete Invoice</button>
+            </div>
+
+        </div>
+
+        <div class="inventual-copyright-area">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+</div>
