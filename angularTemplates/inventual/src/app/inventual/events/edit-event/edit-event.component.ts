@@ -10,7 +10,7 @@ import { EventService } from 'src/app/event.service';
 import { ItemEventService } from 'src/app/itemevent.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Event } from 'src/app/event';
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, forkJoin, map, mergeMap, of, switchMap, throwError } from 'rxjs';
@@ -35,7 +35,8 @@ export class EditEventComponent implements OnInit {
   menuSidebarActive:boolean=false;
 
   constructor(public dialog: MatDialog, private itemEventService: ItemEventService, private productService: ProductService,
-    private itemService: ItemService, private eventService: EventService, private router: Router, private route: ActivatedRoute) {}
+    private itemService: ItemService, private eventService: EventService, private router: Router, private route: ActivatedRoute,
+    private location: Location) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -59,6 +60,10 @@ export class EditEventComponent implements OnInit {
     quantity: number,
     subtotal?: number
   }> = [];
+
+  goBack(): void {
+    this.location.back();
+  }
 
   async main() {
     try {

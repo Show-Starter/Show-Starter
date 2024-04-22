@@ -59,7 +59,9 @@ export class ProductlistComponent implements OnInit {
     });
   }
 
-  
+  getItemListLink(productID: number): string {
+    return `http://localhost:4200/products/itemlist?id=${productID}`;
+  }
 
   private extractProductGroups(): void {
     const groups = new Set(this.products.map(p => p.product_group));

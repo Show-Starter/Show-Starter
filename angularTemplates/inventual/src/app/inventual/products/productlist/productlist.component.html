@@ -185,7 +185,12 @@
                     </div>
 
                     <div class="inventual-manageproduct-table-sl1">
-                      <span>{{product.stock_level}}</span>
+                      <ng-container *ngIf="product.stock_level === 0; else elseBlock">
+                        <span style="color: red;">{{product.stock_level}}</span>
+                      </ng-container>
+                      <ng-template #elseBlock>
+                        <a href={{getItemListLink(product.id)}}>{{product.stock_level}}</a>
+                      </ng-template>
                     </div>
 
                     <div class="inventual-manageproduct-table-action1">

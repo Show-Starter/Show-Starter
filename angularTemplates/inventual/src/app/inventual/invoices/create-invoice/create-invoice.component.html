@@ -99,7 +99,7 @@
                                <div class="inventual-input-field-style">
                                  <mat-form-field class="w-full" [floatLabel]="'always'">
                                    <mat-label class="hidden">HP</mat-label>
-                                   <input matInput [placeholder]="'First Name'" [(ngModel)]="invoice.first_name" name="fist_name">
+                                   <input matInput [placeholder]="'First Name'" [(ngModel)]="invoice.first_name" name="fist_name" required>
                                  </mat-form-field>
                                </div>
                              </div>
@@ -113,7 +113,7 @@
                            <div class="inventual-input-field-style">
                              <mat-form-field class="w-full" [floatLabel]="'always'">
                                <mat-label class="hidden">HP</mat-label>
-                               <input matInput [placeholder]="'LastName'" [(ngModel)]="invoice.last_name" name="last_name">
+                               <input matInput [placeholder]="'LastName'" [(ngModel)]="invoice.last_name" name="last_name" required>
                              </mat-form-field>
                            </div>
                          </div>
@@ -125,7 +125,7 @@
                                 <div class="inventual-input-field-style">
                                   <mat-form-field class="w-full" [floatLabel]="'always'">
                                     <mat-label class="hidden">HP</mat-label>
-                                    <input matInput [placeholder]="'147 Grove Lane'" [(ngModel)]="invoice.bill_add" name="bill_add">
+                                    <input matInput [placeholder]="'147 Grove Lane'" [(ngModel)]="invoice.bill_add" name="bill_add" required>
                                   </mat-form-field>
                                 </div>
                               </div>
@@ -139,7 +139,7 @@
                             <div class="inventual-input-field-style">
                               <mat-form-field class="w-full" [floatLabel]="'always'">
                                 <mat-label class="hidden">HP</mat-label>
-                                <input matInput [placeholder]="'Charleston'" [(ngModel)]="invoice.bill_city" name="bill_city">
+                                <input matInput [placeholder]="'Charleston'" [(ngModel)]="invoice.bill_city" name="bill_city" required>
                               </mat-form-field>
                             </div>
                           </div>
@@ -151,7 +151,7 @@
                                 <div class="inventual-input-field-style">
                                   <mat-form-field class="w-full" [floatLabel]="'always'">
                                     <mat-label class="hidden">HP</mat-label>
-                                    <input matInput [(ngModel)]="invoice.card_num" name="card_num">
+                                    <input matInput [(ngModel)]="invoice.card_num" name="card_num" required>
                                   </mat-form-field>
                                 </div>
                               </div>
@@ -165,7 +165,7 @@
                             <div class="inventual-input-field-style">
                               <mat-form-field class="w-full" [floatLabel]="'always'">
                                 <mat-label class="hidden">HP</mat-label>
-                                <input matInput [placeholder]="'06/29'" [(ngModel)]="invoice.exp_date" name="exp_date">
+                                <input matInput [placeholder]="'06/29'" [(ngModel)]="invoice.exp_date" name="exp_date" required>
                               </mat-form-field>
                             </div>
                           </div>

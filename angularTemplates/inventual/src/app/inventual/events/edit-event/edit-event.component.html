@@ -141,7 +141,7 @@
                 </div>
            </div>
            <div>
-           <button mat-raised-button color="warn" [routerLink]="['/events/eventlist']">Cancel</button>
+            <button mat-raised-button color="warn" (click)="goBack()">Cancel</button>
            <button mat-raised-button color="primary" (click)="updateEvent()">Save</button>    
         </div>
           <div class="inventual-button-container">

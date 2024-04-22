@@ -140,8 +140,13 @@
                                             <span>{{event.time}}</span>
                                         </div>
                                         <div class="inventual-manageevent-table-sl1">
-                                            <span>{{event.invoice_num}}</span>
-                                        </div>
+                                            <ng-container *ngIf="getInvoiceStatus(event.invoice_num) === 'Uninvoiced'; else elseBlock">
+                                                <span style="color: red;">{{getInvoiceStatus(event.invoice_num)}}</span>
+                                            </ng-container>
+                                            <ng-template #elseBlock>
+                                                <a href={{getInvoiceLink(event.invoice_num)}}>{{getInvoiceStatus(event.invoice_num)}}</a>
+                                            </ng-template>
+                                        </div>                                        
 
                                         <div class="inventual-manageevent-table-action1">
                                             <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">

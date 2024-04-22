@@ -6,6 +6,7 @@ import { EventService } from 'src/app/event.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddProductDialogComponent } from '../add-product-dialog/add-product-dialog.component';
+import { environment } from 'src/environments/environment';
 
 interface Task {
   name: string;
@@ -28,6 +29,7 @@ export class EventlistComponent implements OnInit {
   public itemsPerPage: number = 100;
   public allComplete: boolean = false;
   public itemListURL = "http://localhost:4200/events/find?id=";
+  apiServerUrl = environment.apiBaseUrl;
 
   menuSidebarActive: boolean = false;
 
@@ -105,6 +107,15 @@ export class EventlistComponent implements OnInit {
         this.parsedEvents.push(this.events[(this.itemsPerPage * (this.currentPage - 1)) + i]);
       }
     }
+  }
+
+  public  getInvoiceStatus(invoiceID: number): String | number {
+    if (invoiceID == 0) {return "Uninvoiced";} 
+    else {return invoiceID;}
+  }
+
+  public getInvoiceLink(invoiceID: number): string {
+    return `http://localhost:4200/invoices/edit-invoice?id=${invoiceID}`
   }
 
   public toggleSidebar(): void {

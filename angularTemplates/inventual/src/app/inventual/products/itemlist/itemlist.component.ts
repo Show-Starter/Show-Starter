@@ -268,6 +268,10 @@ export class ItemlistComponent implements OnInit {
     });
   }
 
+  getEventLink(eventID: number): string {
+    return `http://localhost:4200/events/edit-event?id=${eventID}`;
+  }
+
   addItem() {
     const item: Item = {
       id: 0,
