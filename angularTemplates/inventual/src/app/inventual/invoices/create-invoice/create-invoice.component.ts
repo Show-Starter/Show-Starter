@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Event } from 'src/app/event';
 import { DatePipe } from '@angular/common';
 import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, forkJoin, map, mergeMap, of, switchMap, throwError } from 'rxjs';
 import { Invoice } from 'src/app/invoice';
 import { InvoiceService } from 'src/app/invoice.service';
@@ -46,7 +46,14 @@ export class CreateInvoiceComponent implements OnInit {
   };
 
   constructor(public dialog: MatDialog, private itemEventService: ItemEventService, private invoiceService: InvoiceService,
-    private itemService: ItemService, private eventService: EventService, private router: Router, private productService: ProductService) { }
+    private itemService: ItemService, private eventService: EventService, private router: Router, private productService: ProductService,
+    private route: ActivatedRoute) {
+      this.route.queryParams.subscribe(params => {
+        this.event.id = params['id'];
+        console.log(this.event.id);
+        this.getEventFromEventID();
+      });
+    }
 
   ngOnInit(): void { }
 
@@ -162,6 +169,28 @@ export class CreateInvoiceComponent implements OnInit {
         })
       }
     });
+  }
+
+  async getEventFromEventID() {
+    const event = await this.eventService.getById(this.event.id).toPromise();
+
+    if (event) {
+      this.event = event;
+
+      const products = await this.getEventProductsFromEventID(this.event.id).toPromise();
+
+      if (products) {
+
+        products.forEach(async product => {
+
+          const productQuantity = await this.getProductQuantity(product.id).toPromise();
+
+          if (productQuantity)  {
+            this.invoice.amount += productQuantity * product.rental_price;
+          }
+        })
+      }
+    }
   }
 
   getEventProductsFromEventID(eventID: number): Observable<Product[]> {

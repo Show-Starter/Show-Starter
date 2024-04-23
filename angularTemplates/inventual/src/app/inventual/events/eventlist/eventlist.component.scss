@@ -38,7 +38,7 @@
  	min-width: 140px;
  	width: 4%;
 	margin-left: 0px;
- 	@media (min-width: 1601px) and (max-width: 1900px) {
+ 	@media (min-width: 768px) and (max-width: 1900px) {
  		min-width: 50px;
  		width: 4%;
  	}
@@ -46,12 +46,6 @@
  		min-width: 50px;
  		width: 4%;
  	}
- }
-
- 
-
- .inventual-manageevent-table-checkbox1 {
-	margin-left: 0px;
  }
 
  .inventual-manageevent-table-list1 {
@@ -59,25 +53,25 @@
  }
 
  .inventual-manageevent-table-sl1 {
- 	min-width: 300px;
- 	width: 10%;
+	min-width: 150px;
+	width: 12%;
 	margin-left: 0px;
- 	@media (min-width: 1601px) and (max-width: 1900px) {
- 		min-width: 0px;
- 		width: 13%;
-		margin-left: 0px;
- 	}
+	@media (min-width: 768px) and (max-width: 1900px) {
+	  min-width: 0px;
+	  width: 30%;
+	  margin-left: 0px;
+	}
 	@media (max-width: 1600px) {
- 		min-width: 0px;
- 		width: 13%;
-		margin-left: 0px;
- 	}
- }
+	  min-width: 0px;
+	  width: 30%;
+	  margin-left: 0px;
+	}
+  }
  .inventual-manageevent-table-image1 {
  	min-width: 100px;
  	width: 6%;
 	margin-left: 0px;
- 	@media (min-width: 1601px) and (max-width: 1900px) {
+ 	@media (min-width: 768px) and (max-width: 1900px) {
  		min-width: 70px;
  		width: 20%;
  	}
@@ -91,7 +85,7 @@
  	min-width: 300px;
  	width: 10%;
 	margin-left: 0px;
- 	@media (min-width: 1601px) and (max-width: 1900px) {
+ 	@media (min-width: 768px) and (max-width: 1900px) {
  		min-width: 40px;
  		width: 20%;
  	}
@@ -106,7 +100,7 @@
  	min-width: 300px;
  	width: 10%;
 	margin-left: 0px;
- 	@media (min-width: 1601px) and (max-width: 1900px) {
+ 	@media (min-width: 768px) and (max-width: 1900px) {
  		min-width: 40px;
  		width: 20%;
  	}
@@ -119,7 +113,7 @@
  	min-width: 100;
 	width: 6%;
 	margin-left: 0px;
- 	@media (min-width: 1601px) and (max-width: 1900px) {
+ 	@media (min-width: 768px) and (max-width: 1900px) {
  		min-width: 70px;
  		width: 20%;
  	}
@@ -133,7 +127,7 @@
  	min-width: 125px;
  	width: 8%;
 	margin-left: 0px;
- 	@media (min-width: 1601px) and (max-width: 1900px) {
+ 	@media (min-width: 768px) and (max-width: 1900px) {
  		width: 10%;
  		min-width: 150px;
  	}

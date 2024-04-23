@@ -28,7 +28,7 @@ export class EditProductComponent implements OnInit {
     stock_level: 0
   };
 
-  constructor(private productService: ProductService, private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private http: HttpClient, private route: ActivatedRoute, private router: Router) {
       this.route.queryParams.subscribe(params => {
         this.productID = params['id'];
         console.log("Product ID: " + this.productID); // Print the parameter to the console. 
@@ -70,6 +70,10 @@ export class EditProductComponent implements OnInit {
         console.error('Error updating product:', error);
       }
     );
+
+    setTimeout(() => {
+      this.router.navigate(['/products/productlist']);
+    }, 1500);
   }
 
   myfunction() {

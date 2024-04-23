@@ -34,7 +34,7 @@ export class EventlistComponent implements OnInit {
   menuSidebarActive: boolean = false;
 
   constructor(private eventService: EventService,private router:Router,
-              private dialog: MatDialog,) {}
+              private dialog: MatDialog, ) {}
 
   ngOnInit(): void {
     this.getEvents();
@@ -115,7 +115,11 @@ export class EventlistComponent implements OnInit {
   }
 
   public getInvoiceLink(invoiceID: number): string {
-    return `http://localhost:4200/invoices/edit-invoice?id=${invoiceID}`
+    return `http://localhost:4200/invoices/edit-invoice?id=${invoiceID}`;
+  }
+
+  public goToInvoiceEvent(eventId: number): void {
+    this.router.navigateByUrl(`/invoices/create-invoice?id=${eventId}`);
   }
 
   public toggleSidebar(): void {

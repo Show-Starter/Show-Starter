@@ -54,7 +54,7 @@ export class MenuComponent implements OnInit {
   onResize(event: any) {
     this.screenWidth = window.innerWidth;
     if (this.screenWidth <= 768) {
-      this.collapsed = false;
+      this.collapsed = true;
       this.onToggleSideNav.emit({
         collapsed: this.collapsed,
         screenWidth: this.screenWidth,

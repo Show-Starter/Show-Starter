@@ -68,36 +68,53 @@
 	margin-right: 20px;     /* Adds space to the right of the first h2 */
   }
 
-
-.inventual-add-product-dialog-table-sl1 {
-	min-width: 300px;
-	width: 5%;
-	margin-right: 0px;
+  .inventual-add-product-dialog-table-select {
+	min-width: 150px;
+	width: 12%;
 	margin-left: 0px;
 	padding-left: 50px;
-	@media (min-width: 1601px) and (max-width: 1900px) {
-		min-width: 40px;
-		width: 20%;
+	@media (min-width: 768px) and (max-width: 1900px) {
+	  min-width: 0px;
+	  width: 30%;
+	  margin-left: 0px;
 	}
 	@media (max-width: 1600px) {
-		min-width: 40px;
-		width: 20%;
+	  min-width: 0px;
+	  width: 30%;
+	  margin-left: 0px;
 	}
-}
-.inventual-add-product-dialog-table-sl2 {
-	min-width: 300px;
-	width: 5%;
-	padding-left: 14%;
-	
-	@media (min-width: 1601px) and (max-width: 1900px) {
-		min-width: 40px;
-		width: 20%;
+  }
+
+  .inventual-add-product-dialog-table-sl1 {
+	min-width: 150px;
+	width: 12%;
+	margin-left: 0px;
+	@media (min-width: 768px) and (max-width: 1900px) {
+	  min-width: 0px;
+	  width: 30%;
+	  margin-left: 0px;
 	}
-	@media (max-width: 1800px) {
-		min-width: 150px;
-		width: 480px;
+	@media (max-width: 1600px) {
+	  min-width: 0px;
+	  width: 30%;
+	  margin-left: 0px;
 	}
-}
+  }
+  .inventual-add-product-dialog-table-sl2 {
+	min-width: 150px;
+	width: 12%;
+	margin-left: 0px;
+	@media (min-width: 768px) and (max-width: 1900px) {
+	  min-width: 0px;
+	  width: 30%;
+	  margin-left: 0px;
+	}
+	@media (max-width: 1600px) {
+	  min-width: 0px;
+	  width: 30%;
+	  margin-left: 0px;
+	}
+  }
 
 
 .inventual-add-product-dialog-table-name1 {
@@ -179,6 +196,7 @@
 
 .inventual-add-product-dialog-table-checkbox1{
 	padding-left: 50px;
+	padding-right: 75px;
 }
 .common-action-menu-style {
 	margin-left: 0px;
@@ -191,7 +209,8 @@
 	height: auto;
 	display: flex;
     align-items: center; /* This ensures vertical alignment */
-
+	padding-top: 10px;
+	padding-bottom: 10px;
 	
 }
 
