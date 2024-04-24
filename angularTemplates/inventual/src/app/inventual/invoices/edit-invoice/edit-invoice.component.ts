@@ -11,7 +11,7 @@ import { EventService } from 'src/app/event.service';
 import { ItemEventService } from 'src/app/itemevent.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Event } from 'src/app/event';
-import { DatePipe } from '@angular/common';
+import { Location } from '@angular/common';
 import { CustomMessageDialogComponent } from '../../custom-message-dialog/custom-message-dialog.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Observable, catchError, forkJoin, map, mergeMap, of, switchMap, throwError } from 'rxjs';
@@ -38,7 +38,8 @@ export class EditInvoiceComponent implements OnInit {
   event: Event;
 
   constructor(public dialog: MatDialog, private itemEventService: ItemEventService, private invoiceService: InvoiceService,
-    private itemService: ItemService, private eventService: EventService, private router: Router, private productService: ProductService, private route: ActivatedRoute) { }
+    private itemService: ItemService, private eventService: EventService, private router: Router, private productService: ProductService,
+    private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -319,6 +320,10 @@ export class EditInvoiceComponent implements OnInit {
   async updateInvoice(){
     await this.invoiceService.updateInvoice(this.invoice).toPromise()
     this.router.navigate(['/invoices/invoicelist']);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 

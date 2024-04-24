@@ -153,6 +153,12 @@
                                                 Action <mat-icon>arrow_drop_down</mat-icon>
                                             </button>
                                             <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                                <ng-container *ngIf="getInvoiceStatus(event.invoice_num) === 'Uninvoiced'">
+                                                    <button mat-menu-item (click)="goToInvoiceEvent(event.id)">
+                                                        <img src="../../../../../assets/img/icon/action-5.png" alt="icon not found">
+                                                        <span>Invoice Event</span>
+                                                    </button>
+                                                </ng-container>
                                                 <button mat-menu-item (click)="goToEditEvent(event.id)">
                                                     <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
                                                     <span>Edit event</span>
@@ -160,10 +166,6 @@
                                                 <button mat-menu-item (click)="deleteEvent(event.id)">
                                                     <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
                                                     <span>Delete</span>
-                                                </button>
-                                                <button mat-menu-item (click)="goToInvoiceEvent(event.id)">
-                                                    <img src="../../../../../assets/img/icon/action-5.png" alt="icon not found">
-                                                    <span>Invoice Event</span>
                                                 </button>
                                             </mat-menu>                                      
                                         </div>

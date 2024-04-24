@@ -180,7 +180,7 @@
                 </div>
             </div>
             <div>
-                <button mat-raised-button color="warn" [routerLink]="['/invoices/invoicelist']">Cancel</button>
+                <button mat-raised-button color="warn" (click)="goBack()">Cancel</button>
                 <button mat-raised-button color="primary" (click)="updateInvoice()">Update Invoice</button>
             </div>
 
